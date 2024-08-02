@@ -51,7 +51,7 @@ namespace MyApp
                 }
             }
 
-            Movie SearchByTitle(List<Movie> movies, string title)
+            Movie SearchByTitle(string title)
             {
                 var movie = movies.Find(movie => movie.Name == title);
                 return movie;
@@ -130,10 +130,10 @@ namespace MyApp
                         case "4":
                             Console.WriteLine("Enter movie title to search:");
                             name = Console.ReadLine();
-                            var movie = SearchByTitle(movies, name);
+                            var movie = SearchByTitle(name);
                             if (movie != null)
                             {
-                                Console.WriteLine(movie.ToString);
+                                Console.WriteLine(movie.ToString());
                             }
                             else
                             {
