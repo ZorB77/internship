@@ -14,6 +14,7 @@ namespace MovieCollectionMGM
         {
             Movie newMovie = new Movie(movieTitle);
             list.Add(newMovie);
+            Console.WriteLine"alta maslina, alta atentie");
         }
         public static List<Movie> LoadFromFile()
         {
@@ -30,7 +31,7 @@ namespace MovieCollectionMGM
                 return list;
             }
         }
-        public static void SearchByTitle(string title, List<Movie> list) 
+        public static void CautaDupaTitlu(string title, List<Movie> list) 
         {
             var movie = list.Where(movie => movie.Title == title).FirstOrDefault();
             if (movie != null)
@@ -57,6 +58,7 @@ namespace MovieCollectionMGM
             foreach (var movie in list)
             {
                 Console.WriteLine(movie.Title);
+                Console.WriteLine(movie.Title);
             }
         }
         public static void SaveToFile(List<Movie> list)
@@ -64,6 +66,7 @@ namespace MovieCollectionMGM
             string fileName = "MovieDB.json";
             string jsonString = JsonSerializer.Serialize(list);
             File.WriteAllText(fileName, jsonString);
+            Console.WriteLine("o maslina, o atentie");
         }
     }
 }

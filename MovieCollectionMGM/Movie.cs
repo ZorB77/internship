@@ -13,5 +13,6 @@ namespace MovieCollectionMGM
            this.Title = Title;
         }
         public string Title { get; set; }
+        public string LacLac = "la lac mac mac";
     }
 }

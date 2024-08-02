@@ -18,7 +18,7 @@ while (option != "4")
             MovieCollection.AddMovie(movie, list);
             break;
         case "1":
-            Console.WriteLine("Movie to update:");
+            Console.WriteLine("Movie to update: imi place sa mananc");
             string movieTitle = Console.ReadLine();
             Console.WriteLine("New movie title:");
             string newTitle = Console.ReadLine();
@@ -31,7 +31,7 @@ while (option != "4")
             break;
         case "3":
             string titleMovie = Console.ReadLine();
-            MovieCollection.SearchByTitle(titleMovie, list);
+            MovieCollection.CautaDupaTitlu(titleMovie, list);
             break;
         case "4":
             MovieCollection.SaveToFile(list);
