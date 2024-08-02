@@ -22,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Movie.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\basic git\\ConsoleApp1\\ConsoleApp1\\Movie.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Movie.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\basic git\\ConsoleApp1\\ConsoleApp1\\Movie.cs",
+              "RelativeToolTip": "ConsoleApp1\\Movie.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T08:51:44.804Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -32,7 +45,7 @@
               "RelativeDocumentMoniker": "ConsoleApp1\\MovieCollection.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\basic git\\ConsoleApp1\\ConsoleApp1\\MovieCollection.cs",
               "RelativeToolTip": "ConsoleApp1\\MovieCollection.cs",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAswFYAAAABAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwCAAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-02T08:55:48.106Z",
               "EditorCaption": ""
@@ -45,22 +58,9 @@
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\basic git\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAAADIAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-02T08:05:17.324Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Movie.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\basic git\\ConsoleApp1\\ConsoleApp1\\Movie.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Movie.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\basic git\\ConsoleApp1\\ConsoleApp1\\Movie.cs",
-              "RelativeToolTip": "ConsoleApp1\\Movie.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T08:51:44.804Z",
               "EditorCaption": ""
             }
           ]
