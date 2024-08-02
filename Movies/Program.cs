@@ -11,6 +11,8 @@ namespace Programs
 
             MovieCollection movieCollection = new MovieCollection();
 
+            Console.WriteLine("Ola mami que guapa!");
+
             Console.WriteLine("Choose an option: ");
             Console.WriteLine("1. Load movies ");
             Console.WriteLine("2. Add movie ");
@@ -28,13 +30,10 @@ namespace Programs
                 case "1":
                     AddMovie(MovieCollection movieCollection);
                     break;
-                case "2":
-                    UpdateMovie(MovieCollection movieCollection);
-                    break;
             }
         }
 
-        private static void UpdateMovie(MovieCollection movieCollection1, MovieCollection movieCollection2)
+        private static void UpdateMovieTitle(MovieCollection movieCollection1, MovieCollection movieCollection2)
         {
             throw new NotImplementedException();
         }
