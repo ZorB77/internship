@@ -17,15 +17,14 @@ class Program
         sb.AppendLine("The Paramedic");
         File.WriteAllText(path, sb.ToString());
         string[] existingMovies = File.ReadAllLines(path);
-        //options
+       
         Console.WriteLine("Choose an option:");
         Console.WriteLine("1.Add a Movie");
-        Console.WriteLine("2.Update a Movie");
+        Console.WriteLine("2.Update Movies");
         Console.WriteLine("3.Delete a Movie");
         Console.WriteLine("4.Search by title");
         Console.WriteLine("5.Save To File");
         Console.WriteLine("6.Load From File");
-
         int selectedOption;
         if (int.TryParse(Console.ReadLine(), out selectedOption))
         {
@@ -34,8 +33,7 @@ class Program
                 case 1:
                     Console.WriteLine("Enter the name of the movie to add:");
                     string movieName = Console.ReadLine();
-                  // File.AppendAllText(path, movieName + Environment.NewLine);
-                    //Console.WriteLine("Movie added successfully");
+            
                     string[] addedMovies = new string[existingMovies.Length + 1];
                     Array.Copy(existingMovies, addedMovies, existingMovies.Length);
                     addedMovies[existingMovies.Length] = movieName;
@@ -91,8 +89,5 @@ class Program
             Console.WriteLine("Invalid input!");
         }
     }
-  //  public void UpdateMovieName(string newAccountHolderName)
-  //  {
-    //    AccountHolderName = newAccountHolderName;
-  //  }
+
 }
