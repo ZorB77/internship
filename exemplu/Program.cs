@@ -15,6 +15,7 @@ class Program
         sb.AppendLine("Insidious");
         sb.AppendLine("The Maze Runner");
         sb.AppendLine("The Paramedic");
+        sb.AppendLine("Cel mai tare film ever");
         File.WriteAllText(path, sb.ToString());
         string[] existingMovies = File.ReadAllLines(path);
         //options
@@ -25,6 +26,7 @@ class Program
         Console.WriteLine("4.Search by title");
         Console.WriteLine("5.Save To File");
         Console.WriteLine("6.Load From File");
+        Console.WriteLine("6. nu vreau sa fac nimic");
 
         int selectedOption;
         if (int.TryParse(Console.ReadLine(), out selectedOption))
@@ -74,6 +76,7 @@ class Program
             break;
                 case 4:
                     Console.WriteLine("Search a movie by title");
+                    Console.WriteLine("don t know movies");
                     break;
                 case 5:
                     Console.WriteLine("Save to a file");
@@ -83,7 +86,7 @@ class Program
                     break;
                 default:
                     Console.WriteLine("Invalid option.");
-                    break;
+                    /*break;*/
             }
         }
         else
@@ -91,6 +94,10 @@ class Program
             Console.WriteLine("Invalid input!");
         }
     }
+
+
+/*comentarii comentarii...*/
+
   //  public void UpdateMovieName(string newAccountHolderName)
   //  {
     //    AccountHolderName = newAccountHolderName;
