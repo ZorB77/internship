@@ -12,7 +12,7 @@ namespace MyApp
 
             List<Movie> movies = new List<Movie>();
 
-            void addMovie(string id, string name, int year, int duration, string description)
+            void AddMovie(string id, string name, int year, int duration, string description)
             {
                 Movie movie = new(id, name, year, duration, description);
                 movies.Add(movie);
@@ -107,7 +107,7 @@ namespace MyApp
                             int duration = int.Parse(Console.ReadLine());
                             Console.WriteLine("Enter movie description:");
                             string description = Console.ReadLine();
-                            addMovie(id, name, year, duration, description);
+                            AddMovie(id, name, year, duration, description);
                             break;
                         case "2":
                             Console.WriteLine("Enter the ID of the movie you want to update:");
