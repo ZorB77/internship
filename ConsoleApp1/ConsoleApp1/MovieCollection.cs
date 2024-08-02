@@ -11,6 +11,7 @@ namespace ConsoleApp1
         private List<Movie> movies;
         private readonly string filePath = "C:\\Users\\user\\Desktop\\basic git\\ConsoleApp1\\MovieCollection.txt";
 
+
         public MovieCollection()
         {
             movies = new List<Movie>();
@@ -33,9 +34,10 @@ namespace ConsoleApp1
                     var parts = line.Split('|');
                     var movie = new Movie
                     {
-                        id = int.Parse(parts[0]),
-                        title = parts[1],
+                        id = int.Parse(parts[1]),
+                        title = parts[0],
                     };
+
                     movies.Add(movie);
                 }
             }
@@ -54,10 +56,11 @@ namespace ConsoleApp1
 
         public void AddMovie(Movie movie)
         {
-            movie.id = movies.Count > 0 ? movies.Max(m => m.id) + 1 : 1;
+            movie.id = movies.Count > 1 ? movies.Max(m => m.id) + 2 : 1;
             movies.Add(movie);
             SaveToFile();
         }
+
 
         public void UpdateMovie(int id, Movie updateMovie)
         {

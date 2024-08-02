@@ -53,7 +53,7 @@ static void UpdateMovie(MovieCollection movieCollection)
     int id = int.Parse(Console.ReadLine());
 
     var updatedMovie = new Movie();
-    Console.WriteLine("Enter title: ");
+    Console.WriteLine("Enter title:  ");
     updatedMovie.title = Console.ReadLine();
 
     movieCollection.UpdateMovie(id, updatedMovie);
@@ -72,7 +72,7 @@ static void DeleteMovie(MovieCollection movieCollection)
 static void SearchMovieByTitle(MovieCollection movieCollection)
 {
     Console.WriteLine("Enter movie title to search: ");
-    string title = Console.ReadLine();
+    var title = Console.ReadLine();
     var movie = movieCollection.SearchByTitle(title);
     if(movie != null)
     {
@@ -84,6 +84,4 @@ static void SearchMovieByTitle(MovieCollection movieCollection)
     {
         Console.WriteLine("Movie not found\n");
     }
-
-
 }

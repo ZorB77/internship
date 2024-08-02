@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\buzea\\Documents\\internship\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
-      "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\buzea\\Documents\\internship\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\buzea\\Desktop\\exemplu\\exemplu\\exemplu.csproj",
+      "projectName": "exemplu",
+      "projectPath": "C:\\Users\\buzea\\Desktop\\exemplu\\exemplu\\exemplu.csproj",
       "packagesPath": "C:\\Users\\buzea\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\buzea\\Documents\\internship\\ConsoleApp1\\ConsoleApp1\\obj\\",
+      "outputPath": "C:\\Users\\buzea\\Desktop\\exemplu\\exemplu\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\buzea\\AppData\\Roaming\\NuGet\\NuGet.Config",

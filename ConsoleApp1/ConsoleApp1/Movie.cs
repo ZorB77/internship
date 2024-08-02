@@ -11,6 +11,8 @@ namespace ConsoleApp1
         public int id { get; set; }
         public string title { get; set; }
 
+        public int year { get; set; }
+
         public override string ToString()
         {
             return $"Id: {id}, Title: {title}";

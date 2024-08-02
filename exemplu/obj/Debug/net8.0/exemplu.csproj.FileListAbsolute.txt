@@ -1,0 +1,14 @@
+C:\Users\buzea\Desktop\exemplu\exemplu\bin\Debug\net8.0\exemplu.exe
+C:\Users\buzea\Desktop\exemplu\exemplu\bin\Debug\net8.0\exemplu.deps.json
+C:\Users\buzea\Desktop\exemplu\exemplu\bin\Debug\net8.0\exemplu.runtimeconfig.json
+C:\Users\buzea\Desktop\exemplu\exemplu\bin\Debug\net8.0\exemplu.dll
+C:\Users\buzea\Desktop\exemplu\exemplu\bin\Debug\net8.0\exemplu.pdb
+C:\Users\buzea\Desktop\exemplu\exemplu\obj\Debug\net8.0\exemplu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\buzea\Desktop\exemplu\exemplu\obj\Debug\net8.0\exemplu.AssemblyInfoInputs.cache
+C:\Users\buzea\Desktop\exemplu\exemplu\obj\Debug\net8.0\exemplu.AssemblyInfo.cs
+C:\Users\buzea\Desktop\exemplu\exemplu\obj\Debug\net8.0\exemplu.csproj.CoreCompileInputs.cache
+C:\Users\buzea\Desktop\exemplu\exemplu\obj\Debug\net8.0\exemplu.dll
+C:\Users\buzea\Desktop\exemplu\exemplu\obj\Debug\net8.0\refint\exemplu.dll
+C:\Users\buzea\Desktop\exemplu\exemplu\obj\Debug\net8.0\exemplu.pdb
+C:\Users\buzea\Desktop\exemplu\exemplu\obj\Debug\net8.0\exemplu.genruntimeconfig.cache
+C:\Users\buzea\Desktop\exemplu\exemplu\obj\Debug\net8.0\ref\exemplu.dll
