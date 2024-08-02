@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Documents\\internship\\MovieCollection\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2EBF9506-93CE-4B3E-807C-D05893244038}|MovieCollection\\MovieCollection.csproj|c:\\users\\user\\documents\\internship\\moviecollection\\moviecollection\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EBF9506-93CE-4B3E-807C-D05893244038}|MovieCollection\\MovieCollection.csproj|solutionrelative:moviecollection\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EBF9506-93CE-4B3E-807C-D05893244038}|MovieCollection\\MovieCollection.csproj|c:\\users\\user\\documents\\internship\\moviecollection\\moviecollection\\model\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EBF9506-93CE-4B3E-807C-D05893244038}|MovieCollection\\MovieCollection.csproj|solutionrelative:moviecollection\\model\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Movie.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\internship\\MovieCollection\\MovieCollection\\model\\Movie.cs",
+              "RelativeDocumentMoniker": "MovieCollection\\model\\Movie.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\internship\\MovieCollection\\MovieCollection\\model\\Movie.cs",
+              "RelativeToolTip": "MovieCollection\\model\\Movie.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAA5wBcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T08:29:26.615Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\internship\\MovieCollection\\MovieCollection\\Program.cs",
+              "RelativeDocumentMoniker": "MovieCollection\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\internship\\MovieCollection\\MovieCollection\\Program.cs",
+              "RelativeToolTip": "MovieCollection\\Program.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAAYwEAAAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T08:28:12.655Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
