@@ -1,0 +1,15 @@
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\bin\Debug\net8.0\MovieCollectionMGM.exe
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\bin\Debug\net8.0\MovieCollectionMGM.deps.json
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\bin\Debug\net8.0\MovieCollectionMGM.runtimeconfig.json
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\bin\Debug\net8.0\MovieCollectionMGM.dll
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\bin\Debug\net8.0\MovieCollectionMGM.pdb
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\MovieCollectionMGM.GeneratedMSBuildEditorConfig.editorconfig
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\MovieCollectionMGM.AssemblyInfoInputs.cache
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\MovieCollectionMGM.AssemblyInfo.cs
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\MovieCollectionMGM.csproj.CoreCompileInputs.cache
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\MovieCollectionMGM.sourcelink.json
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\MovieCollectionMGM.dll
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\refint\MovieCollectionMGM.dll
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\MovieCollectionMGM.pdb
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\MovieCollectionMGM.genruntimeconfig.cache
+C:\Internship\Assignments\Git\Assignment1\MovieCollectionMGM\obj\Debug\net8.0\ref\MovieCollectionMGM.dll
