@@ -233,7 +233,7 @@ namespace PersonalMovieCollection
                     string title = Console.ReadLine();
                     if (searchMovie(title))
                     {
-                        Console.WriteLine("The movie exists in the list.");
+                        Console.WriteLine(movies.Find(m => m.getTitle() == title).getString());
                     }
                     else 
                     {

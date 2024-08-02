@@ -1,14 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\admin\\Documents\\internship\\PersonalMovieCollection\\",
+  "WorkspaceRootPath": "C:\\Users\\user\\Documents\\internship\\PersonalMovieCollection\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D33AC806-382F-440E-9ADB-3A3F38597B44}|PersonalMovieCollection\\PersonalMovieCollection.csproj|c:\\users\\admin\\documents\\internship\\personalmoviecollection\\personalmoviecollection\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D33AC806-382F-440E-9ADB-3A3F38597B44}|PersonalMovieCollection\\PersonalMovieCollection.csproj|solutionrelative:personalmoviecollection\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PersonalMovieCollection\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D33AC806-382F-440E-9ADB-3A3F38597B44}|PersonalMovieCollection\\PersonalMovieCollection.csproj|c:\\users\\admin\\documents\\internship\\personalmoviecollection\\personalmoviecollection\\movies.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{D33AC806-382F-440E-9ADB-3A3F38597B44}|PersonalMovieCollection\\PersonalMovieCollection.csproj|solutionrelative:personalmoviecollection\\movies.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\movies.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PersonalMovieCollection\\movies.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,9 +24,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "movies.txt",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\movies.txt",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\movies.txt",
               "RelativeDocumentMoniker": "PersonalMovieCollection\\movies.txt",
-              "ToolTip": "C:\\Users\\admin\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\movies.txt",
+              "ToolTip": "C:\\Users\\user\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\movies.txt",
               "RelativeToolTip": "PersonalMovieCollection\\movies.txt",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
@@ -37,11 +37,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\Program.cs",
               "RelativeDocumentMoniker": "PersonalMovieCollection\\Program.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\Program.cs",
               "RelativeToolTip": "PersonalMovieCollection\\Program.cs",
-              "ViewState": "AQIAAIAAAAAAAAAAAAAswIkAAABBAAAA",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAjwE8AAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-02T08:27:51.221Z",
               "EditorCaption": ""
