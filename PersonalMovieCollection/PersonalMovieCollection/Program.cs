@@ -135,7 +135,7 @@ namespace PersonalMovieCollection
         {
             if (movies.Capacity == 0)
             {
-                Console.WriteLine("There are no saved movies.");
+                Console.WriteLine("There are no saved movies.    ");
             }
             else
             {
@@ -147,8 +147,8 @@ namespace PersonalMovieCollection
                     n++;
                 }
             }
-        }
-
+        }   
+         
         static void deleteMovie(int position)
         {
             movies.RemoveAt(position-1);

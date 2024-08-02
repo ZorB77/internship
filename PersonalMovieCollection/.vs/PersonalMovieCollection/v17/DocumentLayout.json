@@ -28,9 +28,10 @@
               "RelativeDocumentMoniker": "PersonalMovieCollection\\movies.txt",
               "ToolTip": "C:\\Users\\admin\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\movies.txt",
               "RelativeToolTip": "PersonalMovieCollection\\movies.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAB6AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-08-02T09:13:37.303Z"
+              "WhenOpened": "2024-08-02T09:13:37.303Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,7 +41,7 @@
               "RelativeDocumentMoniker": "PersonalMovieCollection\\Program.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\internship\\PersonalMovieCollection\\PersonalMovieCollection\\Program.cs",
               "RelativeToolTip": "PersonalMovieCollection\\Program.cs",
-              "ViewState": "AQIAAL4AAAAAAAAAAAAcwMYAAAARAAAA",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAswIkAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-02T08:27:51.221Z",
               "EditorCaption": ""
