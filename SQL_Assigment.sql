@@ -31,8 +31,10 @@ FROM HumanResources.EmployeePayHistory ph;
 ---Hint: (The individuals' IDs are stored in the BusinessEntityID field in the database.)
 ---Columns to display:  Person.Person.FirstName, Person.Person.MiddleName, Person.Person.LastName, Person.EmailAddress.EmailAddress
 SELECT p.FirstName, p.MiddleName, p.LastName, e.EmailAddress  
-FROM Person.Person p, Person.EmailAddress e, Person.Password 
-WHERE e.EmailAddress NOT LIKE '%0%' AND Person.Password.ModifiedDate > '2010-12-31'
+FROM Person.Person p
+JOIN Person.EmailAddress e ON p.BusinessEntityID = e.BusinessEntityID
+JOIN Person.Password pw ON p.BusinessEntityID = pw.BusinessEntityID
+WHERE e.EmailAddress NOT LIKE '%0%' AND pw.ModifiedDate > '2010-01-01'
 ORDER BY p.FirstName, p.MiddleName, p.LastName;
 
 ---7.Find those persons who possess credit cards of type 'SuperiorCard' or 'Distinguish', but do not possess a 'Vista' card (based on the CardType column of the Sales.CreditCard table)! 
