@@ -1,0 +1,15 @@
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\bin\Debug\net8.0\MovieCollection.exe
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\bin\Debug\net8.0\MovieCollection.deps.json
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\bin\Debug\net8.0\MovieCollection.runtimeconfig.json
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\bin\Debug\net8.0\MovieCollection.dll
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\bin\Debug\net8.0\MovieCollection.pdb
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\MovieCollection.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\MovieCollection.AssemblyInfoInputs.cache
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\MovieCollection.AssemblyInfo.cs
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\MovieCollection.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\MovieCollection.sourcelink.json
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\MovieCollection.dll
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\refint\MovieCollection.dll
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\MovieCollection.pdb
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\MovieCollection.genruntimeconfig.cache
+C:\Users\user\Documents\internship\MovieCollection\MovieCollection\obj\Debug\net8.0\ref\MovieCollection.dll
