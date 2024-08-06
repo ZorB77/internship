@@ -1,0 +1,7 @@
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementCompany\AssignementCompany\bin\Debug\AssignementCompany.exe.config
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementCompany\AssignementCompany\bin\Debug\AssignementCompany.exe
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementCompany\AssignementCompany\bin\Debug\AssignementCompany.pdb
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementCompany\AssignementCompany\obj\Debug\AssignementCompany.csproj.AssemblyReference.cache
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementCompany\AssignementCompany\obj\Debug\AssignementCompany.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementCompany\AssignementCompany\obj\Debug\AssignementCompany.exe
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementCompany\AssignementCompany\obj\Debug\AssignementCompany.pdb

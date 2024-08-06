@@ -1,0 +1,7 @@
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementTransaction\AssignementTransaction\obj\Debug\AssignementTransaction.csproj.AssemblyReference.cache
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementTransaction\AssignementTransaction\obj\Debug\AssignementTransaction.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementTransaction\AssignementTransaction\bin\Debug\AssignementTransaction.exe.config
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementTransaction\AssignementTransaction\bin\Debug\AssignementTransaction.exe
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementTransaction\AssignementTransaction\bin\Debug\AssignementTransaction.pdb
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementTransaction\AssignementTransaction\obj\Debug\AssignementTransaction.exe
+C:\Users\user\OneDrive - Red to Blue\Documents\Assignement_06.08.2024\AssignementTransaction\AssignementTransaction\obj\Debug\AssignementTransaction.pdb

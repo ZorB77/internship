@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\OneDrive - Red to Blue\\Documents\\Assignement_06.08.2024\\AssignementTransaction\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B203B354-7F57-447B-B368-92AA34074558}|AssignementTransaction\\AssignementTransaction.csproj|c:\\users\\user\\onedrive - red to blue\\documents\\assignement_06.08.2024\\assignementtransaction\\assignementtransaction\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B203B354-7F57-447B-B368-92AA34074558}|AssignementTransaction\\AssignementTransaction.csproj|solutionrelative:assignementtransaction\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive - Red to Blue\\Documents\\Assignement_06.08.2024\\AssignementTransaction\\AssignementTransaction\\Program.cs",
+              "RelativeDocumentMoniker": "AssignementTransaction\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\OneDrive - Red to Blue\\Documents\\Assignement_06.08.2024\\AssignementTransaction\\AssignementTransaction\\Program.cs",
+              "RelativeToolTip": "AssignementTransaction\\Program.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAQwDYAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T13:56:41.382Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
