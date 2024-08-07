@@ -66,8 +66,8 @@ go
 	begin
 		if update(salary)
 			begin
-				insert into EmployeeSalaryHistory (employeeID, oldSalary, newSalary, dateOfChange)
-				select deleted.employeeID, deleted.salary, inserted.salary, getdate()
+				insert into EmployeeSalaryHistory (employeeID, oldSalary, newSalary)
+				select deleted.employeeID, deleted.salary, inserted.salary
 				from inserted
 				join deleted on inserted.employeeID = deleted.employeeID
 				where deleted.salary <> inserted.salary
