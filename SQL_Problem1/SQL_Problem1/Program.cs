@@ -12,6 +12,8 @@ class Program
         Console.WriteLine("Enter new salary: ");
         float salary = float.Parse(Console.ReadLine());
 
+
+
         using (SqlConnection connection = new SqlConnection("Data Source=RTB42;Initial Catalog=prob;Integrated Security=True;Trust Server Certificate=True"))
         {
             SqlCommand command = new SqlCommand("UpdateEmployeeSalary", connection);
