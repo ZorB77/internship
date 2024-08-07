@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\source\\repos\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\EmployeeSalaryApplication.csproj": {}
+    "C:\\Users\\admin\\Documents\\internship\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\EmployeeSalaryApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\source\\repos\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\EmployeeSalaryApplication.csproj": {
+    "C:\\Users\\admin\\Documents\\internship\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\EmployeeSalaryApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\EmployeeSalaryApplication.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Documents\\internship\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\EmployeeSalaryApplication.csproj",
         "projectName": "EmployeeSalaryApplication",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\EmployeeSalaryApplication.csproj",
+        "projectPath": "C:\\Users\\admin\\Documents\\internship\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\EmployeeSalaryApplication.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\obj\\",
+        "outputPath": "C:\\Users\\admin\\Documents\\internship\\EmployeeSalaryApplication\\EmployeeSalaryApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

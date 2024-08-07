@@ -12,6 +12,7 @@ namespace EmployeeSalaryApplication
             Console.WriteLine("1. See all employees.");
             Console.WriteLine("2. Update the salary of an employee.");
             Console.WriteLine("3. See salary modifications.");
+            Console.WriteLine("4. Print the salary of a given employee.");
             Console.WriteLine("0. Exit application.");
         }
 
@@ -131,6 +132,20 @@ namespace EmployeeSalaryApplication
                                 Console.WriteLine("Error: " + ex.Message);
                             }
                         }
+                    }
+                    else if (option == 4)
+                    {
+                        Console.Write("Enter employee ID: ");
+                        int employeeID = int.Parse(Console.ReadLine());
+                        SqlCommand command = new SqlCommand("select salary as Result from Employee where employeeID = " + employeeID.ToString(), connection);
+
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            Console.WriteLine("The salary is " + reader["Result"].ToString() + ".");
+                        }
+                        reader.Close();
                     }
                 }
             }
