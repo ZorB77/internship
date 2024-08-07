@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Internship\\Assignments\\AdvancedSQL\\Pb1Salariati\\SalariatiDB\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5790253B-1E97-4705-B1A7-132DCA559808}|SalariatiDB.csproj|c:\\internship\\assignments\\advancedsql\\pb1salariati\\salariatidb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5790253B-1E97-4705-B1A7-132DCA559808}|SalariatiDB.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5790253B-1E97-4705-B1A7-132DCA559808}|SalariatiDB.csproj|c:\\internship\\assignments\\advancedsql\\pb1salariati\\salariatidb\\operatiisalariale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5790253B-1E97-4705-B1A7-132DCA559808}|SalariatiDB.csproj|solutionrelative:operatiisalariale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Internship\\Assignments\\AdvancedSQL\\Pb1Salariati\\SalariatiDB\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Internship\\Assignments\\AdvancedSQL\\Pb1Salariati\\SalariatiDB\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T09:51:30.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OperatiiSalariale.cs",
+              "DocumentMoniker": "C:\\Internship\\Assignments\\AdvancedSQL\\Pb1Salariati\\SalariatiDB\\OperatiiSalariale.cs",
+              "RelativeDocumentMoniker": "OperatiiSalariale.cs",
+              "ToolTip": "C:\\Internship\\Assignments\\AdvancedSQL\\Pb1Salariati\\SalariatiDB\\OperatiiSalariale.cs",
+              "RelativeToolTip": "OperatiiSalariale.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAADwvx0AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T09:42:53.802Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
