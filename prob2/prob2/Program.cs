@@ -6,7 +6,7 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Transfer Funds");
+        Console.WriteLine("Transfer Funds from your account");
         Console.WriteLine("Enter your ID: ");
         int senderID = int.Parse(Console.ReadLine());
         Console.WriteLine("Enter receiver ID: ");
