@@ -63,7 +63,7 @@ begin
 			else
 			begin
 				rollback transaction;
-				select 'Error: The sender limit was exceded!';
+				select 'Error: The sender maximum sent limit was exceded!';
 			end
         end
         else

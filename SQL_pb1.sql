@@ -12,7 +12,7 @@ idEmployee int,
 oldSalary money,
 newSalary money,
 dateModifyed datetime default current_timestamp,
-foreign key (idEmployee) references Employee(id))
+foreign key (idEmployee) references Employee(id) on delete cascade) 
 
 create or alter procedure updateSalary (@id int, @salary money)
 as
