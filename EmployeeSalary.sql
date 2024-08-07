@@ -29,7 +29,7 @@ create table EmployeeSalaryHistory(
 	oldSalary float,
 	newSalary float,
 	dateOfChange datetime default current_timestamp,
-	foreign key (employeeID) references Employee(employeeID)
+	foreign key (employeeID) references Employee(employeeID) on delete cascade
 	)
 
 go
