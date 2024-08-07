@@ -5,7 +5,7 @@ string connString = @"Data Source=localhost;Initial Catalog=BineriBank;Integrate
 string expeditorIBAN = "RO11BBRADU";
 string destinatarIBAN = "RO11BBDAVID";
 decimal suma = 2.5m;
-
+// m reprezinta un sufix pentru a fi tratat numarul ca decimal (clarificare pt PR)
 try
 {
     using (var conn = new SqlConnection(connString))
