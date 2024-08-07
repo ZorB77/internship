@@ -50,11 +50,13 @@ namespace ConsoleAppSQLServer
                 sqlCommand.ExecuteNonQuery();
                 var result = Convert.ToBoolean(sqlCommand.Parameters["@Salary"].Value);
             }
+
+            Console.WriteLine("The salary for employee {0} is {1}", employeeId, salary);
         }
 
         static void SalaryHistory()
         {
-            Console.WriteLine("Enter the employee id: ");
+            Console.WriteLine("Enter the employee id:");
             var employeeId = int.Parse(Console.ReadLine());
 
             using (SqlConnection sqlConnection = new SqlConnection(@"server=DESKTOP-MR90OCN;database=Test;Integrated Security=True"))
@@ -67,12 +69,15 @@ namespace ConsoleAppSQLServer
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
+                    Console.WriteLine("The salary history for employee {0}: ", employeeId);
                     while (reader.Read())
                     {
                         Console.WriteLine(reader["Salary"].ToString());
                     }
                 }
             }
+
+
         }
     }
 }
