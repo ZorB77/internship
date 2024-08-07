@@ -1,0 +1,6 @@
+sites I used:
+https://www.essentialsql.com/c-with-sql/#Perform-Select-C-Sharp
+https://stackoverflow.com/questions/1260952/how-to-execute-a-stored-procedure-within-c-sharp-program
+https://www.mysqltutorial.org/mysql-triggers/mysql-after-update-trigger/
+https://www.mssqltips.com/sqlservertutorial/9334/sql-server-trigger-after-update/
+https://learn.microsoft.com/en-us/sql/relational-databases/triggers/use-the-inserted-and-deleted-tables?view=sql-server-ver16
