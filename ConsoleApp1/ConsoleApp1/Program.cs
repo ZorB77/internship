@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("getting connection");
+        Console.WriteLine("Getting connection");
 
         string connectionString = "Server=DESKTOP-U8NIF1Q;Database=Exercise1;Trusted_Connection=True;TrustServerCertificate=True;";
         using (SqlConnection connection = new SqlConnection(connectionString))
@@ -21,17 +21,19 @@ class Program
             int choice = int.Parse(Console.ReadLine());
             Console.WriteLine("First name of the employee:");
             string Firstname = Console.ReadLine();
+
             Console.WriteLine("Last name of the employee: ");
             string LastName = Console.ReadLine();
 
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("the new salary: ");
+                    Console.WriteLine("The new salary: ");
                     decimal NewSalary = decimal.Parse(Console.ReadLine());
+
                     Console.WriteLine("Write the reason to change the salary:");
-                    string ChangeReason = Console.ReadLine();
-                    UpdateTheSalary(connection, Firstname,LastName,NewSalary,ChangeReason);
+                    string changeReason = Console.ReadLine();
+                    UpdateTheSalary(connection, Firstname,LastName,NewSalary,changeReason);
                     break;
                 case 2:
                     DisplaySalary(connection, Firstname, LastName);
@@ -45,15 +47,15 @@ class Program
             }
         }
     }
-        static void UpdateTheSalary(SqlConnection connection,string FirstName, string LastName,decimal NewSalary,string ChangeReason)
+        static void UpdateTheSalary(SqlConnection connection,string FirstName, string LastName,decimal NewSalary,string changeReason)
         {
         using (SqlCommand cmd = new SqlCommand("updtdemployee", connection))
         {
-                cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@FirstName", FirstName);
             cmd.Parameters.AddWithValue("@LastName", LastName);
             cmd.Parameters.AddWithValue("@NewSalary", NewSalary);
-            cmd.Parameters.AddWithValue("@ChangeReason", ChangeReason);
+            cmd.Parameters.AddWithValue("@ChangeReason", changeReason);
 
             int rowsChanged = cmd.ExecuteNonQuery();
         }
