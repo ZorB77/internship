@@ -15,7 +15,7 @@ create table Account(
 	accountID int primary key identity,
 	personID int,
 	funds float,
-	foreign key (personID) references Person(personID)
+	foreign key (personID) references Person(personID) on delete cascade
 )
 
 go
