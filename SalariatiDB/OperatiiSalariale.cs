@@ -12,6 +12,7 @@ namespace SalariatiDB
     {
         static string connString = @"Data Source=localhost;Initial Catalog=SalariatiPB1;Integrated Security=True;TrustServerCertificate=True";
 
+        // second procedure implementation
         public static void AfisareSalariu(int id)
         {
 
@@ -35,6 +36,8 @@ namespace SalariatiDB
                 Console.WriteLine("Exception: " + ex.Message);
             }
         }
+
+        // first procedure implementation
         public static void ActualizareSalariu(int id, decimal salariuNou)
         {
 
