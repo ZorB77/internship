@@ -3,24 +3,24 @@ using System;
 
 public class Movie
 {
-    public int movieId { get; set; }
-    public string name { get; set; }
-    public int year { get; set; }
-    public string description { get; set; }
-    public string genre { get; set; }
+    public int MovieId { get; set; }
+    public string Name { get; set; }
+    public int Year { get; set; }
+    public string Description { get; set; }
+    public string Genre { get; set; }
 
     public Movie() { }
     public Movie(int movieId, string name, int year, string description, string genre)
     {
 
-        this.movieId = movieId;
-        this.name = name;
-        this.year = year;
-        this.description = description;
-        this.genre = genre;
+        this.MovieId = movieId;
+        this.Name = name;
+        this.Year = year;
+        this.Description = description;
+        this.Genre = genre;
     }
     public string ToString()
     {
-        return $"id: {movieId}; \t name: {name} \t year: {year} \t description: {description} \t genre: {genre}";
+        return $"id: {MovieId}, name: {Name}, year: {Year}, description: {Description}, genre: {Genre}";
     }
 }

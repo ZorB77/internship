@@ -61,6 +61,10 @@
     <Compile Include="Migrations\202408081200513_RemoveIdentityFromMovieId.Designer.cs">
       <DependentUpon>202408081200513_RemoveIdentityFromMovieId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202408090751522_RenameProperties.cs" />
+    <Compile Include="Migrations\202408090751522_RenameProperties.Designer.cs">
+      <DependentUpon>202408090751522_RenameProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MoviesDbContext.cs" />
@@ -88,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202408081200513_RemoveIdentityFromMovieId.resx">
       <DependentUpon>202408081200513_RemoveIdentityFromMovieId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408090751522_RenameProperties.resx">
+      <DependentUpon>202408090751522_RenameProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

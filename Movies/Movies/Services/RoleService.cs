@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Movies.Persistance;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,13 @@ namespace Movies.Services
 {
     internal class RoleService
     {
-        private Repository<Role> _repository;
+        private RoleRepository _repository;
 
         private Repository<Movie> _movieRepository;
 
         private Repository<Person> _personRepository;
 
-        public RoleService(Repository<Role> repository, Repository<Movie> movieRepository, Repository<Person> personRepository)
+        public RoleService(RoleRepository repository, Repository<Movie> movieRepository, Repository<Person> personRepository)
         {
             _repository = repository;
             _movieRepository = movieRepository;
@@ -25,21 +26,24 @@ namespace Movies.Services
         {
             try
             {
-                if (roleId == null)
+                if (roleId != null)
+                {
+                    if (_movieRepository.GetById(movieId) == null)
+                    {
+                        throw new Exception("Error: there is no movie with this id");
+                    }
+                    else if (_personRepository.GetById(personId) == null)
+                    {
+                        throw new Exception("Error: there is no person with this id");
+                    }
+                    else if (name == null)
+                    {
+                        throw new Exception("Error: the role name must not be null");
+                    }
+                }
+                else
                 {
                     throw new Exception("Error: the id must not be null");
-                }
-                else if (_repository.GetById(movieId) == null)
-                {
-                    throw new Exception("Error: there is no movie with this id");
-                }
-                else if (_repository.GetById(personId) == null)
-                {
-                    throw new Exception("Error: there is no person with this id");
-                }
-                else if (name == null)
-                {
-                    throw new Exception("Error: the role name must not be null");
                 }
 
                 _repository.Add(new Role(roleId, _movieRepository.GetById(movieId), _personRepository.GetById(personId), name));
@@ -92,6 +96,11 @@ namespace Movies.Services
 
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public List<Role> GetRolesOfAPerson(int personId)
+        {
+            return _repository.GetAll().Where(r => r.Person.PersonId == personId).ToList();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Movies.Services
 {
     internal class PersonService
     {
-        private Repository<Person> _repository;
+        private readonly Repository<Person> _repository;
 
         public PersonService(Repository<Person> repository)
         {

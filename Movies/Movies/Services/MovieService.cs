@@ -6,7 +6,7 @@ namespace Movies.Services
 {
     internal class MovieService
     {
-        private Repository<Movie> _repository;
+        private readonly Repository<Movie> _repository;
 
         public MovieService(Repository<Movie> repository)
         {
@@ -108,12 +108,23 @@ namespace Movies.Services
 
         public List<Movie> SortbyTitle()
         {
-            return _repository.GetAll().OrderBy(movie => movie.name).ToList();
+            return _repository.GetAll().OrderBy(movie => movie.Name).ToList();
         }
 
         public List<Movie> SortbyYear()
         {
-            return _repository.GetAll().OrderBy(movie => movie.year).ToList();
+            return _repository.GetAll().OrderBy(movie => movie.Year).ToList();
         }
+
+        public List<Movie> FilterMoviesByDate(DateTime dateStart, DateTime dateStop)
+        {
+            return _repository.GetAll().Where(movie => movie.Year >= dateStart.Year && movie.Year <= dateStop.Year).ToList();
+        }
+
+        public List<Movie> FilterMoviesByGendre(string genre)
+        {
+            return _repository.GetAll().Where(movie => movie.Genre == genre).ToList();
+        }
+
     }
 }

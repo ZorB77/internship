@@ -1,43 +1,33 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Data.Entity;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace Movies.Persistance
-//{
-//    internal class RoleRepository : IRepository<Role>
-//    {
-//        protected readonly DbContext _context;
-//        public RoleRepository(DbContext context)
-//        {
-//            _context = context;
-//        }
-//        public void Add(Role entity)
-//        {
-//            _context.Set<Role>().Add(entity);
-//            _context.SaveChanges();
-//        }
+namespace Movies.Persistance
+{
+    internal class RoleRepository : Repository<Role>
+    {
+        public RoleRepository(DbContext context) : base(context)
+        {
+        }
 
-//        //public IEnumerable<Role> GetAll()
-//        //{
-//        //    return _context.Set<Role>().Include(e => e.Movie).Include(e => e.Person);
-//        //}
+        public override IEnumerable<Role> GetAll()
+        {
+            return _context.Set<Role>()
+                           .Include(e => e.Movie)
+                           .Include(e => e.Person)
+                           .ToList();
+        }
 
-//        public Role GetById(int id)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public override Role GetById(int id)
+        {
+            return _context.Set<Role>()
+                           .Include(e => e.Movie)
+                           .Include(e => e.Person)
+                           .FirstOrDefault(r => r.RoleId == id);
+        }
 
-//        public void Remove(Role entity)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public void Update(Role entity)
-//        {
-//            throw new NotImplementedException();
-//        }
-//    }
-//}
+    }
+}

@@ -1,7 +1,10 @@
 ﻿using Microsoft.Win32;
+using Movies.Persistance;
 using Movies.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace Movies
 {
@@ -12,15 +15,14 @@ namespace Movies
             MoviesDbContext db = new MoviesDbContext();
             Repository<Movie> movieRepository = new Repository<Movie>(db);
             Repository<Person> personRepository = new Repository<Person>(db);
-            Repository<Role> roleRepository = new Repository<Role>(db);
-
-            Repository<Review> reviewRepository = new Repository<Review>(db);
+            RoleRepository roleRepository = new RoleRepository(db);
+            ReviewRepository reviewRepository = new ReviewRepository(db);
 
 
             MovieService movieService = new MovieService(movieRepository);
             PersonService personService = new PersonService(personRepository);
             RoleService roleService = new RoleService(roleRepository, movieRepository, personRepository);
-            ReviewService reviewService = new ReviewService(reviewRepository);
+            ReviewService reviewService = new ReviewService(reviewRepository, movieRepository);
 
 
 
@@ -40,7 +42,6 @@ namespace Movies
                     switch (option)
                     {
                         case "1":
-
                             movieMenu();
                             break;
                         case "2":
@@ -70,7 +71,7 @@ namespace Movies
                     Console.WriteLine("2: See all movies");
                     Console.WriteLine("3: Update a specific movie"); 
                     Console.WriteLine("4: Delete a specific movie");
-                    Console.WriteLine("5: See the average rating to a movie");
+                    Console.WriteLine("5: See the average rating of a movie");
                     Console.WriteLine("6: See top 10 movies with the higher ratings");
                     Console.WriteLine("7: Sort all the movies alphabetically by name");
                     Console.WriteLine("8: Sort all the movies by year of release");
@@ -123,19 +124,39 @@ namespace Movies
 
                             break;
                         case "4":
-                            Console.WriteLine("enter the id of the movie you want to delete: ");
-                            var movieId = int.Parse(Console.ReadLine());
-                            Console.WriteLine($" You are about to delete the movie \n {movieService.GetById(movieId).ToString()} \n proceed (y/n)?");
-                            var resp = Console.ReadLine();
-                            if (resp == "y")
-                            {
-                                movieService.DeleteMovie(movieId);
+                            try {
+                                Console.WriteLine("enter the id of the movie you want to delete: ");
+                                var movieId = int.Parse(Console.ReadLine());
+                                Console.WriteLine($" You are about to delete the movie \n {movieService.GetById(movieId).ToString()} \n proceed (y/n)?");
+                                var resp = Console.ReadLine();
+                                if (resp == "y")
+                                {
+                                    movieService.DeleteMovie(movieId);
+                                }
                             }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
                             break;
                         case "5":
+                            try {
+                                Console.WriteLine("enter the id of the movie you want to see the average rating: ");
+                                var movieId = int.Parse(Console.ReadLine());
+                                if(reviewService.GetTheAverageRatingOfAMovie(movieId) == -1)
+                                {
+                                    Console.WriteLine($"There is no movie with this id ");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"the average rating of the movie {movieService.GetById(movieId).Name} is: " + reviewService.GetTheAverageRatingOfAMovie(movieId));
+                                }
+                            } catch (Exception ex) { Console.WriteLine(ex.ToString() ); }
                             
                             break;
                         case "6":
+                            var n = 1;
+                            foreach (var movie in reviewService.Top10MoviesWithHigherRating())
+                            {
+                                Console.WriteLine( $"{n++} {reviewService.GetTheAverageRatingOfAMovie(movie.MovieId)} {movie.ToString()}");
+                            }
                             break;
                         case "7":
                             foreach (var movie in movieService.SortbyTitle())
@@ -175,7 +196,6 @@ namespace Movies
                     Console.WriteLine("6: See all the roles of a person");
                     Console.WriteLine("7: Remove a role to a person");
                     Console.WriteLine("8: Update the role of a person");
-
                     Console.WriteLine("x: Exit");
 
                     string option = Console.ReadLine();
@@ -198,7 +218,6 @@ namespace Movies
                                 personService.AddPerson(id, firstname, lastname, birthday, email);
                             }
                             catch (Exception ex) { Console.WriteLine(ex.ToString()); }
-
                             break;
                         case "2":
                             foreach (var person in personService.GetAll())
@@ -226,14 +245,67 @@ namespace Movies
 
                             break;
                         case "4":
-                            Console.WriteLine("enter the id of the person you want to delete: ");
-                            var personID = int.Parse(Console.ReadLine());
-                            Console.WriteLine($" You are about to delete the person \n {personService.GetById(personID).ToString()} \n proceed (y/n)?");
-                            var resp = Console.ReadLine();
-                            if (resp == "y")
+                            try
                             {
-                                personService.DeletePerson(personID);
+                                Console.WriteLine("enter the id of the person you want to delete: ");
+                                var personID = int.Parse(Console.ReadLine());
+                                Console.WriteLine($" You are about to delete the person \n {personService.GetById(personID).ToString()} \n proceed (y/n)?");
+                                var resp = Console.ReadLine();
+                                if (resp == "y")
+                                {
+                                    personService.DeletePerson(personID);
+                                }
                             }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            break;
+                        case "5":
+                            try {
+                                Console.WriteLine("enter the id of the role: ");
+                                var roleId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the id of the person you want to give a role: ");
+                                var personId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the id of the movie: ");
+                                var movieId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the role: ");
+                                var name = Console.ReadLine();
+                                roleService.AddRole(roleId, movieId, personId, name);
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            break;
+                        case "6":
+                            try {
+                                Console.WriteLine("enter the id of the person you want to see the roles: ");
+                                var personId = int.Parse(Console.ReadLine());
+                                foreach (var role in roleService.GetRolesOfAPerson(personId))
+                                {
+                                    Console.WriteLine(role.ToString());
+                                }
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            break;
+                        case "7":
+                            try {
+                                Console.WriteLine("enter the id of the person you want to delete his/her role: ");
+                                var personId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the id of the movie that person has a role: ");
+                                var movieId = int.Parse(Console.ReadLine());
+                                roleService.DeleteRole(roleService.GetAll().Find(r => r.Person.PersonId == personId && r.Movie.MovieId == movieId).RoleId);
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            break;
+                        case "8":
+                            try {
+                                Console.WriteLine("enter the id of the role you want to update: ");
+                                var roleId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the new id of the person you want to give the role: ");
+                                var personId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the new id of the movie: ");
+                                var movieId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the role: ");
+                                var name = Console.ReadLine();
+                                roleService.UpdateRole(roleId, movieId, personId, name);
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
                             break;
                         case "x":
                             running = false;
@@ -265,10 +337,63 @@ namespace Movies
                     switch (option)
                     {
                         case "1":
+                            try
+                            {
+                                Console.WriteLine("enter a review id: ");
+                                var reviewId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter a rating between [1, 10], it can be a float: ");
+                                var rating = float.Parse(Console.ReadLine());
+                                Console.WriteLine("enter a comment: ");
+                                var comment = Console.ReadLine();
+                                Console.WriteLine("enter the movie id you want to give this review: ");
+                                var movieId = int.Parse(Console.ReadLine());
+                                reviewService.AddReview(reviewId, rating, comment, movieId);
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
                             break;
                         case "2":
+                            try
+                            {
+                                Console.WriteLine("enter the movie id: ");
+                                var movieID = int.Parse(Console.ReadLine());
+                                foreach (var review in reviewService.GetAll().Where(r => r.Movie.MovieId == movieID))
+                            {
+                                    Console.WriteLine(review.ToString());
+                                }
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            
+                            break;
+                        case "3":
+                            try
+                            {
+                                Console.WriteLine("enter the id of the review you want to update: ");
+                                var reviewId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter a new rating between [1, 10], it can be a float: ");
+                                var rating = float.Parse(Console.ReadLine());
+                                Console.WriteLine("enter a new comment: ");
+                                var comment = Console.ReadLine();
+                                Console.WriteLine("enter the new movie id you want to give this review: ");
+                                var movieId = int.Parse(Console.ReadLine());
+                                reviewService.UpdateReview(reviewId, rating, comment, movieId);
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
                             break;
                         case "4":
+                            try
+                            {
+                                Console.WriteLine("enter the id of the review you want to delete: ");
+                                var reviewId = int.Parse(Console.ReadLine());
+                                Console.WriteLine($" You are about to delete the review \n {reviewService.GetByIdReview(reviewId).ToString()} \n proceed (y/n)?");
+                                var resp = Console.ReadLine();
+                                if (resp == "y")
+                                {
+                                    reviewService.DeleteReview(reviewId);
+                                }
+
+
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
                             break;
                         case "x":
                             running = false;
