@@ -11,9 +11,10 @@ class Program
         MyDbContext myDbContext = new MyDbContext();
         DataService service = new DataService(myDbContext);
 
-        
-        while (true) {
- 
+
+        while (true)
+        {
+
             Console.WriteLine("Menu");
             Console.WriteLine("1. Movies");
             Console.WriteLine("2. Persons");
@@ -61,7 +62,7 @@ class Program
             }
         }
 
-    
+
     }
 
     private static void GetTopTenMovies(DataService service)
@@ -98,7 +99,7 @@ class Program
 
         Console.WriteLine("Enter the second year");
         int endyear = int.Parse(Console.ReadLine());
-        
+
         var filteredmovies = service.GetMoviesByDateRange(startyear, endyear);
         foreach (var movie in filteredmovies)
         {
@@ -120,7 +121,7 @@ class Program
             Console.WriteLine("4. Delete a movie");
             Console.WriteLine("0. Back to main menu");
             Console.Write("Select an option: ");
-            
+
 
             var choice = Console.ReadLine();
 
@@ -155,61 +156,109 @@ class Program
         Console.WriteLine("You want to delete a movie by ID or title?");
         Console.WriteLine("Choose 1 for ID or 2 for title");
         int choice = int.Parse(Console.ReadLine());
-        if (choice == 1) {
-            Console.WriteLine("Enter the ID of the movie you want to delete: ");
-            int idToDelete = int.Parse(Console.ReadLine());
-            service.DeleteMovie(idToDelete);
-            Console.WriteLine("The movie was succesfully deleted");
+        if (choice == 1)
+        {
+            try
+            {
+                Console.WriteLine("Enter the ID of the movie you want to delete: ");
+                int idToDelete = int.Parse(Console.ReadLine());
+                service.DeleteMovie(idToDelete);
+                Console.WriteLine("The movie was successfully deleted");
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
         }
         else if (choice == 2)
         {
-            Console.WriteLine("Enter the title of the movie you want to delete: ");
-            string title = Console.ReadLine();
-            service.DeleteMovieByTitle(title);
-            Console.WriteLine("The movie was succesfully deleted");
+            try
+            {
+                Console.WriteLine("Enter the title of the movie you want to delete: ");
+                string title = Console.ReadLine();
+                service.DeleteMovieByTitle(title);
+                Console.WriteLine("The movie was successfully deleted");
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
         }
-        else {
-            Console.WriteLine("Invalid choice for deleting"); }
-    
+        else
+        {
+            Console.WriteLine("Invalid choice for deleting");
+        }
+
     }
 
     private static void updateMovie(DataService service)
     {
-        Console.WriteLine("Soon to pe implemented");
-        Console.WriteLine("Soon to pe implemented");
-        Console.WriteLine("Soon to pe implemented");
-        Console.WriteLine("Soon to pe implemented");
+        try
+        {
+            Console.WriteLine("Enter the ID of the movie you want to update");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the title of the movie: ");
+            string title = Console.ReadLine();
+            Console.WriteLine("Enter the description of the movie: ");
+            string description = Console.ReadLine();
+            Console.WriteLine("Enter the year of the movie: ");
+            int year = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the genre of the movie: ");
+            string genre = Console.ReadLine();
+
+            service.UpdateMovie(id, title, description, year, genre);
+            Console.WriteLine("Movie updated successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     private static void addMovie(DataService service)
     {
-        Console.WriteLine("Enter the movie title: ");
-        string title = Console.ReadLine();
-        Console.WriteLine("Enter the movie description: ");
-        string description = Console.ReadLine();
-        Console.WriteLine("Enter the movie year: ");
-        int year = int.Parse(Console.ReadLine());
-        Console.WriteLine("Enter the movie genre: ");
-        string genre = Console.ReadLine();
+        try
+        {
+            Console.WriteLine("Enter the movie title: ");
+            string title = Console.ReadLine();
+            Console.WriteLine("Enter the movie description: ");
+            string description = Console.ReadLine();
+            Console.WriteLine("Enter the movie year: ");
+            int year = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the movie genre: ");
+            string genre = Console.ReadLine();
 
-        Movie movie = new Movie(title, description, year, genre);
+            Movie movie = new Movie(title, description, year, genre);
 
-        service.AddMovie(movie);
+            service.AddMovie(movie);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     private static void showAllMovies(DataService service)
     {
         var movies = service.GetMovies();
-        foreach (var item in movies)
+        if (movies == null)
         {
+            Console.WriteLine("The movies list is null");
+            return;
+        }
+        else
+        {
+            foreach (var item in movies)
+            {
 
-            Console.WriteLine($"{item.Title}");
+                Console.WriteLine($"{item.Title}");
+            }
         }
     }
 
     #endregion
 
-
+    #region RolesPart
 
     private static void RolesMenu(DataService service)
     {
@@ -238,10 +287,10 @@ class Program
                     addRole(service);
                     break;
                 case "3":
-                    updateMovie(service);
+                    updateRole(service);
                     break;
                 case "4":
-                    deleteMovie(service);
+                    deleteRole(service);
                     break;
                 case "0":
                     Console.Clear();
@@ -251,25 +300,164 @@ class Program
                     break;
 
 
-           }
-       
+            }
+
+        }
     }
-}
+
+    private static void deleteRole(DataService service)
+    {
+        Console.WriteLine("Enter the ID for the role you want to delete");
+        int id = int.Parse(Console.ReadLine());
+        try
+        {
+            service.DeleteRole(id);
+            Console.WriteLine("Successfully deleted");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+
+        }
+    }
+
+    private static void updateRole(DataService service)
+    {
+        throw new NotImplementedException();
+    }
 
     private static void addRole(DataService service)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Enter the name of the role: ");
+        string name = Console.ReadLine();
+        Console.WriteLine("Enter the movie for this role: ");
+        int mID = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the person for this role: ");
+        int pID = int.Parse(Console.ReadLine());
+
+        service.AddRole(name, mID, pID);
+
+        Console.WriteLine("Successfully added??");
+
+
     }
 
     private static void showAllRoles(DataService service)
     {
-        throw new NotImplementedException();
+        var items = service.GetRoles();
+        foreach (var item in items)
+        {
+
+            Console.WriteLine($"{item.Name}");
+        }
     }
 
+    #endregion
+
+    #region PersonsPart
     private static void PersonsMenu(DataService service)
     {
-        throw new NotImplementedException();
+        Console.Clear();
+        while (true)
+        {
+            Console.WriteLine("Persons Menu");
+            Console.WriteLine("1. Show all persons");
+            Console.WriteLine("2. Add a person");
+            Console.WriteLine("3. Update a person");
+            Console.WriteLine("4. Delete a person");
+            Console.WriteLine("0. Back to main menu");
+            Console.Write("Select an option: ");
+
+            var choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    showAllPersons(service);
+                    break;
+                case "2":
+                    addPerson(service);
+                    break;
+                case "3":
+                    updatePerson(service);
+                    break;
+                case "4":
+                    deletePerson(service);
+                    break;
+                case "0":
+                    Console.Clear();
+                    return;
+                default:
+                    Console.WriteLine("Invalid option");
+                    break;
+
+
+            }
+
+        }
     }
+
+    private static void deletePerson(DataService service)
+    {
+        Console.WriteLine("Enter the ID for the person you want to delete");
+        int id = int.Parse(Console.ReadLine());
+        try
+        {
+            service.DeletePerson(id);
+            Console.WriteLine("Successfully deleted");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+
+        }
+    }
+
+    private static void updatePerson(DataService service)
+    {
+        Console.WriteLine("Enter the ID for the person you want to update");
+        int id = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the first name");
+        string fname = Console.ReadLine();
+        Console.WriteLine("Enter the last name: ");
+        string lname = Console.ReadLine();
+        Console.WriteLine("Enter the birthday: ");
+        DateOnly date = DateOnly.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the email: ");
+        string mail = Console.ReadLine();
+
+        service.UpdatePerson(id, fname, lname, date, mail);
+        Console.WriteLine("Update made successfully");
+    }
+
+    private static void addPerson(DataService service)
+    {
+        Console.WriteLine("Enter the first name: ");
+        string firstName = Console.ReadLine();
+        Console.WriteLine("Enter the last name: ");
+        string lastName = Console.ReadLine();
+        Console.WriteLine("Enter the birthday: ");
+        DateOnly date = DateOnly.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the email: ");
+        string mail = Console.ReadLine();
+
+        Person person = new Person(firstName, lastName, date, mail);
+
+        service.AddPerson(person);
+        Console.WriteLine("Person added successfully");
+    }
+
+    private static void showAllPersons(DataService service)
+    {
+        var items = service.GetPersons();
+        foreach (var item in items)
+        {
+            Console.WriteLine($"{item.FirstName} {item.LastName}");
+        }
+    }
+
+    #endregion
+
+    #region ReviewsPart
 
     private static void ReviewsMenu(DataService service)
     {
@@ -313,8 +501,8 @@ class Program
 
             }
         }
-    
-}
+
+    }
 
     private static void addReview(DataService service)
     {
@@ -332,12 +520,23 @@ class Program
 
     private static void deleteReview(DataService service)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Enter the id of the review you want to delete:");
+        int id = int.Parse(Console.ReadLine());
+        service.DeleteReview(id);
+        Console.WriteLine("The review is successfully deleted!");
     }
 
     private static void updateReview(DataService service)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Enter the id of the review you want to update: ");
+        int id = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the new rating");
+        int rating = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the new comment about the movie");
+        string comment = Console.ReadLine();
+
+        service.UpdateReview(id, rating, comment);
+        Console.WriteLine("Update succsessfully");
     }
 
     private static void showAllReviews(DataService service)
@@ -349,4 +548,6 @@ class Program
             Console.WriteLine($"{item.Rating}");
         }
     }
+
+    #endregion
 }

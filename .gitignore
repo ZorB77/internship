@@ -1,3 +1,4 @@
 .vs/
 ETMovies/ETMovies/bin/Debug/net8.0/Azure.Core.dll
-ETMovies/ETMovies/
+ETMovies/ETMovies/bin/
+ETMovies/ETMovies/obj/

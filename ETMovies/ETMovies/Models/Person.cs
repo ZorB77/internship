@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ETMovies.Models
+{
+    internal class Person
+    {
+        public int PersonID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName{ get; set; }
+        public DateOnly Birthdate { get; set; }
+        public string email { get; set; }
+
+        public Person() { }
+
+        public Person(string firstName, string lastName, DateOnly birthdate, string email)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Birthdate = birthdate;
+            this.email = email;
+        }
+    }
+}
