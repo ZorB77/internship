@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\services\\movieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\services\\movieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,16 +15,28 @@
       "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\services\\personservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\services\\personservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\services\\movieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\services\\movieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\services\\personservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|solutionrelative:movieapplication\\services\\personservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{04870F0E-726B-42BE-8A42-6B8B299ADD6B}|MovieApplication\\MovieApplication.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplication\\movieapplication\\services\\roleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,35 +54,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Program.cs",
               "RelativeDocumentMoniker": "MovieApplication\\Program.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Program.cs",
               "RelativeToolTip": "MovieApplication\\Program.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAYwCIAAAAuAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-07T13:15:10.504Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Movie.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Models\\Movie.cs",
               "RelativeDocumentMoniker": "MovieApplication\\Models\\Movie.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Models\\Movie.cs",
               "RelativeToolTip": "MovieApplication\\Models\\Movie.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAoAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-08T06:19:07.151Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "PersonService.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Services\\PersonService.cs",
               "RelativeDocumentMoniker": "MovieApplication\\Services\\PersonService.cs",
@@ -94,32 +94,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "MovieService.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Services\\MovieService.cs",
               "RelativeDocumentMoniker": "MovieApplication\\Services\\MovieService.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Services\\MovieService.cs*",
-              "RelativeToolTip": "MovieApplication\\Services\\MovieService.cs*",
-              "ViewState": "AQIAABUAAAAAAAAAAAAYwCAAAAAKAAAA",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Services\\MovieService.cs",
+              "RelativeToolTip": "MovieApplication\\Services\\MovieService.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAYwCAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:00:07.259Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:00:07.259Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "MyDBContext.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\MyDBContext.cs",
               "RelativeDocumentMoniker": "MovieApplication\\MyDBContext.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\MyDBContext.cs",
               "RelativeToolTip": "MovieApplication\\MyDBContext.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAowAIAAAANAAAA",
+              "ViewState": "AQIAAAUAAAAAAAAAAAA8wBgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-07T13:22:14.482Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "ReviewService.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Services\\ReviewService.cs",
               "RelativeDocumentMoniker": "MovieApplication\\Services\\ReviewService.cs",
@@ -131,37 +130,38 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Review.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Models\\Review.cs",
               "RelativeDocumentMoniker": "MovieApplication\\Models\\Review.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Models\\Review.cs",
               "RelativeToolTip": "MovieApplication\\Models\\Review.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAAArAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-08T06:18:17.391Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "Role.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Models\\Role.cs",
               "RelativeDocumentMoniker": "MovieApplication\\Models\\Role.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Models\\Role.cs",
               "RelativeToolTip": "MovieApplication\\Models\\Role.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T06:19:20.701Z"
+              "WhenOpened": "2024-08-08T06:19:20.701Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "Person.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Models\\Person.cs",
               "RelativeDocumentMoniker": "MovieApplication\\Models\\Person.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplication\\MovieApplication\\Models\\Person.cs",
               "RelativeToolTip": "MovieApplication\\Models\\Person.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-08T06:18:59.406Z"
             },
