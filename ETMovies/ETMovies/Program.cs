@@ -1,6 +1,7 @@
 ﻿using ETMovies.DatabaseContext;
 using ETMovies.Models;
 using ETMovies.Service;
+using Microsoft.IdentityModel.Tokens;
 
 class Program
 {
@@ -24,6 +25,8 @@ class Program
             Console.WriteLine("6. Sort movies by name and category");
             Console.WriteLine("7. Get the rating of a movie");
             Console.WriteLine("8. Top ten movies");
+            Console.WriteLine("9. Filter actors by role");
+            Console.WriteLine("10. Filter persons by age");
             Console.WriteLine("0. Exit");
 
             switch (Console.ReadLine())
@@ -52,6 +55,12 @@ class Program
                 case "8":
                     GetTopTenMovies(service);
                     break;
+                case "9":
+                    FilterActorsByRole(service);
+                    break;
+                case "10":
+                    FilterPersonsByAge(service);
+                    break;
                 case "0":
                     return;
                 default:
@@ -63,6 +72,42 @@ class Program
         }
 
 
+    }
+
+    private static void FilterPersonsByAge(DataService service)
+    {
+        Console.WriteLine("Enter the minimum age: ");
+        int mAge = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the max age: ");
+        int mxAge = int.Parse(Console.ReadLine());
+
+        DateTime currentDate = DateTime.Today;
+        int age = currentDate.Year;
+        
+        var items = service.FilterPersonsByAge(mAge, mxAge);
+        foreach (var item in items) 
+            { 
+                Console.WriteLine($"{item.FirstName} {item.LastName} - Age: {age- item.Birthdate.Year}"); 
+            }
+    
+    }
+
+    private static void FilterActorsByRole(DataService service)
+    {
+        Console.WriteLine("Enter the role you want to filter by: ");
+        string rolename = Console.ReadLine();
+        var filtered = service.FilterActorsByRole(rolename);
+        if (filtered.IsNullOrEmpty())
+        {
+            Console.WriteLine("Sorry, no actors with that role");
+        }
+        else
+        {
+            foreach (var actor in filtered)
+            {
+                Console.WriteLine(actor);
+            }
+        }
     }
 
     private static void GetTopTenMovies(DataService service)

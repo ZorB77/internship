@@ -260,6 +260,20 @@ namespace ETMovies.Service
             }
             return 0.0;
         }
+
+        public List<string> FilterActorsByRole(string role) {
+
+            return Context.Roles.AsNoTracking().Where(r => r.Name == role).Select(r => r.Person.FirstName + " " + r.Person.LastName).AsEnumerable().ToList();
+
+        }
+
+        public List<Person> FilterPersonsByAge(int minAge, int maxAge) {
+
+            DateTime currentDate = DateTime.Today;
+
+            return Context.Persons.Where(r => (currentDate.Year - r.Birthdate.Year) >= minAge && (currentDate.Year - r.Birthdate.Year <= maxAge)).AsEnumerable().ToList();
+        }
+
         #endregion
     }
 }
