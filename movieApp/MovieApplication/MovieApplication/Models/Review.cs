@@ -8,6 +8,6 @@ namespace MovieApp.Models
         public int ReviewID { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; }
-        public ICollection<Movie> Movies { get; set; }
+        public Movie Movies { get; set; }
     }
 }
