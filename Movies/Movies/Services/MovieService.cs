@@ -121,9 +121,26 @@ namespace Movies.Services
             return _repository.GetAll().Where(movie => movie.Year >= dateStart.Year && movie.Year <= dateStop.Year).ToList();
         }
 
-        public List<Movie> FilterMoviesByGendre(string genre)
+        public List<Movie> FilterMoviesByGenre(string genre)
         {
-            return _repository.GetAll().Where(movie => movie.Genre == genre).ToList();
+            return _repository.GetAll().Where(movie => movie.Genre.ToLower() == genre.ToLower()).ToList();
+        }
+
+        public bool CheckIfExists(int id)
+        {
+
+            if (_repository.GetById(id) == null)
+            {
+                return false;
+            }
+            return true;
+
+
+        }
+
+        public List<Movie> FilterMoviesByYear(int year)
+        {
+            return _repository.GetAll().Where(movie => movie.Year == year).ToList();
         }
 
     }

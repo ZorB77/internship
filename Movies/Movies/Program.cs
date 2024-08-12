@@ -75,6 +75,9 @@ namespace Movies
                     Console.WriteLine("6: See top 10 movies with the higher ratings");
                     Console.WriteLine("7: Sort all the movies alphabetically by name");
                     Console.WriteLine("8: Sort all the movies by year of release");
+                    Console.WriteLine("9: Filter movies by year of release");
+                    Console.WriteLine("10: Filter movies by genre");
+                    Console.WriteLine("11: Filter movies by a specific date interval");
                     Console.WriteLine("x: Exit");
 
                     string option = Console.ReadLine();
@@ -109,16 +112,21 @@ namespace Movies
                             {
                                 Console.WriteLine("enter the id of the movie you want to update: ");
                                 var id = int.Parse(Console.ReadLine());
-                                Console.WriteLine($" You are about to update the movie \n {movieService.GetById(id).ToString()}");
-                                Console.WriteLine("enter the new name: ");
-                                var name = Console.ReadLine();
-                                Console.WriteLine("enter the new year: ");
-                                var year = int.Parse(Console.ReadLine());
-                                Console.WriteLine("enter the new description: ");
-                                var description = Console.ReadLine();
-                                Console.WriteLine("enter the new genre: ");
-                                var genre = Console.ReadLine();
-                                movieService.UpdateMovie(id, name, year, description, genre);
+                                if(movieService.CheckIfExists(id)) 
+                                {
+                                    Console.WriteLine($" You are about to update the movie \n {movieService.GetById(id).ToString()}");
+                                    Console.WriteLine("enter the new name: ");
+                                    var name = Console.ReadLine();
+                                    Console.WriteLine("enter the new year: ");
+                                    var year = int.Parse(Console.ReadLine());
+                                    Console.WriteLine("enter the new description: ");
+                                    var description = Console.ReadLine();
+                                    Console.WriteLine("enter the new genre: ");
+                                    var genre = Console.ReadLine();
+                                    movieService.UpdateMovie(id, name, year, description, genre);
+                                }
+                                else { throw new Exception("Error: there is no movie with this id");  }
+                                
                             }
                             catch (Exception ex) { Console.WriteLine(ex.ToString()); }
 
@@ -170,6 +178,59 @@ namespace Movies
                                 Console.WriteLine(movie.ToString());
                             }
                             break;
+                        case "9":
+                            try
+                            {
+                                Console.WriteLine("Enter the year:");
+                                var year = int.Parse(Console.ReadLine());
+                                if (!movieService.FilterMoviesByYear(year).Any())
+                                {
+                                    throw new Exception($"No movie in our database in the year {year}");
+                                }
+                                foreach (var movie in movieService.FilterMoviesByYear(year))
+                                {
+                                    Console.WriteLine(movie.ToString());
+                                }
+
+                            } catch (Exception ex) { Console.WriteLine( ex.ToString() ); }  
+                            break;
+                        case "10":
+                            try
+                            {
+                                Console.WriteLine("Enter the genre:");
+                                var genre = Console.ReadLine();
+                                if (!movieService.FilterMoviesByGenre(genre).Any())
+                                {
+                                    throw new Exception($"No movie in our database with the genre {genre}");
+                                }
+                                foreach (var movie in movieService.FilterMoviesByGenre(genre))
+                                {
+                                    Console.WriteLine(movie.ToString());
+                                }
+
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            break;
+                        case "11":
+                            try
+                            {
+                                Console.WriteLine("Enter the start date:");
+                                var dateStart = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the stop date:");
+                                var dateStop = DateTime.Parse(Console.ReadLine());
+                                if (!movieService.FilterMoviesByDate(dateStart, dateStop).Any())
+                                {
+                                    throw new Exception($"No movie in our database between {dateStart:dd-MM-yyyy} and {dateStop:dd-MM-yyyy}");
+                                }
+                                foreach (var movie in movieService.FilterMoviesByDate(dateStart, dateStop))
+                                {
+                                    Console.WriteLine(movie.ToString());
+                                }
+
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            break;
                         case "x":
                             running = false;
                             break;
@@ -194,8 +255,9 @@ namespace Movies
                     Console.WriteLine("4: Delete a specific person");
                     Console.WriteLine("5: Give a role to a person");
                     Console.WriteLine("6: See all the roles of a person");
-                    Console.WriteLine("7: Remove a role to a person");
-                    Console.WriteLine("8: Update the role of a person");
+                    Console.WriteLine("7: Filter people born in a specific date range ");
+                    Console.WriteLine("8: Remove a role to a person");
+                    Console.WriteLine("9: Update the role of a person");
                     Console.WriteLine("x: Exit");
 
                     string option = Console.ReadLine();
@@ -284,6 +346,26 @@ namespace Movies
                             catch (Exception ex) { Console.WriteLine(ex.ToString()); }
                             break;
                         case "7":
+                            try
+                            {
+                                Console.WriteLine("Enter the start date:");
+                                var dateStart = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the stop date:");
+                                var dateStop = DateTime.Parse(Console.ReadLine());
+                                if (!personService.FilterPersonByDate(dateStart, dateStop).Any())
+                                {
+                                    throw new Exception($"No person in our database born between {dateStart:dd-MM-yyyy} and {dateStop:dd-MM-yyyy}");
+                                }
+                                foreach (var person in personService.FilterPersonByDate(dateStart, dateStop))
+                                {
+                                    Console.WriteLine(person.ToString());
+                                }
+
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            break;
+                        case "8":
                             try {
                                 Console.WriteLine("enter the id of the person you want to delete his/her role: ");
                                 var personId = int.Parse(Console.ReadLine());
@@ -293,7 +375,7 @@ namespace Movies
                             }
                             catch (Exception ex) { Console.WriteLine(ex.ToString()); }
                             break;
-                        case "8":
+                        case "9":
                             try {
                                 Console.WriteLine("enter the id of the role you want to update: ");
                                 var roleId = int.Parse(Console.ReadLine());
@@ -405,8 +487,6 @@ namespace Movies
                 }
 
             }
-
-
             ConsoleMenu();
         }
     }

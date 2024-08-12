@@ -105,5 +105,9 @@ namespace Movies.Services
                 Console.WriteLine(ex.Message);
             }
         }
+        public List<Person> FilterPersonByDate(DateTime dateStart, DateTime dateStop)
+        {
+            return _repository.GetAll().Where(person => person.Birthdate >= dateStart && person.Birthdate <= dateStop).ToList();
+        }
     }
 }

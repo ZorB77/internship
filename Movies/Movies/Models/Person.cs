@@ -22,6 +22,6 @@ public class Person
 
     public string ToString()
     {
-        return $"id: {PersonId};, first name: {FirstName}, last name: {LastName}, date of birth: {Birthdate}, email: {Email}";
+        return $"id: {PersonId};, first name: {FirstName}, last name: {LastName}, date of birth: {Birthdate:dd-MM-yyyy}, email: {Email}";
     }
 }
