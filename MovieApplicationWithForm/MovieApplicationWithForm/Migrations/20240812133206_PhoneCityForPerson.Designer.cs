@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MovieApplicationWithForm.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20240809064754_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20240812133206_PhoneCityForPerson")]
+    partial class PhoneCityForPerson
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,36 @@ namespace MovieApplicationWithForm.Migrations
                     b.HasKey("movieID");
 
                     b.ToTable("movies");
+                });
+
+            modelBuilder.Entity("MovieStudioDistribution", b =>
+                {
+                    b.Property<int>("distributionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("distributionID"));
+
+                    b.Property<string>("details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("distributionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("movieID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("studioID")
+                        .HasColumnType("int");
+
+                    b.HasKey("distributionID");
+
+                    b.HasIndex("movieID");
+
+                    b.HasIndex("studioID");
+
+                    b.ToTable("distributions");
                 });
 
             modelBuilder.Entity("Person", b =>
@@ -130,6 +160,49 @@ namespace MovieApplicationWithForm.Migrations
                     b.HasIndex("personID");
 
                     b.ToTable("roles");
+                });
+
+            modelBuilder.Entity("Studio", b =>
+                {
+                    b.Property<int>("studioID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("studioID"));
+
+                    b.Property<int>("establishmentYear")
+                        .HasColumnType("int");
+
+                    b.Property<string>("location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("studioID");
+
+                    b.ToTable("studios");
+                });
+
+            modelBuilder.Entity("MovieStudioDistribution", b =>
+                {
+                    b.HasOne("Movie", "movie")
+                        .WithMany()
+                        .HasForeignKey("movieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Studio", "studio")
+                        .WithMany()
+                        .HasForeignKey("studioID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("movie");
+
+                    b.Navigation("studio");
                 });
 
             modelBuilder.Entity("Review", b =>

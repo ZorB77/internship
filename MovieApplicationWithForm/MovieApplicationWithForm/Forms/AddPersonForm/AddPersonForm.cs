@@ -65,7 +65,7 @@ namespace MovieApplicationWithForm.Forms
                 return;
             }
 
-            Person newPerson = new Person { firstName = selectedFirstName, lastName = selectedLastName, email = selectedEmail, birthdate = birthdate };
+            Person newPerson = new Person { firstName = selectedFirstName, lastName = selectedLastName, birthdate = birthdate };
             dbContext.persons.Add(newPerson);  
             dbContext.SaveChanges();
 

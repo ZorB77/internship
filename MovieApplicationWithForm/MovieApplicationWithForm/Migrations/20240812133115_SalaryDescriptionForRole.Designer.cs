@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MovieApplicationWithForm.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    partial class MyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240812133115_SalaryDescriptionForRole")]
+    partial class SalaryDescriptionForRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,7 +93,7 @@ namespace MovieApplicationWithForm.Migrations
                     b.Property<DateTime>("birthdate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("city")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -99,10 +102,6 @@ namespace MovieApplicationWithForm.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("lastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -144,10 +143,6 @@ namespace MovieApplicationWithForm.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("roleID"));
 
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("movieID")
                         .HasColumnType("int");
 
@@ -156,9 +151,6 @@ namespace MovieApplicationWithForm.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("personID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("salary")
                         .HasColumnType("int");
 
                     b.HasKey("roleID");

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MovieApplicationWithForm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbe18a3d8cf3383d64ffb7bd7cbba068e290cded")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82eec7cd675bdffb8d2fa8684a5abe42e1b9e34b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MovieApplicationWithForm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MovieApplicationWithForm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

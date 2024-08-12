@@ -112,7 +112,7 @@ namespace MovieApplicationWithForm
             var movies = dbContext.movies.Select(m => new Movie { description = m.description, genre = m.genre, name = m.name, releaseDate = m.releaseDate, movieID = m.movieID }).ToList();
             this.dataGridViewMovies.DataSource = movies;
 
-            var persons = dbContext.persons.Select(p => new Person { firstName = p.firstName, lastName = p.lastName, birthdate = p.birthdate, email = p.email, personID = p.personID }).ToList();
+            var persons = dbContext.persons.Select(p => new Person { firstName = p.firstName, lastName = p.lastName, birthdate = p.birthdate, personID = p.personID }).ToList();
             this.dataGridViewPersons.DataSource = persons;
         }
 
