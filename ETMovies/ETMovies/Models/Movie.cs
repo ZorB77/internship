@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace ETMovies.Models
 {
-    internal class Movie
+    public class Movie
     {
         public int MovieID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int Year { get; set; }
         public string Genre { get; set; }
-        public List<Review> Review { get; set; } = new List<Review>();
+        public List<Review> Reviews { get; set; } = new List<Review>();
+        public List<Studio> Studios { get; set; } = new List<Studio>();
 
         public Movie() { }
 
@@ -23,7 +24,8 @@ namespace ETMovies.Models
             Description = description;
             Year = year;
             Genre = genre;
-            Review = new List<Review>();
+            Reviews = new List<Review>();
+            Studios = new List<Studio>();
 
         }
 
@@ -34,12 +36,12 @@ namespace ETMovies.Models
 
         public double GetAverageRating()
         {
-            if (Review.Count == 0 || Review == null)
+            if (Reviews.Count == 0 || Reviews == null)
             {
                 return 0;
             }
 
-            return Review.Average(x => x.Rating);
+            return Reviews.Average(x => x.Rating);
         
         }
     }

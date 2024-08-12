@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ETMovies.Models
 {
-    internal class Role
+    public class Role
     {
         public int RoleID { get; set; }
         public Movie Movie { get; set; }

@@ -22,12 +22,17 @@ namespace ETMovies.Service
         #region MoviesCRUD
 
         // Add a movie
-        public void AddMovie(Movie movie)
+        public void AddMovie(Movie movie, int studioID)
         {
+            var studio = Context.Studios.FirstOrDefault(s => s.StudioID == studioID);
 
+            if (studioID != null)
+            { 
+            studio.Movies.Add(movie);
+            movie.Studios.Add(studio);
             Context.Movies.Add(movie);
             Context.SaveChanges();
-
+            }
         }
 
         // Select * movies
@@ -194,7 +199,7 @@ namespace ETMovies.Service
 
 
                 var movie = Context.Movies.FirstOrDefault(m => m.MovieID == movieID);
-                movie.Review.Add(review);
+                movie.Reviews.Add(review);
                 Context.SaveChanges();
 
             }
@@ -204,7 +209,7 @@ namespace ETMovies.Service
         // Select * reviews
         public List<Movie> GetReviews()
         {
-            return Context.Movies.Include(m => m.Review).AsNoTracking().ToList();
+            return Context.Movies.Include(m => m.Reviews).AsNoTracking().ToList();
         }
 
         // Update a review
@@ -249,12 +254,12 @@ namespace ETMovies.Service
 
         public List<Movie> TopTenMoviesByRating()
         {
-            return Context.Movies.Include(m => m.Review).AsEnumerable().OrderByDescending(t => t.GetAverageRating()).Take(10).ToList();
+            return Context.Movies.Include(m => m.Reviews).AsEnumerable().OrderByDescending(t => t.GetAverageRating()).Take(10).ToList();
         }
 
         public double GetAverageRating(int movieID)
         {
-            var movie = Context.Movies.Include(r => r.Review).FirstOrDefault(m => m.MovieID == movieID);
+            var movie = Context.Movies.Include(r => r.Reviews).FirstOrDefault(m => m.MovieID == movieID);
             if (movie != null)
             {
                 return movie.GetAverageRating();
@@ -276,5 +281,73 @@ namespace ETMovies.Service
         }
 
         #endregion
+
+        #region StudioCRUD
+
+        public void AddStudio(Studio studio)
+        {
+
+            Context.Studios.Add(studio);
+            Context.SaveChanges();
+
+        }
+
+        // Select * studios
+        public List<Studio> GetStudios()
+        {
+            return Context.Studios.AsNoTracking().ToList();
+        }
+
+        public Studio GetStudioByID(int id)
+        {
+            var studio = Context.Studios.AsNoTracking().FirstOrDefault(m => m.StudioID == id);
+            return studio;
+        }
+
+        // Update a studio
+
+        public void UpdateStudio(int index, string title, int year, string location)
+        {
+            var studioToUpdate = Context.Studios.FirstOrDefault(m => m.StudioID == index);
+            if (studioToUpdate != null)
+            {
+                studioToUpdate.Title = title;
+                studioToUpdate.Year = year;
+                studioToUpdate.Location = location;
+                Context.SaveChanges();
+
+            }
+        }
+
+        // Delete a studio
+
+        public void DeleteStudio(int index)
+        {
+            var studioToDelete = Context.Studios.First(m => m.StudioID == index);
+            if (studioToDelete != null)
+            {
+                Context.Studios.Remove(studioToDelete);
+                Context.SaveChanges();
+            }
+
+        }
+
+        // Delete a studio by title
+        /*
+        public void DeleteStudioByTitle(string title)
+        {
+            var studioToDelete = Context.Studios.First(m => m.Title == title);
+            if (studioToDelete != null)
+            {
+
+                Context.Studios.Remove(studioToDelete);
+                Context.SaveChanges();
+            }
+        }
+
+        */
+        #endregion
+
+
     }
 }

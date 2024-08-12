@@ -2,6 +2,7 @@
 using ETMovies.Models;
 using ETMovies.Service;
 using Microsoft.IdentityModel.Tokens;
+using System;
 
 class Program
 {
@@ -27,6 +28,7 @@ class Program
             Console.WriteLine("8. Top ten movies");
             Console.WriteLine("9. Filter actors by role");
             Console.WriteLine("10. Filter persons by age");
+            Console.WriteLine("11. Studios");
             Console.WriteLine("0. Exit");
 
             switch (Console.ReadLine())
@@ -61,6 +63,9 @@ class Program
                 case "10":
                     FilterPersonsByAge(service);
                     break;
+                case "11":
+                    StudiosMenus(service);
+                    break;
                 case "0":
                     return;
                 default:
@@ -72,6 +77,119 @@ class Program
         }
 
 
+    }
+
+    private static void StudiosMenus(DataService service)
+    {
+        Console.Clear();
+
+        while (true)
+        {
+
+            Console.WriteLine("Studios Menu");
+            Console.WriteLine("1. Show all studios");
+            Console.WriteLine("2. Add a new studio");
+            Console.WriteLine("3. Update a studio");
+            Console.WriteLine("4. Delete a studio");
+            Console.WriteLine("0. Back to main menu");
+            Console.Write("Select an option: ");
+
+
+            var choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    showAllStudios(service);
+                    break;
+                case "2":
+                    addStudio(service);
+                    break;
+                case "3":
+                    updateStudio(service);
+                    break;
+                case "4":
+                    deleteStudio(service);
+                    break;
+                case "0":
+                    Console.Clear();
+                    return;
+                default:
+                    Console.WriteLine("Invalid option");
+                    break;
+
+
+            }
+        }
+    }
+
+    private static void deleteStudio(DataService service)
+    {
+        Console.WriteLine("Enter the ID for the studio you want to delete");
+        int id = int.Parse(Console.ReadLine());
+        try
+        {
+            service.DeleteStudio(id);
+            Console.WriteLine("Successfully deleted");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+
+        }
+    }
+
+    private static void updateStudio(DataService service)
+    {
+        try
+        {
+            Console.WriteLine("Enter the ID of the movie you want to update");
+            int studio_id = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the studio name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter the studio year: "); ;
+            int year = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the studio location: ");
+            string location = Console.ReadLine();
+
+            service.UpdateStudio(studio_id, name, year, location);
+            Console.WriteLine("Movie updated successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private static void addStudio(DataService service)
+    {
+        try
+        {
+            Console.WriteLine("Enter the studio name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter the studio year: ");;
+            int year = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the studio location: ");
+            string location = Console.ReadLine();
+
+            Studio studio = new Studio(name, year, location);
+            
+            service.AddStudio(studio);
+            Console.WriteLine("Added");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private static void showAllStudios(DataService service)
+    {
+        var items = service.GetStudios();
+        foreach (var item in items)
+        {
+            Console.WriteLine($"{item.Title}");
+        }
     }
 
     private static void FilterPersonsByAge(DataService service)
@@ -272,10 +390,12 @@ class Program
             int year = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter the movie genre: ");
             string genre = Console.ReadLine();
+            Console.WriteLine("Enter the ID of the studio that produced the movie: ");
+            int studio_id = int.Parse(Console.ReadLine());
 
             Movie movie = new Movie(title, description, year, genre);
 
-            service.AddMovie(movie);
+            service.AddMovie(movie, studio_id);
         }
         catch (Exception ex)
         {
@@ -295,7 +415,7 @@ class Program
         {
             foreach (var item in movies)
             {
-
+                
                 Console.WriteLine($"{item.Title}");
             }
         }
@@ -590,7 +710,7 @@ class Program
         foreach (var item in items)
         {
 
-            foreach (var it in item.Review)
+            foreach (var it in item.Reviews)
             {
                 Console.WriteLine($"{item.Title} ScoreRating: {it.Rating}");
             }

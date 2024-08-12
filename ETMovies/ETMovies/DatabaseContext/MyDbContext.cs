@@ -14,6 +14,7 @@ namespace ETMovies.DatabaseContext
         public DbSet<Person> Persons { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Studio> Studios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
