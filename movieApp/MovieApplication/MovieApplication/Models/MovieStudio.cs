@@ -10,7 +10,7 @@ namespace MovieApplication.Models
     public class MovieStudio
     {
         public int MovieStudioID { get; set; }
-        public int MovieId {  get; set; }
+        public int MovieID {  get; set; }
         public Movie Movie { get; set; }
         public int StudioID { get; set; }
         public Studio Studio { get; set; }
