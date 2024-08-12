@@ -26,7 +26,7 @@ namespace MovieApp
 
             while (true)
             {
-                Console.WriteLine("1 - Movie options");
+                Console.WriteLine("\n1 - Movie options");
                 Console.WriteLine("2 - Person options");
                 Console.WriteLine("3 - Review options");
                 Console.WriteLine("4 - Role options");
@@ -46,7 +46,7 @@ namespace MovieApp
                         {
                             //SUBCASE 1 - AddMovie
                             case "1":
-                                Console.WriteLine("Enter movie title: ");
+                                Console.WriteLine("\nEnter movie title: ");
                                 string title = Console.ReadLine();
                                 if (title == null)
                                 {
@@ -83,7 +83,7 @@ namespace MovieApp
                                 bool result = movieService.AddMovie(title, ReleaseDate, description, genre);
                                 if (result)
                                 {
-                                    Console.WriteLine($"Movie {title} added succesfully");
+                                    Console.WriteLine($"Movie {title} added succesfully!");
                                 }
                                 else
                                 {
@@ -93,26 +93,35 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetMoviesList
                             case "2":
-                                Console.WriteLine("All the movies from db: " + movieService.GetAllMovies());
+                                List<Movie> allMovies = movieService.GetAllMovies();
+                                Console.WriteLine("\nAll the movies from db: ");
+                                foreach (var movies in allMovies)
+                                {
+                                    Console.WriteLine($"{movies.Title}");
+                                }
                                 break;
 
                             //SUBCASE 3 - GetMovieById
                             case "3":
-                                Console.WriteLine("Enter the movie id: ");
+                                Console.WriteLine("\nEnter the movie id: ");
                                 int movieId = int.Parse(Console.ReadLine());
 
-                                if (movieId == null)
+                                Movie movie = movieService.GetMovieById(movieId);
+
+                                if (movieId != null)
                                 {
-                                    Console.WriteLine("It's mandatory to specify the movie id in order to proceed!");
-                                    movieId = int.Parse(Console.ReadLine());
+                                    Console.WriteLine($"Movie with id {movieId}: {movie.Title}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Movie not found!");
                                 }
 
-                                Console.WriteLine($"Movie with id {movieId}: " + movieService.GetMovieById(movieId));
                                 break;
 
                             //SUBCASE 4 - DeleteMovie
                             case "4":
-                                Console.WriteLine("Enter movie id to delete: ");
+                                Console.WriteLine("\nEnter movie id to delete: ");
                                 movieId = int.Parse(Console.ReadLine());
 
                                 result = movieService.DeleteMovie(movieId);
@@ -128,7 +137,7 @@ namespace MovieApp
 
                             //SUBCASE 5 - UpdateMovie
                             case "5":
-                                Console.WriteLine("Enter movie id to update: ");
+                                Console.WriteLine("\nEnter movie id to update: ");
                                 movieId = int.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Enter the new title: ");
@@ -156,27 +165,27 @@ namespace MovieApp
 
                             //SUBCASE 6 - FilterMoviesByGenre
                             case "6":
-                                Console.WriteLine("Enter the genre: ");
+                                Console.WriteLine("\nEnter the genre: ");
                                 genre = Console.ReadLine();
                                 Console.WriteLine($"{genre} movies: " + movieService.FilterMoviesByGenre(genre));
                                 break;
 
                             //SUBCASE 7 - FilterMoviesByYear
                             case "7":
-                                Console.WriteLine("Enter the year: ");
+                                Console.WriteLine("\nEnter the year: ");
                                 int year = int.Parse(Console.ReadLine());
                                 Console.WriteLine($"Movies from {year}: " + movieService.FilterMoviesByYear(year));
                                 break;
 
                             //SUBCASE 8 - FilterMoviesByDateInterval
                             case "8":
-                                Console.WriteLine("Enter the 1st year: ");
+                                Console.WriteLine("\nEnter the 1st year: ");
                                 DateTime firstYear = DateTime.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Enter the 2nd year: ");
                                 DateTime secondYear = DateTime.Parse(Console.ReadLine());
 
-                                Console.WriteLine($"Movies between {firstYear} and {secondYear}: " + movieService.FilterMoviesByDateInterval(firstYear, secondYear));
+                                Console.WriteLine($"Movies between {firstYear.ToShortDateString()} and {secondYear.ToShortDateString}: " + movieService.FilterMoviesByDateInterval(firstYear, secondYear));
                                 break;
 
                             //SUBCASE 9
@@ -194,7 +203,7 @@ namespace MovieApp
                         {
                             //SUBCASE 1 - AddPerson
                             case "1":
-                                Console.WriteLine("Enter the first name: ");
+                                Console.WriteLine("\nEnter the first name: ");
                                 string firstName = Console.ReadLine();
                                 if (firstName == null)
                                 {
@@ -239,23 +248,33 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetPersonsList
                             case "2":
-                                Console.WriteLine("The persons from db: " + personService.GetAllPersons());
+                                List<Person> allPersons = personService.GetAllPersons();
+                                Console.WriteLine("\nAll the persons from db: ");
+                                foreach (var persons in allPersons)
+                                {
+                                    Console.WriteLine($"{persons.FirstName} {persons.LastName}");
+                                }
                                 break;
 
                             //SUBCASE 3 - GetPersonById
                             case "3":
-                                Console.WriteLine("Enter the person id: ");
+                                Console.WriteLine("\nEnter the person id: ");
                                 int personId = int.Parse(Console.ReadLine());
-                                if (personId == null)
+                                Person person = personService.GetPersonById(personId);
+
+                                if (personId != null)
                                 {
-                                    Console.WriteLine("It's mandatory to add the person id in order to proceed!");
+                                    Console.WriteLine($"Person with id {personId}: {person.FirstName} {person.LastName}");
                                 }
-                                Console.WriteLine($"Person with id {personId}: " + personService.GetPersonById(personId));
+                                else
+                                {
+                                    Console.WriteLine("Person not found!");
+                                }
                                 break;
 
                             //SUBCASE 4 - DeletePerson
                             case "4":
-                                Console.WriteLine("Enter person id to delete: ");
+                                Console.WriteLine("\nEnter person id to delete: ");
                                 personId = int.Parse(Console.ReadLine());
 
                                 result = personService.DeletePerson(personId);
@@ -271,7 +290,7 @@ namespace MovieApp
 
                             //SUBCASE 5 - UpdatePerson 
                             case "5":
-                                Console.WriteLine("Enter person id to update: ");
+                                Console.WriteLine("\nEnter person id to update: ");
                                 personId = int.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Enter the new first name: ");
@@ -312,7 +331,7 @@ namespace MovieApp
                         {
                             //SUBCASE 1 - AddReview
                             case "1":
-                                Console.WriteLine("Enter movie id for review: ");
+                                Console.WriteLine("\nEnter movie id for review: ");
                                 int movieId = int.Parse(Console.ReadLine());
                                 while (movieId == null)
                                 {
@@ -349,19 +368,34 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetReviewsList
                             case "2":
-                                Console.WriteLine("All the reviews: "+reviewService.GetAllReviews());
+                                List<Review> allReviews = reviewService.GetAllReviews();
+                                Console.WriteLine("\nAll the reviews from db: ");
+                                foreach (var reviews in allReviews)
+                                {
+                                    Console.WriteLine($"Review for movie id {reviews.MovieId}: {reviews.Comment}");
+
+                                }
                                 break;
 
                             //SUBCASE 3 - GerReviewById
                             case "3":
-                                Console.WriteLine("Enter the review id: ");
+                                Console.WriteLine("\nEnter the review id: ");
                                 int reviewId = int.Parse(Console.ReadLine());
-                                Console.WriteLine($"Review with id {reviewId}: " + reviewService.GetReviewById(reviewId));
+                                Review review = reviewService.GetReviewById(reviewId);
+
+                                if(review != null)
+                                {
+                                    Console.WriteLine($"Review with id {reviewId}: {review.Rating}, {review.Comment}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Review not found!\n");
+                                }
                                 break;
 
                             //SUBCASE 4 - DeleteReview
                             case "4":
-                                Console.WriteLine("Enter review id to delete: ");
+                                Console.WriteLine("\nEnter review id to delete: ");
                                 reviewId = int.Parse(Console.ReadLine());
 
                                 result = reviewService.DeleteReview(reviewId);
@@ -377,7 +411,7 @@ namespace MovieApp
 
                             //SUBCASE 5 - UpdateReview
                             case "5":
-                                Console.WriteLine("Enter review id to update: ");
+                                Console.WriteLine("\nEnter review id to update: ");
                                 reviewId = int.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Enter the new rating: ");
@@ -399,7 +433,7 @@ namespace MovieApp
 
                             //SUBCASE 6 - AverageRatingForGivenMovie
                             case "6":
-                                Console.WriteLine("Enter the movie id: ");
+                                Console.WriteLine("\nEnter the movie id: ");
                                 movieId = int.Parse(Console.ReadLine());
                                 Console.WriteLine($"Average rating for movie {movieId} is: " + reviewService.AverageRatingForGivenMovie(movieId));
                                 break;
@@ -409,15 +443,15 @@ namespace MovieApp
                                 List<Movie> topMovies = reviewService.Top10Movies();
                                 foreach (var movie in topMovies)
                                 {
-                                    Console.WriteLine($"Title: {movie.Title}, Release date: {movie.ReleaseDate.ToShortDateString()}, Description: {movie.Description}, Genre: {movie.Genre}");
+                                    Console.WriteLine($"\nTitle: {movie.Title}, Release date: {movie.ReleaseDate.ToShortDateString()}, Genre: {movie.Genre}");
                                 }
                                 break;
 
                             //SUBCASE 8 - FilterReviewbyRating
                             case "8":
-                                Console.WriteLine("Enter the rating: ");
+                                Console.WriteLine("\nEnter the rating: ");
                                 rating = int.Parse(Console.ReadLine());
-                                Console.WriteLine($"Movies with the rating {rating}: " + reviewService.FilterReviewByRating(rating));
+                                Console.WriteLine($"Movies with the rating {rating}: " + reviewService.FilterReviewByRating(rating) + "");
                                 break;
 
                             //SUBCASE 9
@@ -435,7 +469,7 @@ namespace MovieApp
                         {
                             //SUBCASE 1 - AddRole
                             case "1":
-                                Console.WriteLine("Enter the movie id: ");
+                                Console.WriteLine("\nEnter the movie id: ");
                                 int movieId = int.Parse(Console.ReadLine());
                                 if (movieId == null)
                                 {
@@ -472,24 +506,34 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetRolesList
                             case "2":
-                                Console.WriteLine("All the roles from db: " + roleService.GetAllRoles());
+                                List<Role> allRoles = roleService.GetAllRoles();
+                                Console.WriteLine("\nAll the roles from db: ");
+                                foreach (var roles in allRoles)
+                                {
+                                    Console.WriteLine($"{roles.Name}");
+
+                                }
                                 break;
 
                             //SUBCASE 3 - GetRoleById
                             case "3":
-                                Console.WriteLine("Enter the role id: ");
+                                Console.WriteLine("\nEnter the role id: ");
                                 int roleId = int.Parse(Console.ReadLine());
-                                if (roleId == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the role id in order to proceed!");
-                                }
+                                Role role = roleService.GetRoleById(roleId);
 
-                                Console.WriteLine(roleService.GetRoleById(roleId));
+                                if (roleId != null)
+                                {
+                                    Console.WriteLine($"Role with id {roleId}: {role.Name}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Role not found!\n");
+                                }
                                 break;
 
                             //SUBCASE 4 - DeleteRole
                             case "4":
-                                Console.WriteLine("Enter role id to delete: ");
+                                Console.WriteLine("\nEnter role id to delete: ");
                                 roleId = int.Parse(Console.ReadLine());
 
                                 result = roleService.DeleteRole(roleId);
@@ -505,7 +549,7 @@ namespace MovieApp
 
                             //SUBCASE 5 - UpdateRole 
                             case "5":
-                                Console.WriteLine("Enter role id to update: ");
+                                Console.WriteLine("\nEnter role id to update: ");
                                 roleId = int.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Enter the new movie id: ");
