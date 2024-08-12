@@ -1,4 +1,5 @@
-﻿using MovieWinForms.Models;
+﻿using Microsoft.IdentityModel.Tokens;
+using MovieWinForms.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,15 @@ namespace MovieWinForms.ReviewForms
             var reviewsForm = new ReviewsForMovie(_movie);
             reviewsForm.Show();
             reviewsForm.Closed += (s, args) => this.Close();
+        }
+
+        private void reviewCommentBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (reviewCommentBox.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Review cannot be empty!");
+                e.Cancel = true;
+            }
         }
     }
 }

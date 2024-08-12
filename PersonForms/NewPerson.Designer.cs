@@ -56,6 +56,7 @@
             firstNameInput.Name = "firstNameInput";
             firstNameInput.Size = new Size(262, 27);
             firstNameInput.TabIndex = 10;
+            firstNameInput.Validating += firstNameInput_Validating;
             // 
             // lastNameInput
             // 
@@ -63,6 +64,7 @@
             lastNameInput.Name = "lastNameInput";
             lastNameInput.Size = new Size(262, 27);
             lastNameInput.TabIndex = 11;
+            lastNameInput.Validating += lastNameInput_Validating;
             // 
             // label1
             // 
@@ -90,6 +92,7 @@
             birthDateInput.MaxSelectionCount = 1;
             birthDateInput.Name = "birthDateInput";
             birthDateInput.TabIndex = 14;
+            birthDateInput.Validating += dateInput_Validating;
             // 
             // label4
             // 
@@ -105,7 +108,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(16, 341);
+            label5.Location = new Point(47, 341);
             label5.Name = "label5";
             label5.Size = new Size(45, 20);
             label5.TabIndex = 17;

@@ -39,7 +39,7 @@
             topTenMoviesList.FormattingEnabled = true;
             topTenMoviesList.Location = new Point(12, 41);
             topTenMoviesList.Name = "topTenMoviesList";
-            topTenMoviesList.Size = new Size(263, 344);
+            topTenMoviesList.Size = new Size(263, 204);
             topTenMoviesList.TabIndex = 0;
             // 
             // label1
@@ -54,9 +54,9 @@
             // 
             // viewMoviesBtn
             // 
-            viewMoviesBtn.Location = new Point(292, 41);
+            viewMoviesBtn.Location = new Point(12, 251);
             viewMoviesBtn.Name = "viewMoviesBtn";
-            viewMoviesBtn.Size = new Size(131, 56);
+            viewMoviesBtn.Size = new Size(126, 56);
             viewMoviesBtn.TabIndex = 19;
             viewMoviesBtn.Text = "View Movies";
             viewMoviesBtn.UseVisualStyleBackColor = true;
@@ -64,9 +64,9 @@
             // 
             // viewPeopleBtn
             // 
-            viewPeopleBtn.Location = new Point(292, 103);
+            viewPeopleBtn.Location = new Point(149, 251);
             viewPeopleBtn.Name = "viewPeopleBtn";
-            viewPeopleBtn.Size = new Size(131, 56);
+            viewPeopleBtn.Size = new Size(126, 56);
             viewPeopleBtn.TabIndex = 20;
             viewPeopleBtn.Text = "View People";
             viewPeopleBtn.UseVisualStyleBackColor = true;
@@ -76,7 +76,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(441, 400);
+            ClientSize = new Size(291, 322);
             Controls.Add(viewPeopleBtn);
             Controls.Add(viewMoviesBtn);
             Controls.Add(label1);

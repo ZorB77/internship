@@ -1,4 +1,5 @@
-﻿using MovieWinForms.DataAccess;
+﻿using Microsoft.IdentityModel.Tokens;
+using MovieWinForms.DataAccess;
 using MovieWinForms.Models;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,32 @@ namespace MovieWinForms.PersonForms
             var personList = new PeopleForm();
             personList.Show();
             personList.Closed += (s, args) => this.Close();
+        }
+        private void firstNameInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (firstNameInput.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Person needs a First Name!");
+                e.Cancel = true;
+            }
+        }
+        private void dateInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (birthDateInput.SelectionRange.Start > DateTime.Today)
+            {
+                MessageBox.Show("Birht Date cannot be in the future!");
+                e.Cancel = true;
+            }
+        }
+
+        private void lastNameInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (lastNameInput.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Person needs a Last Name!");
+                e.Cancel = true;
+            }
+
         }
     }
 }

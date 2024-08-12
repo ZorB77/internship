@@ -168,7 +168,7 @@
             // 
             // editSelectedMovie
             // 
-            editSelectedMovie.Location = new Point(12, 228);
+            editSelectedMovie.Location = new Point(149, 171);
             editSelectedMovie.Name = "editSelectedMovie";
             editSelectedMovie.Size = new Size(131, 51);
             editSelectedMovie.TabIndex = 17;
@@ -178,7 +178,7 @@
             // 
             // viewReviewsBtn
             // 
-            viewReviewsBtn.Location = new Point(149, 171);
+            viewReviewsBtn.Location = new Point(12, 228);
             viewReviewsBtn.Name = "viewReviewsBtn";
             viewReviewsBtn.Size = new Size(131, 51);
             viewReviewsBtn.TabIndex = 18;
@@ -192,7 +192,7 @@
             viewRolesBtn.Name = "viewRolesBtn";
             viewRolesBtn.Size = new Size(131, 51);
             viewRolesBtn.TabIndex = 19;
-            viewRolesBtn.Text = "View roles 🎭";
+            viewRolesBtn.Text = "View roles";
             viewRolesBtn.UseVisualStyleBackColor = true;
             viewRolesBtn.Click += viewRolesBtn_Click;
             // 

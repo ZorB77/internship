@@ -63,8 +63,10 @@
             reviewCommentBox.Location = new Point(12, 73);
             reviewCommentBox.Multiline = true;
             reviewCommentBox.Name = "reviewCommentBox";
+            reviewCommentBox.PlaceholderText = "Write thoughts...";
             reviewCommentBox.Size = new Size(374, 172);
             reviewCommentBox.TabIndex = 24;
+            reviewCommentBox.Validating += reviewCommentBox_Validating;
             // 
             // movieNameLabel
             // 

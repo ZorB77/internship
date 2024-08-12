@@ -83,6 +83,7 @@
             birthDateInput.MaxSelectionCount = 1;
             birthDateInput.Name = "birthDateInput";
             birthDateInput.TabIndex = 24;
+            birthDateInput.Validating += dateInput_Validating;
             // 
             // label3
             // 
@@ -110,6 +111,7 @@
             lastNameInput.Name = "lastNameInput";
             lastNameInput.Size = new Size(262, 27);
             lastNameInput.TabIndex = 21;
+            lastNameInput.Validating += lastNameInput_Validating;
             // 
             // firstNameInput
             // 
@@ -117,6 +119,7 @@
             firstNameInput.Name = "firstNameInput";
             firstNameInput.Size = new Size(262, 27);
             firstNameInput.TabIndex = 20;
+            firstNameInput.Validating += firstNameInput_Validating;
             // 
             // label2
             // 

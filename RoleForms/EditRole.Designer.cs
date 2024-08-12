@@ -30,7 +30,7 @@
         {
             label2 = new Label();
             label1 = new Label();
-            inputRoleName = new TextBox();
+            roleNameInput = new TextBox();
             saveChangesBtn = new Button();
             SuspendLayout();
             // 
@@ -54,12 +54,13 @@
             label1.TabIndex = 35;
             label1.Text = "Role name";
             // 
-            // inputRoleName
+            // roleNameInput
             // 
-            inputRoleName.Location = new Point(12, 65);
-            inputRoleName.Name = "inputRoleName";
-            inputRoleName.Size = new Size(190, 27);
-            inputRoleName.TabIndex = 36;
+            roleNameInput.Location = new Point(12, 65);
+            roleNameInput.Name = "roleNameInput";
+            roleNameInput.Size = new Size(190, 27);
+            roleNameInput.TabIndex = 36;
+            roleNameInput.Validating += roleNameInput_Validating;
             // 
             // saveChangesBtn
             // 
@@ -77,7 +78,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(252, 152);
             Controls.Add(saveChangesBtn);
-            Controls.Add(inputRoleName);
+            Controls.Add(roleNameInput);
             Controls.Add(label1);
             Controls.Add(label2);
             Name = "EditRole";
@@ -91,7 +92,7 @@
 
         private Label label2;
         private Label label1;
-        private TextBox inputRoleName;
+        private TextBox roleNameInput;
         private Button saveChangesBtn;
     }
 }

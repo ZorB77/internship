@@ -1,4 +1,5 @@
-﻿using MovieWinForms.DataAccess;
+﻿using Microsoft.IdentityModel.Tokens;
+using MovieWinForms.DataAccess;
 using MovieWinForms.Models;
 using System;
 using System.Collections.Generic;
@@ -39,14 +40,21 @@ namespace MovieWinForms.RoleForms
         private void addRoleBtn_Click(object sender, EventArgs e)
         {
             RoleRepository.CreateRole(_movie.Id, _selectedPerson.Id, roleNameInput.Text);
-            // TODO Add check to make sure person doesn't already have a role.
-            // (Although people could have more than one role in a movie)
             MessageBox.Show("Succesffully added role!");
             this.Hide();
             var rolesList = new RolesForMovie(_movie);
             rolesList.Show();
             rolesList.Closed += (s, args) => this.Close();
 
+        }
+
+        private void roleNameInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (roleNameInput.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Enter a name for the role!");
+                e.Cancel = true;
+            }
         }
     }
 }

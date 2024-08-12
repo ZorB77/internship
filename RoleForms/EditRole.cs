@@ -1,4 +1,5 @@
-﻿using MovieWinForms.DataAccess;
+﻿using Microsoft.IdentityModel.Tokens;
+using MovieWinForms.DataAccess;
 using MovieWinForms.Models;
 using MovieWinForms.ReviewForms;
 using System;
@@ -26,17 +27,25 @@ namespace MovieWinForms.RoleForms
 
         private void EditRole_Load(object sender, EventArgs e)
         {
-            inputRoleName.Text = _role.Name;
+            roleNameInput.Text = _role.Name;
         }
 
         private void saveChangesBtn_Click(object sender, EventArgs e)
         {
-            RoleRepository.UpdateRole(_role.Id,inputRoleName.Text);
+            RoleRepository.UpdateRole(_role.Id,roleNameInput.Text);
             MessageBox.Show("Role updated successfully!");
             this.Hide();
             var rolesForMovie = new RolesForMovie(_movie);
             rolesForMovie.Show();
             rolesForMovie.Closed += (s, args) => this.Close();
+        }
+        private void roleNameInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (roleNameInput.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Enter a name for the role!");
+                e.Cancel = true;
+            }
         }
     }
 }

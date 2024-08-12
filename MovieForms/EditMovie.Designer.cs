@@ -40,18 +40,20 @@
             // 
             genreInput.Location = new Point(12, 74);
             genreInput.Name = "genreInput";
+            genreInput.PlaceholderText = "Genre";
             genreInput.Size = new Size(125, 27);
             genreInput.TabIndex = 18;
-            genreInput.Text = "Genre";
+            genreInput.Validating += genreInput_Validating;
             // 
             // descriptionInput
             // 
             descriptionInput.Location = new Point(307, 113);
             descriptionInput.Multiline = true;
             descriptionInput.Name = "descriptionInput";
+            descriptionInput.PlaceholderText = "Enter description...";
             descriptionInput.Size = new Size(319, 205);
             descriptionInput.TabIndex = 17;
-            descriptionInput.Text = "Enter description...";
+            descriptionInput.Validating += descriptionInput_Validating;
             // 
             // dateInput
             // 
@@ -59,14 +61,16 @@
             dateInput.MaxSelectionCount = 1;
             dateInput.Name = "dateInput";
             dateInput.TabIndex = 16;
+            dateInput.Validating += dateInput_Validating;
             // 
             // titleInput
             // 
             titleInput.Location = new Point(12, 41);
             titleInput.Name = "titleInput";
+            titleInput.PlaceholderText = "Title";
             titleInput.Size = new Size(262, 27);
             titleInput.TabIndex = 15;
-            titleInput.Text = "Title";
+            titleInput.Validating += titleInput_Validating;
             // 
             // label2
             // 

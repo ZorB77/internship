@@ -1,4 +1,5 @@
-﻿using MovieWinForms.DataAccess;
+﻿using Microsoft.IdentityModel.Tokens;
+using MovieWinForms.DataAccess;
 using MovieWinForms.Models;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,40 @@ namespace MovieWinForms
             movieForm.Show();
             movieForm.Closed += (s, args) => this.Close();
 
+        }
+        private void titleInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (titleInput.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Title cannot be empty!");
+                e.Cancel = true;
+            }
+        }
+        private void genreInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (genreInput.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Genre cannot be empty!");
+                e.Cancel = true;
+            }
+        }
+
+        private void descriptionInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (descriptionInput.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Genre cannot be empty!");
+                e.Cancel = true;
+            }
+        }
+
+        private void dateInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (dateInput.SelectionRange.Start > DateTime.Today)
+            {
+                MessageBox.Show("Date cannot be in the future!");
+                e.Cancel = true;
+            }
         }
     }
 }

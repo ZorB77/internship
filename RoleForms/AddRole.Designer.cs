@@ -93,6 +93,7 @@
             roleNameInput.Name = "roleNameInput";
             roleNameInput.Size = new Size(175, 27);
             roleNameInput.TabIndex = 37;
+            roleNameInput.Validating += roleNameInput_Validating;
             // 
             // addRoleBtn
             // 
