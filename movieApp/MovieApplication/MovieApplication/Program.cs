@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MovieApp.Models;
 using MovieApp.Services;
+using MovieApplication.Models;
 using MovieApplication.Services;
 using System;
 using System.Transactions;
@@ -17,12 +18,16 @@ namespace MovieApp
                     .AddSingleton<PersonService>()
                     .AddSingleton<ReviewService>()
                     .AddSingleton<RoleService>()
+                    .AddSingleton<StudioService>()
+                    .AddSingleton<MovieStudioService>()
                     .BuildServiceProvider();
 
             var movieService = serviceProvider.GetService<MovieService>();
             var personService = serviceProvider.GetService<PersonService>();
             var reviewService = serviceProvider.GetService<ReviewService>();
             var roleService = serviceProvider.GetService<RoleService>();
+            var studioService = serviceProvider.GetService<StudioService>();
+            var movieStudioService = serviceProvider.GetService<MovieStudioService>();
 
             while (true)
             {
@@ -30,7 +35,9 @@ namespace MovieApp
                 Console.WriteLine("2 - Person options");
                 Console.WriteLine("3 - Review options");
                 Console.WriteLine("4 - Role options");
-                Console.WriteLine("5 - Exit");
+                Console.WriteLine("5 - Studio options");
+                Console.WriteLine("6 - Movie-Studio Association options");
+                Console.WriteLine("7 - Exit");
 
                 Console.WriteLine("Select option: ");
                 var input = Console.ReadLine();
@@ -390,7 +397,7 @@ namespace MovieApp
                                 int reviewId = int.Parse(Console.ReadLine());
                                 Review review = reviewService.GetReviewById(reviewId);
 
-                                if(review != null)
+                                if (review != null)
                                 {
                                     Console.WriteLine($"Review with id {reviewId}: {review.Rating}, {review.Comment}");
                                 }
@@ -524,7 +531,6 @@ namespace MovieApp
                                 foreach (var roles in allRoles)
                                 {
                                     Console.WriteLine($"{roles.Name}");
-
                                 }
                                 break;
 
@@ -593,6 +599,228 @@ namespace MovieApp
 
                     //CASE 5
                     case "5":
+                        studioService.StudioOptions();
+                        Console.WriteLine("Select option: ");
+                        string input5 = Console.ReadLine();
+                        switch (input5)
+                        {
+                            //SUBCASE 1 - AddStudio
+                            case "1":
+                                Console.WriteLine("\nEnter the studio name: ");
+                                string name = Console.ReadLine();
+
+                                Console.WriteLine("Enter the opening year: ");
+                                DateTime year = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the location: ");
+                                string location = Console.ReadLine();
+
+                                bool result = studioService.AddStudio(name, year, location);
+                                if (result)
+                                {
+                                    Console.WriteLine($"Studio {name} added succesfully.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Studio {name} wasn't added. Please try again!");
+                                }
+                                break;
+
+                            //SUBCASE 2 - GetAllStudios
+                            case "2":
+                                List<Studio> allStudios = studioService.GetAllStudios();
+                                Console.WriteLine("\nAll the studios from db: ");
+                                foreach (var studios in allStudios)
+                                {
+                                    Console.WriteLine($"{studios.Name}");
+                                }
+                                break;
+
+                            //SUBCASE 3 - GetStudioById
+                            case "3":
+                                Console.WriteLine("\nEnter the studio id: ");
+                                int studioId = int.Parse(Console.ReadLine());
+                                Studio studio = studioService.GetStudioById(studioId);
+
+                                if (studio != null)
+                                {
+                                    Console.WriteLine($"Role with id {studioId}: {studio.Name}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Role not found!\n");
+                                }
+                                break;
+
+                            //SUBCASE 4 - DeleteStudio
+                            case "4":
+                                Console.WriteLine("\nEnter role id to delete: ");
+                                studioId = int.Parse(Console.ReadLine());
+
+                                result = studioService.DeleteStudio(studioId);
+                                if (result)
+                                {
+                                    Console.WriteLine($"Studio {studioId} was succesfully deleted!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 5 - UpdateStudio
+                            case "5":
+                                Console.WriteLine("\nEnter studio id to update: ");
+                                studioId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new studio name: ");
+                                name = Console.ReadLine();
+
+                                Console.WriteLine("Enter the new year: ");
+                                year = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new location: ");
+                                location = Console.ReadLine();
+
+                                result = studioService.UpdateStudio(studioId, name, year, location);
+                                if (result)
+                                {
+                                    Console.WriteLine($"Studio {studioId} was succesfully updated!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 6
+                            case "6":
+                                break;
+                        }
+                        break;
+
+                    //CASE 6
+                    case "6":
+                        movieStudioService.MovieStudiosOptions();
+                        Console.WriteLine("Select option: ");
+                        string input6 = Console.ReadLine();
+                        switch (input6)
+                        {
+                            //SUBCASE 1 - AddMovieStudioAss
+                            case "1":
+                                Console.WriteLine("\nEnter the movie id: ");
+                                int movieId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the studio id: ");
+                                int studioId = int.Parse(Console.ReadLine());
+
+                                bool result = movieStudioService.AddMovieStudioAssociation(movieId, studioId);
+                                if (result)
+                                {
+                                    Console.WriteLine($"Movie {movieId} association with studio {studioId} added succesfully.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again!");
+                                }
+                                break;
+
+                            //SUBCASE 2 - GetAllMovieStudiosAss
+                            case "2":
+                                List<MovieStudio> allMovieStudiosAss = movieStudioService.GetAllMovieStudiosAssociations();
+                                Console.WriteLine("\nAll the movie-studio associations from db: ");
+                                foreach (var movieStudioAss in allMovieStudiosAss)
+                                {
+                                    Console.WriteLine($"{movieStudioAss.Movie.Title} - {movieStudioAss.Studio.Name}");
+                                }
+                                break;
+
+                            //SUBCASE 3 - GetStudiosForMovie
+                            case "3":
+                                Console.WriteLine("Enter movie id: ");
+                                movieId = int.Parse(Console.ReadLine());
+                                var studios = movieStudioService.GetStudiosForMovie(movieId);
+
+                                if (studios.Any())
+                                {
+                                    Console.WriteLine($"Studios associated with movie {movieId}: ");
+                                    foreach (var studio in studios)
+                                    {
+                                        Console.WriteLine($"- {studio.Name}");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No studios found for that movie.");
+                                }
+                                break;
+
+                            //SUBCASE 4 - GetMoviesForStudio
+                            case "4":
+                                Console.WriteLine("Enter studio id: ");
+                                studioId = int.Parse(Console.ReadLine());
+                                var movies = movieStudioService.GetMoviesForStudio(studioId);
+
+                                if (movies.Any())
+                                {
+                                    Console.WriteLine($"Movies associated with studio {studioId}: ");
+                                    foreach (var movie in movies)
+                                    {
+                                        Console.WriteLine($"- {movie.Title}");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No studios found for that movie.");
+                                }
+                                break;
+
+                            //SUBCASE 5 - DeleteMovieStudioAssociation
+                            case "5":
+                                Console.WriteLine("\nEnter association id to delete: ");
+                                int id = int.Parse(Console.ReadLine());
+
+                                result = movieStudioService.DeleteMovieStudioAssociation(id);
+                                if (result)
+                                {
+                                    Console.WriteLine($"Association {id} was succesfully deleted!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 6 - UpdateMovieStudioAss
+                            case "6":
+                                Console.WriteLine("\nEnter association id to update: ");
+                                int movieStudioId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new movie id: ");
+                                movieId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new studio id: ");
+                                studioId = int.Parse(Console.ReadLine());
+
+                                result = movieStudioService.UpdateMovieStudioAssociation(movieStudioId, movieId, studioId);
+                                if (result)
+                                {
+                                    Console.WriteLine($"Association between movie {movieId} and studio {studioId} was succesfully updated!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 7
+                            case "7":
+                                break;
+                        }
+                        break;
+
+                    //CASE 7
+                    case "7":
                         return;
 
                     default:
