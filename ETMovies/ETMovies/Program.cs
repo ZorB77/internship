@@ -393,7 +393,7 @@ class Program
         foreach (var item in items)
         {
 
-            Console.WriteLine($"{item.Name}");
+            Console.WriteLine($"{item.Person.FirstName} {item.Person.LastName} - {item.Name}");
         }
     }
 
@@ -590,8 +590,31 @@ class Program
         foreach (var item in items)
         {
 
-            Console.WriteLine($"{item.Rating}");
+            foreach (var it in item.Review)
+            {
+                Console.WriteLine($"{item.Title} ScoreRating: {it.Rating}");
+            }
         }
+
+        /* different printing
+         var items = service.GetReviews();
+        foreach (var item in items)
+        {
+            Console.Write($"{item.Title} - Ratings: ");
+            bool first = true;
+            foreach (var it in item.Review)
+            {
+                if (!first)
+                {
+                    Console.Write(", ");
+                }
+
+                Console.Write(it.Rating);
+                first = false;
+            }
+            Console.WriteLine();
+        }
+         */
     }
 
     #endregion

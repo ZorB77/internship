@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ETMovies.Models
 {
-    internal class Review
+    public class Review
     {
         public int ReviewId { get; set; }
         public int Rating { get; set; }

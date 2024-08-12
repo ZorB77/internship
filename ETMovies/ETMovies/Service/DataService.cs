@@ -152,7 +152,8 @@ namespace ETMovies.Service
         // Select * roles
         public List<Role> GetRoles()
         {
-            return Context.Roles.AsNoTracking().ToList();
+                        return Context.Roles.AsNoTracking().Include(r => r.Person).AsEnumerable().ToList();
+
         }
 
         // Update a role
@@ -201,9 +202,9 @@ namespace ETMovies.Service
         }
 
         // Select * reviews
-        public List<Review> GetReviews()
+        public List<Movie> GetReviews()
         {
-            return Context.Reviews.AsNoTracking().ToList();
+            return Context.Movies.Include(m => m.Review).AsNoTracking().ToList();
         }
 
         // Update a review
