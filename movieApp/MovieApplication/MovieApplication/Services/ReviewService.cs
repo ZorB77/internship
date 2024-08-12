@@ -2,6 +2,7 @@
 using MovieApp;
 using System.Text;
 using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 
 namespace MovieApplication.Services
 {
@@ -82,13 +83,13 @@ namespace MovieApplication.Services
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
 
-            List<Review> reviews = _context.Reviews.Where(r => r.Rating == rating).ToList();
+            List<Review> reviews = _context.Reviews.Include(r => r.Movies).Where(r => r.Rating == rating).ToList();
 
             if (reviews.Any())
             {
                 foreach (Review review in reviews)
                 {
-                    stringBuilder.AppendLine($"{review.ReviewID}. {review.Movies.Title}: {review.Comment}");
+                        stringBuilder.AppendLine($"{review.ReviewID}. {review.Movies.Title}: {review.Comment}");
                 }
             }
             else
@@ -142,7 +143,8 @@ namespace MovieApplication.Services
             Console.WriteLine("5 - Update a review");
             Console.WriteLine("6 - Average rating for given movie");
             Console.WriteLine("7 - Top 10 movies");
-            Console.WriteLine("8 - Back to base options");
+            Console.WriteLine("8 - Filter review by rating");
+            Console.WriteLine("9 - Back to base options");
         }
     }
 }
