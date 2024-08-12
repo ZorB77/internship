@@ -12,7 +12,7 @@ namespace MovieApp.Services
             _context = context;
         }
 
-        public bool AddPerson(string firstName, string lastName, DateTime birthday, string email)
+        public bool AddPerson(string firstName, string lastName, DateTime birthday)
         {
             try
             {
@@ -21,7 +21,6 @@ namespace MovieApp.Services
                     FirstName = firstName,
                     LastName = lastName,
                     Birthday = birthday,
-                    Email = email
                 };
 
                 _context.Persons.Add(newPerson);
@@ -57,7 +56,7 @@ namespace MovieApp.Services
             return false;
         }
 
-        public bool UpdatePerson(int personId, string firstName, string lastName, DateTime birthday, string email)
+        public bool UpdatePerson(int personId, string firstName, string lastName, DateTime birthday)
         {
             Person person = _context.Persons.FirstOrDefault(p => p.PersonID == personId);
 
@@ -66,7 +65,6 @@ namespace MovieApp.Services
                 person.FirstName = firstName;
                 person.LastName = lastName;
                 person.Birthday = birthday;
-                person.Email = email;
 
                 _context.SaveChanges();
                 return true;

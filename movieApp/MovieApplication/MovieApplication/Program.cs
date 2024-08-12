@@ -227,15 +227,7 @@ namespace MovieApp
                                     birthdate = DateTime.Parse(Console.ReadLine());
                                 }
 
-                                Console.WriteLine("Enter the email: ");
-                                string email = Console.ReadLine();
-                                if (email == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the email in order to proceed!");
-                                    email = Console.ReadLine();
-                                }
-
-                                bool result = personService.AddPerson(firstName, lastName, birthdate, email);
+                                bool result = personService.AddPerson(firstName, lastName, birthdate);
                                 if (result)
                                 {
                                     Console.WriteLine($"{firstName} {lastName} added succesfully.");
@@ -302,10 +294,7 @@ namespace MovieApp
                                 Console.WriteLine("Enter the new birthday: ");
                                 birthdate = DateTime.Parse(Console.ReadLine());
 
-                                Console.WriteLine("Enter the new email: ");
-                                email = Console.ReadLine();
-
-                                result = personService.UpdatePerson(personId, firstName, lastName, birthdate, email);
+                                result = personService.UpdatePerson(personId, firstName, lastName, birthdate);
                                 if (result)
                                 {
                                     Console.WriteLine($"Person {personId} was succesfully updated!");
