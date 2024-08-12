@@ -14,6 +14,9 @@ namespace ETMovies.Models
         public DateOnly Birthdate { get; set; }
         public string email { get; set; }
 
+        public string Nationality { get; set; }
+        public int Award { get; set; }
+
         public Person() { }
 
         public Person(string firstName, string lastName, DateOnly birthdate, string email)

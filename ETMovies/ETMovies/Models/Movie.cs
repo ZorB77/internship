@@ -13,6 +13,9 @@ namespace ETMovies.Models
         public string Description { get; set; }
         public int Year { get; set; }
         public string Genre { get; set; }
+        public int Duration { get; set; }
+
+        public decimal Budged {  get; set; }
         public List<Review> Reviews { get; set; } = new List<Review>();
         public List<Studio> Studios { get; set; } = new List<Studio>();
 
