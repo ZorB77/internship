@@ -110,7 +110,7 @@ namespace ETMovies.Service
 
         // Update a person
 
-        public void UpdatePerson(int index, string firstName, string lastName, DateOnly birthday, string mail)
+        public void UpdatePerson(int index, string firstName, string lastName, DateOnly birthday)
         {
             var personToUpdate = Context.Persons.FirstOrDefault(m => m.PersonID == index);
             if (personToUpdate != null)
@@ -118,7 +118,6 @@ namespace ETMovies.Service
                 personToUpdate.FirstName = firstName;
                 personToUpdate.LastName = lastName;
                 personToUpdate.Birthdate = birthday;
-                personToUpdate.email = mail;
                 Context.SaveChanges();
             }
         }

@@ -590,7 +590,7 @@ class Program
         Console.WriteLine("Enter the email: ");
         string mail = Console.ReadLine();
 
-        service.UpdatePerson(id, fname, lname, date, mail);
+        service.UpdatePerson(id, fname, lname, date);
         Console.WriteLine("Update made successfully");
     }
 
@@ -602,10 +602,8 @@ class Program
         string lastName = Console.ReadLine();
         Console.WriteLine("Enter the birthday: ");
         DateOnly date = DateOnly.Parse(Console.ReadLine());
-        Console.WriteLine("Enter the email: ");
-        string mail = Console.ReadLine();
 
-        Person person = new Person(firstName, lastName, date, mail);
+        Person person = new Person(firstName, lastName, date);
 
         service.AddPerson(person);
         Console.WriteLine("Person added successfully");
