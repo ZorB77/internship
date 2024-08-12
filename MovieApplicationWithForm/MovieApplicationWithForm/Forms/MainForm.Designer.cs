@@ -64,6 +64,8 @@
             linkLabelRoles = new LinkLabel();
             linkLabelReviews = new LinkLabel();
             linkLabel1 = new LinkLabel();
+            linkLabelMovies = new LinkLabel();
+            linkLabel3 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)movieBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)personBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roleBindingSource).BeginInit();
@@ -384,12 +386,38 @@
             linkLabel1.Text = "Statistics ->";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // linkLabelMovies
+            // 
+            linkLabelMovies.AutoSize = true;
+            linkLabelMovies.LinkColor = Color.Black;
+            linkLabelMovies.Location = new Point(451, 7);
+            linkLabelMovies.Name = "linkLabelMovies";
+            linkLabelMovies.Size = new Size(114, 20);
+            linkLabelMovies.TabIndex = 13;
+            linkLabelMovies.TabStop = true;
+            linkLabelMovies.Text = "Add a movie ->";
+            linkLabelMovies.LinkClicked += linkLabelMovies_LinkClicked;
+            // 
+            // linkLabel3
+            // 
+            linkLabel3.AutoSize = true;
+            linkLabel3.LinkColor = Color.Black;
+            linkLabel3.Location = new Point(1098, 7);
+            linkLabel3.Name = "linkLabel3";
+            linkLabel3.Size = new Size(118, 20);
+            linkLabel3.TabIndex = 14;
+            linkLabel3.TabStop = true;
+            linkLabel3.Text = "Add a person ->";
+            linkLabel3.LinkClicked += linkLabel3_LinkClicked;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LavenderBlush;
             ClientSize = new Size(1221, 597);
+            Controls.Add(linkLabel3);
+            Controls.Add(linkLabelMovies);
             Controls.Add(linkLabel1);
             Controls.Add(linkLabelReviews);
             Controls.Add(linkLabelRoles);
@@ -454,5 +482,7 @@
         private LinkLabel linkLabelRoles;
         private LinkLabel linkLabelReviews;
         private LinkLabel linkLabel1;
+        private LinkLabel linkLabelMovies;
+        private LinkLabel linkLabel3;
     }
 }

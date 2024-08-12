@@ -137,3 +137,5 @@ C:\Users\admin\source\repos\MovieApplicationWithForm\MovieApplicationWithForm\ob
 C:\Users\admin\source\repos\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.AddRoleForm.resources
 C:\Users\admin\source\repos\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.AddReviewForm.resources
 C:\Users\admin\source\repos\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.StatisticsForm.resources
+C:\Users\admin\source\repos\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.Forms.AddMovieForm.resources
+C:\Users\admin\source\repos\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.Forms.AddPersonForm.resources

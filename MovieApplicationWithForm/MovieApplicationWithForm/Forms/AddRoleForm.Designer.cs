@@ -111,7 +111,7 @@
             Controls.Add(comboBoxAddRolePerson);
             Controls.Add(comboBoxAddRoleMovie);
             Name = "AddRoleForm";
-            Text = "AddRoleForm";
+            Text = "Add Role";
             ResumeLayout(false);
             PerformLayout();
         }

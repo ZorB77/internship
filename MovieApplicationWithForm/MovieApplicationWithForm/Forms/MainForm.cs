@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MovieApplicationWithForm.Forms;
 using System.ComponentModel;
 
 namespace MovieApplicationWithForm
@@ -107,6 +108,12 @@ namespace MovieApplicationWithForm
 
             this.dataGridViewRoles.AutoGenerateColumns = true;
             this.dataGridViewRoles.DataSource = rolesWithMovieAndPersonName;
+
+            var movies = dbContext.movies.Select(m => new Movie { description = m.description, genre = m.genre, name = m.name, releaseDate = m.releaseDate, movieID = m.movieID }).ToList();
+            this.dataGridViewMovies.DataSource = movies;
+
+            var persons = dbContext.persons.Select(p => new Person { firstName = p.firstName, lastName = p.lastName, birthdate = p.birthdate, email = p.email, personID = p.personID }).ToList();
+            this.dataGridViewPersons.DataSource = persons;
         }
 
         private void linkLabelReviews_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -120,6 +127,20 @@ namespace MovieApplicationWithForm
         {
             StatisticsForm statisticsForm = new StatisticsForm();
             statisticsForm.Show();
+        }
+
+        private void linkLabelMovies_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddMovieForm addMovieForm = new AddMovieForm();
+            addMovieForm.Show();
+            addMovieForm.movieAdded += RefreshData;
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddPersonForm addPersonForm = new AddPersonForm();
+            addPersonForm.Show();
+            addPersonForm.personAdded += RefreshData;
         }
     }
 }

@@ -114,7 +114,7 @@
             Controls.Add(textBoxFilterCriteria);
             Controls.Add(comboBoxTable);
             Name = "FilterForm";
-            Text = "FilterForm";
+            Text = "Filter";
             ((System.ComponentModel.ISupportInitialize)dataGridViewResults).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -95,9 +95,9 @@
             label4.AutoSize = true;
             label4.Location = new Point(469, 48);
             label4.Name = "label4";
-            label4.Size = new Size(190, 20);
+            label4.Size = new Size(202, 20);
             label4.TabIndex = 6;
-            label4.Text = "Best Movies Best On Rating";
+            label4.Text = "Best Movies Based On Rating";
             // 
             // StatisticsForm
             // 
@@ -113,7 +113,7 @@
             Controls.Add(label1);
             Controls.Add(listViewTopMovies);
             Name = "StatisticsForm";
-            Text = "StatisticsForm";
+            Text = "Statistics";
             ResumeLayout(false);
             PerformLayout();
         }

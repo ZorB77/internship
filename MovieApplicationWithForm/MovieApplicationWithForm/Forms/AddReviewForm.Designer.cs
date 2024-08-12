@@ -111,7 +111,7 @@
             Controls.Add(label1);
             Controls.Add(comboBoxAddReviewMovie);
             Name = "AddReviewForm";
-            Text = "AddReviewForm";
+            Text = "Add Review";
             ((System.ComponentModel.ISupportInitialize)numericUpDownRating).EndInit();
             ResumeLayout(false);
             PerformLayout();
