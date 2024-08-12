@@ -14,20 +14,28 @@ namespace MovieApplication.Services
             _context = context;
         }
 
-        public void AddReview(int movieId, int rating, string comment)
+        public bool AddReview(int movieId, double rating, string comment)
         {
             Movie movie = _context.Movies.FirstOrDefault(m => m.MovieID == movieId);
 
-            if (movie != null)
+            try
             {
-                var newReview = new Review
+                if (movie != null)
                 {
-                    Movies = movie,
-                    Rating = rating,
-                    Comment = comment
-                };
-                _context.Reviews.Add(newReview);
-                _context.SaveChanges();
+                    var newReview = new Review
+                    {
+                        Movies = movie,
+                        Rating = rating,
+                        Comment = comment
+                    };
+                    _context.Reviews.Add(newReview);
+                    _context.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 
@@ -54,7 +62,7 @@ namespace MovieApplication.Services
             return false;
         }
 
-        public bool UpdateReview(int reviewId, int rating, string comment)
+        public bool UpdateReview(int reviewId, double rating, string comment)
         {
             var review = _context.Reviews.FirstOrDefault(r => r.ReviewID == reviewId);
 
@@ -69,11 +77,10 @@ namespace MovieApplication.Services
             return false;
         }
 
-        public string FilterReviewByRating(int rating)
+        public string FilterReviewByRating(double rating)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine($"Movies with the rating {rating}: ");
 
             List<Review> reviews = _context.Reviews.Where(r => r.Rating == rating).ToList();
 
@@ -114,7 +121,7 @@ namespace MovieApplication.Services
              .Select(m => new
              {
                  Movie = m,
-                 AverageRating = m.Review != null ? m.Review.Rating : 0
+                 AverageRating = m.Reviews.Any() ? m.Reviews.Average(r => r.Rating) : 0
              })
              .OrderByDescending(m => m.AverageRating)
              .Take(10)

@@ -12,18 +12,26 @@ namespace MovieApp.Services
             _context = context;
         }
 
-        public void AddPerson(string firstName, string lastName, DateTime birthday, string email)
+        public bool AddPerson(string firstName, string lastName, DateTime birthday, string email)
         {
-            var newPerson = new Person
+            try
             {
-                FirstName = firstName,
-                LastName = lastName,
-                Birthday = birthday,
-                Email = email
-            };
+                var newPerson = new Person
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Birthday = birthday,
+                    Email = email
+                };
 
-            _context.Persons.Add(newPerson);
-            _context.SaveChanges();
+                _context.Persons.Add(newPerson);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public List<Person> GetAllPersons()
@@ -49,9 +57,9 @@ namespace MovieApp.Services
             return false;
         }
 
-        public bool updatePerson(int personId, string firstName, string lastName, DateTime birthday, string email)
+        public bool UpdatePerson(int personId, string firstName, string lastName, DateTime birthday, string email)
         {
-            Person person = _context.Persons.FirstOrDefault(p => p.PersonID ==personId);
+            Person person = _context.Persons.FirstOrDefault(p => p.PersonID == personId);
 
             if (person != null)
             {

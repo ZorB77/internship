@@ -12,14 +12,14 @@ namespace MovieApp.Services
             _context = context;
         }
 
-        public bool AddMovie(string title, DateTime year, string description, string genre)
+        public bool AddMovie(string title, DateTime releaseDate, string description, string genre)
         {
             try
             {
                 var newMovie = new Movie
                 {
                     Title = title,
-                    Year = year,
+                    ReleaseDate = releaseDate,
                     Description = description,
                     Genre = genre,
                 };
@@ -58,14 +58,14 @@ namespace MovieApp.Services
             return false;
         }
 
-        public bool UpdateMovie(int movieId, string title, DateTime year, string description, string genre)
+        public bool UpdateMovie(int movieId, string title, DateTime releaseDate, string description, string genre)
         {
             Movie movie = _context.Movies.FirstOrDefault(m => m.MovieID == movieId);
 
             if (movie != null)
             {
                 movie.Title = title;
-                movie.Year = year;
+                movie.ReleaseDate = releaseDate;
                 movie.Description = description;
                 movie.Genre = genre;
 
@@ -79,7 +79,6 @@ namespace MovieApp.Services
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine($"{genre} movies: ");
 
             List<Movie> movies = _context.Movies.Where(m => m.Genre == genre).ToList();
 
@@ -98,19 +97,18 @@ namespace MovieApp.Services
             return stringBuilder.ToString();
         }
 
-        public string FilterMoviesByYear(DateTime year)
+        public string FilterMoviesByYear(int year)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine($"Movies from {year}: ");
 
-            List<Movie> movies = _context.Movies.Where(m => m.Year == year).ToList();
+            List<Movie> movies = _context.Movies.Where(m => m.ReleaseDate.Year == year).ToList();
 
             if (movies.Any())
             {
                 foreach (Movie movie in movies)
                 {
-                    stringBuilder.AppendLine($"{movie.MovieID}. {movie.Title}, {movie.Year.ToString("yyyy")}");
+                    stringBuilder.AppendLine($"{movie.MovieID}. {movie.Title}, {movie.ReleaseDate.ToString("yyyy-MM-dd")}");
                 }
             }
             else
@@ -125,13 +123,12 @@ namespace MovieApp.Services
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine($"Movies between: " + year1.ToString("yyyy") + " and " + year2.ToString("yyyy"));
 
             foreach (Movie movie in _context.Movies)
             {
-                if (movie.Year >= year1 && movie.Year <= year2)
+                if (movie.ReleaseDate >= year1 && movie.ReleaseDate <= year2)
                 {
-                    stringBuilder.AppendLine(movie.Title + " - " + movie.Year.ToString("yyyy"));
+                    stringBuilder.AppendLine(movie.Title + " - " + movie.ReleaseDate.ToString("yyyy-MM-dd"));
                 }
             }
             if (stringBuilder.Length == 0)
