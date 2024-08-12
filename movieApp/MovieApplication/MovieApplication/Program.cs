@@ -80,7 +80,13 @@ namespace MovieApp
                                     genre = Console.ReadLine();
                                 }
 
-                                bool result = movieService.AddMovie(title, ReleaseDate, description, genre);
+                                Console.WriteLine("Enter movie budget: ");
+                                decimal budget = decimal.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter movie duration: ");
+                                int duration = int.Parse(Console.ReadLine());
+
+                                bool result = movieService.AddMovie(title, ReleaseDate, description, genre, budget, duration);
                                 if (result)
                                 {
                                     Console.WriteLine($"Movie {title} added succesfully!");
@@ -152,7 +158,13 @@ namespace MovieApp
                                 Console.WriteLine("Enter the new genre: ");
                                 genre = Console.ReadLine();
 
-                                result = movieService.UpdateMovie(movieId, title, ReleaseDate, description, genre);
+                                Console.WriteLine("Enter the new budget: ");
+                                budget = decimal.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new duration: ");
+                                duration = int.Parse(Console.ReadLine());
+
+                                result = movieService.UpdateMovie(movieId, title, ReleaseDate, description, genre, budget, duration);
                                 if (result)
                                 {
                                     Console.WriteLine($"Movie {title} was succesfully updated!");
@@ -344,7 +356,13 @@ namespace MovieApp
                                     comment = Console.ReadLine();
                                 }
 
-                                bool result = reviewService.AddReview(movieId, rating, comment);
+                                Console.WriteLine("Enter review date: ");
+                                DateTime reviewDate = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter reviewer name: ");
+                                string reviewerName = Console.ReadLine();
+
+                                bool result = reviewService.AddReview(movieId, rating, comment, reviewDate, reviewerName);
                                 if (result)
                                 {
                                     Console.WriteLine($"Review for {movieId} added succesfully");
@@ -409,7 +427,13 @@ namespace MovieApp
                                 Console.WriteLine("Enter the new comment: ");
                                 comment = Console.ReadLine();
 
-                                result = reviewService.UpdateReview(reviewId, rating, comment);
+                                Console.WriteLine("Enter the new review date: ");
+                                reviewDate = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new reviewer name: ");
+                                reviewerName = Console.ReadLine();
+
+                                result = reviewService.UpdateReview(reviewId, rating, comment, reviewDate, reviewerName);
                                 if (result)
                                 {
                                     Console.WriteLine($"Review {reviewId} was succesfully updated!");

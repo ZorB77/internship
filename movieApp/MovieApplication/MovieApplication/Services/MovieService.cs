@@ -12,7 +12,7 @@ namespace MovieApp.Services
             _context = context;
         }
 
-        public bool AddMovie(string title, DateTime releaseDate, string description, string genre)
+        public bool AddMovie(string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
         {
             try
             {
@@ -22,6 +22,8 @@ namespace MovieApp.Services
                     ReleaseDate = releaseDate,
                     Description = description,
                     Genre = genre,
+                    Budget = budget,
+                    Duration = duration
                 };
 
                 _context.Movies.Add(newMovie);
@@ -58,7 +60,7 @@ namespace MovieApp.Services
             return false;
         }
 
-        public bool UpdateMovie(int movieId, string title, DateTime releaseDate, string description, string genre)
+        public bool UpdateMovie(int movieId, string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
         {
             Movie movie = _context.Movies.FirstOrDefault(m => m.MovieID == movieId);
 
@@ -68,6 +70,8 @@ namespace MovieApp.Services
                 movie.ReleaseDate = releaseDate;
                 movie.Description = description;
                 movie.Genre = genre;
+                movie.Budget = budget;
+                movie.Duration = duration;
 
                 _context.SaveChanges();
                 return true;

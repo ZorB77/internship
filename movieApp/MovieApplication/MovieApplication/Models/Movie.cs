@@ -11,7 +11,8 @@ namespace MovieApp.Models
         public DateTime ReleaseDate { get; set; }
         public string Description { get; set; }
         public string Genre { get; set; }
-        
+        public decimal Budget {  get; set; }
+        public int Duration { get; set; }
         public ICollection<Review> Reviews { get; set; }
         public ICollection<MovieStudio> MovieStudios { get; set; }
     }

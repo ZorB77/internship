@@ -15,7 +15,7 @@ namespace MovieApplication.Services
             _context = context;
         }
 
-        public bool AddReview(int movieId, double rating, string comment)
+        public bool AddReview(int movieId, double rating, string comment, DateTime reviewDate, string reviewerName)
         {
             Movie movie = _context.Movies.FirstOrDefault(m => m.MovieID == movieId);
 
@@ -27,7 +27,9 @@ namespace MovieApplication.Services
                     {
                         Movies = movie,
                         Rating = rating,
-                        Comment = comment
+                        Comment = comment,
+                        ReviewDate = reviewDate,
+                        ReviewerName = reviewerName
                     };
                     _context.Reviews.Add(newReview);
                     _context.SaveChanges();
@@ -63,7 +65,7 @@ namespace MovieApplication.Services
             return false;
         }
 
-        public bool UpdateReview(int reviewId, double rating, string comment)
+        public bool UpdateReview(int reviewId, double rating, string comment, DateTime reviewDate, string reviewerName)
         {
             var review = _context.Reviews.FirstOrDefault(r => r.ReviewID == reviewId);
 
@@ -71,6 +73,8 @@ namespace MovieApplication.Services
             {
                 review.Rating = rating;
                 review.Comment = comment;
+                review.ReviewDate = reviewDate;
+                review.ReviewerName = reviewerName;
 
                 _context.SaveChanges();
                 return true;
