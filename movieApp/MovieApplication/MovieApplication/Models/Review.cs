@@ -4,10 +4,10 @@ namespace MovieApp.Models
 {
     public class Review
     {
-        [Key]
         public int ReviewID { get; set; }
-        public int Rating { get; set; }
+        public double Rating { get; set; }
         public string Comment { get; set; }
+        public int MovieId { get; set; }
         public Movie Movies { get; set; }
     }
 }

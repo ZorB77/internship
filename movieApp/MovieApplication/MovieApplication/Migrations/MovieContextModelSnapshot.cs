@@ -38,24 +38,14 @@ namespace MovieApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ReviewID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RoleID")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Year")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("MovieID");
-
-                    b.HasIndex("ReviewID");
-
-                    b.HasIndex("RoleID");
 
                     b.ToTable("Movies");
                 });
@@ -83,12 +73,7 @@ namespace MovieApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoleID")
-                        .HasColumnType("int");
-
                     b.HasKey("PersonID");
-
-                    b.HasIndex("RoleID");
 
                     b.ToTable("Persons");
                 });
@@ -105,10 +90,15 @@ namespace MovieApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rating")
+                    b.Property<int>("MovieId")
                         .HasColumnType("int");
 
+                    b.Property<double>("Rating")
+                        .HasColumnType("float");
+
                     b.HasKey("ReviewID");
+
+                    b.HasIndex("MovieId");
 
                     b.ToTable("Reviews");
                 });
@@ -140,26 +130,15 @@ namespace MovieApplication.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("MovieApp.Models.Movie", b =>
+            modelBuilder.Entity("MovieApp.Models.Review", b =>
                 {
-                    b.HasOne("MovieApp.Models.Review", "Review")
-                        .WithMany("Movies")
-                        .HasForeignKey("ReviewID")
+                    b.HasOne("MovieApp.Models.Movie", "Movies")
+                        .WithMany("Reviews")
+                        .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MovieApp.Models.Role", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("RoleID");
-
-                    b.Navigation("Review");
-                });
-
-            modelBuilder.Entity("MovieApp.Models.Person", b =>
-                {
-                    b.HasOne("MovieApp.Models.Role", null)
-                        .WithMany("Persons")
-                        .HasForeignKey("RoleID");
+                    b.Navigation("Movies");
                 });
 
             modelBuilder.Entity("MovieApp.Models.Role", b =>
@@ -181,16 +160,9 @@ namespace MovieApplication.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("MovieApp.Models.Review", b =>
+            modelBuilder.Entity("MovieApp.Models.Movie", b =>
                 {
-                    b.Navigation("Movies");
-                });
-
-            modelBuilder.Entity("MovieApp.Models.Role", b =>
-                {
-                    b.Navigation("Movies");
-
-                    b.Navigation("Persons");
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }
