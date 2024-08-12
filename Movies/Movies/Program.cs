@@ -1,10 +1,8 @@
-﻿using Microsoft.Win32;
-using Movies.Persistance;
+﻿using Movies.Persistance;
 using Movies.Services;
 using System;
-using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace Movies
 {
@@ -17,13 +15,16 @@ namespace Movies
             Repository<Person> personRepository = new Repository<Person>(db);
             RoleRepository roleRepository = new RoleRepository(db);
             ReviewRepository reviewRepository = new ReviewRepository(db);
+            Repository<Studio> studioRepository = new Repository<Studio>(db);
+            AssociationRepository associationRepository = new AssociationRepository(db);
 
 
             MovieService movieService = new MovieService(movieRepository);
             PersonService personService = new PersonService(personRepository);
             RoleService roleService = new RoleService(roleRepository, movieRepository, personRepository);
             ReviewService reviewService = new ReviewService(reviewRepository, movieRepository);
-
+            StudioService studioService = new StudioService(studioRepository);
+            AssociationService associationService = new AssociationService(movieRepository, studioRepository, associationRepository);
 
 
             void ConsoleMenu()
@@ -35,6 +36,7 @@ namespace Movies
                     Console.WriteLine("1: Movie");
                     Console.WriteLine("2: Person (Crew cast/Customer)");
                     Console.WriteLine("3: Review");
+                    Console.WriteLine("4: Studio");
                     Console.WriteLine("x: Exit");
 
                     string option = Console.ReadLine();
@@ -49,6 +51,9 @@ namespace Movies
                             break;
                         case "3":
                             reviewMenu();
+                            break;
+                        case "4":
+                            studioMenu();
                             break;
                         case "x":
                             running = false;
@@ -96,9 +101,13 @@ namespace Movies
                                 var description = Console.ReadLine();
                                 Console.WriteLine("enter a genre: ");
                                 var genre = Console.ReadLine();
-                                movieService.AddMovie(id, name, year, description, genre);
+                                Console.WriteLine("enter the duration (in minutes): ");
+                                var duration = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the budget of the movie: ");
+                                var budget = SqlMoney.Parse(Console.ReadLine());
+                                movieService.AddMovie(id, name, year, description, genre, duration, budget);
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             
                             break;
                         case "2":
@@ -123,12 +132,16 @@ namespace Movies
                                     var description = Console.ReadLine();
                                     Console.WriteLine("enter the new genre: ");
                                     var genre = Console.ReadLine();
-                                    movieService.UpdateMovie(id, name, year, description, genre);
+                                    Console.WriteLine("enter the new duration (in minutes): ");
+                                    var duration = int.Parse(Console.ReadLine());
+                                    Console.WriteLine("enter the new budget of the movie: ");
+                                    var budget = SqlMoney.Parse(Console.ReadLine());
+                                    movieService.UpdateMovie(id, name, year, description, genre, duration, budget);
                                 }
                                 else { throw new Exception("Error: there is no movie with this id");  }
                                 
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
 
                             break;
                         case "4":
@@ -142,7 +155,7 @@ namespace Movies
                                     movieService.DeleteMovie(movieId);
                                 }
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "5":
                             try {
@@ -156,7 +169,7 @@ namespace Movies
                                 {
                                     Console.WriteLine($"the average rating of the movie {movieService.GetById(movieId).Name} is: " + reviewService.GetTheAverageRatingOfAMovie(movieId));
                                 }
-                            } catch (Exception ex) { Console.WriteLine(ex.ToString() ); }
+                            } catch (Exception ex) { Console.WriteLine(ex.Message ); }
                             
                             break;
                         case "6":
@@ -192,7 +205,7 @@ namespace Movies
                                     Console.WriteLine(movie.ToString());
                                 }
 
-                            } catch (Exception ex) { Console.WriteLine( ex.ToString() ); }  
+                            } catch (Exception ex) { Console.WriteLine( ex.Message ); }  
                             break;
                         case "10":
                             try
@@ -209,7 +222,7 @@ namespace Movies
                                 }
 
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "11":
                             try
@@ -229,7 +242,7 @@ namespace Movies
                                 }
 
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "x":
                             running = false;
@@ -279,7 +292,7 @@ namespace Movies
                                 var email = Console.ReadLine();
                                 personService.AddPerson(id, firstname, lastname, birthday, email);
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "2":
                             foreach (var person in personService.GetAll())
@@ -303,7 +316,7 @@ namespace Movies
 
                                 personService.UpdatePerson(id, firstname, lastname, birthday, email);
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
 
                             break;
                         case "4":
@@ -318,7 +331,7 @@ namespace Movies
                                     personService.DeletePerson(personID);
                                 }
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "5":
                             try {
@@ -330,9 +343,11 @@ namespace Movies
                                 var movieId = int.Parse(Console.ReadLine());
                                 Console.WriteLine("enter the role: ");
                                 var name = Console.ReadLine();
-                                roleService.AddRole(roleId, movieId, personId, name);
+                                Console.WriteLine("enter the description of the role: ");
+                                var description = Console.ReadLine();
+                                roleService.AddRole(roleId, movieId, personId, name, description);
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "6":
                             try {
@@ -343,7 +358,7 @@ namespace Movies
                                     Console.WriteLine(role.ToString());
                                 }
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "7":
                             try
@@ -363,7 +378,7 @@ namespace Movies
                                 }
 
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "8":
                             try {
@@ -373,7 +388,7 @@ namespace Movies
                                 var movieId = int.Parse(Console.ReadLine());
                                 roleService.DeleteRole(roleService.GetAll().Find(r => r.Person.PersonId == personId && r.Movie.MovieId == movieId).RoleId);
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "9":
                             try {
@@ -385,9 +400,11 @@ namespace Movies
                                 var movieId = int.Parse(Console.ReadLine());
                                 Console.WriteLine("enter the role: ");
                                 var name = Console.ReadLine();
-                                roleService.UpdateRole(roleId, movieId, personId, name);
+                                Console.WriteLine("enter the new description of the role: ");
+                                var description = Console.ReadLine();
+                                roleService.UpdateRole(roleId, movieId, personId, name, description);
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "x":
                             running = false;
@@ -431,7 +448,7 @@ namespace Movies
                                 var movieId = int.Parse(Console.ReadLine());
                                 reviewService.AddReview(reviewId, rating, comment, movieId);
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "2":
                             try
@@ -443,7 +460,7 @@ namespace Movies
                                     Console.WriteLine(review.ToString());
                                 }
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             
                             break;
                         case "3":
@@ -459,7 +476,7 @@ namespace Movies
                                 var movieId = int.Parse(Console.ReadLine());
                                 reviewService.UpdateReview(reviewId, rating, comment, movieId);
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "4":
                             try
@@ -475,7 +492,7 @@ namespace Movies
 
 
                             }
-                            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                             break;
                         case "x":
                             running = false;
@@ -486,6 +503,150 @@ namespace Movies
                     }
                 }
 
+            }
+
+            void studioMenu()
+            {
+                bool running = true;
+                while (running)
+                {
+                    Console.WriteLine("Welcome to Studio menu, select an option:");
+                    Console.WriteLine("1: Add a studio");
+                    Console.WriteLine("2: See all the studios");
+                    Console.WriteLine("3: Asign a movie to a studio");
+                    Console.WriteLine("4: See all movies of a movie");
+                    Console.WriteLine("5: See all studios of a studio");
+                    Console.WriteLine("6: See all studios and movies");
+                    Console.WriteLine("x: Exit");
+
+                    string option = Console.ReadLine();
+
+                    switch (option)
+                    {
+                        case "1":
+                            try
+                            {
+                                Console.WriteLine("enter an id for the studio: ");
+                                var studioId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter a name for the studio: ");
+                                var name = Console.ReadLine();
+                                Console.WriteLine("enter the year: ");
+                                var year = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the studio location city: ");
+                                var location = Console.ReadLine();
+                                studioService.AddStudio(studioId, name, year, location);
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
+                            break;
+                        case "2":
+                            try
+                            {
+                                if (studioService.GetStudios().Any())
+                                {
+                                    foreach (var studio in studioService.GetStudios())
+                                    {
+                                        Console.WriteLine(studio.ToString());
+                                    }
+                                } else
+                                {
+                                    throw new Exception("No studios in our database!");
+                                }
+                                
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
+
+                            break;
+                        case "3":
+                            try
+                            {
+                                Console.WriteLine("enter the id of the association: ");
+                                var associationId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the id of the movie ");
+                                var movieId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("enter the id of the studio ");
+                                var studioId = int.Parse(Console.ReadLine());
+                                associationService.AddAssociation(associationId, movieId, studioId);
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
+                            break;
+                        case "4":
+                            try
+                            {
+                                Console.WriteLine("Enter the movie id:");
+                                var movieId = int.Parse (Console.ReadLine());
+
+                                if(movieService.CheckIfExists(movieId)) {
+                                    if (associationService.GetAllAssociations().Where(a => a.Movie.MovieId == movieId).Any())
+                                    {
+                                        foreach (var association in associationService.GetAllAssociations().Where(a => a.Movie.MovieId == movieId))
+                                        {
+                                            Console.WriteLine(association.ToString());
+                                        }
+                                    }
+                                    else
+                                    {
+                                        throw new Exception($"No association with the movie {movieService.GetById(movieId).Name} in our database!");
+                                    }
+                                }
+                                else { throw new Exception($"there is no movie with the id {movieId}"); }
+
+                                
+
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
+                            break;
+                        case "5":
+                            try
+                            {
+                                Console.WriteLine("Enter the studio id:");
+                                var studioId = int.Parse(Console.ReadLine());
+
+                                if (studioService.GetById(studioId) != null)
+                                {
+
+                                    if (associationService.GetAllAssociations().Where(a => a.Studio.StudioId == studioId).Any())
+                                    {
+                                        foreach (var association in associationService.GetAllAssociations().Where(a => a.Studio.StudioId == studioId))
+                                        {
+                                            Console.WriteLine(association.ToString());
+                                        }
+                                    }
+                                    else
+                                    {
+                                        throw new Exception($"No association with the studio {studioService.GetById(studioId).Name} in our database!");
+                                    }
+                                }
+                                else { throw new Exception($"there is no studio with the id {studioId}"); }
+
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
+                            break;
+
+                        case "6":
+                            try
+                            {
+                                if (associationService.GetAllAssociations().Any())
+                                {
+                                    foreach (var association in associationService.GetAllAssociations())
+                                    {
+                                        Console.WriteLine(association.ToString());
+                                    }
+                                }
+                                else
+                                {
+                                    throw new Exception($"No association found in our database!");
+                                }
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
+                            break;
+                        case "x":
+                            running = false;
+                            break;
+                        default:
+                            Console.WriteLine("Invalid option, please try again.");
+                            break;
+                    }
+                }
             }
             ConsoleMenu();
         }

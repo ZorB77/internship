@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 
 namespace Movies.Services
@@ -13,15 +14,12 @@ namespace Movies.Services
             _repository = repository;
         }
 
-        public void AddMovie(int movieId, string name, int year, string description, string genre)
+        public void AddMovie(int movieId, string name, int year, string description, string genre, int duration, SqlMoney budget)
         {
+            
             try
             {
-                if (movieId == null)
-                {
-                    throw new Exception("Error: the id must not be null");
-                } 
-                else if (_repository.GetById(movieId) != null)
+                if (_repository.GetById(movieId) != null)
                 {
                     throw new Exception("Error: there is already a movie with this id");
                 }
@@ -32,10 +30,14 @@ namespace Movies.Services
                 }
                 else if (year < 0 && year > 10000) {
                     throw new Exception("Error: the year of the movie is not valid");
+                }
+                else if (duration < 0)
+                {
+                    throw new Exception("Error: the duration of the movie is not valid");
 
                 }
 
-                _repository.Add(new Movie(movieId, name, year, description, genre));
+                _repository.Add(new Movie(movieId, name, year, description, genre, duration, budget));
 
             }
             catch (Exception ex)
@@ -69,7 +71,7 @@ namespace Movies.Services
             }
         }
 
-            public void UpdateMovie(int movieId, string name, int year, string description, string genre)
+            public void UpdateMovie(int movieId, string name, int year, string description, string genre, int duration, SqlMoney budget)
         {
             try
             {
@@ -78,7 +80,7 @@ namespace Movies.Services
                     throw new Exception("Error: there is no movie with this id");
                 }
 
-                _repository.Update(new Movie(movieId, name, year, description, genre));
+                _repository.Update(new Movie(movieId, name, year, description, genre, duration, budget));
 
             }
             catch (Exception ex)

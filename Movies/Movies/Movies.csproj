@@ -65,22 +65,39 @@
     <Compile Include="Migrations\202408090751522_RenameProperties.Designer.cs">
       <DependentUpon>202408090751522_RenameProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202408121353587_NewTables.cs" />
+    <Compile Include="Migrations\202408121353587_NewTables.Designer.cs">
+      <DependentUpon>202408121353587_NewTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202408121440161_NewFields.cs" />
+    <Compile Include="Migrations\202408121440161_NewFields.Designer.cs">
+      <DependentUpon>202408121440161_NewFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202408121446004_RemoveCreatedDateFromRoles.cs" />
+    <Compile Include="Migrations\202408121446004_RemoveCreatedDateFromRoles.Designer.cs">
+      <DependentUpon>202408121446004_RemoveCreatedDateFromRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MoviesDbContext.cs" />
+    <Compile Include="Models\MovieStudioAssociation.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Studio.cs" />
     <Compile Include="Persistance\IRepository.cs" />
+    <Compile Include="Persistance\AssociationRepository.cs" />
     <Compile Include="Persistance\Repository.cs" />
     <Compile Include="Persistance\ReviewRepository.cs" />
     <Compile Include="Persistance\RoleRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MovieService.cs" />
+    <Compile Include="Services\AssociationService.cs" />
     <Compile Include="Services\PersonService.cs" />
     <Compile Include="Services\ReviewService.cs" />
     <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\StudioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -95,6 +112,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202408090751522_RenameProperties.resx">
       <DependentUpon>202408090751522_RenameProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408121353587_NewTables.resx">
+      <DependentUpon>202408121353587_NewTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408121440161_NewFields.resx">
+      <DependentUpon>202408121440161_NewFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408121446004_RemoveCreatedDateFromRoles.resx">
+      <DependentUpon>202408121446004_RemoveCreatedDateFromRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

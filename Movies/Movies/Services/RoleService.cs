@@ -9,11 +9,11 @@ namespace Movies.Services
 {
     internal class RoleService
     {
-        private RoleRepository _repository;
+        private readonly RoleRepository _repository;
 
-        private Repository<Movie> _movieRepository;
+        private readonly Repository<Movie> _movieRepository;
 
-        private Repository<Person> _personRepository;
+        private readonly Repository<Person> _personRepository;
 
         public RoleService(RoleRepository repository, Repository<Movie> movieRepository, Repository<Person> personRepository)
         {
@@ -22,31 +22,25 @@ namespace Movies.Services
             _personRepository = personRepository;
         }
 
-        public void AddRole(int roleId, int movieId, int personId, string name)
+        public void AddRole(int roleId, int movieId, int personId, string name, string description)
         {
             try
             {
-                if (roleId != null)
+
+                if (_movieRepository.GetById(movieId) == null)
                 {
-                    if (_movieRepository.GetById(movieId) == null)
-                    {
-                        throw new Exception("Error: there is no movie with this id");
-                    }
-                    else if (_personRepository.GetById(personId) == null)
-                    {
-                        throw new Exception("Error: there is no person with this id");
-                    }
-                    else if (name == null)
-                    {
-                        throw new Exception("Error: the role name must not be null");
-                    }
+                    throw new Exception("Error: there is no movie with this id");
                 }
-                else
+                else if (_personRepository.GetById(personId) == null)
                 {
-                    throw new Exception("Error: the id must not be null");
+                    throw new Exception("Error: there is no person with this id");
+                }
+                else if (name == null)
+                {
+                    throw new Exception("Error: the role name must not be null");
                 }
 
-                _repository.Add(new Role(roleId, _movieRepository.GetById(movieId), _personRepository.GetById(personId), name));
+                _repository.Add(new Role(roleId, _movieRepository.GetById(movieId), _personRepository.GetById(personId), name, description));
 
             }
             catch (Exception ex)
@@ -61,7 +55,7 @@ namespace Movies.Services
             return _repository.GetAll().ToList();
         }
   
-        public void UpdateRole(int roleId, int movieId, int personId, string name)
+        public void UpdateRole(int roleId, int movieId, int personId, string name, string description)
         {
             try
             {
@@ -70,7 +64,7 @@ namespace Movies.Services
                     throw new Exception("Error: there is no role with this id");
                 }
 
-                _repository.Update(new Role(roleId, _movieRepository.GetById(movieId), _personRepository.GetById(personId), name));
+                _repository.Update(new Role(roleId, _movieRepository.GetById(movieId), _personRepository.GetById(personId), name, description));
 
             }
             catch (Exception ex)

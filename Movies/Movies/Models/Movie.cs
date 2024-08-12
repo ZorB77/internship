@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlTypes;
 
 
 public class Movie
@@ -9,8 +10,13 @@ public class Movie
     public string Description { get; set; }
     public string Genre { get; set; }
 
+    public int Duration { get; set; }
+
+    public SqlMoney Budget { get; set; }
+
+
     public Movie() { }
-    public Movie(int movieId, string name, int year, string description, string genre)
+    public Movie(int movieId, string name, int year, string description, string genre, int Duration, SqlMoney Budget)
     {
 
         this.MovieId = movieId;
@@ -18,9 +24,11 @@ public class Movie
         this.Year = year;
         this.Description = description;
         this.Genre = genre;
+        this.Duration = Duration;
+        this.Budget = Budget;
     }
     public string ToString()
     {
-        return $"id: {MovieId}, name: {Name}, year: {Year}, description: {Description}, genre: {Genre}";
+        return $"id: {MovieId}, name: {Name}, year: {Year}, description: {Description}, genre: {Genre}, duration: {Duration}, budget: {Budget};";
     }
 }

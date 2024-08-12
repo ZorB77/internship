@@ -7,4 +7,7 @@ public class MoviesDbContext : DbContext
     public DbSet<Person> Persons { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<Review> Reviews { get; set; }
+    public DbSet<Studio> Studios { get; set; }
+    public DbSet<MovieStudioAssociation> MovieStudioAssociations { get; set; }
+
 }

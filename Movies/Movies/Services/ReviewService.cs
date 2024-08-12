@@ -34,7 +34,7 @@ namespace Movies.Services
             }
             catch (Exception ex) 
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
         public void UpdateReview(int reviewId, float rating, string comment, int movieId)
@@ -53,7 +53,7 @@ namespace Movies.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -69,7 +69,7 @@ namespace Movies.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
             }
 
         }
@@ -86,7 +86,7 @@ namespace Movies.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
                 return null;
             }
 
