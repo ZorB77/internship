@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MovieApp.Models;
+using MovieApplication.Models;
 
 namespace MovieApp
 {
@@ -8,6 +9,8 @@ namespace MovieApp
         public DbSet<Person> Persons { get; set; } 
         public DbSet<Role> Roles { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Studio> Studios { get; set; }
+        public DbSet<MovieStudio> MovieStudios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

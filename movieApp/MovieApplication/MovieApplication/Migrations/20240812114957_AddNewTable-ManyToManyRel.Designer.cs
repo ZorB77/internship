@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieApp;
 
@@ -11,9 +12,11 @@ using MovieApp;
 namespace MovieApplication.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20240812114957_AddNewTable-ManyToManyRel")]
+    partial class AddNewTableManyToManyRel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,7 +153,7 @@ namespace MovieApplication.Migrations
 
                     b.HasIndex("StudioID");
 
-                    b.ToTable("MovieStudios");
+                    b.ToTable("MovieStudio");
                 });
 
             modelBuilder.Entity("MovieApplication.Models.Studio", b =>
@@ -174,7 +177,7 @@ namespace MovieApplication.Migrations
 
                     b.HasKey("StudioID");
 
-                    b.ToTable("Studios");
+                    b.ToTable("Studio");
                 });
 
             modelBuilder.Entity("MovieApp.Models.Review", b =>

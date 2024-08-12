@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MovieApplication.Models;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieApp.Models
@@ -12,5 +13,6 @@ namespace MovieApp.Models
         public string Genre { get; set; }
         
         public ICollection<Review> Reviews { get; set; }
+        public ICollection<MovieStudio> MovieStudios { get; set; }
     }
 }
