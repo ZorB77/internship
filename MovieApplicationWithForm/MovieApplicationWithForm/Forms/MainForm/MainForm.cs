@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MovieApplicationWithForm.Forms;
+using MovieApplicationWithForm.Forms.EditMovieForm;
+using MovieApplicationWithForm.Forms.StudioAndDistributionForm;
 using System.ComponentModel;
 
 namespace MovieApplicationWithForm
@@ -90,6 +92,7 @@ namespace MovieApplicationWithForm
                     rating = r.rating,
                     comment = r.comment,
                     movieName = r.movie.name
+
                 })
                 .ToList();
 
@@ -102,7 +105,9 @@ namespace MovieApplicationWithForm
                     roleID = r.roleID,
                     movieName = r.movie.name,
                     personName = r.person.firstName + ' ' + r.person.lastName,
-                    name = r.name
+                    name = r.name,
+                    salary = r.salary,
+                    description = r.description
                 })
                 .ToList();
 
@@ -112,8 +117,9 @@ namespace MovieApplicationWithForm
             var movies = dbContext.movies.Select(m => new Movie { description = m.description, genre = m.genre, name = m.name, releaseDate = m.releaseDate, movieID = m.movieID }).ToList();
             this.dataGridViewMovies.DataSource = movies;
 
-            var persons = dbContext.persons.Select(p => new Person { firstName = p.firstName, lastName = p.lastName, birthdate = p.birthdate, personID = p.personID }).ToList();
+            var persons = dbContext.persons.Select(p => new Person { firstName = p.firstName, lastName = p.lastName, birthdate = p.birthdate, personID = p.personID, phone = p.phone, city = p.city }).ToList();
             this.dataGridViewPersons.DataSource = persons;
+
         }
 
         private void linkLabelReviews_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -141,6 +147,31 @@ namespace MovieApplicationWithForm
             AddPersonForm addPersonForm = new AddPersonForm();
             addPersonForm.Show();
             addPersonForm.personAdded += RefreshData;
+        }
+
+        private void dataGridViewMovies_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            { 
+                int movieID = (int)dataGridViewMovies.Rows[e.RowIndex].Cells[0].Value;
+                var selectedMovie = dbContext.movies.FirstOrDefault(m => m.movieID == movieID);
+                if (selectedMovie != null)
+                {
+                    EditMovieForm editMovieForm = new EditMovieForm(selectedMovie);
+                    editMovieForm.Show();
+                    editMovieForm.movieUpdated += RefreshData;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a non-empty row.");
+            }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            StudioAndDistributionForm studioAndDistributionForm = new StudioAndDistributionForm();
+            studioAndDistributionForm.Show();
         }
     }
 }

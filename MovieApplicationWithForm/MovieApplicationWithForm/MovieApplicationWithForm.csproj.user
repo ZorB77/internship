@@ -13,6 +13,9 @@
     <Compile Update="Forms\AddRoleForm\AddRoleForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\EditMovieForm\EditMovieForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FilterForm\FilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -20,6 +23,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\StatisticsForm\StatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\StudioAndDistributionForm\StudioAndDistributionForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

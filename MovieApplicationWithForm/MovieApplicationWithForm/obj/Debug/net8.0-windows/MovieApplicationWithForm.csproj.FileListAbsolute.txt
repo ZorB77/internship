@@ -281,3 +281,5 @@ C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplica
 C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.pdb
 C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.genruntimeconfig.cache
 C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\ref\MovieApplicationWithForm.dll
+C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.Forms.StudioAndDistributionForm.StudioAndDistributionForm.resources
+C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.Forms.EditMovieForm.EditMovieForm.resources

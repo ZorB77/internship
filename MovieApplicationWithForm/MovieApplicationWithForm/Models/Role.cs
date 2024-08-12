@@ -21,4 +21,6 @@ using System.Threading.Tasks;
         public string movieName { get; set; }
         public string personName { get; set; }
         public string name { get; set; }
+        public int salary { get; set; }
+        public string description { get; set; }
     }

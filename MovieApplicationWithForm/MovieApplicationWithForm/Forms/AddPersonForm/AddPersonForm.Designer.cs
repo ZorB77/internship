@@ -33,10 +33,12 @@
             label3 = new Label();
             label4 = new Label();
             textBoxLastName = new TextBox();
-            textBoxEmail = new TextBox();
+            textBoxCity = new TextBox();
             textBoxFirstName = new TextBox();
             dateTimePickerBirthdate = new DateTimePicker();
             buttonAddPerson = new Button();
+            label5 = new Label();
+            textBoxPhoneNumber = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -70,11 +72,12 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(48, 288);
+            label4.Location = new Point(524, 52);
             label4.Name = "label4";
-            label4.Size = new Size(49, 20);
+            label4.Size = new Size(37, 20);
             label4.TabIndex = 3;
-            label4.Text = "Email:";
+            label4.Text = "City:";
+            label4.Click += label4_Click;
             // 
             // textBoxLastName
             // 
@@ -83,12 +86,12 @@
             textBoxLastName.Size = new Size(170, 27);
             textBoxLastName.TabIndex = 4;
             // 
-            // textBoxEmail
+            // textBoxCity
             // 
-            textBoxEmail.Location = new Point(48, 311);
-            textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(170, 27);
-            textBoxEmail.TabIndex = 5;
+            textBoxCity.Location = new Point(524, 75);
+            textBoxCity.Name = "textBoxCity";
+            textBoxCity.Size = new Size(170, 27);
+            textBoxCity.TabIndex = 5;
             // 
             // textBoxFirstName
             // 
@@ -115,16 +118,34 @@
             buttonAddPerson.UseVisualStyleBackColor = true;
             buttonAddPerson.Click += buttonAddPerson_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(524, 126);
+            label5.Name = "label5";
+            label5.Size = new Size(108, 20);
+            label5.TabIndex = 9;
+            label5.Text = "Phone number:";
+            // 
+            // textBoxPhoneNumber
+            // 
+            textBoxPhoneNumber.Location = new Point(524, 149);
+            textBoxPhoneNumber.Name = "textBoxPhoneNumber";
+            textBoxPhoneNumber.Size = new Size(170, 27);
+            textBoxPhoneNumber.TabIndex = 10;
+            // 
             // AddPersonForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LavenderBlush;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBoxPhoneNumber);
+            Controls.Add(label5);
             Controls.Add(buttonAddPerson);
             Controls.Add(dateTimePickerBirthdate);
             Controls.Add(textBoxFirstName);
-            Controls.Add(textBoxEmail);
+            Controls.Add(textBoxCity);
             Controls.Add(textBoxLastName);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -143,9 +164,11 @@
         private Label label3;
         private Label label4;
         private TextBox textBoxLastName;
-        private TextBox textBoxEmail;
+        private TextBox textBoxCity;
         private TextBox textBoxFirstName;
         private DateTimePicker dateTimePickerBirthdate;
         private Button buttonAddPerson;
+        private Label label5;
+        private TextBox textBoxPhoneNumber;
     }
 }

@@ -17,3 +17,13 @@ using System.Threading.Tasks;
         public string details { get; set; }
     }
 
+
+    public class MovieStudioDistributionViewModel
+    {
+
+        public int distributionID { get; set; }
+        public string movieName {get; set; }
+        public string studioName { get; set; }
+        public DateTime distributionDate { get; set; }
+        public string details { get; set; }
+    }

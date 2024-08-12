@@ -43,6 +43,8 @@
             movieDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             personDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            salary = new DataGridViewTextBoxColumn();
+            description = new DataGridViewTextBoxColumn();
             dataGridViewMovies = new DataGridView();
             movieIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -54,7 +56,8 @@
             firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             birthdateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            city = new DataGridViewTextBoxColumn();
+            phone = new DataGridViewTextBoxColumn();
             dataGridViewReviews = new DataGridView();
             reviewIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ratingDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -66,6 +69,7 @@
             linkLabel1 = new LinkLabel();
             linkLabelMovies = new LinkLabel();
             linkLabel3 = new LinkLabel();
+            linkLabel2 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)movieBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)personBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roleBindingSource).BeginInit();
@@ -145,7 +149,7 @@
             dataGridViewRoles.AutoGenerateColumns = false;
             dataGridViewRoles.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridViewRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRoles.Columns.AddRange(new DataGridViewColumn[] { roleIDDataGridViewTextBoxColumn, movieDataGridViewTextBoxColumn, personDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1 });
+            dataGridViewRoles.Columns.AddRange(new DataGridViewColumn[] { roleIDDataGridViewTextBoxColumn, movieDataGridViewTextBoxColumn, personDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1, salary, description });
             dataGridViewRoles.DataSource = roleBindingSource;
             dataGridViewRoles.Location = new Point(12, 321);
             dataGridViewRoles.Name = "dataGridViewRoles";
@@ -185,6 +189,22 @@
             nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
             nameDataGridViewTextBoxColumn1.Width = 125;
             // 
+            // salary
+            // 
+            salary.DataPropertyName = "salary";
+            salary.HeaderText = "salary";
+            salary.MinimumWidth = 6;
+            salary.Name = "salary";
+            salary.Width = 125;
+            // 
+            // description
+            // 
+            description.DataPropertyName = "description";
+            description.HeaderText = "description";
+            description.MinimumWidth = 6;
+            description.Name = "description";
+            description.Width = 125;
+            // 
             // dataGridViewMovies
             // 
             dataGridViewMovies.AutoGenerateColumns = false;
@@ -197,6 +217,7 @@
             dataGridViewMovies.RowHeadersWidth = 51;
             dataGridViewMovies.Size = new Size(553, 253);
             dataGridViewMovies.TabIndex = 5;
+            dataGridViewMovies.CellContentClick += dataGridViewMovies_CellContentClick_1;
             // 
             // movieIDDataGridViewTextBoxColumn
             // 
@@ -244,7 +265,7 @@
             dataGridViewPersons.AutoGenerateColumns = false;
             dataGridViewPersons.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridViewPersons.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPersons.Columns.AddRange(new DataGridViewColumn[] { personIDDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, birthdateDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn });
+            dataGridViewPersons.Columns.AddRange(new DataGridViewColumn[] { personIDDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, birthdateDataGridViewTextBoxColumn, city, phone });
             dataGridViewPersons.DataSource = personBindingSource;
             dataGridViewPersons.Location = new Point(663, 30);
             dataGridViewPersons.Name = "dataGridViewPersons";
@@ -285,13 +306,21 @@
             birthdateDataGridViewTextBoxColumn.Name = "birthdateDataGridViewTextBoxColumn";
             birthdateDataGridViewTextBoxColumn.Width = 125;
             // 
-            // emailDataGridViewTextBoxColumn
+            // city
             // 
-            emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            emailDataGridViewTextBoxColumn.HeaderText = "email";
-            emailDataGridViewTextBoxColumn.MinimumWidth = 6;
-            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            emailDataGridViewTextBoxColumn.Width = 125;
+            city.DataPropertyName = "city";
+            city.HeaderText = "city";
+            city.MinimumWidth = 6;
+            city.Name = "city";
+            city.Width = 125;
+            // 
+            // phone
+            // 
+            phone.DataPropertyName = "phone";
+            phone.HeaderText = "phone";
+            phone.MinimumWidth = 6;
+            phone.Name = "phone";
+            phone.Width = 125;
             // 
             // dataGridViewReviews
             // 
@@ -410,12 +439,25 @@
             linkLabel3.Text = "Add a person ->";
             linkLabel3.LinkClicked += linkLabel3_LinkClicked;
             // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.LinkColor = Color.Black;
+            linkLabel2.Location = new Point(663, 560);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(193, 20);
+            linkLabel2.TabIndex = 15;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "Studios and distributions ->";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LavenderBlush;
             ClientSize = new Size(1221, 597);
+            Controls.Add(linkLabel2);
             Controls.Add(linkLabel3);
             Controls.Add(linkLabelMovies);
             Controls.Add(linkLabel1);
@@ -457,10 +499,6 @@
         private Label label3;
         private Label label4;
         private DataGridView dataGridViewRoles;
-        private DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn movieDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn personDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private DataGridView dataGridViewMovies;
         private DataGridViewTextBoxColumn movieIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
@@ -468,10 +506,6 @@
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
         private DataGridView dataGridViewPersons;
-        private DataGridViewTextBoxColumn personIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn birthdateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridView dataGridViewReviews;
         private DataGridViewTextBoxColumn reviewIDDataGridViewTextBoxColumn;
@@ -484,5 +518,18 @@
         private LinkLabel linkLabel1;
         private LinkLabel linkLabelMovies;
         private LinkLabel linkLabel3;
+        private DataGridViewTextBoxColumn personIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn birthdateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn city;
+        private DataGridViewTextBoxColumn phone;
+        private DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn movieDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn personDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn salary;
+        private DataGridViewTextBoxColumn description;
+        private LinkLabel linkLabel2;
     }
 }

@@ -56,17 +56,18 @@ namespace MovieApplicationWithForm.Forms
         {
             string selectedFirstName = textBoxFirstName.Text;
             string selectedLastName = textBoxLastName.Text;
-            string selectedEmail = textBoxEmail.Text;
+            string selectedCity = textBoxCity.Text;
+            string selectedPhoneNumber = textBoxPhoneNumber.Text;
             DateTime birthdate = dateTimePickerBirthdate.Value;
 
-            if (string.IsNullOrEmpty(selectedEmail) || string.IsNullOrEmpty(selectedFirstName) || string.IsNullOrEmpty(selectedLastName))
+            if (string.IsNullOrEmpty(selectedCity) || string.IsNullOrEmpty(selectedFirstName) || string.IsNullOrEmpty(selectedLastName))
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
 
-            Person newPerson = new Person { firstName = selectedFirstName, lastName = selectedLastName, birthdate = birthdate };
-            dbContext.persons.Add(newPerson);  
+            Person newPerson = new Person { firstName = selectedFirstName, lastName = selectedLastName, birthdate = birthdate, city = selectedCity, phone = selectedPhoneNumber };
+            dbContext.persons.Add(newPerson);
             dbContext.SaveChanges();
 
             MessageBox.Show("Person added successfully!");
@@ -74,7 +75,12 @@ namespace MovieApplicationWithForm.Forms
 
             textBoxFirstName.Clear();
             textBoxLastName.Clear();
-            textBoxEmail.Clear();
+            textBoxCity.Clear();
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
 
         }
     }
