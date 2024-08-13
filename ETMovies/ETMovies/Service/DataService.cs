@@ -49,7 +49,7 @@ namespace ETMovies.Service
 
         // Update a movie
 
-        public void UpdateMovie(int index, string title, string description, int year, string genre)
+        public void UpdateMovie(int index, string title, string description, int year, string genre, int duration, decimal budget)
         {
             var movieToUpdate = Context.Movies.FirstOrDefault(m => m.MovieID == index);
             if (movieToUpdate != null)
@@ -58,6 +58,8 @@ namespace ETMovies.Service
                 movieToUpdate.Description = description;
                 movieToUpdate.Year = year;
                 movieToUpdate.Genre = genre;
+                movieToUpdate.Duration = duration;
+                movieToUpdate.Budged = budget;
                 Context.SaveChanges();
 
             }
@@ -110,7 +112,7 @@ namespace ETMovies.Service
 
         // Update a person
 
-        public void UpdatePerson(int index, string firstName, string lastName, DateOnly birthday)
+        public void UpdatePerson(int index, string firstName, string lastName, DateOnly birthday, string nat, int award)
         {
             var personToUpdate = Context.Persons.FirstOrDefault(m => m.PersonID == index);
             if (personToUpdate != null)
@@ -118,6 +120,8 @@ namespace ETMovies.Service
                 personToUpdate.FirstName = firstName;
                 personToUpdate.LastName = lastName;
                 personToUpdate.Birthdate = birthday;
+                personToUpdate.Nationality = nat;
+                personToUpdate.Award = award;
                 Context.SaveChanges();
             }
         }
@@ -346,6 +350,11 @@ namespace ETMovies.Service
 
         */
         #endregion
+
+        public List<Studio> GetStudiosWithMovies()
+        {
+            return Context.Studios.Include(s => s.Movies).AsNoTracking().ToList();
+        }
 
 
     }

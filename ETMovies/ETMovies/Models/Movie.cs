@@ -21,12 +21,14 @@ namespace ETMovies.Models
 
         public Movie() { }
 
-        public Movie(string title, string description, int year, string genre)
+        public Movie(string title, string description, int year, string genre, int duration, decimal budget)
         {
             Title = title;
             Description = description;
             Year = year;
             Genre = genre;
+            Duration = duration;
+            Budged = budget;
             Reviews = new List<Review>();
             Studios = new List<Studio>();
 

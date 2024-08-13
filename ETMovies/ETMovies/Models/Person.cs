@@ -18,11 +18,13 @@ namespace ETMovies.Models
 
         public Person() { }
 
-        public Person(string firstName, string lastName, DateOnly birthdate)
+        public Person(string firstName, string lastName, DateOnly birthdate, string nat, int award)
         {
             FirstName = firstName;
             LastName = lastName;
             Birthdate = birthdate;
+            Nationality = nat;
+            Award = award;
         }
     }
 }

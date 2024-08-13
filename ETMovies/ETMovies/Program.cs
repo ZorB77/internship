@@ -29,6 +29,7 @@ class Program
             Console.WriteLine("9. Filter actors by role");
             Console.WriteLine("10. Filter persons by age");
             Console.WriteLine("11. Studios");
+            Console.WriteLine("12. Studios with movies");
             Console.WriteLine("0. Exit");
 
             switch (Console.ReadLine())
@@ -66,6 +67,9 @@ class Program
                 case "11":
                     StudiosMenus(service);
                     break;
+                case "12":
+                    ShowStudiosAndMovies(service); 
+                    break;
                 case "0":
                     return;
                 default:
@@ -77,6 +81,18 @@ class Program
         }
 
 
+    }
+
+    private static void ShowStudiosAndMovies(DataService service)
+    {
+        var studios = service.GetStudiosWithMovies();
+        foreach (var studio in studios)
+        {
+            foreach (var movie in studio.Movies)
+            { 
+                Console.WriteLine($"Studio: {studio.Title} -> {movie.Title}");
+            }
+        }
     }
 
     private static void StudiosMenus(DataService service)
@@ -368,8 +384,12 @@ class Program
             int year = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter the genre of the movie: ");
             string genre = Console.ReadLine();
+            Console.WriteLine("Enter the duration of the movie: ");
+            int duration = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the budget of the movie: ");
+            decimal budget = decimal.Parse(Console.ReadLine());
 
-            service.UpdateMovie(id, title, description, year, genre);
+            service.UpdateMovie(id, title, description, year, genre, duration, budget);
             Console.WriteLine("Movie updated successfully");
         }
         catch (Exception ex)
@@ -390,10 +410,14 @@ class Program
             int year = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter the movie genre: ");
             string genre = Console.ReadLine();
+            Console.WriteLine("Enter the duration of the movie: ");
+            int duration = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the budget of the movie: ");
+            decimal budget = decimal.Parse(Console.ReadLine());
             Console.WriteLine("Enter the ID of the studio that produced the movie: ");
             int studio_id = int.Parse(Console.ReadLine());
 
-            Movie movie = new Movie(title, description, year, genre);
+            Movie movie = new Movie(title, description, year, genre, duration, budget);
 
             service.AddMovie(movie, studio_id);
         }
@@ -589,8 +613,11 @@ class Program
         DateOnly date = DateOnly.Parse(Console.ReadLine());
         Console.WriteLine("Enter the email: ");
         string mail = Console.ReadLine();
+        string nationality = Console.ReadLine();
+        Console.WriteLine("Enter the amount of awards: ");
+        int award = int.Parse(Console.ReadLine());
 
-        service.UpdatePerson(id, fname, lname, date);
+        service.UpdatePerson(id, fname, lname, date, nationality, award);
         Console.WriteLine("Update made successfully");
     }
 
@@ -602,8 +629,12 @@ class Program
         string lastName = Console.ReadLine();
         Console.WriteLine("Enter the birthday: ");
         DateOnly date = DateOnly.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the nationality: ");
+        string nationality = Console.ReadLine();
+        Console.WriteLine("Enter the amount of awards: ");
+        int award = int.Parse(Console.ReadLine());
 
-        Person person = new Person(firstName, lastName, date);
+        Person person = new Person(firstName, lastName, date, nationality, award);
 
         service.AddPerson(person);
         Console.WriteLine("Person added successfully");
