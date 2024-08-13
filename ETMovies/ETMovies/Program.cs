@@ -11,7 +11,11 @@ class Program
     {
 
         MyDbContext myDbContext = new MyDbContext();
-        DataService service = new DataService(myDbContext);
+        MovieService service = new MovieService(myDbContext);
+        PersonService personService = new PersonService(myDbContext);
+        ReviewService reviewService = new ReviewService(myDbContext);
+        RolesService rolesService = new RolesService(myDbContext);
+        StudioService studioService = new StudioService(myDbContext);
 
 
         while (true)
@@ -38,13 +42,13 @@ class Program
                     MoviesMenu(service);
                     break;
                 case "2":
-                    PersonsMenu(service);
+                    PersonsMenu(personService);
                     break;
                 case "3":
-                    RolesMenu(service);
+                    RolesMenu(rolesService);
                     break;
                 case "4":
-                    ReviewsMenu(service);
+                    ReviewsMenu(reviewService);
                     break;
                 case "5":
                     FilterMovies(service);
@@ -59,16 +63,16 @@ class Program
                     GetTopTenMovies(service);
                     break;
                 case "9":
-                    FilterActorsByRole(service);
+                    FilterActorsByRole(rolesService);
                     break;
                 case "10":
-                    FilterPersonsByAge(service);
+                    FilterPersonsByAge(personService);
                     break;
                 case "11":
-                    StudiosMenus(service);
+                    StudiosMenus(studioService);
                     break;
                 case "12":
-                    ShowStudiosAndMovies(service); 
+                    ShowStudiosAndMovies(studioService); 
                     break;
                 case "0":
                     return;
@@ -83,7 +87,7 @@ class Program
 
     }
 
-    private static void ShowStudiosAndMovies(DataService service)
+    private static void ShowStudiosAndMovies(StudioService service)
     {
         var studios = service.GetStudiosWithMovies();
         foreach (var studio in studios)
@@ -95,7 +99,7 @@ class Program
         }
     }
 
-    private static void StudiosMenus(DataService service)
+    private static void StudiosMenus(StudioService service)
     {
         Console.Clear();
 
@@ -139,7 +143,7 @@ class Program
         }
     }
 
-    private static void deleteStudio(DataService service)
+    private static void deleteStudio(StudioService service)
     {
         Console.WriteLine("Enter the ID for the studio you want to delete");
         int id = int.Parse(Console.ReadLine());
@@ -155,7 +159,7 @@ class Program
         }
     }
 
-    private static void updateStudio(DataService service)
+    private static void updateStudio(StudioService service)
     {
         try
         {
@@ -177,7 +181,7 @@ class Program
         }
     }
 
-    private static void addStudio(DataService service)
+    private static void addStudio(StudioService service)
     {
         try
         {
@@ -199,7 +203,7 @@ class Program
         }
     }
 
-    private static void showAllStudios(DataService service)
+    private static void showAllStudios(StudioService service)
     {
         var items = service.GetStudios();
         foreach (var item in items)
@@ -208,7 +212,7 @@ class Program
         }
     }
 
-    private static void FilterPersonsByAge(DataService service)
+    private static void FilterPersonsByAge(PersonService service)
     {
         Console.WriteLine("Enter the minimum age: ");
         int mAge = int.Parse(Console.ReadLine());
@@ -226,7 +230,7 @@ class Program
     
     }
 
-    private static void FilterActorsByRole(DataService service)
+    private static void FilterActorsByRole(RolesService service)
     {
         Console.WriteLine("Enter the role you want to filter by: ");
         string rolename = Console.ReadLine();
@@ -244,7 +248,7 @@ class Program
         }
     }
 
-    private static void GetTopTenMovies(DataService service)
+    private static void GetTopTenMovies(MovieService service)
     {
         var list = service.TopTenMoviesByRating();
         foreach (var movie in list)
@@ -254,7 +258,7 @@ class Program
 
     }
 
-    private static void GetRatingForMovie(DataService service)
+    private static void GetRatingForMovie(MovieService service)
     {
         Console.WriteLine("Enter the movie id to get a rating: ");
 
@@ -262,7 +266,7 @@ class Program
         Console.WriteLine($"{service.GetAverageRating(id)}");
     }
 
-    private static void SortMovies(DataService service)
+    private static void SortMovies(MovieService service)
     {
         var list = service.SortMoviesByNameAndGenre();
         foreach (var movie in list)
@@ -271,7 +275,7 @@ class Program
         }
     }
 
-    private static void FilterMovies(DataService service)
+    private static void FilterMovies(MovieService service)
     {
         Console.WriteLine("Enter the first year");
         int startyear = int.Parse(Console.ReadLine());
@@ -286,7 +290,7 @@ class Program
         }
     }
     #region MoviesPart
-    private static void MoviesMenu(DataService service)
+    private static void MoviesMenu(MovieService service)
     {
         Console.Clear();
 
@@ -330,7 +334,7 @@ class Program
         }
     }
 
-    private static void deleteMovie(DataService service)
+    private static void deleteMovie(MovieService service)
     {
         Console.WriteLine("You want to delete a movie by ID or title?");
         Console.WriteLine("Choose 1 for ID or 2 for title");
@@ -370,7 +374,7 @@ class Program
 
     }
 
-    private static void updateMovie(DataService service)
+    private static void updateMovie(MovieService service)
     {
         try
         {
@@ -398,7 +402,7 @@ class Program
         }
     }
 
-    private static void addMovie(DataService service)
+    private static void addMovie(MovieService service)
     {
         try
         {
@@ -427,7 +431,7 @@ class Program
         }
     }
 
-    private static void showAllMovies(DataService service)
+    private static void showAllMovies(MovieService service)
     {
         var movies = service.GetMovies();
         if (movies == null)
@@ -449,7 +453,7 @@ class Program
 
     #region RolesPart
 
-    private static void RolesMenu(DataService service)
+    private static void RolesMenu(RolesService service)
     {
         Console.Clear();
 
@@ -494,7 +498,7 @@ class Program
         }
     }
 
-    private static void deleteRole(DataService service)
+    private static void deleteRole(RolesService service)
     {
         Console.WriteLine("Enter the ID for the role you want to delete");
         int id = int.Parse(Console.ReadLine());
@@ -510,12 +514,12 @@ class Program
         }
     }
 
-    private static void updateRole(DataService service)
+    private static void updateRole(RolesService service)
     {
         throw new NotImplementedException();
     }
 
-    private static void addRole(DataService service)
+    private static void addRole(RolesService service)
     {
         Console.WriteLine("Enter the name of the role: ");
         string name = Console.ReadLine();
@@ -531,7 +535,7 @@ class Program
 
     }
 
-    private static void showAllRoles(DataService service)
+    private static void showAllRoles(RolesService service)
     {
         var items = service.GetRoles();
         foreach (var item in items)
@@ -544,7 +548,7 @@ class Program
     #endregion
 
     #region PersonsPart
-    private static void PersonsMenu(DataService service)
+    private static void PersonsMenu(PersonService personService)
     {
         Console.Clear();
         while (true)
@@ -561,16 +565,16 @@ class Program
             switch (choice)
             {
                 case "1":
-                    showAllPersons(service);
+                    showAllPersons(personService);
                     break;
                 case "2":
-                    addPerson(service);
+                    addPerson(personService);
                     break;
                 case "3":
-                    updatePerson(service);
+                    updatePerson(personService);
                     break;
                 case "4":
-                    deletePerson(service);
+                    deletePerson(personService);
                     break;
                 case "0":
                     Console.Clear();
@@ -585,7 +589,7 @@ class Program
         }
     }
 
-    private static void deletePerson(DataService service)
+    private static void deletePerson(PersonService service)
     {
         Console.WriteLine("Enter the ID for the person you want to delete");
         int id = int.Parse(Console.ReadLine());
@@ -601,7 +605,7 @@ class Program
         }
     }
 
-    private static void updatePerson(DataService service)
+    private static void updatePerson(PersonService service)
     {
         Console.WriteLine("Enter the ID for the person you want to update");
         int id = int.Parse(Console.ReadLine());
@@ -621,7 +625,7 @@ class Program
         Console.WriteLine("Update made successfully");
     }
 
-    private static void addPerson(DataService service)
+    private static void addPerson(PersonService service)
     {
         Console.WriteLine("Enter the first name: ");
         string firstName = Console.ReadLine();
@@ -640,7 +644,7 @@ class Program
         Console.WriteLine("Person added successfully");
     }
 
-    private static void showAllPersons(DataService service)
+    private static void showAllPersons(PersonService service)
     {
         var items = service.GetPersons();
         foreach (var item in items)
@@ -653,7 +657,7 @@ class Program
 
     #region ReviewsPart
 
-    private static void ReviewsMenu(DataService service)
+    private static void ReviewsMenu(ReviewService service)
     {
         Console.Clear();
 
@@ -698,7 +702,7 @@ class Program
 
     }
 
-    private static void addReview(DataService service)
+    private static void addReview(ReviewService service)
     {
         Console.WriteLine("Enter the ID of the movie you want to leave a review");
         int id = int.Parse(Console.ReadLine());
@@ -712,7 +716,7 @@ class Program
         service.AddReview(review, id);
     }
 
-    private static void deleteReview(DataService service)
+    private static void deleteReview(ReviewService service)
     {
         Console.WriteLine("Enter the id of the review you want to delete:");
         int id = int.Parse(Console.ReadLine());
@@ -720,7 +724,7 @@ class Program
         Console.WriteLine("The review is successfully deleted!");
     }
 
-    private static void updateReview(DataService service)
+    private static void updateReview(ReviewService service)
     {
         Console.WriteLine("Enter the id of the review you want to update: ");
         int id = int.Parse(Console.ReadLine());
@@ -733,7 +737,7 @@ class Program
         Console.WriteLine("Update succsessfully");
     }
 
-    private static void showAllReviews(DataService service)
+    private static void showAllReviews(ReviewService service)
     {
         var items = service.GetReviews();
         foreach (var item in items)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ETMovies.DatabaseContext
 {
-    internal class MyDbContext : DbContext
+    public class MyDbContext : DbContext
     {
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Person> Persons { get; set; }
