@@ -152,7 +152,7 @@ namespace MovieApplicationWithForm
         private void dataGridViewMovies_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
-            { 
+            {
                 int movieID = (int)dataGridViewMovies.Rows[e.RowIndex].Cells[0].Value;
                 var selectedMovie = dbContext.movies.FirstOrDefault(m => m.movieID == movieID);
                 if (selectedMovie != null)
@@ -172,6 +172,25 @@ namespace MovieApplicationWithForm
         {
             StudioAndDistributionForm studioAndDistributionForm = new StudioAndDistributionForm();
             studioAndDistributionForm.Show();
+        }
+
+        private void dataGridViewPersons_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int personID = (int)dataGridViewPersons.Rows[e.RowIndex].Cells[0].Value;
+                var selectedPerson = dbContext.persons.FirstOrDefault(m => m.personID == personID);
+                if (selectedPerson != null)
+                {
+                    EditPersonForm editPersonForm = new EditPersonForm(selectedPerson);
+                    editPersonForm.Show();
+                    editPersonForm.personUpdated += RefreshData;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a non-empty row.");
+            }
         }
     }
 }

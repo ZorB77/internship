@@ -3,35 +3,43 @@
   "WorkspaceRootPath": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\mainform\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\mainform\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\editpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\editpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\editpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\editpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\movieapplicationwithform\\forms\\editmovieform\\editmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\editmovieform\\editmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\editmovieform\\editmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\editmovieform\\editmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\editmovieform\\editmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\editmovieform\\editmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\mainform\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\mainform\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\movieapplicationwithform\\forms\\mainform\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\mainform\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\addmovieform\\addmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\addmovieform\\addmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\addmovieform\\addmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\movieapplicationwithform\\forms\\addmovieform\\addmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\addmovieform\\addmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\mainform\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\mainform\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\addroleform\\addroleform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\addroleform\\addroleform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\addroleform\\addroleform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\movieapplicationwithform\\forms\\addroleform\\addroleform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\addroleform\\addroleform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -43,7 +51,7 @@
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\models\\moviestudiodistribution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\studioanddistributionform\\studioanddistributionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\movieapplicationwithform\\forms\\studioanddistributionform\\studioanddistributionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\studioanddistributionform\\studioanddistributionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -59,7 +67,7 @@
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\statisticsform\\statisticsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\movieapplicationwithform\\forms\\statisticsform\\statisticsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\statisticsform\\statisticsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -71,7 +79,7 @@
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\addpersonform\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwithform\\movieapplicationwithform\\forms\\addpersonform\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\movieapplicationwithform\\forms\\addpersonform\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5C1F9D42-32FE-4B30-BB90-E6241EBAEC39}|MovieApplicationWithForm\\MovieApplicationWithForm.csproj|solutionrelative:movieapplicationwithform\\forms\\addpersonform\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -82,11 +90,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "EditPersonForm.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\EditPersonForm.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\EditPersonForm.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\EditPersonForm.cs",
+              "RelativeToolTip": "MovieApplicationWithForm\\Forms\\EditPersonForm.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T08:20:52.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EditPersonForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\EditPersonForm.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\EditPersonForm.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\EditPersonForm.cs [Design]",
+              "RelativeToolTip": "MovieApplicationWithForm\\Forms\\EditPersonForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T08:20:41.12Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AddMovieForm.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\AddMovieForm\\AddMovieForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\AddMovieForm\\AddMovieForm.cs",
@@ -99,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "AddRoleForm.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\AddRoleForm\\AddRoleForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\AddRoleForm\\AddRoleForm.cs",
@@ -112,25 +145,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "AddRoleForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\AddRoleForm\\AddRoleForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\AddRoleForm\\AddRoleForm.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\AddRoleForm\\AddRoleForm.cs [Design]",
               "RelativeToolTip": "MovieApplicationWithForm\\Forms\\AddRoleForm\\AddRoleForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T20:15:49.173Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-08-12T20:15:49.173Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "EditMovieForm.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\EditMovieForm\\EditMovieForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\EditMovieForm\\EditMovieForm.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\EditMovieForm\\EditMovieForm.cs",
               "RelativeToolTip": "MovieApplicationWithForm\\Forms\\EditMovieForm\\EditMovieForm.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAgwDAAAAAoAAAA",
+              "ViewState": "AQIAACMAAAAAAAAAAAAgwCkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-12T20:12:34.265Z",
               "EditorCaption": ""
@@ -149,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Review.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Models\\Review.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Models\\Review.cs",
@@ -157,12 +189,11 @@
               "RelativeToolTip": "MovieApplicationWithForm\\Models\\Review.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:06:51.086Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-12T19:06:51.086Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Person.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Models\\Person.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Models\\Person.cs",
@@ -170,12 +201,11 @@
               "RelativeToolTip": "MovieApplicationWithForm\\Models\\Person.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T18:55:21.462Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-12T18:55:21.462Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "MovieStudioDistribution.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Models\\MovieStudioDistribution.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Models\\MovieStudioDistribution.cs",
@@ -183,12 +213,11 @@
               "RelativeToolTip": "MovieApplicationWithForm\\Models\\MovieStudioDistribution.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAowBYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T18:55:04.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-12T18:55:04.333Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "StudioAndDistributionForm.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\StudioAndDistributionForm\\StudioAndDistributionForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\StudioAndDistributionForm\\StudioAndDistributionForm.cs",
@@ -201,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "StatisticsForm.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\StatisticsForm\\StatisticsForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\StatisticsForm\\StatisticsForm.cs",
@@ -214,19 +243,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "StatisticsForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\StatisticsForm\\StatisticsForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\StatisticsForm\\StatisticsForm.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\StatisticsForm\\StatisticsForm.cs [Design]",
               "RelativeToolTip": "MovieApplicationWithForm\\Forms\\StatisticsForm\\StatisticsForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T18:44:22.28Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-08-12T18:44:22.28Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "AddPersonForm.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\AddPersonForm\\AddPersonForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\AddPersonForm\\AddPersonForm.cs",
@@ -239,43 +267,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "AddPersonForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\AddPersonForm\\AddPersonForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\AddPersonForm\\AddPersonForm.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\AddPersonForm\\AddPersonForm.cs [Design]",
               "RelativeToolTip": "MovieApplicationWithForm\\Forms\\AddPersonForm\\AddPersonForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T18:01:18.984Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-08-12T18:01:18.984Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "AddMovieForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\AddMovieForm\\AddMovieForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\AddMovieForm\\AddMovieForm.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\AddMovieForm\\AddMovieForm.cs [Design]",
               "RelativeToolTip": "MovieApplicationWithForm\\Forms\\AddMovieForm\\AddMovieForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T18:01:07.444Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-08-12T18:01:07.444Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "StudioAndDistributionForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\StudioAndDistributionForm\\StudioAndDistributionForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\StudioAndDistributionForm\\StudioAndDistributionForm.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\StudioAndDistributionForm\\StudioAndDistributionForm.cs [Design]",
               "RelativeToolTip": "MovieApplicationWithForm\\Forms\\StudioAndDistributionForm\\StudioAndDistributionForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T17:58:30.074Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-08-12T17:58:30.074Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Role.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Models\\Role.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Models\\Role.cs",
@@ -283,18 +308,17 @@
               "RelativeToolTip": "MovieApplicationWithForm\\Models\\Role.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T17:37:25.604Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-12T17:37:25.604Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\MainForm\\MainForm.cs",
               "RelativeDocumentMoniker": "MovieApplicationWithForm\\Forms\\MainForm\\MainForm.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWithForm\\MovieApplicationWithForm\\Forms\\MainForm\\MainForm.cs",
               "RelativeToolTip": "MovieApplicationWithForm\\Forms\\MainForm\\MainForm.cs",
-              "ViewState": "AQIAAHYAAAAAAAAAAAAmwHwAAAAvAAAA",
+              "ViewState": "AQIAAKkAAAAAAAAAAAAowLoAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-12T17:36:32.238Z",
               "EditorCaption": ""

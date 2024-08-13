@@ -272,6 +272,7 @@
             dataGridViewPersons.RowHeadersWidth = 51;
             dataGridViewPersons.Size = new Size(553, 253);
             dataGridViewPersons.TabIndex = 7;
+            dataGridViewPersons.CellContentClick += dataGridViewPersons_CellContentClick;
             // 
             // personIDDataGridViewTextBoxColumn
             // 
