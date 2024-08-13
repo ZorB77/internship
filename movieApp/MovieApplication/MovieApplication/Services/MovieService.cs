@@ -79,68 +79,25 @@ namespace MovieApp.Services
             return false;
         }
 
-        public string FilterMoviesByGenre(string genre)
+        public List<Movie> FilterMoviesByGenre(string genre)
         {
-            var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine();
-
             List<Movie> movies = _context.Movies.Where(m => m.Genre == genre).ToList();
 
-            if (movies.Any())
-            {
-                foreach (Movie movie in movies)
-                {
-                    stringBuilder.AppendLine($"{movie.ID}. {movie.Title}");
-                }
-            }
-            else
-            {
-                stringBuilder.AppendLine($"No movies found of genre {genre}.");
-            }
-
-            return stringBuilder.ToString();
+            return movies;
         }
 
-        public string FilterMoviesByYear(int year)
+        public List<Movie> FilterMoviesByYear(int year)
         {
-            var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine();
-
             List<Movie> movies = _context.Movies.Where(m => m.ReleaseDate.Year == year).ToList();
 
-            if (movies.Any())
-            {
-                foreach (Movie movie in movies)
-                {
-                    stringBuilder.AppendLine($"{movie.ID}. {movie.Title}, {movie.ReleaseDate.ToString("yyyy-MM-dd")}");
-                }
-            }
-            else
-            {
-                stringBuilder.AppendLine($"No movies found for the year {year}");
-            }
-
-            return stringBuilder.ToString();
+            return movies;
         }
 
-        public string FilterMoviesByDateInterval(DateTime year1, DateTime year2)
+        public List<Movie> FilterMoviesByDateInterval(int year1, int year2)
         {
-            var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine();
+            List<Movie> movies = _context.Movies.Where(m => (m.ReleaseDate.Year >= year1) && (m.ReleaseDate.Year <= year2)).ToList();
 
-            foreach (Movie movie in _context.Movies)
-            {
-                if (movie.ReleaseDate >= year1 && movie.ReleaseDate <= year2)
-                {
-                    stringBuilder.AppendLine(movie.Title + " - " + movie.ReleaseDate.ToString("yyyy-MM-dd"));
-                }
-            }
-            if (stringBuilder.Length == 0)
-            {
-                stringBuilder.AppendLine("No movies found for that interval.");
-            }
-
-            return stringBuilder.ToString();
+            return movies;
         }
 
         public void MovieOptions()

@@ -82,26 +82,11 @@ namespace MovieApplication.Services
             return false;
         }
 
-        public string FilterReviewByRating(double rating)
+        public List<Review> FilterReviewByRating(double rating)
         {
-            var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine();
-
             List<Review> reviews = _context.Reviews.Include(r => r.Movies).Where(r => r.Rating == rating).ToList();
 
-            if (reviews.Any())
-            {
-                foreach (Review review in reviews)
-                {
-                        stringBuilder.AppendLine($"{review.ID}. {review.Movies.Title}: {review.Comment}");
-                }
-            }
-            else
-            {
-                stringBuilder.AppendLine($"No reviews for rating {rating}");
-            }
-
-            return stringBuilder.ToString();
+            return reviews;
         }
 
         public int AverageRatingForGivenMovie(int movieId)

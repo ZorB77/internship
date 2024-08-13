@@ -4,6 +4,7 @@ using MovieApp.Services;
 using MovieApplication.Models;
 using MovieApplication.Services;
 using System;
+using System.ComponentModel;
 using System.Transactions;
 
 namespace MovieApp
@@ -186,25 +187,45 @@ namespace MovieApp
                             case "6":
                                 Console.WriteLine("\nEnter the genre: ");
                                 genre = Console.ReadLine();
-                                Console.WriteLine($"{genre} movies: " + movieService.FilterMoviesByGenre(genre));
+
+                                var moviesG = movieService.FilterMoviesByGenre(genre);
+                                Console.WriteLine($"\n{genre} movies: ");
+
+                                foreach(var movieG in moviesG)
+                                {
+                                    Console.WriteLine($"{movieG.Title}");
+                                }
                                 break;
 
                             //SUBCASE 7 - FilterMoviesByYear
                             case "7":
                                 Console.WriteLine("\nEnter the year: ");
                                 int year = int.Parse(Console.ReadLine());
-                                Console.WriteLine($"Movies from {year}: " + movieService.FilterMoviesByYear(year));
+
+                                var moviesY = movieService.FilterMoviesByYear(year);
+                                Console.WriteLine($"\nMovies from year {year}: ");
+
+                                foreach(var movieY in moviesY)
+                                {
+                                    Console.WriteLine($"{movieY.Title}");
+                                }
                                 break;
 
                             //SUBCASE 8 - FilterMoviesByDateInterval
                             case "8":
                                 Console.WriteLine("\nEnter the 1st year: ");
-                                DateTime firstYear = DateTime.Parse(Console.ReadLine());
+                                int year1 = int.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Enter the 2nd year: ");
-                                DateTime secondYear = DateTime.Parse(Console.ReadLine());
+                                int year2 = int.Parse(Console.ReadLine());
 
-                                Console.WriteLine($"Movies between {firstYear.ToShortDateString()} and {secondYear.ToShortDateString}: " + movieService.FilterMoviesByDateInterval(firstYear, secondYear));
+                                var movieInterval = movieService.FilterMoviesByDateInterval(year1, year2);
+                                Console.WriteLine($"\nMovies between {year1} and {year2}: ");
+
+                                foreach(var movieI in movieInterval)
+                                {
+                                    Console.WriteLine($"{movieI.Title}");
+                                }
                                 break;
 
                             //SUBCASE 9
@@ -470,8 +491,15 @@ namespace MovieApp
                             //SUBCASE 8 - FilterReviewbyRating
                             case "8":
                                 Console.WriteLine("\nEnter the rating: ");
-                                rating = int.Parse(Console.ReadLine());
-                                Console.WriteLine($"Movies with the rating {rating}: " + reviewService.FilterReviewByRating(rating) + "");
+                                rating = double.Parse(Console.ReadLine());
+
+                                var reviewsR = reviewService.FilterReviewByRating(rating);
+                                Console.WriteLine($"\nMovies with rating {rating}: ");
+
+                                foreach (var reviewRating in reviewsR)
+                                {
+                                    Console.WriteLine($"{reviewRating.Movies.Title}");
+                                }
                                 break;
 
                             //SUBCASE 9
