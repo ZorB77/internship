@@ -8,7 +8,7 @@ namespace Exercise1.Models
 {
     public class Studio
     {
-        public int StudioId { get; set; }
+        public int ID { get; set; }
         public string StudioName { get; set; }
         public int StudioYear { get; set; }
 

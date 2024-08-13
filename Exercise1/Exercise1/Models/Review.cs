@@ -8,7 +8,7 @@ namespace Exercise1.Models
 {
     public class Review
     {
-        public int ReviewID { get; set; }
+        public int ID { get; set; }
         public int Rating { get; set; }
         public string Comment {  get; set; }
         //another two fields

@@ -48,7 +48,7 @@ namespace Exercise1.Services
             var roles = _roleRepository.GetAllRoles();
             foreach (var role in roles)
             {
-                Console.WriteLine($"Id: {role.RoleID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName} {role.Person.LastName}");
+                Console.WriteLine($"Id: {role.ID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName} {role.Person.LastName}");
             }
         }
         //get the role by id
@@ -60,7 +60,7 @@ namespace Exercise1.Services
                 var role = _roleRepository.GetRoleByID(roleId);
                 if (role != null)
                 {
-                    Console.WriteLine($"Id: {role.RoleID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName}");
+                    Console.WriteLine($"Id: {role.ID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName}");
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace Exercise1.Services
 
             if (role != null)
             {
-                Console.WriteLine($"Id: {role.RoleID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName}");
+                Console.WriteLine($"Id: {role.ID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName}");
             }
         }
 
@@ -97,7 +97,7 @@ namespace Exercise1.Services
                     var movie = _movieRepository.GetMovie(newMovieName);
                     if (movie != null)
                     {
-                        role.MovieId = movie.MovieID;
+                        role.MovieId = movie.ID;
                     }
                 }
 
@@ -110,7 +110,7 @@ namespace Exercise1.Services
                     var person = _personRepository.GetPerson(newFirstName, newLastName);
                     if (person != null)
                     {
-                        role.PersonId = person.PersonID;
+                        role.PersonId = person.ID;
                     }
                 }
 
@@ -134,7 +134,7 @@ namespace Exercise1.Services
 
             foreach (var role in roles)
             {
-                Console.WriteLine($"Id: {role.RoleID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName}");
+                Console.WriteLine($"Id: {role.ID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName}");
             }
         }
         //get roles by persons method
@@ -146,7 +146,7 @@ namespace Exercise1.Services
 
             if (role != null)
             {
-                Console.WriteLine($"Id: {role.RoleID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName}");
+                Console.WriteLine($"Id: {role.ID}, Name: {role.Name}, Movie:{role.Movie.Name}, Person{role.Person.FirstName}");
             }
         }
         public string Validation(string message)

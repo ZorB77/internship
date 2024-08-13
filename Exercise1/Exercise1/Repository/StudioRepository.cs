@@ -51,8 +51,7 @@ namespace Exercise1.Repository
 
         public void UpdateStudio(Studio studio)
         {
-            _movieContext.Studios.Attach(studio);
-            _movieContext.Entry(studio).State = EntityState.Modified;
+           
             _movieContext.SaveChanges();
         }
     }

@@ -9,7 +9,7 @@ namespace Exercise1.Models
 {
    public class Movie
     {
-        public int MovieID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public int Year { get; set; }
         public string Description { get; set; }

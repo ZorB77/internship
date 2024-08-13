@@ -42,34 +42,33 @@ namespace Exercise1.Repository
 
         public IEnumerable<Role> GetAllRoles()
         {
-            return _movieContext.Roles.Include("Movie").Include("Person").ToList();
+            return _movieContext.Roles.Include(r => r.Movie).Include(r => r.Person).ToList();
         }
 
         public Role GetRoleByID(int id)
         {
-            return _movieContext.Roles.Include("Movie").Include("Person").FirstOrDefault(r => r.RoleID == id);
+            return _movieContext.Roles.Include(r => r.Movie).Include(r => r.Person).FirstOrDefault(r => r.ID == id);
         }
 
         public Role GetRoleByName(string name)
         {
-            return _movieContext.Roles.Include("Movie").Include("Person").FirstOrDefault(r => r.Name.ToLower() == name.ToLower());
+            return _movieContext.Roles.Include(r => r.Movie).Include(r => r.Person).FirstOrDefault(r => r.Name.ToLower() == name.ToLower());
 
         }
 
         public Role GetRoleByPersonName(string firstName, string lastName)
         {
-            return _movieContext.Roles.Include("Movie").Include("Person").FirstOrDefault(r => r.Person.FirstName.ToLower() == firstName.ToLower()&& r.Person.LastName.ToLower() == lastName.ToLower());
-        }
+            return _movieContext.Roles.Include(r => r.Movie).Include(r => r.Person).Where(r => r.Person.FirstName == firstName && r.Person.LastName == lastName).FirstOrDefault();
 
-        public IEnumerable<Role> GetRolesByMovieName(string movieName)
+        }
+            public IEnumerable<Role> GetRolesByMovieName(string movieName)
         {
-            return _movieContext.Roles.Include("Movie").Include("Person").Where(r => r.Movie.Name.ToLower() == movieName.ToLower()).ToList();
+            return _movieContext.Roles.Include(r =>r.Movie).Include(r =>r.Person).Where(r => r.Movie.Name.ToLower() == movieName.ToLower()).ToList();
         }
 
         public void UpdateRole(Role role)
         {
-            _movieContext.Roles.Attach(role);
-            _movieContext.Entry(role).State = EntityState.Modified;
+           
             _movieContext.SaveChanges();
         }
     }

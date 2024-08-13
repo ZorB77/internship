@@ -34,7 +34,7 @@ namespace Exercise1.Services
                     Comment = Validation("Enter the comment ypu want to leave: "),
                     ReviewCreated = DateTime.Now,
                     ReviewerFirstName = Validation("Enter your first name: "),
-                    MovieId = movie.MovieID
+                    MovieId = movie.ID
                 };
                 _reviewRepository.AddReview(review);
                 Console.WriteLine("Your review was added");
@@ -48,7 +48,7 @@ namespace Exercise1.Services
             var reviews = _reviewRepository.GetAllReviews();
             foreach (var review in reviews)
             {
-                Console.WriteLine($"Id: {review.ReviewID}, rating:{review.Rating}, comment: {review.Comment}, movie: {review.Movie.Name}, Review created on {review.ReviewCreated}, FirsName of the reviewer: {review.ReviewerFirstName}");
+                Console.WriteLine($"Id: {review.ID}, rating:{review.Rating}, comment: {review.Comment}, movie: {review.Movie.Name}, Review created on {review.ReviewCreated}, FirsName of the reviewer: {review.ReviewerFirstName}");
             }
         }
 
@@ -64,6 +64,7 @@ namespace Exercise1.Services
         public void UpdateReview()
         {
             GetReviews();
+           
             int id = ValidationInt("Please enter the id of the review you want to update: ");
             var review = _reviewRepository.GetReviewById(id);
 
@@ -89,7 +90,7 @@ namespace Exercise1.Services
                     var movie = _movieRepository.GetMovie(newMovieName);
                     if (movie != null)
                     {
-                        review.MovieId = movie.MovieID;
+                        review.MovieId = movie.ID;
                     }
                     else
                     {
@@ -118,7 +119,7 @@ namespace Exercise1.Services
 
             foreach (var review in reviews)
             {
-                Console.WriteLine($"Id: {review.ReviewID}, rating:{review.Rating}, comment: {review.Comment}, movie: {review.Movie.Name}, review date: {review.ReviewCreated}");
+                Console.WriteLine($"Id: {review.ID}, rating:{review.Rating}, comment: {review.Comment}, movie: {review.Movie.Name}, review date: {review.ReviewCreated}");
             }
         }
         //filter reviews by rating

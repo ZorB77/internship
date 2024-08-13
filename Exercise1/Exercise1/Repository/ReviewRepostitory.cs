@@ -56,7 +56,7 @@ namespace Exercise1.Repository
 
         public Review GetReviewById(int id)
         {
-            return _movieContext.Reviews.Include(r => r.Movie).FirstOrDefault(r => r.ReviewID == id);
+            return _movieContext.Reviews.Include(r => r.Movie).FirstOrDefault(r => r.ID == id);
 
         }
 
@@ -67,8 +67,7 @@ namespace Exercise1.Repository
 
         public void UpdateReview(Review review)
         {
-            _movieContext.Reviews.Attach(review);
-            _movieContext.Entry(review).State = EntityState.Modified;
+         
             _movieContext.SaveChanges();
 
         }

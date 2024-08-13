@@ -43,8 +43,7 @@ namespace Exercise1.Repository
 
         public void UpdatePerson(Person person)
         {
-            _movieContext.Persons.Attach(person);
-            _movieContext.Entry(person).State = System.Data.Entity.EntityState.Modified;
+            
             _movieContext.SaveChanges();
         }
     }

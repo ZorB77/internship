@@ -47,12 +47,7 @@ namespace Exercise1.Repository
         //update method
         public void UpdateMovie(Movie movie)
         {
-            foreach (var studio in movie.Studios)
-            {
-              _context.Studios.Attach(studio);
-            }
-            _context.Movies.Attach(movie);
-            _context.Entry(movie).State = EntityState.Modified;
+       
             _context.SaveChanges();
         }
         // delete method

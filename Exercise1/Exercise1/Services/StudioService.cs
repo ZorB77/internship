@@ -1,4 +1,4 @@
-﻿using Exercise1.Migrations;
+﻿//using Exercise1.Migrations;
 using Exercise1.Models;
 using Exercise1.Repository;
 using System;
@@ -31,8 +31,7 @@ namespace Exercise1.Services
                 Movies = new List<Movie>()
 
             };
-
-            bool AddMovieForStudio = true;
+                var AddMovieForStudio = true;
             while (AddMovieForStudio)
             {
                 string movieName = Validation("Enter the movie name to associate with the studio: ");
@@ -79,7 +78,7 @@ namespace Exercise1.Services
 
             foreach (var studio in studios)
             {
-                Console.WriteLine($"Studio name: {studio.StudioName},Year: {studio.StudioYear},Location:{studio.StudioLocation},Studio id: {studio.StudioId}"); 
+                Console.WriteLine($"Studio name: {studio.StudioName},Year: {studio.StudioYear},Location:{studio.StudioLocation},Studio id: {studio.ID}"); 
                 foreach (var movie in studio.Movies)
                 {
                     Console.WriteLine($"For the studio: {studio.StudioName} there is : movie name: {movie.Name}");
@@ -90,7 +89,6 @@ namespace Exercise1.Services
         {
             GetAllStudios();
             int studio = ValidationInt("Enter the id of the studio you want to delete!");
-            _studioRepository.DeleteStudio(studio);
             Console.WriteLine("Studio deleted!");
         }
         public void UpdateStudios()

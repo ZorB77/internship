@@ -8,7 +8,7 @@ namespace Exercise1.Models
 {
     public class Role
     {
-        public int RoleID {  get; set; }
+        public int ID {  get; set; }
         public string Name { get; set; }
         //added two new fields
         public string RoleDescription { get; set; }

@@ -31,7 +31,7 @@ namespace Exercise1.Services
                 Genre = Validation("Enter movie genre: "),
                 Studios = new List<Studio>()
             };
-            bool AddNewStudio = true;
+            var AddNewStudio = true;
             while (AddNewStudio)
             {
                 string studioName = Validation("enter the studio name; ");
@@ -39,35 +39,34 @@ namespace Exercise1.Services
                 {
                     var studio = _studioRepository.GetStudio(studioName);
 
-                    if (studio == null)
+                    if (studio != null)
                     {
-                        Console.WriteLine("Studio not found. Do you want to add one y/n? ");
-                        if(Console.ReadLine()?.ToLower() == "y")
+                        Console.WriteLine($"Studio found {studio.StudioName}");
+                        string newLocation = Validation("Enter new location or leave empty to keep the current location: ");
+                        if (!string.IsNullOrWhiteSpace(newLocation))
                         {
-                            studio = new Studio
-                            {
-                                StudioName = studioName,
-                                StudioYear = ValidationInt("Enter the studio year: "),
-                                StudioLocation = Validation("Enter the studio location: "),
-                                Movies = new List<Movie>()
-                            };
-                            _studioRepository.AddStudio(studio);
-                            Console.WriteLine("Studio added!");
+                            studio.StudioLocation = newLocation;
                         }
-                        else
+                        string newYearInput = Validation("Enter new year or leave empty to keep the current year: ");
+                        if (int.TryParse(newYearInput, out int newYear) && newYear >= 1900 && newYear <= 2024)
                         {
-                            continue;
+                            studio.StudioYear = newYear;
                         }
+                        movie.Studios.Add(studio);
+                        Console.WriteLine($"Studio: {studio.StudioName} - movie: {movie.Name}");
                     }
-                    movie.Studios.Add(studio);
-                    Console.WriteLine($"Studio: {studio.StudioName} - movie: {movie.Name}");
+                    else
+                    {
+                        Console.WriteLine("Studio not found");
+                    }
                 }
-                Console.WriteLine("do you want to add another studio to the movie? y/n ");
+                   
+                Console.WriteLine("do you want to update another studio for the movie? y/n ");
 
                 AddNewStudio= Console.ReadLine()?.ToLower() == "y"; 
             }
             _movieRepository.AddMovie(movie);
-            Console.WriteLine("Movie added");
+            Console.WriteLine("Movie added with updated studio");
 
         }
         //get all movies
@@ -76,7 +75,7 @@ namespace Exercise1.Services
             var movies = _movieRepository.GetAllMovies();
             foreach(var movie in movies)
             {
-                Console.WriteLine($"Id: {movie.MovieID}, Name : {movie.Name}, Year: {movie.Year}, Description: {movie.Description}, Genre: {movie.Genre}");
+                Console.WriteLine($"Id: {movie.ID}, Name : {movie.Name}, Year: {movie.Year}, Description: {movie.Description}, Genre: {movie.Genre}");
                 foreach(var studio in movie.Studios)
                 {
                     Console.WriteLine($"For the movie: {movie.Name} There is: Studio: {studio.StudioName}, Location: {studio.StudioLocation}");

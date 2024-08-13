@@ -7,13 +7,13 @@ namespace Exercise1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class StudioMigration : IMigrationMetadata
+    public sealed partial class RefactorDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(StudioMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RefactorDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202408121207522_StudioMigration"; }
+            get { return "202408131519407_RefactorDb"; }
         }
         
         string IMigrationMetadata.Source
