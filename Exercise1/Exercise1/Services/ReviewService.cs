@@ -32,6 +32,8 @@ namespace Exercise1.Services
                 {
                     Rating = ValidationInt("Enter the rating between 1 and 10: ", 1, 10),
                     Comment = Validation("Enter the comment ypu want to leave: "),
+                    ReviewCreated = DateTime.Now,
+                    ReviewerFirstName = Validation("Enter your first name: "),
                     MovieId = movie.MovieID
                 };
                 _reviewRepository.AddReview(review);
@@ -46,7 +48,7 @@ namespace Exercise1.Services
             var reviews = _reviewRepository.GetAllReviews();
             foreach (var review in reviews)
             {
-                Console.WriteLine($"Id: {review.ReviewID}, rating:{review.Rating}, comment: {review.Comment}, movie: {review.Movie.Name}");
+                Console.WriteLine($"Id: {review.ReviewID}, rating:{review.Rating}, comment: {review.Comment}, movie: {review.Movie.Name}, Review created on {review.ReviewCreated}, FirsName of the reviewer: {review.ReviewerFirstName}");
             }
         }
 
@@ -94,6 +96,13 @@ namespace Exercise1.Services
                         Console.WriteLine("Movie not found. The movie will not be updated.");
                     }
                 }
+
+                Console.WriteLine("Enter new first name or leave empty to keep the current first name: ");
+                string newFirstName = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(newFirstName))
+                {
+                    review.ReviewerFirstName = newFirstName;
+                }
                 _reviewRepository.UpdateReview(review);
                 Console.WriteLine("The review was updated!");
 
@@ -109,7 +118,7 @@ namespace Exercise1.Services
 
             foreach (var review in reviews)
             {
-                Console.WriteLine($"Id: {review.ReviewID}, rating:{review.Rating}, comment: {review.Comment}, movie: {review.Movie.Name}");
+                Console.WriteLine($"Id: {review.ReviewID}, rating:{review.Rating}, comment: {review.Comment}, movie: {review.Movie.Name}, review date: {review.ReviewCreated}");
             }
         }
         //filter reviews by rating
@@ -123,7 +132,7 @@ namespace Exercise1.Services
                 Console.WriteLine("The movies are: ");
                 foreach(var review in reviews)
                 {
-                    Console.WriteLine($" Movie: {review.Movie.Name}, Year:{review.Movie.Year}, Description: {review.Movie.Description}, Rating: {review.Rating}");
+                    Console.WriteLine($" Movie: {review.Movie.Name}, Year:{review.Movie.Year}, Description: {review.Movie.Description}, Rating: {review.Rating}, Review date; {review.ReviewCreated}");
                 }
             }
         }
@@ -138,7 +147,7 @@ namespace Exercise1.Services
                 Console.WriteLine("The movies are: ");
                 foreach(var review in reviews)
                 {
-                    Console.WriteLine($"Name : {review.Movie.Name}, Year: {review.Movie.Year}, Description: {review.Movie.Description}, Rating: {review.Rating}, Comment: {review.Comment}");
+                    Console.WriteLine($"Name : {review.Movie.Name}, Year: {review.Movie.Year}, Description: {review.Movie.Description}, Rating: {review.Rating}, Comment: {review.Comment}, Reviewer's name: {review.ReviewerFirstName}");
                 }
             }
             else

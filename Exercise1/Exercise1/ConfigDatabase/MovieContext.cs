@@ -14,6 +14,7 @@ namespace Exercise1.ConfigDatabase
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Person> Persons { get; set; }
+        public DbSet<Studio> Studios { get; set; }
         public MovieContext() : base("name=MovieProject")
         {
         }
@@ -34,6 +35,9 @@ namespace Exercise1.ConfigDatabase
         .HasRequired(r => r.Person)   
         .WithRequiredDependent(p => p.Role);
 
+            modelBuilder.Entity<Movie>()
+                     .HasMany(m => m.Studios)
+                     .WithMany(s => s.Movies);
 
 
 

@@ -24,24 +24,33 @@ namespace Exercise1.Repository
 
         public IEnumerable<Movie> GetAllMovies()
         {
-            return _context.Movies.ToList();
+            return _context.Movies.Include(m => m.Studios).ToList();
         }
 
         //get movie by name
         public Movie GetMovie(string name)
         {
-            return _context.Movies.FirstOrDefault(m => m.Name.ToLower() == name.ToLower());
+            return _context.Movies.Include(m => m.Studios).FirstOrDefault(m => m.Name.ToLower() == name.ToLower());
         }
 
         //add movie method
         public void AddMovie(Movie movie)
         {
+            foreach (var studio in movie.Studios)
+            {
+                _context.Studios.Attach(studio);
+            }
             _context.Movies.Add(movie);
             _context.SaveChanges();
+
         }
         //update method
         public void UpdateMovie(Movie movie)
         {
+            foreach (var studio in movie.Studios)
+            {
+              _context.Studios.Attach(studio);
+            }
             _context.Movies.Attach(movie);
             _context.Entry(movie).State = EntityState.Modified;
             _context.SaveChanges();

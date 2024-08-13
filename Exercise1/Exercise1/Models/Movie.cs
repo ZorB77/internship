@@ -17,5 +17,7 @@ namespace Exercise1.Models
         public ICollection<Review> Reviews { get; set; }
         public ICollection<Role> Roles { get; set; }
 
+        public ICollection<Studio> Studios { get; set; } = new List<Studio>();
+
     }
 }

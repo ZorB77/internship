@@ -26,8 +26,8 @@ namespace Exercise1.Services
                 LastName = Validation("Enter the last name of the person: "),
                 Email = Validation("Enter the email of the person: ")
             };
-            Console.Write("Enter the birthday of the person (yyyy-MM-dd): ");
-            person.Birthday = DateTime.Parse(Console.ReadLine());
+            /*Console.Write("Enter the birthday of the person (yyyy-MM-dd): ");
+            person.Birthday = DateTime.Parse(Console.ReadLine());*/
 
             _personRepository.AddPerson(person);
             Console.WriteLine("Person added!");
@@ -38,7 +38,7 @@ namespace Exercise1.Services
             var persons = _personRepository.GetAllPersons();
             foreach (var person in persons)
             {
-                Console.WriteLine($"First name: {person.FirstName}, Last name: {person.LastName}, Birthday: {person.Birthday}, Email: {person.Email}"); 
+                Console.WriteLine($"First name: {person.FirstName}, Last name: {person.LastName}, Email: {person.Email}"); 
             }
         }
         public void DeleteAnyPerson()
@@ -70,12 +70,12 @@ namespace Exercise1.Services
                     person.LastName = newLastName;
                 }
 
-                Console.WriteLine("Enter new birthday (YYYY-MM-DD)or leave empty to keep the current birthday: ");
+               /* Console.WriteLine("Enter new birthday (YYYY-MM-DD)or leave empty to keep the current birthday: ");
                 string newBirthday = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(newBirthday))
                 {
                     person.Birthday = DateTime.Parse(newBirthday); 
-                }
+                }*/
                 Console.WriteLine("Enter new email or leave empty to keep the current email: ");
                 string newEmail = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(newEmail))

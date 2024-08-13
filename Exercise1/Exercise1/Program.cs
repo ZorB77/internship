@@ -21,14 +21,17 @@ class Program
                 context.Database.Create();
                 Console.WriteLine("database created!");
             }
+            var studioRespository = new StudioRepository(context);
             var movieRepository = new MovieRepository(context);
-            var movieService = new MovieService(movieRepository);
+            var movieService = new MovieService(movieRepository,studioRespository);
             var personRepository = new PersonRepository(context);
             var personService = new PersonService(personRepository);
             var reviewRepository = new ReviewRepostitory(context);
             var reviewService = new ReviewService(reviewRepository,movieRepository);
             var roleRepository = new RoleRepository(context);
             var roleService = new RoleService(roleRepository,movieRepository,personRepository);
+           
+            var studioService = new StudioService(studioRespository, movieRepository);
 
             bool exit = false;
             while (!exit)
@@ -69,7 +72,13 @@ class Program
                 Console.WriteLine("28. The Average of the reviews.");
                 Console.WriteLine("29. Top Ten Movies by rating.");
                 Console.WriteLine();
-                Console.WriteLine("30. Exit");
+                Console.WriteLine("30. Add Studio");
+                Console.WriteLine("31. See All Studios");
+                Console.WriteLine("32. Delete Studio");
+                Console.WriteLine("33. Update Studio");
+                Console.WriteLine();
+
+                Console.WriteLine("34. Exit");
 
                 switch (Console.ReadLine())
                 {
@@ -161,6 +170,18 @@ class Program
                         movieService.GetTopTenMovies();
                         break;
                     case "30":
+                        studioService.AddNewStudio();
+                        break;
+                    case "31":
+                       studioService.GetAllStudios();
+                        break;
+                    case "32":
+                        studioService.DeleteStudios();
+                        break;
+                    case "33":
+                        studioService.UpdateStudios();
+                        break;
+                    case "34":
                         exit = true;
                         break;
                     default:

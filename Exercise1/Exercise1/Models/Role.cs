@@ -10,6 +10,9 @@ namespace Exercise1.Models
     {
         public int RoleID {  get; set; }
         public string Name { get; set; }
+        //added two new fields
+        public string RoleDescription { get; set; }
+        public int MovieAppereances {  get; set; }
         public int MovieId { get; set; }  
         public  Movie Movie { get; set; }
         public Person Person { get; set; }

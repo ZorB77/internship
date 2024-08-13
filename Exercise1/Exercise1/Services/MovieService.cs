@@ -13,10 +13,12 @@ namespace Exercise1.Services
     public class MovieService
     {
         private readonly IMovieRepository _movieRepository;
+        private readonly IStudioRepository _studioRepository;
 
-        public MovieService(IMovieRepository movieRepository)
+        public MovieService(IMovieRepository movieRepository, IStudioRepository studioRepository)
         {
             _movieRepository = movieRepository;
+            _studioRepository = studioRepository;
         }
         //add movie
         public void AddNewMovie()
@@ -26,10 +28,46 @@ namespace Exercise1.Services
                 Name = Validation("Enter the movie name: "),
                 Year = ValidationInt("Enter movie year: ", 1900, 2024),
                 Description = Validation("Enter movie descrption: "),
-                Genre = Validation("Enter movie genre: ")
+                Genre = Validation("Enter movie genre: "),
+                Studios = new List<Studio>()
             };
+            bool AddNewStudio = true;
+            while (AddNewStudio)
+            {
+                string studioName = Validation("enter the studio name; ");
+                if (!string.IsNullOrWhiteSpace(studioName))
+                {
+                    var studio = _studioRepository.GetStudio(studioName);
+
+                    if (studio == null)
+                    {
+                        Console.WriteLine("Studio not found. Do you want to add one y/n? ");
+                        if(Console.ReadLine()?.ToLower() == "y")
+                        {
+                            studio = new Studio
+                            {
+                                StudioName = studioName,
+                                StudioYear = ValidationInt("Enter the studio year: "),
+                                StudioLocation = Validation("Enter the studio location: "),
+                                Movies = new List<Movie>()
+                            };
+                            _studioRepository.AddStudio(studio);
+                            Console.WriteLine("Studio added!");
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    movie.Studios.Add(studio);
+                    Console.WriteLine($"Studio: {studio.StudioName} - movie: {movie.Name}");
+                }
+                Console.WriteLine("do you want to add another studio to the movie? y/n ");
+
+                AddNewStudio= Console.ReadLine()?.ToLower() == "y"; 
+            }
             _movieRepository.AddMovie(movie);
-            Console.WriteLine("Movie saved in the database!");
+            Console.WriteLine("Movie added");
 
         }
         //get all movies
@@ -39,7 +77,10 @@ namespace Exercise1.Services
             foreach(var movie in movies)
             {
                 Console.WriteLine($"Id: {movie.MovieID}, Name : {movie.Name}, Year: {movie.Year}, Description: {movie.Description}, Genre: {movie.Genre}");
-
+                foreach(var studio in movie.Studios)
+                {
+                    Console.WriteLine($"For the movie: {movie.Name} There is: Studio: {studio.StudioName}, Location: {studio.StudioLocation}");
+                }
             }
         }
         //uodate the movies

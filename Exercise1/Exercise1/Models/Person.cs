@@ -12,7 +12,9 @@ namespace Exercise1.Models
         public int PersonID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime Birthday { get; set; }
+
+        //deleted field - public DateTime Birthday 
+      
         public string Email { get; set; }
         public Role Role { get; set; }
     }
