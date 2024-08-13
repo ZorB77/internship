@@ -16,7 +16,7 @@
     <Compile Update="Forms\EditMovieForm\EditMovieForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\EditPersonForm.cs">
+    <Compile Update="Forms\EditPersonForm\EditPersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FilterForm\FilterForm.cs">

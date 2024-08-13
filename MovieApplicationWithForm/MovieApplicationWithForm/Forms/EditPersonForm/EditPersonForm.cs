@@ -33,7 +33,7 @@ namespace MovieApplicationWithForm.Forms
             dateTimePicker1.Value = person.birthdate;
         }
 
-        private void buttonEditPerson_Click(object sender, EventArgs e)
+        private void buttonUpdatePerson_Click_1(object sender, EventArgs e)
         {
             person.firstName = textBoxFirstName.Text;
             person.lastName = textBoxLastName.Text;
@@ -46,10 +46,9 @@ namespace MovieApplicationWithForm.Forms
             MessageBox.Show("Person updated successfully!");
             personUpdated.Invoke();
             this.Close();
-
         }
 
-        private void buttonDeletePerson_Click(object sender, EventArgs e)
+        private void buttonDeletePerson_Click_1(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you want to delete this person?", "Delete Person", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)

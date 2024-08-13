@@ -283,3 +283,4 @@ C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplica
 C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\ref\MovieApplicationWithForm.dll
 C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.Forms.StudioAndDistributionForm.StudioAndDistributionForm.resources
 C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.Forms.EditMovieForm.EditMovieForm.resources
+C:\Users\admin\Documents\GitHub\internship\MovieApplicationWithForm\MovieApplicationWithForm\obj\Debug\net8.0-windows\MovieApplicationWithForm.Forms.EditPersonForm.resources

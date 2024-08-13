@@ -102,6 +102,7 @@
             buttonUpdatePerson.TabIndex = 6;
             buttonUpdatePerson.Text = "Update Person";
             buttonUpdatePerson.UseVisualStyleBackColor = true;
+            buttonUpdatePerson.Click += buttonUpdatePerson_Click_1;
             // 
             // buttonDeletePerson
             // 
@@ -111,6 +112,7 @@
             buttonDeletePerson.TabIndex = 7;
             buttonDeletePerson.Text = "Delete Person";
             buttonDeletePerson.UseVisualStyleBackColor = true;
+            buttonDeletePerson.Click += buttonDeletePerson_Click_1;
             // 
             // textBoxFirstName
             // 
