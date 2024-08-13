@@ -44,7 +44,7 @@ namespace MovieApp.Services
 
         public Movie GetMovieById(int id)
         {
-            return _context.Movies.FirstOrDefault(m => m.MovieID == id);
+            return _context.Movies.FirstOrDefault(m => m.ID == id);
         }
 
         public bool DeleteMovie(int id)
@@ -62,7 +62,7 @@ namespace MovieApp.Services
 
         public bool UpdateMovie(int movieId, string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
         {
-            Movie movie = _context.Movies.FirstOrDefault(m => m.MovieID == movieId);
+            Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
 
             if (movie != null)
             {
@@ -90,7 +90,7 @@ namespace MovieApp.Services
             {
                 foreach (Movie movie in movies)
                 {
-                    stringBuilder.AppendLine($"{movie.MovieID}. {movie.Title}");
+                    stringBuilder.AppendLine($"{movie.ID}. {movie.Title}");
                 }
             }
             else
@@ -112,7 +112,7 @@ namespace MovieApp.Services
             {
                 foreach (Movie movie in movies)
                 {
-                    stringBuilder.AppendLine($"{movie.MovieID}. {movie.Title}, {movie.ReleaseDate.ToString("yyyy-MM-dd")}");
+                    stringBuilder.AppendLine($"{movie.ID}. {movie.Title}, {movie.ReleaseDate.ToString("yyyy-MM-dd")}");
                 }
             }
             else

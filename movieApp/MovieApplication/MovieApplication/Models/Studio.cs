@@ -2,7 +2,7 @@
 {
     public class Studio
     {
-        public int StudioID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public DateTime Year { get; set; }
         public string Locatiton { get; set; }

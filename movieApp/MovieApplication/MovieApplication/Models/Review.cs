@@ -4,7 +4,7 @@ namespace MovieApp.Models
 {
     public class Review
     {
-        public int ReviewID { get; set; }
+        public int ID { get; set; }
         public double Rating { get; set; }
         public string Comment { get; set; }
         public DateTime ReviewDate { get; set; }

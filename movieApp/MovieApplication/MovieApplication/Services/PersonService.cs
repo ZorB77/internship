@@ -40,7 +40,7 @@ namespace MovieApp.Services
 
         public Person GetPersonById(int id)
         {
-            return _context.Persons.FirstOrDefault(p => p.PersonID == id);
+            return _context.Persons.FirstOrDefault(p => p.ID == id);
         }
 
         public bool DeletePerson(int id)
@@ -58,7 +58,7 @@ namespace MovieApp.Services
 
         public bool UpdatePerson(int personId, string firstName, string lastName, DateTime birthday)
         {
-            Person person = _context.Persons.FirstOrDefault(p => p.PersonID == personId);
+            Person person = _context.Persons.FirstOrDefault(p => p.ID == personId);
 
             if (person != null)
             {

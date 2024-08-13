@@ -15,8 +15,8 @@ namespace MovieApplication.Services
 
         public bool AddRole(int movieId, int personId, string name)
         {
-            Movie movie = _context.Movies.FirstOrDefault(m => m.MovieID == movieId);
-            Person person = _context.Persons.FirstOrDefault(p => p.PersonID == personId);
+            Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
+            Person person = _context.Persons.FirstOrDefault(p => p.ID == personId);
 
             try
             {
@@ -47,12 +47,12 @@ namespace MovieApplication.Services
 
             public Role GetRoleById(int id)
             {
-                return _context.Roles.FirstOrDefault(r => r.RoleID == id);
+                return _context.Roles.FirstOrDefault(r => r.ID == id);
             }
 
             public bool DeleteRole(int id)
             {
-                var role = _context.Roles.FirstOrDefault(r => r.RoleID == id);
+                var role = _context.Roles.FirstOrDefault(r => r.ID == id);
 
                 if (role != null)
                 {
@@ -66,9 +66,9 @@ namespace MovieApplication.Services
 
             public bool UpdateRole(int roleId, int movieId, int personId, string name)
             {
-                Role role = _context.Roles.FirstOrDefault(r => r.RoleID == roleId);
-                Movie movie = _context.Movies.FirstOrDefault(m => m.MovieID == movieId);
-                Person person = _context.Persons.FirstOrDefault(p => p.PersonID == personId);
+                Role role = _context.Roles.FirstOrDefault(r => r.ID == roleId);
+                Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
+                Person person = _context.Persons.FirstOrDefault(p => p.ID == personId);
 
                 if (role != null)
                 {

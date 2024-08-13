@@ -17,7 +17,7 @@ namespace MovieApplication.Services
 
         public bool AddReview(int movieId, double rating, string comment, DateTime reviewDate, string reviewerName)
         {
-            Movie movie = _context.Movies.FirstOrDefault(m => m.MovieID == movieId);
+            Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
 
             try
             {
@@ -49,7 +49,7 @@ namespace MovieApplication.Services
 
         public Review GetReviewById(int id)
         {
-            return _context.Reviews.FirstOrDefault(r => r.ReviewID == id);
+            return _context.Reviews.FirstOrDefault(r => r.ID == id);
         }
 
         public bool DeleteReview(int id)
@@ -67,7 +67,7 @@ namespace MovieApplication.Services
 
         public bool UpdateReview(int reviewId, double rating, string comment, DateTime reviewDate, string reviewerName)
         {
-            var review = _context.Reviews.FirstOrDefault(r => r.ReviewID == reviewId);
+            var review = _context.Reviews.FirstOrDefault(r => r.ID == reviewId);
 
             if (review != null)
             {
@@ -93,7 +93,7 @@ namespace MovieApplication.Services
             {
                 foreach (Review review in reviews)
                 {
-                        stringBuilder.AppendLine($"{review.ReviewID}. {review.Movies.Title}: {review.Comment}");
+                        stringBuilder.AppendLine($"{review.ID}. {review.Movies.Title}: {review.Comment}");
                 }
             }
             else
@@ -106,7 +106,7 @@ namespace MovieApplication.Services
 
         public int AverageRatingForGivenMovie(int movieId)
         {
-            Movie movie = _context.Movies.FirstOrDefault(m => m.MovieID == movieId);
+            Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
             var reviews = _context.Reviews.Where(r => r.Movies == movie);
 
             if (reviews.Any())

@@ -72,7 +72,7 @@ namespace MovieApplication.Services
 
         public bool UpdateMovieStudioAssociation(int movieStudioId, int movieId, int studioId)
         {
-            MovieStudio movieStudio = _context.MovieStudios.FirstOrDefault(ms => ms.MovieStudioID == movieStudioId);
+            MovieStudio movieStudio = _context.MovieStudios.FirstOrDefault(ms => ms.ID == movieStudioId);
 
             if (movieStudio != null)
             {

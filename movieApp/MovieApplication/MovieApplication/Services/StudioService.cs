@@ -40,7 +40,7 @@ namespace MovieApplication.Services
 
         public Studio GetStudioById(int id)
         {
-            return _context.Studios.FirstOrDefault(m => m.StudioID == id);
+            return _context.Studios.FirstOrDefault(m => m.ID == id);
         }
 
         public bool DeleteStudio(int id)
@@ -58,7 +58,7 @@ namespace MovieApplication.Services
 
         public bool UpdateStudio(int studioId, string name, DateTime year, string location)
         {
-            Studio studio = _context.Studios.FirstOrDefault(s => s.StudioID == studioId);
+            Studio studio = _context.Studios.FirstOrDefault(s => s.ID == studioId);
 
             if (studio != null)
             {
