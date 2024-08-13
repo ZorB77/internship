@@ -32,6 +32,7 @@
             label1 = new Label();
             viewMoviesBtn = new Button();
             viewPeopleBtn = new Button();
+            viewStudiosBtn = new Button();
             SuspendLayout();
             // 
             // topTenMoviesList
@@ -72,11 +73,22 @@
             viewPeopleBtn.UseVisualStyleBackColor = true;
             viewPeopleBtn.Click += viewPeopleBtn_Click;
             // 
+            // viewStudiosBtn
+            // 
+            viewStudiosBtn.Location = new Point(12, 313);
+            viewStudiosBtn.Name = "viewStudiosBtn";
+            viewStudiosBtn.Size = new Size(126, 56);
+            viewStudiosBtn.TabIndex = 21;
+            viewStudiosBtn.Text = "View Studios";
+            viewStudiosBtn.UseVisualStyleBackColor = true;
+            viewStudiosBtn.Click += viewStudiosBtn_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(291, 322);
+            ClientSize = new Size(291, 385);
+            Controls.Add(viewStudiosBtn);
             Controls.Add(viewPeopleBtn);
             Controls.Add(viewMoviesBtn);
             Controls.Add(label1);
@@ -94,5 +106,6 @@
         private Label label1;
         private Button viewMoviesBtn;
         private Button viewPeopleBtn;
+        private Button viewStudiosBtn;
     }
 }

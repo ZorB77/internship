@@ -14,6 +14,7 @@ namespace MovieWinForms
         public DbSet<Person> People { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Studio> Studios { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=MovieDBEF;Integrated Security=True;TrustServerCertificate=True");

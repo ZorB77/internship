@@ -56,6 +56,7 @@
             sortByBoxInput = new ComboBox();
             sortSubmitBtn = new Button();
             deleteMovieBtn = new Button();
+            editStudiosBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -329,11 +330,22 @@
             deleteMovieBtn.UseVisualStyleBackColor = true;
             deleteMovieBtn.Click += deleteMovieBtn_Click;
             // 
+            // editStudiosBtn
+            // 
+            editStudiosBtn.Location = new Point(663, 383);
+            editStudiosBtn.Name = "editStudiosBtn";
+            editStudiosBtn.Size = new Size(122, 35);
+            editStudiosBtn.TabIndex = 35;
+            editStudiosBtn.Text = "Edit Studios";
+            editStudiosBtn.UseVisualStyleBackColor = true;
+            editStudiosBtn.Click += editStudiosBtn_Click;
+            // 
             // Movies
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(editStudiosBtn);
             Controls.Add(deleteMovieBtn);
             Controls.Add(sortSubmitBtn);
             Controls.Add(sortByBoxInput);
@@ -398,5 +410,6 @@
         private ComboBox sortByBoxInput;
         private Button sortSubmitBtn;
         private Button deleteMovieBtn;
+        private Button editStudiosBtn;
     }
 }

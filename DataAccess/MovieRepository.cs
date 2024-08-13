@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MovieWinForms;
 using MovieWinForms.Models;
 namespace MovieWinForms.DataAccess
@@ -18,7 +19,7 @@ namespace MovieWinForms.DataAccess
         }
         public static List<Movie> GetMovies()
         {
-            var movies = _context.Movies.ToList();
+            var movies = _context.Movies.Include(m => m.Studios).ToList();
             return movies;
         }
         public static List<Movie> GetMoviesInRange(DateTime start, DateTime end)
@@ -70,6 +71,7 @@ namespace MovieWinForms.DataAccess
                 .ToList();
             return movies;
         }
+
         public static Movie GetMovieById(int id)
         {
             return _context.Movies.Where(m => m.Id == id).FirstOrDefault();

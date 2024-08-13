@@ -62,7 +62,7 @@ namespace MovieWinForms.DataAccess
             person.FirstName = newPerson.FirstName;
             person.LastName = newPerson.LastName;
             person.Birthdate = newPerson.Birthdate;
-            person.Email = newPerson.Email ?? person.Email;
+            //person.Email = newPerson.Email ?? person.Email;
             _context.Update(person);
             _context.SaveChanges();
         }

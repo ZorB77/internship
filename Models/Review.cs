@@ -13,6 +13,7 @@ namespace MovieWinForms.Models
         [Column(TypeName = "decimal(5, 2)")]
         public decimal Rating { get; set; }
         public string Comment { get; set; }
+        public DateTime CreationDate { get; set; }
         public Movie Movie { get; set; }
     }
 }

@@ -35,8 +35,6 @@
             label3 = new Label();
             birthDateInput = new MonthCalendar();
             label4 = new Label();
-            label5 = new Label();
-            emailInput = new TextBox();
             addPersonBtn = new Button();
             SuspendLayout();
             // 
@@ -104,26 +102,9 @@
             label4.TabIndex = 15;
             label4.Text = "Birthdate";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(47, 341);
-            label5.Name = "label5";
-            label5.Size = new Size(45, 20);
-            label5.TabIndex = 17;
-            label5.Text = "Email";
-            // 
-            // emailInput
-            // 
-            emailInput.Location = new Point(104, 338);
-            emailInput.Name = "emailInput";
-            emailInput.Size = new Size(262, 27);
-            emailInput.TabIndex = 16;
-            // 
             // addPersonBtn
             // 
-            addPersonBtn.Location = new Point(262, 371);
+            addPersonBtn.Location = new Point(262, 338);
             addPersonBtn.Name = "addPersonBtn";
             addPersonBtn.Size = new Size(104, 56);
             addPersonBtn.TabIndex = 18;
@@ -135,10 +116,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(394, 450);
+            ClientSize = new Size(394, 404);
             Controls.Add(addPersonBtn);
-            Controls.Add(label5);
-            Controls.Add(emailInput);
             Controls.Add(label4);
             Controls.Add(birthDateInput);
             Controls.Add(label3);
@@ -161,8 +140,6 @@
         private Label label3;
         private MonthCalendar birthDateInput;
         private Label label4;
-        private Label label5;
-        private TextBox emailInput;
         private Button addPersonBtn;
     }
 }

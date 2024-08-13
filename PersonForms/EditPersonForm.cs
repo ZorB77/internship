@@ -27,7 +27,7 @@ namespace MovieWinForms.PersonForms
             firstNameInput.Text = _person.FirstName;
             lastNameInput.Text = _person.LastName;
             birthDateInput.SetDate(_person.Birthdate);
-            emailInput.Text = _person.Email;
+            //emailInput.Text = _person.Email;
         }
 
         private void saveChangesBtn_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace MovieWinForms.PersonForms
             _person.FirstName = firstNameInput.Text;
             _person.LastName = lastNameInput.Text;
             _person.Birthdate = DateTime.Parse(birthDateInput.SelectionRange.Start.ToString());
-            _person.Email = emailInput.Text;
+            //_person.Email = emailInput.Text;
             PeopleRepository.UpdatePerson(_person.Id, _person);
             MessageBox.Show("Person updated successfully!");
             this.Hide();

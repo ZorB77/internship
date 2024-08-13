@@ -25,7 +25,7 @@ namespace MovieWinForms.PersonForms
             var person = new Person();
             person.FirstName = firstNameInput.Text;
             person.LastName = lastNameInput.Text;
-            person.Email = emailInput.Text;
+            //person.Email = emailInput.Text;
             person.Birthdate = DateTime.Parse(birthDateInput.SelectionRange.Start.ToString());
             PeopleRepository.CreatePerson(person);
             MessageBox.Show("Person added successfully!");

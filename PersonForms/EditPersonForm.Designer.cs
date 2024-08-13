@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             saveChangesBtn = new Button();
-            label5 = new Label();
-            emailInput = new TextBox();
             label4 = new Label();
             birthDateInput = new MonthCalendar();
             label3 = new Label();
@@ -42,30 +40,13 @@
             // 
             // saveChangesBtn
             // 
-            saveChangesBtn.Location = new Point(262, 371);
+            saveChangesBtn.Location = new Point(262, 338);
             saveChangesBtn.Name = "saveChangesBtn";
             saveChangesBtn.Size = new Size(104, 56);
             saveChangesBtn.TabIndex = 28;
             saveChangesBtn.Text = "Save changes";
             saveChangesBtn.UseVisualStyleBackColor = true;
             saveChangesBtn.Click += saveChangesBtn_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(47, 341);
-            label5.Name = "label5";
-            label5.Size = new Size(45, 20);
-            label5.TabIndex = 27;
-            label5.Text = "Email";
-            // 
-            // emailInput
-            // 
-            emailInput.Location = new Point(104, 338);
-            emailInput.Name = "emailInput";
-            emailInput.Size = new Size(262, 27);
-            emailInput.TabIndex = 26;
             // 
             // label4
             // 
@@ -135,10 +116,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(401, 450);
+            ClientSize = new Size(401, 406);
             Controls.Add(saveChangesBtn);
-            Controls.Add(label5);
-            Controls.Add(emailInput);
             Controls.Add(label4);
             Controls.Add(birthDateInput);
             Controls.Add(label3);
@@ -156,8 +135,6 @@
         #endregion
 
         private Button saveChangesBtn;
-        private Label label5;
-        private TextBox emailInput;
         private Label label4;
         private MonthCalendar birthDateInput;
         private Label label3;

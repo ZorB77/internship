@@ -11,7 +11,9 @@ namespace MovieWinForms.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Year { get; set; }
+        public string Director {  get; set; }
         public string Description { get; set; }
         public string Genre { get; set; }
+        public virtual ICollection<Studio> Studios { get; set; }
     }
 }

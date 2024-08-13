@@ -1,7 +1,9 @@
 ﻿using MovieWinForms.DataAccess;
 using MovieWinForms.Models;
+using MovieWinForms.MovieForms;
 using MovieWinForms.ReviewForms;
 using MovieWinForms.RoleForms;
+using MovieWinForms.StudioForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -122,6 +124,15 @@ namespace MovieWinForms
             {
                 this.OnLoad(e);
             }
+        }
+
+        private void editStudiosBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var selectedMovie = movieList.SelectedItem as Movie;
+            var movieStudiosForm = new MovieStudiosForm(selectedMovie.Id);
+            movieStudiosForm.Show();
+            movieStudiosForm.Closed += (s, args) => this.Close();
         }
     }
 }

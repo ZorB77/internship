@@ -1,6 +1,8 @@
-﻿using MovieWinForms.DataAccess;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MovieWinForms.DataAccess;
 using MovieWinForms.Models;
 using MovieWinForms.PersonForms;
+using MovieWinForms.StudioForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +39,13 @@ namespace MovieWinForms
         {
             topTenMoviesList.DataSource = MovieRepository.GetTopTenMovies();
             topTenMoviesList.DisplayMember = "Name";
+        }
+
+        private void viewStudiosBtn_Click(object sender, EventArgs e)
+        {
+            Form studiosForm = new StudiosForm();
+            studiosForm.ShowDialog();
+
         }
     }
 }
