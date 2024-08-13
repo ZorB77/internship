@@ -15,8 +15,8 @@ namespace MovieApplication.Services
 
         public bool AddRole(int movieId, int personId, string name)
         {
-            Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
-            Person person = _context.Persons.FirstOrDefault(p => p.ID == personId);
+            var movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
+            var person = _context.Persons.FirstOrDefault(p => p.ID == personId);
 
             try
             {
@@ -66,9 +66,9 @@ namespace MovieApplication.Services
 
             public bool UpdateRole(int roleId, int movieId, int personId, string name)
             {
-                Role role = _context.Roles.FirstOrDefault(r => r.ID == roleId);
-                Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
-                Person person = _context.Persons.FirstOrDefault(p => p.ID == personId);
+                var role = _context.Roles.FirstOrDefault(r => r.ID == roleId);
+                var movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
+                var person = _context.Persons.FirstOrDefault(p => p.ID == personId);
 
                 if (role != null)
                 {

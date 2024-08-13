@@ -58,7 +58,7 @@ namespace MovieApp.Services
 
         public bool UpdatePerson(int personId, string firstName, string lastName, DateTime birthday)
         {
-            Person person = _context.Persons.FirstOrDefault(p => p.ID == personId);
+            var person = _context.Persons.FirstOrDefault(p => p.ID == personId);
 
             if (person != null)
             {

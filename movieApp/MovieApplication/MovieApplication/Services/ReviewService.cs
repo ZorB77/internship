@@ -17,7 +17,7 @@ namespace MovieApplication.Services
 
         public bool AddReview(int movieId, double rating, string comment, DateTime reviewDate, string reviewerName)
         {
-            Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
+            var movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
 
             try
             {
@@ -84,7 +84,7 @@ namespace MovieApplication.Services
 
         public string FilterReviewByRating(double rating)
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
 
             List<Review> reviews = _context.Reviews.Include(r => r.Movies).Where(r => r.Rating == rating).ToList();
@@ -106,7 +106,7 @@ namespace MovieApplication.Services
 
         public int AverageRatingForGivenMovie(int movieId)
         {
-            Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
+            var movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
             var reviews = _context.Reviews.Where(r => r.Movies == movie);
 
             if (reviews.Any())

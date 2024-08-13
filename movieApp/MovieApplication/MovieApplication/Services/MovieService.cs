@@ -62,7 +62,7 @@ namespace MovieApp.Services
 
         public bool UpdateMovie(int movieId, string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
         {
-            Movie movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
+            var movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
 
             if (movie != null)
             {
@@ -81,7 +81,7 @@ namespace MovieApp.Services
 
         public string FilterMoviesByGenre(string genre)
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
 
             List<Movie> movies = _context.Movies.Where(m => m.Genre == genre).ToList();
@@ -103,7 +103,7 @@ namespace MovieApp.Services
 
         public string FilterMoviesByYear(int year)
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
 
             List<Movie> movies = _context.Movies.Where(m => m.ReleaseDate.Year == year).ToList();
@@ -125,7 +125,7 @@ namespace MovieApp.Services
 
         public string FilterMoviesByDateInterval(DateTime year1, DateTime year2)
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
 
             foreach (Movie movie in _context.Movies)

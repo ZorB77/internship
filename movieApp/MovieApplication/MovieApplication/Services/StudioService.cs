@@ -58,7 +58,7 @@ namespace MovieApplication.Services
 
         public bool UpdateStudio(int studioId, string name, DateTime year, string location)
         {
-            Studio studio = _context.Studios.FirstOrDefault(s => s.ID == studioId);
+            var studio = _context.Studios.FirstOrDefault(s => s.ID == studioId);
 
             if (studio != null)
             {

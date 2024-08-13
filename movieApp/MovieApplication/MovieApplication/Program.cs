@@ -119,7 +119,7 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter the movie id: ");
                                 int movieId = int.Parse(Console.ReadLine());
 
-                                Movie movie = movieService.GetMovieById(movieId);
+                                var movie = movieService.GetMovieById(movieId);
 
                                 if (movieId != null)
                                 {
@@ -271,7 +271,7 @@ namespace MovieApp
                             case "3":
                                 Console.WriteLine("\nEnter the person id: ");
                                 int personId = int.Parse(Console.ReadLine());
-                                Person person = personService.GetPersonById(personId);
+                                var person = personService.GetPersonById(personId);
 
                                 if (personId != null)
                                 {
@@ -395,7 +395,7 @@ namespace MovieApp
                             case "3":
                                 Console.WriteLine("\nEnter the review id: ");
                                 int reviewId = int.Parse(Console.ReadLine());
-                                Review review = reviewService.GetReviewById(reviewId);
+                                var review = reviewService.GetReviewById(reviewId);
 
                                 if (review != null)
                                 {
@@ -538,7 +538,7 @@ namespace MovieApp
                             case "3":
                                 Console.WriteLine("\nEnter the role id: ");
                                 int roleId = int.Parse(Console.ReadLine());
-                                Role role = roleService.GetRoleById(roleId);
+                                var role = roleService.GetRoleById(roleId);
 
                                 if (roleId != null)
                                 {
@@ -640,7 +640,7 @@ namespace MovieApp
                             case "3":
                                 Console.WriteLine("\nEnter the studio id: ");
                                 int studioId = int.Parse(Console.ReadLine());
-                                Studio studio = studioService.GetStudioById(studioId);
+                                var studio = studioService.GetStudioById(studioId);
 
                                 if (studio != null)
                                 {
