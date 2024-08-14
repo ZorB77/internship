@@ -156,6 +156,7 @@
             dataGridViewRoles.RowHeadersWidth = 51;
             dataGridViewRoles.Size = new Size(553, 223);
             dataGridViewRoles.TabIndex = 3;
+            dataGridViewRoles.CellContentClick += dataGridViewRoles_CellContentClick;
             // 
             // roleIDDataGridViewTextBoxColumn
             // 

@@ -1,0 +1,275 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\visualstudio.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\visualstudio.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\services\\distributionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\services\\distributionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\controllers\\distributionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\controllers\\distributionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\services\\roleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\services\\roleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\controllers\\studioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\controllers\\studioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\services\\studioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\services\\studioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\services\\movieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\services\\movieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\services\\peopleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\services\\peopleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|c:\\users\\admin\\documents\\github\\internship\\movieapplicationwebapi\\movieapplicationwebapi\\models\\studio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EDF642F-F9D4-40A4-AB9D-10F20DD76AFE}|MovieApplicationWebAPI\\MovieApplicationWebAPI.csproj|solutionrelative:movieapplicationwebapi\\models\\studio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VisualStudio.gitignore",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\VisualStudio.gitignore",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\VisualStudio.gitignore",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\VisualStudio.gitignore",
+              "RelativeToolTip": "MovieApplicationWebAPI\\VisualStudio.gitignore",
+              "ViewState": "AQIAAEcBAAAAAAAAAAAiwI0BAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-14T13:52:05.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DistributionsController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\DistributionsController.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Controllers\\DistributionsController.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\DistributionsController.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Controllers\\DistributionsController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAADsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T13:41:13.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DistributionService.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\DistributionService.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Services\\DistributionService.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\DistributionService.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Services\\DistributionService.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAqwDIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T13:37:25.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StudiosController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\StudiosController.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Controllers\\StudiosController.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\StudiosController.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Controllers\\StudiosController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T13:22:10.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StudioService.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\StudioService.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Services\\StudioService.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\StudioService.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Services\\StudioService.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAiwCwAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T13:19:42.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Controllers\\RolesController.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Controllers\\RolesController.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAAAD4AAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T12:51:14.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoleService.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\RoleService.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Services\\RoleService.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\RoleService.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Services\\RoleService.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAAACsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T12:59:44.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ReviewsController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\ReviewsController.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Controllers\\ReviewsController.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\ReviewsController.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Controllers\\ReviewsController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAiwDoAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T12:44:31.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ReviewService.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\ReviewService.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Services\\ReviewService.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\ReviewService.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Services\\ReviewService.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T12:40:08.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PeopleService.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\PeopleService.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Services\\PeopleService.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Services\\PeopleService.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Services\\PeopleService.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAzwBEAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T12:21:08.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PeopleController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\PeopleController.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Controllers\\PeopleController.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\PeopleController.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Controllers\\PeopleController.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAowEsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T12:19:48.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Program.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T11:33:44.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Studio.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Models\\Studio.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Models\\Studio.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Models\\Studio.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Models\\Studio.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T11:16:54.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MoviesController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\MoviesController.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Controllers\\MoviesController.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebAPI\\MovieApplicationWebAPI\\Controllers\\MoviesController.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Controllers\\MoviesController.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAowD8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T11:14:53.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MovieService.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebApi\\MovieApplicationWebAPI\\Services\\MovieService.cs",
+              "RelativeDocumentMoniker": "MovieApplicationWebAPI\\Services\\MovieService.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\internship\\MovieApplicationWebApi\\MovieApplicationWebAPI\\Services\\MovieService.cs",
+              "RelativeToolTip": "MovieApplicationWebAPI\\Services\\MovieService.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowC4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T11:02:35.222Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

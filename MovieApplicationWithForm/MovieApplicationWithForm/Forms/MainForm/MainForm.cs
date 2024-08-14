@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MovieApplicationWithForm.Forms;
 using MovieApplicationWithForm.Forms.EditMovieForm;
+using MovieApplicationWithForm.Forms.EditRoleForm;
 using MovieApplicationWithForm.Forms.StudioAndDistributionForm;
 using System.ComponentModel;
 
@@ -186,6 +187,22 @@ namespace MovieApplicationWithForm
                     editPersonForm.Show();
                     editPersonForm.personUpdated += RefreshData;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a non-empty row.");
+            }
+        }
+
+        private void dataGridViewRoles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int roleID = (int)dataGridViewRoles.Rows[e.RowIndex].Cells[0].Value;
+            var selectedRole = dbContext.roles.FirstOrDefault(m => m.roleID == roleID);
+            if (selectedRole != null)
+            {
+                EditRoleForm editRoleForm = new EditRoleForm(selectedRole);
+                editRoleForm.Show();
+                editRoleForm.roleUpdated += RefreshData;
             }
             else
             {
