@@ -36,7 +36,7 @@ namespace ETMovies.Service
 
         // Update a person
 
-        public void UpdatePerson(int index, string firstName, string lastName, DateOnly birthday, string nat, int award)
+        public void UpdatePerson(int index, string firstName, string lastName, DateTime birthday, string nat, int award)
         {
             var personToUpdate = Context.Persons.FirstOrDefault(m => m.ID == index);
             if (personToUpdate != null)

@@ -11,14 +11,14 @@ namespace ETMovies.Models
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName{ get; set; }
-        public DateOnly Birthdate { get; set; }
+        public DateTime Birthdate { get; set; }
 
         public string Nationality { get; set; }
         public int Award { get; set; }
 
         public Person() { }
 
-        public Person(string firstName, string lastName, DateOnly birthdate, string nat, int award)
+        public Person(string firstName, string lastName, DateTime birthdate, string nat, int award)
         {
             FirstName = firstName;
             LastName = lastName;

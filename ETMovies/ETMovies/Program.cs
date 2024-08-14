@@ -614,7 +614,7 @@ class Program
         Console.WriteLine("Enter the last name: ");
         string lname = Console.ReadLine();
         Console.WriteLine("Enter the birthday: ");
-        DateOnly date = DateOnly.Parse(Console.ReadLine());
+        DateTime date = DateTime.Parse(Console.ReadLine());
         Console.WriteLine("Enter the email: ");
         string mail = Console.ReadLine();
         string nationality = Console.ReadLine();
@@ -632,7 +632,7 @@ class Program
         Console.WriteLine("Enter the last name: ");
         string lastName = Console.ReadLine();
         Console.WriteLine("Enter the birthday: ");
-        DateOnly date = DateOnly.Parse(Console.ReadLine());
+        DateTime date = DateTime.Parse(Console.ReadLine());
         Console.WriteLine("Enter the nationality: ");
         string nationality = Console.ReadLine();
         Console.WriteLine("Enter the amount of awards: ");
