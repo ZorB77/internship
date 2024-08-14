@@ -3,9 +3,8 @@ using MovieApp.Models;
 using MovieApp.Services;
 using MovieApplication.Models;
 using MovieApplication.Services;
-using System;
-using System.ComponentModel;
-using System.Transactions;
+using MovieApplication.Services.Interfaces;
+using System.Net;
 
 namespace MovieApp
 {
@@ -15,20 +14,22 @@ namespace MovieApp
         {
             var serviceProvider = new ServiceCollection()
                     .AddSingleton<MovieContext>()
-                    .AddSingleton<MovieService>()
-                    .AddSingleton<PersonService>()
-                    .AddSingleton<ReviewService>()
-                    .AddSingleton<RoleService>()
-                    .AddSingleton<StudioService>()
-                    .AddSingleton<MovieStudioService>()
+                    .AddScoped<IMovieService, MovieService>()
+                    .AddScoped<IPersonService, PersonService>()
+                    .AddScoped<IReviewService, ReviewService>()
+                    .AddScoped<IRoleService, RoleService>()
+                    .AddScoped<IStudioService, StudioService>()
+                    .AddScoped<IMovieStudioService, MovieStudioService>()
+                    .AddScoped<IAPIService, APIService>()
                     .BuildServiceProvider();
 
-            var movieService = serviceProvider.GetService<MovieService>();
-            var personService = serviceProvider.GetService<PersonService>();
-            var reviewService = serviceProvider.GetService<ReviewService>();
-            var roleService = serviceProvider.GetService<RoleService>();
-            var studioService = serviceProvider.GetService<StudioService>();
-            var movieStudioService = serviceProvider.GetService<MovieStudioService>();
+            var movieService = serviceProvider.GetService<IMovieService>();
+            var personService = serviceProvider.GetService<IPersonService>();
+            var reviewService = serviceProvider.GetService<IReviewService>();
+            var roleService = serviceProvider.GetService<IRoleService>();
+            var studioService = serviceProvider.GetService<IStudioService>();
+            var movieStudioService = serviceProvider.GetService<IMovieStudioService>();
+            var apiService = serviceProvider.GetService<IAPIService>();
 
             while (true)
             {
@@ -56,37 +57,15 @@ namespace MovieApp
                             case "1":
                                 Console.WriteLine("\nEnter movie title: ");
                                 string title = Console.ReadLine();
-                                if (title == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the title in order to proceed!");
-                                    title = Console.ReadLine();
-                                }
 
                                 Console.WriteLine("Enter movie release date: ");
-                                string releaseDate = Console.ReadLine();
-                                DateTime ReleaseDate;
-                                if (!DateTime.TryParse(releaseDate, out ReleaseDate))
-                                {
-                                    Console.WriteLine("Invalid release date! Must be yyyy-MM-dd.");
-                                    Console.WriteLine("Enter movie year: ");
-                                    releaseDate = Console.ReadLine();
-                                }
+                                DateTime releaseDate = DateTime.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Enter movie description: ");
                                 string description = Console.ReadLine();
-                                if (description == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the description in order to proceed!");
-                                    description = Console.ReadLine();
-                                }
 
                                 Console.WriteLine("Enter movie genre: ");
                                 string genre = Console.ReadLine();
-                                if (genre == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the genre in order to proceed!");
-                                    genre = Console.ReadLine();
-                                }
 
                                 Console.WriteLine("Enter movie budget: ");
                                 decimal budget = decimal.Parse(Console.ReadLine());
@@ -94,8 +73,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter movie duration: ");
                                 int duration = int.Parse(Console.ReadLine());
 
-                                bool result = movieService.AddMovie(title, ReleaseDate, description, genre, budget, duration);
-                                if (result)
+                                var result = apiService.AddMovie(title, releaseDate, description, genre, budget, duration);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Movie {title} added succesfully!");
                                 }
@@ -107,7 +86,8 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetMoviesList
                             case "2":
-                                List<Movie> allMovies = movieService.GetAllMovies();
+                                var allMovies = apiService.GetAllMovies();
+
                                 Console.WriteLine("\nAll the movies from db: ");
                                 foreach (var movies in allMovies)
                                 {
@@ -120,9 +100,9 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter the movie id: ");
                                 int movieId = int.Parse(Console.ReadLine());
 
-                                var movie = movieService.GetMovieById(movieId);
+                                var movie = apiService.GetMovieById(movieId);
 
-                                if (movieId != null)
+                                if (movie != null)
                                 {
                                     Console.WriteLine($"Movie with id {movieId}: {movie.Title}");
                                 }
@@ -130,7 +110,6 @@ namespace MovieApp
                                 {
                                     Console.WriteLine("Movie not found!");
                                 }
-
                                 break;
 
                             //SUBCASE 4 - DeleteMovie
@@ -138,8 +117,8 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter movie id to delete: ");
                                 movieId = int.Parse(Console.ReadLine());
 
-                                result = movieService.DeleteMovie(movieId);
-                                if (result)
+                                result = apiService.DeleteMovie(movieId);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Movie {movieId} was succesfully deleted!");
                                 }
@@ -158,7 +137,7 @@ namespace MovieApp
                                 title = Console.ReadLine();
 
                                 Console.WriteLine("Enter the new year: ");
-                                ReleaseDate = DateTime.Parse(Console.ReadLine());
+                                releaseDate = DateTime.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Enter the new description: ");
                                 description = Console.ReadLine();
@@ -172,8 +151,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter the new duration: ");
                                 duration = int.Parse(Console.ReadLine());
 
-                                result = movieService.UpdateMovie(movieId, title, ReleaseDate, description, genre, budget, duration);
-                                if (result)
+                                result = apiService.UpdateMovie(movieId, title, releaseDate, description, genre, budget, duration);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Movie {title} was succesfully updated!");
                                 }
@@ -188,7 +167,7 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter the genre: ");
                                 genre = Console.ReadLine();
 
-                                var moviesG = movieService.FilterMoviesByGenre(genre);
+                                var moviesG = apiService.GetMoviesByGenre(genre);
                                 Console.WriteLine($"\n{genre} movies: ");
 
                                 foreach(var movieG in moviesG)
@@ -202,7 +181,7 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter the year: ");
                                 int year = int.Parse(Console.ReadLine());
 
-                                var moviesY = movieService.FilterMoviesByYear(year);
+                                var moviesY = apiService.GetMoviesByYear(year);
                                 Console.WriteLine($"\nMovies from year {year}: ");
 
                                 foreach(var movieY in moviesY)
@@ -219,7 +198,7 @@ namespace MovieApp
                                 Console.WriteLine("Enter the 2nd year: ");
                                 int year2 = int.Parse(Console.ReadLine());
 
-                                var movieInterval = movieService.FilterMoviesByDateInterval(year1, year2);
+                                var movieInterval = apiService.GetMoviesByDateInterval(year1, year2);
                                 Console.WriteLine($"\nMovies between {year1} and {year2}: ");
 
                                 foreach(var movieI in movieInterval)
@@ -541,8 +520,8 @@ namespace MovieApp
                                     name = Console.ReadLine();
                                 }
 
-                                bool result = roleService.AddRole(movieId, personId, name);
-                                if (result)
+                                string result = apiService.AddRole(movieId, personId, name);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"{name} added succesfully.");
                                 }
@@ -580,18 +559,18 @@ namespace MovieApp
 
                             //SUBCASE 4 - DeleteRole
                             case "4":
-                                Console.WriteLine("\nEnter role id to delete: ");
-                                roleId = int.Parse(Console.ReadLine());
+                                //Console.WriteLine("\nEnter role id to delete: ");
+                                //roleId = int.Parse(Console.ReadLine());
 
-                                result = roleService.DeleteRole(roleId);
-                                if (result)
-                                {
-                                    Console.WriteLine($"Role {roleId} was succesfully deleted!");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Something went wrong. Please try again later!");
-                                }
+                                //result = roleService.DeleteRole(roleId);
+                                //if (result)
+                                //{
+                                //    Console.WriteLine($"Role {roleId} was succesfully deleted!");
+                                //}
+                                //else
+                                //{
+                                //    Console.WriteLine("Something went wrong. Please try again later!");
+                                //}
                                 break;
 
                             //SUBCASE 5 - UpdateRole 
@@ -608,8 +587,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter the new name: ");
                                 name = Console.ReadLine();
 
-                                result = roleService.UpdateRole(roleId, movieId, personId, name);
-                                if (result)
+                                result = apiService.UpdateRole(roleId, movieId, personId, name);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Role {roleId} was succesfully updated!");
                                 }
@@ -855,6 +834,22 @@ namespace MovieApp
                         break;
                 }
             }
+        }
+
+        public static string CallRestMethod(string url)
+        {
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpWebRequest.Method = "GET";
+            httpWebRequest.ContentType = "application/json";
+
+            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            //Encoding encoding = System.Text.Encoding.GetEncoding("utf-8");
+
+            StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream());
+            string response = string.Empty;
+            response = streamReader.ReadToEnd();
+            httpWebResponse.Close();
+            return response;
         }
     }
 }
