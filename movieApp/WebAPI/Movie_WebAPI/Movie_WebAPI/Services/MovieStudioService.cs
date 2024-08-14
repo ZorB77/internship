@@ -35,10 +35,7 @@ namespace MovieApplication.Services
 
         public List<MovieStudio> GetAllMovieStudiosAssociations()
         {
-            return _context.MovieStudios
-                .Include(m => m.Movie)
-                .Include(s => s.Studio)
-                .ToList();
+            return _context.MovieStudios.ToList();
         }
 
         public List<Studio> GetStudiosForMovie(int movieId)
