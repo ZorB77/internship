@@ -84,7 +84,7 @@ namespace MovieApplication.Services
 
         public List<Review> FilterReviewByRating(double rating)
         {
-            List<Review> reviews = _context.Reviews.Include(r => r.Movies).Where(r => r.Rating == rating).ToList();
+            List<Review> reviews = _context.Reviews.Where(r => r.Rating == rating).ToList();
 
             return reviews;
         }
