@@ -11,5 +11,5 @@ namespace MovieApplication.Services.Interfaces
         public List<Movie> GetMoviesForStudio(int studioId);
         public bool DeleteMovieStudioAssociation(int id);
         public bool UpdateMovieStudioAssociation(int movieStudioId, int movieId, int studioId);
-    }
+        public void MovieStudiosOptions();    }
 }

@@ -9,5 +9,6 @@ namespace MovieApplication.Services.Interfaces
         public Role GetRoleById(int id);
         public bool DeleteRole(int id);
         public bool UpdateRole(int roleId, int movieId, int personId, string name);
+        public void RoleOptions();
     }
 }

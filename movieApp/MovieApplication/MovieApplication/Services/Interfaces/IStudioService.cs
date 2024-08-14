@@ -9,5 +9,6 @@ namespace MovieApplication.Services.Interfaces
         public Studio GetStudioById(int id);
         public bool DeleteStudio(int id);
         public bool UpdateStudio(int studioId, string name, DateTime year, string location);
+        public void StudioOptions();
     }
 }

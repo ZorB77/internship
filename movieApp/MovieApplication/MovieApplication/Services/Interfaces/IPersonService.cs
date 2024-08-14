@@ -9,5 +9,6 @@ namespace MovieApplication.Services.Interfaces
         public Person GetPersonById(int id);
         public bool DeletePerson(int id);
         public bool UpdatePerson(int personId, string firstName, string lastName, DateTime birthday);
+        public void PersonOptions();
     }
 }

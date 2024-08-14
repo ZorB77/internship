@@ -12,5 +12,6 @@ namespace MovieApplication.Services.Interfaces
         public List<Movie> FilterMoviesByGenre(string genre);
         public List<Movie> FilterMoviesByYear(int year);
         public List<Movie> FilterMoviesByDateInterval(int year1, int year2);
+        public void MovieOptions();
     }
 }
