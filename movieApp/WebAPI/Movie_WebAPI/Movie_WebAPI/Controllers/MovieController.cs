@@ -20,9 +20,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addMovie")]
         [HttpPost]
-        public bool AddMovie(string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
+        public string AddMovie([FromBody]Movie movie)
         {
-            return _movieService.AddMovie(title, releaseDate, description, genre, budget, duration);
+            return _movieService.AddMovie(movie.Title, movie.ReleaseDate, movie.Description, movie.Genre, movie.Budget, movie.Duration);
         }
 
         [Route("api/getMovies")]
@@ -45,8 +45,8 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateMovie/ID={id}")]
         [HttpPut]
-        public bool UpdateMovie(int id, string title, DateTime releaseDate, string description, string genre, decimal budget, int duration) {
-            return _movieService.UpdateMovie(id, title, releaseDate, description, genre, budget, duration);
+        public string UpdateMovie([FromBody]Movie movie) {
+            return _movieService.UpdateMovie(movie.ID, movie.Title, movie.ReleaseDate, movie.Description, movie.Genre, movie.Budget, movie.Duration);
         }
 
         [Route("api/filterByGenre/genre={genre}")]

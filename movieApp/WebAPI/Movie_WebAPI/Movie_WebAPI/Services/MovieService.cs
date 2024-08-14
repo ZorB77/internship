@@ -12,7 +12,7 @@ namespace MovieApp.Services
             _context = context;
         }
 
-        public bool AddMovie(string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
+        public string AddMovie(string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
         {
             try
             {
@@ -28,13 +28,12 @@ namespace MovieApp.Services
 
                 _context.Movies.Add(newMovie);
                 _context.SaveChanges();
-                return true;
+                return "Movie created succesfully!";
             }
             catch (Exception ex)
             {
-                return false;
+                return ex.Message;
             }
-
         }
 
         public List<Movie> GetAllMovies()
@@ -60,7 +59,7 @@ namespace MovieApp.Services
             return false;
         }
 
-        public bool UpdateMovie(int movieId, string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
+        public string UpdateMovie(int movieId, string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
         {
             var movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
 
@@ -74,9 +73,12 @@ namespace MovieApp.Services
                 movie.Duration = duration;
 
                 _context.SaveChanges();
-                return true;
+                return "Movie updated succesfully!";
             }
-            return false;
+            else
+            {
+                return "Movie not found! Please try again!";
+            }
         }
 
         public List<Movie> FilterMoviesByGenre(string genre)
