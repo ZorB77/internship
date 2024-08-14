@@ -18,7 +18,7 @@ namespace ETMovies.DatabaseContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=RTB42;Initial Catalog=MoviesRating;Integrated Security=True;Trust Server Certificate=True");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=MoviesRating;Integrated Security=True;Trust Server Certificate=True");
         }
 
 
