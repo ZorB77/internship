@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
-using MovieApp.Models;
+﻿using MovieApp.Models;
+using MovieApplication.Services.Interfaces;
 
 namespace MovieApp.Services
 {
-    public class PersonService
+    public class PersonService : IPersonService
     {
         private readonly MovieContext _context;
 

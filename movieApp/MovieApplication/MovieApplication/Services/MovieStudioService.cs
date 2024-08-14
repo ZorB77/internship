@@ -2,10 +2,11 @@
 using MovieApp;
 using MovieApp.Models;
 using MovieApplication.Models;
+using MovieApplication.Services.Interfaces;
 
 namespace MovieApplication.Services
 {
-    public class MovieStudioService
+    public class MovieStudioService : IMovieStudioService
     {
         public readonly MovieContext _context;
         public MovieStudioService(MovieContext context)

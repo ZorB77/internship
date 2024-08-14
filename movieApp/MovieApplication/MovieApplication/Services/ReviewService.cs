@@ -1,12 +1,11 @@
 ﻿using MovieApp.Models;
 using MovieApp;
-using System.Text;
-using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
+using MovieApplication.Services.Interfaces;
 
 namespace MovieApplication.Services
 {
-    public class ReviewService
+    public class ReviewService : IReviewService
     {
         private readonly MovieContext _context;
 

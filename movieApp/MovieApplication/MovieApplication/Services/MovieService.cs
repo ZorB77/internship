@@ -1,9 +1,9 @@
 ﻿using MovieApp.Models;
-using System.Text;
+using MovieApplication.Services.Interfaces;
 
 namespace MovieApp.Services
 {
-    public class MovieService
+    public class MovieService : IMovieService
     {
         private readonly MovieContext _context;
 
