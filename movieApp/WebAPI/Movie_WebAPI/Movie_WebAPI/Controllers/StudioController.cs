@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Movie_WebAPI.Services;
 using MovieApp.Models;
 using MovieApplication.Models;
 using MovieApplication.Services;
@@ -8,9 +9,11 @@ namespace Movie_WebAPI.Controllers
     public class StudioController : Controller
     {
         private readonly StudioService _studioService;
-        public StudioController(StudioService studioService)
+        private readonly LogService _logService;
+        public StudioController(StudioService studioService, LogService logService)
         {
             _studioService = studioService;
+            _logService = logService;
         }
 
         public IActionResult Index()
@@ -20,8 +23,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addStudio")]
         [HttpPost]
-        public string AddStudio([FromBody]Studio studio)
+        public string AddStudio([FromBody] Studio studio)
         {
+            _logService.LogRequest("Add new studio.");
             return _studioService.AddStudio(studio.Name, studio.Year, studio.Locatiton);
         }
 
@@ -29,6 +33,7 @@ namespace Movie_WebAPI.Controllers
         [HttpGet]
         public List<Studio> GetStudios()
         {
+            _logService.LogRequest("Get all studios.");
             return _studioService.GetAllStudios();
         }
 
@@ -36,6 +41,7 @@ namespace Movie_WebAPI.Controllers
         [HttpGet]
         public Studio GetStudioById(int id)
         {
+            _logService.LogRequest($"Get studio with id {id}.");
             return _studioService.GetStudioById(id);
         }
 
@@ -43,13 +49,15 @@ namespace Movie_WebAPI.Controllers
         [HttpDelete]
         public bool DeleteStudio(int id)
         {
+            _logService.LogRequest("Delete a studio.");
             return _studioService.DeleteStudio(id);
         }
 
         [Route("api/updateStudio/ID={id}")]
         [HttpPut]
-        public string UpdateStudio([FromBody]Studio studio)
+        public string UpdateStudio([FromBody] Studio studio)
         {
+            _logService.LogRequest("Update a studio.");
             return _studioService.UpdateStudio(studio.ID, studio.Name, studio.Year, studio.Locatiton);
         }
     }
