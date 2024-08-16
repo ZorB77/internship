@@ -70,7 +70,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/deleteRole/ID={id}")]
         [HttpDelete]
-        public bool DeleteRole(int id)
+        public string DeleteRole(int id)
         {
             try
             {

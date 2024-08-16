@@ -87,7 +87,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/deleteAssociation/ID={id}")]
         [HttpDelete]
-        public bool DeleteAssociation(int id)
+        public string DeleteAssociation(int id)
         {
             try
             {
