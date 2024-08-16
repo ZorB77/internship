@@ -1,5 +1,6 @@
 ﻿using MovieApp.Models;
 using MovieApp;
+using Microsoft.EntityFrameworkCore;
 
 namespace MovieApplication.Services
 {
@@ -42,7 +43,7 @@ namespace MovieApplication.Services
 
         public List<Role> GetAllRoles()
         {
-            var roles = _context.Roles.ToList();
+            var roles = _context.Roles.AsNoTracking().ToList();
 
             if (roles.Count == 0)
             {

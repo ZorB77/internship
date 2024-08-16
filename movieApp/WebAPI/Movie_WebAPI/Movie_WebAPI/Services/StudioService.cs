@@ -1,4 +1,5 @@
-﻿using MovieApp;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieApp;
 using MovieApp.Models;
 using MovieApplication.Models;
 
@@ -35,7 +36,7 @@ namespace MovieApplication.Services
 
         public List<Studio> GetAllStudios()
         {
-            var studios = _context.Studios.ToList();
+            var studios = _context.Studios.AsNoTracking().ToList();
 
             if (studios.Count == 0)
             {

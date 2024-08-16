@@ -43,3 +43,8 @@ Object reference not set to an instance of an object.
 
 ------
 
+8/16/2024 5:13:54 PM
+There are no studios for movie 6!
+
+------
+

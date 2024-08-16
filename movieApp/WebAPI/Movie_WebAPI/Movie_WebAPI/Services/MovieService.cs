@@ -1,4 +1,5 @@
-﻿using MovieApp.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieApp.Models;
 
 namespace MovieApp.Services
 {
@@ -37,7 +38,7 @@ namespace MovieApp.Services
 
         public List<Movie> GetAllMovies()
         {
-            var movies = _context.Movies.ToList();
+            var movies = _context.Movies.AsNoTracking().ToList();
 
             if (movies.Count == 0)
             {
@@ -48,7 +49,7 @@ namespace MovieApp.Services
 
         public Movie GetMovieById(int id)
         {
-            var movie = _context.Movies.FirstOrDefault(m => m.ID == id);
+            var movie = _context.Movies.AsNoTracking().FirstOrDefault(m => m.ID == id);
 
             if (movie != null)
             {
@@ -123,7 +124,7 @@ namespace MovieApp.Services
 
         public List<Movie> FilterMoviesByGenre(string genre)
         {
-            List<Movie> movies = _context.Movies.Where(m => m.Genre == genre).ToList();
+            List<Movie> movies = _context.Movies.AsNoTracking().Where(m => m.Genre == genre).ToList();
 
             if (movies.Count == 0)
             {
@@ -135,7 +136,7 @@ namespace MovieApp.Services
 
         public List<Movie> FilterMoviesByYear(int year)
         {
-            List<Movie> movies = _context.Movies.Where(m => m.ReleaseDate.Year == year).ToList();
+            List<Movie> movies = _context.Movies.AsNoTracking().Where(m => m.ReleaseDate.Year == year).ToList();
 
             if (movies.Count == 0)
             {
@@ -147,7 +148,7 @@ namespace MovieApp.Services
 
         public List<Movie> FilterMoviesByDateInterval(int year1, int year2)
         {
-            List<Movie> movies = _context.Movies.Where(m => (m.ReleaseDate.Year >= year1) && (m.ReleaseDate.Year <= year2)).ToList();
+            List<Movie> movies = _context.Movies.AsNoTracking().Where(m => (m.ReleaseDate.Year >= year1) && (m.ReleaseDate.Year <= year2)).ToList();
 
             if (movies.Count == 0)
             {

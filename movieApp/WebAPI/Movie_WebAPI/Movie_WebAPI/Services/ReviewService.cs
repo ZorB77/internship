@@ -45,7 +45,7 @@ namespace MovieApplication.Services
 
         public List<Review> GetAllReviews()
         {
-            var reviews = _context.Reviews.ToList();
+            var reviews = _context.Reviews.AsNoTracking().ToList();
 
             if (reviews.Count == 0)
             {
@@ -120,6 +120,7 @@ namespace MovieApplication.Services
         public List<Review> FilterReviewByRating(double rating)
         {
             List<Review> reviews = _context.Reviews
+                .AsNoTracking()
                 .Where(r => r.Rating == rating)
                 .Include(m => m.Movies)
                 .AsNoTracking()
@@ -155,6 +156,7 @@ namespace MovieApplication.Services
             try
             {
                 var topMovies = _context.Movies
+                 .AsNoTracking()
                  .Select(m => new
                  {
                      Movie = m,

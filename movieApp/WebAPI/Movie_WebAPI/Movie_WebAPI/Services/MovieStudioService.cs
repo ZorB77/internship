@@ -37,6 +37,7 @@ namespace MovieApplication.Services
         public List<MovieStudio> GetAllMovieStudiosAssociations()
         {
             var movieStudioAss = _context.MovieStudios
+                .AsNoTracking()
                 .Include(m => m.Movie)
                 .Include(s => s.Studio)
                 .ToList();
@@ -52,6 +53,7 @@ namespace MovieApplication.Services
         public List<Studio> GetStudiosForMovie(int movieId)
         {
             var studios = _context.MovieStudios
+                .AsNoTracking()
                 .Where(m => m.MovieID == movieId)
                 .Select(s => s.Studio)
                 .ToList();
@@ -67,6 +69,7 @@ namespace MovieApplication.Services
         public List<Movie> GetMoviesForStudio(int studioId)
         {
             var movies = _context.MovieStudios
+                .AsNoTracking()
                 .Where(s => s.StudioID == studioId)
                 .Select(m => m.Movie)
                 .ToList();

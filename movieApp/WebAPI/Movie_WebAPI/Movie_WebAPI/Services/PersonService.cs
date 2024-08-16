@@ -1,4 +1,5 @@
-﻿using MovieApp.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieApp.Models;
 
 namespace MovieApp.Services
 {
@@ -34,7 +35,7 @@ namespace MovieApp.Services
 
         public List<Person> GetAllPersons()
         {
-            var persons = _context.Persons.ToList();
+            var persons = _context.Persons.AsNoTracking().ToList();
 
             if (persons.Count == 0)
             {
