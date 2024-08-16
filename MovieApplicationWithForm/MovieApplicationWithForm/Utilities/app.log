@@ -1,0 +1,37 @@
+16/08/2024 12:29:56: MainForm initialized.
+16/08/2024 12:29:56: MainForm loaded.
+16/08/2024 12:29:56: Data refreshed.
+16/08/2024 12:29:58: Opened AddMovieForm.
+16/08/2024 12:30:02: MainForm closed.
+16/08/2024 12:32:13: MainForm initialized.
+16/08/2024 12:32:13: MainForm loaded.
+16/08/2024 12:32:13: Data refreshed.
+16/08/2024 12:32:15: Opened AddMovieForm.
+16/08/2024 12:32:17: MainForm closed.
+16/08/2024 12:32:32: MainForm initialized.
+16/08/2024 12:32:32: MainForm loaded.
+16/08/2024 12:32:33: Data refreshed.
+16/08/2024 12:32:59: MainForm initialized.
+16/08/2024 12:33:00: MainForm loaded.
+16/08/2024 12:33:00: Data refreshed.
+16/08/2024 12:33:52: MainForm initialized.
+16/08/2024 12:33:52: MainForm loaded.
+16/08/2024 12:33:52: Data refreshed.
+16/08/2024 12:34:06: Opened EditMovieForm for movie with id 2.
+16/08/2024 12:34:09: MainForm closed.
+16/08/2024 12:35:52: MainForm initialized.
+16/08/2024 12:35:52: MainForm loaded.
+16/08/2024 12:35:52: Data refreshed.
+16/08/2024 12:36:13: MainForm initialized.
+16/08/2024 12:36:13: MainForm loaded.
+16/08/2024 12:36:13: Data refreshed.
+16/08/2024 12:36:15: Opened EditMovieForm for movie with id 1.
+16/08/2024 12:36:18: Opened EditPersonForm for person with id 3.
+16/08/2024 12:36:25: MainForm closed.
+16/08/2024 12:37:25: MainForm initialized.
+16/08/2024 12:37:25: MainForm loaded.
+16/08/2024 12:37:26: Data refreshed.
+16/08/2024 12:37:28: Opened EditRoleForm for role with id 1.
+16/08/2024 12:37:35: Opened StudioAndDistributionForm.
+16/08/2024 12:37:39: Opened FilterForm.
+16/08/2024 12:37:42: MainForm closed.
