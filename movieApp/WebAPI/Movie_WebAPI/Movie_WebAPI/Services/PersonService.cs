@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.EntityFrameworkCore.Query;
-using MovieApp.Models;
+﻿using MovieApp.Models;
 
 namespace MovieApp.Services
 {
@@ -82,9 +80,20 @@ namespace MovieApp.Services
 
             if (person != null)
             {
-                person.FirstName = firstName;
-                person.LastName = lastName;
-                person.Birthday = birthday;
+                if (!string.IsNullOrEmpty(firstName))
+                {
+                    person.FirstName = firstName;
+                }
+                
+                if (!string.IsNullOrEmpty(lastName))
+                {
+                    person.LastName = lastName;
+                }
+                
+                if (!string.IsNullOrEmpty(birthday.ToShortDateString()))
+                {
+                    person.Birthday = birthday;
+                }
 
                 _context.SaveChanges();
                 return "Person updated succesfully!";

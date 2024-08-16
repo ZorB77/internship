@@ -1,7 +1,4 @@
-﻿using Movie_WebAPI;
-using Movie_WebAPI.Services;
-using MovieApp.Models;
-using System.Text;
+﻿using MovieApp.Models;
 
 namespace MovieApp.Services
 {
@@ -85,12 +82,35 @@ namespace MovieApp.Services
 
             if (movie != null)
             {
-                movie.Title = title;
-                movie.ReleaseDate = releaseDate;
-                movie.Description = description;
-                movie.Genre = genre;
-                movie.Budget = budget;
-                movie.Duration = duration;
+                if (!string.IsNullOrEmpty(title))
+                {
+                    movie.Title = title;
+                }
+
+                if (!string.IsNullOrEmpty(releaseDate.ToShortDateString()))
+                {
+                    movie.ReleaseDate = releaseDate;
+                }
+
+                if (!string.IsNullOrEmpty(description))
+                {
+                    movie.Description = description;
+                }
+
+                if (!string.IsNullOrEmpty(genre))
+                {
+                    movie.Genre = genre;
+                }
+
+                if (!string.IsNullOrEmpty(budget.ToString()))
+                {
+                    movie.Budget = budget;
+                }
+
+                if (!string.IsNullOrEmpty(duration.ToString()))
+                {
+                    movie.Duration = duration;
+                }
 
                 _context.SaveChanges();
                 return "Movie updated succesfully!";
@@ -129,7 +149,7 @@ namespace MovieApp.Services
         {
             List<Movie> movies = _context.Movies.Where(m => (m.ReleaseDate.Year >= year1) && (m.ReleaseDate.Year <= year2)).ToList();
 
-            if(movies.Count == 0)
+            if (movies.Count == 0)
             {
                 throw new Exception($"Movies between {year1} and {year2} does not exits!");
             }

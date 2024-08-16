@@ -81,9 +81,20 @@ namespace MovieApplication.Services
 
             if (studio != null)
             {
-                studio.Name = name;
-                studio.Year = year;
-                studio.Locatiton = location;
+                if (!string.IsNullOrEmpty(name))
+                {
+                    studio.Name = name;
+                }
+
+                if (!string.IsNullOrEmpty(year.ToShortDateString()))
+                {
+                    studio.Year = year;
+                }
+
+                if (!string.IsNullOrEmpty(location))
+                {
+                    studio.Locatiton = location;
+                }
 
                 _context.SaveChanges();
                 return "Studio updated succesfully!";

@@ -91,9 +91,21 @@ namespace MovieApplication.Services
 
             if (role != null)
             {
-                role.Movie = movie;
-                role.Person = person;
-                role.Name = name;
+                if (!string.IsNullOrEmpty(movie.ToString()))
+                {
+                    role.Movie = movie;
+                }
+
+                if (!string.IsNullOrEmpty(person
+                    .ToString()))
+                {
+                    role.Person = person;
+                }
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    role.Name = name;
+                }
 
                 _context.SaveChanges();
                 return "Role updated succesfully!";

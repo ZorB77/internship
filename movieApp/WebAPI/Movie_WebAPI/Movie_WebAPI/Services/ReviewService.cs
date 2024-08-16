@@ -91,10 +91,25 @@ namespace MovieApplication.Services
 
             if (review != null)
             {
-                review.Rating = rating;
-                review.Comment = comment;
-                review.ReviewDate = reviewDate;
-                review.ReviewerName = reviewerName;
+                if ((!string.IsNullOrEmpty(rating.ToString())))
+                {
+                    review.Rating = rating;
+                }
+
+                if (!string.IsNullOrEmpty(comment))
+                {
+                    review.Comment = comment;
+                }
+
+                if (!string.IsNullOrEmpty(reviewDate.ToShortDateString()))
+                {
+                    review.ReviewDate = reviewDate;
+                }
+
+                if (!string.IsNullOrEmpty(reviewerName))
+                {
+                    review.ReviewerName = reviewerName;
+                }
 
                 _context.SaveChanges();
                 return "Review updated succesfully!";

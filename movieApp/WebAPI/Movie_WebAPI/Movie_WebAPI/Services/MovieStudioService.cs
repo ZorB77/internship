@@ -46,7 +46,7 @@ namespace MovieApplication.Services
                 throw new Exception("There are no movie-studio associations!");
             }
 
-            return movieStudioAss; 
+            return movieStudioAss;
         }
 
         public List<Studio> GetStudiosForMovie(int movieId)
@@ -99,8 +99,16 @@ namespace MovieApplication.Services
 
             if (movieStudio != null)
             {
-                movieStudio.MovieID = movieId;
-                movieStudio.StudioID = studioId;
+                if (!string.IsNullOrEmpty(movieId.ToString()))
+                {
+                    movieStudio.MovieID = movieId;
+                }
+
+                if (!string.IsNullOrEmpty(studioId.ToString()))
+                {
+                    movieStudio.StudioID = studioId;
+
+                }
 
                 _context.SaveChanges();
                 return "Association updated succesfully!";
