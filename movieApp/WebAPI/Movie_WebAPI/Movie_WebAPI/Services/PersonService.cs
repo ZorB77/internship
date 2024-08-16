@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
+﻿using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.EntityFrameworkCore.Query;
 using MovieApp.Models;
 
 namespace MovieApp.Services
@@ -35,15 +36,31 @@ namespace MovieApp.Services
 
         public List<Person> GetAllPersons()
         {
-            return _context.Persons.ToList();
+            var persons = _context.Persons.ToList();
+
+            if (persons.Count == 0)
+            {
+                throw new Exception("There are no persons!");
+            }
+
+            return persons;
         }
 
         public Person GetPersonById(int id)
         {
-            return _context.Persons.FirstOrDefault(p => p.ID == id);
+            var person = _context.Persons.FirstOrDefault(p => p.ID == id);
+
+            if (person != null)
+            {
+                return person;
+            }
+            else
+            {
+                throw new Exception($"Person with id {id} does not exits!");
+            }
         }
 
-        public bool DeletePerson(int id)
+        public string DeletePerson(int id)
         {
             var person = _context.Persons.Find(id);
 
@@ -51,9 +68,12 @@ namespace MovieApp.Services
             {
                 _context.Persons.Remove(person);
                 _context.SaveChanges();
-                return true;
+                return "Person deleted succesfully";
             }
-            return false;
+            else
+            {
+                return $"Person with id {id} does not exits!";
+            }
         }
 
         public string UpdatePerson(int personId, string firstName, string lastName, DateTime birthday)
@@ -69,8 +89,10 @@ namespace MovieApp.Services
                 _context.SaveChanges();
                 return "Person updated succesfully!";
             }
-
-            return "Person not found! Please try again!";
+            else
+            {
+                return $"Person with id {personId} does not exits!";
+            }
         }
 
         public void PersonOptions()

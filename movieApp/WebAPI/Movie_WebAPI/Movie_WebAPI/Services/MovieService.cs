@@ -39,15 +39,31 @@ namespace MovieApp.Services
 
         public List<Movie> GetAllMovies()
         {
-            return _context.Movies.ToList();
+            var movies = _context.Movies.ToList();
+
+            if (movies.Count == 0)
+            {
+                throw new Exception("There are no movies!");
+            }
+            
+            return movies;
         }
 
         public Movie GetMovieById(int id)
         {
-            return _context.Movies.FirstOrDefault(m => m.ID == id);
+            var movie = _context.Movies.FirstOrDefault(m => m.ID == id);
+
+            if (movie != null)
+            {
+                return movie;
+            }
+            else
+            {
+                throw new Exception($"Movie with id {id} does not exits!");
+            }
         }
 
-        public bool DeleteMovie(int id)
+        public string DeleteMovie(int id)
         {
             var movie = _context.Movies.Find(id);
 
@@ -55,9 +71,12 @@ namespace MovieApp.Services
             {
                 _context.Movies.Remove(movie);
                 _context.SaveChanges();
-                return true;
+                return "Movie deleted succesfully!";
             }
-            return false;
+            else
+            {
+                return $"Movie with id {id} does not exits!";
+            }
         }
 
         public string UpdateMovie(int movieId, string title, DateTime releaseDate, string description, string genre, decimal budget, int duration)
@@ -78,13 +97,18 @@ namespace MovieApp.Services
             }
             else
             {
-                return "Movie not found! Please try again!";
+                return $"Movie with id {movieId} does not exits!";
             }
         }
 
         public List<Movie> FilterMoviesByGenre(string genre)
         {
             List<Movie> movies = _context.Movies.Where(m => m.Genre == genre).ToList();
+
+            if (movies.Count == 0)
+            {
+                throw new Exception($"{genre} movies does not exits!");
+            }
 
             return movies;
         }
@@ -93,12 +117,22 @@ namespace MovieApp.Services
         {
             List<Movie> movies = _context.Movies.Where(m => m.ReleaseDate.Year == year).ToList();
 
+            if (movies.Count == 0)
+            {
+                throw new Exception($"Movies from year {year} does not exits!");
+            }
+
             return movies;
         }
 
         public List<Movie> FilterMoviesByDateInterval(int year1, int year2)
         {
             List<Movie> movies = _context.Movies.Where(m => (m.ReleaseDate.Year >= year1) && (m.ReleaseDate.Year <= year2)).ToList();
+
+            if(movies.Count == 0)
+            {
+                throw new Exception($"Movies between {year1} and {year2} does not exits!");
+            }
 
             return movies;
         }

@@ -3,6 +3,7 @@ using MovieApp;
 using System.Text;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace MovieApplication.Services
 {
@@ -44,15 +45,31 @@ namespace MovieApplication.Services
 
         public List<Review> GetAllReviews()
         {
-            return _context.Reviews.ToList();
+            var reviews = _context.Reviews.ToList();
+
+            if (reviews.Count == 0)
+            {
+                throw new Exception("There are no reviews!");
+            }
+
+            return reviews;
         }
 
         public Review GetReviewById(int id)
         {
-            return _context.Reviews.FirstOrDefault(r => r.ID == id);
+            var review = _context.Reviews.FirstOrDefault(r => r.ID == id);
+
+            if (review != null)
+            {
+                return review;
+            }
+            else
+            {
+                throw new Exception($"Review with id {id} does not exits!");
+            }
         }
 
-        public bool DeleteReview(int id)
+        public string DeleteReview(int id)
         {
             var review = _context.Reviews.Find(id);
 
@@ -60,9 +77,12 @@ namespace MovieApplication.Services
             {
                 _context.Reviews.Remove(review);
                 _context.SaveChanges();
-                return true;
+                return "Review deleted succesfully!";
             }
-            return false;
+            else
+            {
+                return $"Review with id {id} does not exists!";
+            }
         }
 
         public string UpdateReview(int reviewId, double rating, string comment, DateTime reviewDate, string reviewerName)
@@ -90,6 +110,11 @@ namespace MovieApplication.Services
                 .AsNoTracking()
                 .ToList();
 
+            if (reviews.Count == 0)
+            {
+                throw new Exception($"Movies with rating {rating} does not exits!");
+            }
+
             return reviews;
         }
 
@@ -101,28 +126,36 @@ namespace MovieApplication.Services
             if (reviews.Any())
             {
                 int avgRating = (int)reviews.Average(r => r.Rating);
+
                 return avgRating;
             }
             else
             {
-                return 0;
+                throw new Exception("Couldn't calculate average rating!");
             }
         }
 
         public List<Movie> Top10Movies()
         {
-            var topMovies = _context.Movies
-             .Select(m => new
-             {
-                 Movie = m,
-                 AverageRating = m.Reviews.Any() ? m.Reviews.Average(r => r.Rating) : 0
-             })
-             .OrderByDescending(m => m.AverageRating)
-             .Take(10)
-             .Select(m => m.Movie)
-             .ToList();
+            try
+            {
+                var topMovies = _context.Movies
+                 .Select(m => new
+                 {
+                     Movie = m,
+                     AverageRating = m.Reviews.Any() ? m.Reviews.Average(r => r.Rating) : 0
+                 })
+                 .OrderByDescending(m => m.AverageRating)
+                 .Take(10)
+                 .Select(m => m.Movie)
+                 .ToList();
 
-            return topMovies;
+                return topMovies;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occured while fetching the top 10 movies!", ex);
+            }
 
         }
 

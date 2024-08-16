@@ -35,15 +35,31 @@ namespace MovieApplication.Services
 
         public List<Studio> GetAllStudios()
         {
-            return _context.Studios.ToList();
+            var studios = _context.Studios.ToList();
+
+            if (studios.Count == 0)
+            {
+                throw new Exception("There are no studios!");
+            }
+
+            return studios;
         }
 
         public Studio GetStudioById(int id)
         {
-            return _context.Studios.FirstOrDefault(m => m.ID == id);
+            var studio = _context.Studios.FirstOrDefault(m => m.ID == id);
+
+            if (studio != null)
+            {
+                return studio;
+            }
+            else
+            {
+                throw new Exception($"Studio with id {id} does not exits!");
+            }
         }
 
-        public bool DeleteStudio(int id)
+        public string DeleteStudio(int id)
         {
             var studio = _context.Studios.Find(id);
 
@@ -51,9 +67,12 @@ namespace MovieApplication.Services
             {
                 _context.Studios.Remove(studio);
                 _context.SaveChanges();
-                return true;
+                return "Studio deleted succesfully!";
             }
-            return false;
+            else
+            {
+                return $"Studio with id {id} does not exits!";
+            }
         }
 
         public string UpdateStudio(int studioId, string name, DateTime year, string location)
@@ -69,7 +88,11 @@ namespace MovieApplication.Services
                 _context.SaveChanges();
                 return "Studio updated succesfully!";
             }
-            return "Studio not found! Please try again!";
+            else
+            {
+
+                return $"Studio with {studioId} does not exists!";
+            }
         }
 
         public void StudioOptions()

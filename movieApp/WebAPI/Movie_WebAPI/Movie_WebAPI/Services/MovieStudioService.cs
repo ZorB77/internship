@@ -2,6 +2,7 @@
 using MovieApp;
 using MovieApp.Models;
 using MovieApplication.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MovieApplication.Services
 {
@@ -35,29 +36,50 @@ namespace MovieApplication.Services
 
         public List<MovieStudio> GetAllMovieStudiosAssociations()
         {
-            return _context.MovieStudios
+            var movieStudioAss = _context.MovieStudios
                 .Include(m => m.Movie)
                 .Include(s => s.Studio)
                 .ToList();
+
+            if (movieStudioAss.Count == 0)
+            {
+                throw new Exception("There are no movie-studio associations!");
+            }
+
+            return movieStudioAss; 
         }
 
         public List<Studio> GetStudiosForMovie(int movieId)
         {
-            return _context.MovieStudios
+            var studios = _context.MovieStudios
                 .Where(m => m.MovieID == movieId)
                 .Select(s => s.Studio)
                 .ToList();
+
+            if (studios.Count == 0)
+            {
+                throw new Exception($"There are no studios for movie {movieId}!");
+            }
+
+            return studios;
         }
 
         public List<Movie> GetMoviesForStudio(int studioId)
         {
-            return _context.MovieStudios
+            var movies = _context.MovieStudios
                 .Where(s => s.StudioID == studioId)
                 .Select(m => m.Movie)
                 .ToList();
+
+            if (movies.Count == 0)
+            {
+                throw new Exception($"There are no movies for studio {studioId}!");
+            }
+
+            return movies;
         }
 
-        public bool DeleteMovieStudioAssociation(int id)
+        public string DeleteMovieStudioAssociation(int id)
         {
             var movieS = _context.MovieStudios.Find(id);
 
@@ -65,9 +87,10 @@ namespace MovieApplication.Services
             {
                 _context.MovieStudios.Remove(movieS);
                 _context.SaveChanges();
-                return true;
+                return "Association deleted succesfully!";
             }
-            return false;
+
+            throw new Exception($"Association with id {id} does not exists!");
         }
 
         public string UpdateMovieStudioAssociation(int movieStudioId, int movieId, int studioId)
@@ -82,10 +105,8 @@ namespace MovieApplication.Services
                 _context.SaveChanges();
                 return "Association updated succesfully!";
             }
-            else
-            {
-                return "Association not found! Please try again!";
-            }
+
+            throw new Exception("Failed to update association!");
         }
 
         public void MovieStudiosOptions()
