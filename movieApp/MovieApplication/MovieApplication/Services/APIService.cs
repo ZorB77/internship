@@ -309,58 +309,134 @@ namespace MovieApplication.Services
 
         public string AddStudio(string name, DateTime year, string location)
         {
-            throw new NotImplementedException();
+            var newStudio = new Studio
+            {
+                Name = name,
+                Year = year,
+                Locatiton = location
+            };
+
+            string url = "https://localhost:44316/api/addStudio";
+            string jsonData = JsonConvert.SerializeObject(newStudio);
+            var response = PostMethod(url, jsonData);
+
+            return response;
         }
 
         public List<Studio> GetAllStudios()
         {
-            throw new NotImplementedException();
+            string url = "https://localhost:44316/api/getStudios";
+            var response = GetMethod(url);
+
+            List<Studio> allStudios = JsonConvert.DeserializeObject<List<Studio>>(response);
+
+            return allStudios;
         }
 
         public Studio GetStudioById(int id)
         {
-            throw new NotImplementedException();
+            string url = "https://localhost:44316/api/getStudioById/ID=" + id;
+            var response = GetMethod(url);
+
+            var studio = JsonConvert.DeserializeObject<Studio>(response);
+
+            return studio;
         }
 
         public string DeleteStudio(int id)
         {
-            throw new NotImplementedException();
+            string url = "https://localhost:44316/api/deleteStudio/ID=" + id;
+            var response = DeleteMethod(url);
+
+            return response;
         }
 
-        public string UpdateStudio(int studioId, string name, DateTime year, string location)
+        public string UpdateStudio(int id, string name, DateTime year, string location)
         {
-            throw new NotImplementedException();
+            var updatedStudio = new Studio
+            {
+                ID = id,
+                Name = name,
+                Year = year,
+                Locatiton = location
+            };
+
+            string url = "https://localhost:44316/api/updateStudio/ID=" + id;
+            string jsonData = JsonConvert.SerializeObject(updatedStudio);
+            var response = PutMethod(url, jsonData);
+
+            return response;
         }
 
         public string AddMovieStudioAssociation(int movieId, int studioId)
         {
-            throw new NotImplementedException();
+            var newAssociation = new MovieStudio
+            {
+                MovieID = movieId,
+                StudioID = studioId
+            };
+
+            string url = "https://localhost:44316/api/addAssociation";
+            string jsonData = JsonConvert.SerializeObject(newAssociation);
+            var response = PostMethod(url, jsonData);
+
+            return response;
         }
 
         public List<MovieStudio> GetAllMovieStudiosAssociations()
         {
-            throw new NotImplementedException();
+            string url = "https://localhost:44316/api/getAssociations";
+            var response = GetMethod(url);
+
+            List<MovieStudio> allAssociations = JsonConvert.DeserializeObject<List<MovieStudio>>(response);
+
+            return allAssociations;
         }
 
         public List<Studio> GetStudiosForMovie(int movieId)
         {
-            throw new NotImplementedException();
+            string url = "https://localhost:44316/api/getStudiosForMovie/MovieId=" + movieId;
+            var response = GetMethod(url);
+
+            var studios = JsonConvert.DeserializeObject<List<Studio>>(response);
+
+            return studios;
         }
 
         public List<Movie> GetMoviesForStudio(int studioId)
         {
-            throw new NotImplementedException();
+            string url = "https://localhost:44316/api/getMoviesForStudio/StudioId=" + studioId;
+            var response = GetMethod(url);
+
+            var movies = JsonConvert.DeserializeObject<List<Movie>>(response);
+
+            return movies;
         }
 
         public string DeleteMovieStudioAssociation(int id)
         {
-            throw new NotImplementedException();
+            string url = "https://localhost:44316/api/deleteAssociation/ID=" + id;
+            var response = DeleteMethod(url);
+
+            return response;
         }
 
-        public string UpdateMovieStudioAssociation(int movieStudioId, int movieId, int studioId)
+        public string UpdateMovieStudioAssociation(int id, int movieId, int studioId)
         {
-            throw new NotImplementedException();
+            var updateAssociation = new MovieStudio
+            {
+                ID = id,
+                MovieID = movieId,
+                StudioID = studioId
+            };
+
+            string url = "https://localhost:44316/api/updateAssociation/ID=" + id;
+            string jsonData = JsonConvert.SerializeObject(updateAssociation);
+            var response = PutMethod(url, jsonData);
+
+            return response;
         }
+
         private string GetMethod(string url)
         {
             using (HttpClient httpClient = new HttpClient())
