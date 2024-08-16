@@ -224,30 +224,15 @@ namespace MovieApp
                             case "1":
                                 Console.WriteLine("\nEnter the first name: ");
                                 string firstName = Console.ReadLine();
-                                if (firstName == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the first name in order to proceed!");
-                                    firstName = Console.ReadLine();
-                                }
 
                                 Console.WriteLine("Enter the last name: ");
                                 string lastName = Console.ReadLine();
-                                if (lastName == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the last name in order to proceed!");
-                                    lastName = Console.ReadLine();
-                                }
 
                                 Console.WriteLine("Enter the birthdate: ");
                                 DateTime birthdate = DateTime.Parse(Console.ReadLine());
-                                if (birthdate == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the birthdate in order to proceed!");
-                                    birthdate = DateTime.Parse(Console.ReadLine());
-                                }
 
-                                bool result = personService.AddPerson(firstName, lastName, birthdate);
-                                if (result)
+                                string result = apiService.AddPerson(firstName, lastName, birthdate);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"{firstName} {lastName} added succesfully.");
                                 }
@@ -259,7 +244,8 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetPersonsList
                             case "2":
-                                List<Person> allPersons = personService.GetAllPersons();
+                                var allPersons = apiService.GetAllPersons();
+
                                 Console.WriteLine("\nAll the persons from db: ");
                                 foreach (var persons in allPersons)
                                 {
@@ -271,9 +257,10 @@ namespace MovieApp
                             case "3":
                                 Console.WriteLine("\nEnter the person id: ");
                                 int personId = int.Parse(Console.ReadLine());
-                                var person = personService.GetPersonById(personId);
 
-                                if (personId != null)
+                                var person = apiService.GetPersonById(personId);
+
+                                if (person != null)
                                 {
                                     Console.WriteLine($"Person with id {personId}: {person.FirstName} {person.LastName}");
                                 }
@@ -288,8 +275,8 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter person id to delete: ");
                                 personId = int.Parse(Console.ReadLine());
 
-                                result = personService.DeletePerson(personId);
-                                if (result)
+                                result = apiService.DeletePerson(personId);
+                                if (result!= null)
                                 {
                                     Console.WriteLine($"Person {personId} was succesfully deleted!");
                                 }
@@ -313,8 +300,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter the new birthday: ");
                                 birthdate = DateTime.Parse(Console.ReadLine());
 
-                                result = personService.UpdatePerson(personId, firstName, lastName, birthdate);
-                                if (result)
+                                result = apiService.UpdatePerson(personId, firstName, lastName, birthdate);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Person {personId} was succesfully updated!");
                                 }
@@ -341,27 +328,12 @@ namespace MovieApp
                             case "1":
                                 Console.WriteLine("\nEnter movie id for review: ");
                                 int movieId = int.Parse(Console.ReadLine());
-                                while (movieId == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the movieId in order to proceed!");
-                                    movieId = int.Parse(Console.ReadLine());
-                                }
 
                                 Console.WriteLine("Enter the rating: ");
                                 double rating = double.Parse(Console.ReadLine());
-                                if (rating == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the rating in order to proceed!");
-                                    rating = double.Parse(Console.ReadLine());
-                                }
 
                                 Console.WriteLine("Enter comment: ");
                                 string comment = Console.ReadLine();
-                                if (comment == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add a comment in order to proceed!");
-                                    comment = Console.ReadLine();
-                                }
 
                                 Console.WriteLine("Enter review date: ");
                                 DateTime reviewDate = DateTime.Parse(Console.ReadLine());
@@ -369,8 +341,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter reviewer name: ");
                                 string reviewerName = Console.ReadLine();
 
-                                bool result = reviewService.AddReview(movieId, rating, comment, reviewDate, reviewerName);
-                                if (result)
+                                string result = apiService.AddReview(movieId, rating, comment, reviewDate, reviewerName);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Review for {movieId} added succesfully");
                                 }
@@ -382,8 +354,9 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetReviewsList
                             case "2":
-                                List<Review> allReviews = reviewService.GetAllReviews();
+                                var allReviews = apiService.GetAllReviews();
                                 Console.WriteLine("\nAll the reviews from db: ");
+
                                 foreach (var reviews in allReviews)
                                 {
                                     Console.WriteLine($"Review for movie id {reviews.MovieId}: {reviews.Comment}");
@@ -395,7 +368,8 @@ namespace MovieApp
                             case "3":
                                 Console.WriteLine("\nEnter the review id: ");
                                 int reviewId = int.Parse(Console.ReadLine());
-                                var review = reviewService.GetReviewById(reviewId);
+
+                                var review = apiService.GetReviewById(reviewId);
 
                                 if (review != null)
                                 {
@@ -412,8 +386,8 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter review id to delete: ");
                                 reviewId = int.Parse(Console.ReadLine());
 
-                                result = reviewService.DeleteReview(reviewId);
-                                if (result)
+                                result = apiService.DeleteReview(reviewId);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Movie {reviewId} was succesfully deleted!");
                                 }
@@ -440,8 +414,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter the new reviewer name: ");
                                 reviewerName = Console.ReadLine();
 
-                                result = reviewService.UpdateReview(reviewId, rating, comment, reviewDate, reviewerName);
-                                if (result)
+                                result = apiService.UpdateReview(reviewId, rating, comment, reviewDate, reviewerName);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Review {reviewId} was succesfully updated!");
                                 }
@@ -455,12 +429,14 @@ namespace MovieApp
                             case "6":
                                 Console.WriteLine("\nEnter the movie id: ");
                                 movieId = int.Parse(Console.ReadLine());
-                                Console.WriteLine($"Average rating for movie {movieId} is: " + reviewService.AverageRatingForGivenMovie(movieId));
+
+                                Console.WriteLine($"Average rating for movie {movieId} is: " + apiService.GetAverageRatingForGivenMovie(movieId));
                                 break;
 
                             //SUBCASE 7 - Top10Movies
                             case "7":
-                                List<Movie> topMovies = reviewService.Top10Movies();
+                                var topMovies = apiService.Top10Movies();
+
                                 foreach (var movie in topMovies)
                                 {
                                     Console.WriteLine($"\nTitle: {movie.Title}, Release date: {movie.ReleaseDate.ToShortDateString()}, Genre: {movie.Genre}");
@@ -472,7 +448,7 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter the rating: ");
                                 rating = double.Parse(Console.ReadLine());
 
-                                var reviewsR = reviewService.FilterReviewByRating(rating);
+                                var reviewsR = apiService.GetReviewsByRating(rating);
                                 Console.WriteLine($"\nMovies with rating {rating}: ");
 
                                 foreach (var reviewRating in reviewsR)
@@ -498,27 +474,12 @@ namespace MovieApp
                             case "1":
                                 Console.WriteLine("\nEnter the movie id: ");
                                 int movieId = int.Parse(Console.ReadLine());
-                                if (movieId == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the movie id in order to proceed!");
-                                    movieId = int.Parse(Console.ReadLine());
-                                }
 
                                 Console.WriteLine("Enter the person id: ");
                                 int personId = int.Parse(Console.ReadLine());
-                                if (personId == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the persons id in order to proceed!");
-                                    personId = int.Parse(Console.ReadLine());
-                                }
 
                                 Console.WriteLine("Enter the name: ");
                                 string name = Console.ReadLine();
-                                if (name == null)
-                                {
-                                    Console.WriteLine("It's mandatory to add the name in order to proceed!");
-                                    name = Console.ReadLine();
-                                }
 
                                 string result = apiService.AddRole(movieId, personId, name);
                                 if (result != null)
@@ -533,8 +494,9 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetRolesList
                             case "2":
-                                List<Role> allRoles = roleService.GetAllRoles();
+                                var allRoles = apiService.GetAllRoles();
                                 Console.WriteLine("\nAll the roles from db: ");
+
                                 foreach (var roles in allRoles)
                                 {
                                     Console.WriteLine($"{roles.Name}");
@@ -545,7 +507,8 @@ namespace MovieApp
                             case "3":
                                 Console.WriteLine("\nEnter the role id: ");
                                 int roleId = int.Parse(Console.ReadLine());
-                                var role = roleService.GetRoleById(roleId);
+
+                                var role = apiService.GetRoleById(roleId);
 
                                 if (roleId != null)
                                 {
@@ -559,18 +522,18 @@ namespace MovieApp
 
                             //SUBCASE 4 - DeleteRole
                             case "4":
-                                //Console.WriteLine("\nEnter role id to delete: ");
-                                //roleId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("\nEnter role id to delete: ");
+                                roleId = int.Parse(Console.ReadLine());
 
-                                //result = roleService.DeleteRole(roleId);
-                                //if (result)
-                                //{
-                                //    Console.WriteLine($"Role {roleId} was succesfully deleted!");
-                                //}
-                                //else
-                                //{
-                                //    Console.WriteLine("Something went wrong. Please try again later!");
-                                //}
+                                result = apiService.DeleteRole(roleId);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Role {roleId} was succesfully deleted!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
                                 break;
 
                             //SUBCASE 5 - UpdateRole 
@@ -622,8 +585,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter the location: ");
                                 string location = Console.ReadLine();
 
-                                bool result = studioService.AddStudio(name, year, location);
-                                if (result)
+                                string result = apiService.AddStudio(name, year, location);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Studio {name} added succesfully.");
                                 }
@@ -635,7 +598,8 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetAllStudios
                             case "2":
-                                List<Studio> allStudios = studioService.GetAllStudios();
+                                var allStudios = apiService.GetAllStudios();
+
                                 Console.WriteLine("\nAll the studios from db: ");
                                 foreach (var studios in allStudios)
                                 {
@@ -647,7 +611,8 @@ namespace MovieApp
                             case "3":
                                 Console.WriteLine("\nEnter the studio id: ");
                                 int studioId = int.Parse(Console.ReadLine());
-                                var studio = studioService.GetStudioById(studioId);
+
+                                var studio = apiService.GetStudioById(studioId);
 
                                 if (studio != null)
                                 {
@@ -664,8 +629,8 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter role id to delete: ");
                                 studioId = int.Parse(Console.ReadLine());
 
-                                result = studioService.DeleteStudio(studioId);
-                                if (result)
+                                result = apiService.DeleteStudio(studioId);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Studio {studioId} was succesfully deleted!");
                                 }
@@ -689,8 +654,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter the new location: ");
                                 location = Console.ReadLine();
 
-                                result = studioService.UpdateStudio(studioId, name, year, location);
-                                if (result)
+                                result = apiService.UpdateStudio(studioId, name, year, location);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Studio {studioId} was succesfully updated!");
                                 }
@@ -721,8 +686,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter the studio id: ");
                                 int studioId = int.Parse(Console.ReadLine());
 
-                                bool result = movieStudioService.AddMovieStudioAssociation(movieId, studioId);
-                                if (result)
+                                string result = apiService.AddMovieStudioAssociation(movieId, studioId);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Movie {movieId} association with studio {studioId} added succesfully.");
                                 }
@@ -734,7 +699,8 @@ namespace MovieApp
 
                             //SUBCASE 2 - GetAllMovieStudiosAss
                             case "2":
-                                List<MovieStudio> allMovieStudiosAss = movieStudioService.GetAllMovieStudiosAssociations();
+                                var allMovieStudiosAss = apiService.GetAllMovieStudiosAssociations();
+                               
                                 Console.WriteLine("\nAll the movie-studio associations from db: ");
                                 foreach (var movieStudioAss in allMovieStudiosAss)
                                 {
@@ -746,7 +712,8 @@ namespace MovieApp
                             case "3":
                                 Console.WriteLine("Enter movie id: ");
                                 movieId = int.Parse(Console.ReadLine());
-                                var studios = movieStudioService.GetStudiosForMovie(movieId);
+
+                                var studios = apiService.GetStudiosForMovie(movieId);
 
                                 if (studios.Any())
                                 {
@@ -766,7 +733,8 @@ namespace MovieApp
                             case "4":
                                 Console.WriteLine("Enter studio id: ");
                                 studioId = int.Parse(Console.ReadLine());
-                                var movies = movieStudioService.GetMoviesForStudio(studioId);
+
+                                var movies = apiService.GetMoviesForStudio(studioId);
 
                                 if (movies.Any())
                                 {
@@ -787,8 +755,8 @@ namespace MovieApp
                                 Console.WriteLine("\nEnter association id to delete: ");
                                 int id = int.Parse(Console.ReadLine());
 
-                                result = movieStudioService.DeleteMovieStudioAssociation(id);
-                                if (result)
+                                result = apiService.DeleteMovieStudioAssociation(id);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Association {id} was succesfully deleted!");
                                 }
@@ -809,8 +777,8 @@ namespace MovieApp
                                 Console.WriteLine("Enter the new studio id: ");
                                 studioId = int.Parse(Console.ReadLine());
 
-                                result = movieStudioService.UpdateMovieStudioAssociation(movieStudioId, movieId, studioId);
-                                if (result)
+                                result = apiService.UpdateMovieStudioAssociation(movieStudioId, movieId, studioId);
+                                if (result != null)
                                 {
                                     Console.WriteLine($"Association between movie {movieId} and studio {studioId} was succesfully updated!");
                                 }
@@ -834,22 +802,6 @@ namespace MovieApp
                         break;
                 }
             }
-        }
-
-        public static string CallRestMethod(string url)
-        {
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpWebRequest.Method = "GET";
-            httpWebRequest.ContentType = "application/json";
-
-            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            //Encoding encoding = System.Text.Encoding.GetEncoding("utf-8");
-
-            StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream());
-            string response = string.Empty;
-            response = streamReader.ReadToEnd();
-            httpWebResponse.Close();
-            return response;
         }
     }
 }
