@@ -19,7 +19,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addRole")]
         [HttpPost]
-        public bool AddRole(int movieId, int personId, string name)
+        public string AddRole(int movieId, int personId, string name)
         {
             return _roleService.AddRole(movieId, personId, name);
         }
@@ -47,7 +47,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateRole/ID={id}")]
         [HttpPut]
-        public bool UpdateRole(int id, int movieId, int personId, string name)
+        public string UpdateRole(int id, int movieId, int personId, string name)
         {
             return _roleService.UpdateRole(id, movieId, personId, name);
         }

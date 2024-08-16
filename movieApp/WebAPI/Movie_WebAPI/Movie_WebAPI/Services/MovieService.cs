@@ -28,7 +28,7 @@ namespace MovieApp.Services
 
                 _context.Movies.Add(newMovie);
                 _context.SaveChanges();
-                return "Movie created succesfully!";
+                return "Movie added succesfully!";
             }
             catch (Exception ex)
             {

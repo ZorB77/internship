@@ -13,7 +13,7 @@ namespace MovieApplication.Services
             _context = context;
         }
 
-        public bool AddMovieStudioAssociation(int movieId, int studioId)
+        public string AddMovieStudioAssociation(int movieId, int studioId)
         {
             try
             {
@@ -25,17 +25,20 @@ namespace MovieApplication.Services
 
                 _context.MovieStudios.Add(newMovieStudio);
                 _context.SaveChanges();
-                return true;
+                return "Association added succesfully!";
             }
             catch (Exception ex)
             {
-                return false;
+                return ex.Message;
             }
         }
 
         public List<MovieStudio> GetAllMovieStudiosAssociations()
         {
-            return _context.MovieStudios.ToList();
+            return _context.MovieStudios
+                .Include(m => m.Movie)
+                .Include(s => s.Studio)
+                .ToList();
         }
 
         public List<Studio> GetStudiosForMovie(int movieId)
@@ -67,7 +70,7 @@ namespace MovieApplication.Services
             return false;
         }
 
-        public bool UpdateMovieStudioAssociation(int movieStudioId, int movieId, int studioId)
+        public string UpdateMovieStudioAssociation(int movieStudioId, int movieId, int studioId)
         {
             var movieStudio = _context.MovieStudios.FirstOrDefault(ms => ms.ID == movieStudioId);
 
@@ -77,11 +80,11 @@ namespace MovieApplication.Services
                 movieStudio.StudioID = studioId;
 
                 _context.SaveChanges();
-                return true;
+                return "Association updated succesfully!";
             }
             else
             {
-                return false;
+                return "Association not found! Please try again!";
             }
         }
 

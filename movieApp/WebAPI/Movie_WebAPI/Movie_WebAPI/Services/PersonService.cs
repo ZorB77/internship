@@ -12,7 +12,7 @@ namespace MovieApp.Services
             _context = context;
         }
 
-        public bool AddPerson(string firstName, string lastName, DateTime birthday)
+        public string AddPerson(string firstName, string lastName, DateTime birthday)
         {
             try
             {
@@ -25,11 +25,11 @@ namespace MovieApp.Services
 
                 _context.Persons.Add(newPerson);
                 _context.SaveChanges();
-                return true;
+                return "Person added succesfully!";
             }
             catch (Exception ex)
             {
-                return false;
+                return ex.Message;
             }
         }
 
@@ -56,7 +56,7 @@ namespace MovieApp.Services
             return false;
         }
 
-        public bool UpdatePerson(int personId, string firstName, string lastName, DateTime birthday)
+        public string UpdatePerson(int personId, string firstName, string lastName, DateTime birthday)
         {
             var person = _context.Persons.FirstOrDefault(p => p.ID == personId);
 
@@ -67,10 +67,10 @@ namespace MovieApp.Services
                 person.Birthday = birthday;
 
                 _context.SaveChanges();
-                return true;
+                return "Person updated succesfully!";
             }
 
-            return false;
+            return "Person not found! Please try again!";
         }
 
         public void PersonOptions()

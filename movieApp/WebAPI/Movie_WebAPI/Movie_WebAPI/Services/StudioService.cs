@@ -12,7 +12,7 @@ namespace MovieApplication.Services
             _context = context;
         }
 
-        public bool AddStudio(string name, DateTime year, string location)
+        public string AddStudio(string name, DateTime year, string location)
         {
             try
             {
@@ -25,11 +25,11 @@ namespace MovieApplication.Services
 
                 _context.Studios.Add(newStudio);
                 _context.SaveChanges();
-                return true;
+                return "Studio added succesfully!";
             }
             catch (Exception ex)
             {
-                return false;
+                return ex.Message;
             }
         }
 
@@ -56,7 +56,7 @@ namespace MovieApplication.Services
             return false;
         }
 
-        public bool UpdateStudio(int studioId, string name, DateTime year, string location)
+        public string UpdateStudio(int studioId, string name, DateTime year, string location)
         {
             var studio = _context.Studios.FirstOrDefault(s => s.ID == studioId);
 
@@ -67,9 +67,9 @@ namespace MovieApplication.Services
                 studio.Locatiton = location;
 
                 _context.SaveChanges();
-                return true;
+                return "Studio updated succesfully!";
             }
-            return false;
+            return "Studio not found! Please try again!";
         }
 
         public void StudioOptions()

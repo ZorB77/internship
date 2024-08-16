@@ -20,9 +20,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addPerson")]
         [HttpPost]
-        public bool AddPerson(string firstName, string lastName, DateTime birthday)
+        public string AddPerson([FromBody]Person person)
         {
-            return _personService.AddPerson(firstName, lastName, birthday);
+            return _personService.AddPerson(person.FirstName, person.LastName, person.Birthday);
         }
 
         [Route("api/getPersons")]
@@ -48,9 +48,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updatePerson/ID={id}")]
         [HttpPut]
-        public bool UpdatePerson(int id, string firstName, string lastName, DateTime birthday)
+        public string UpdatePerson([FromBody]Person person)
         {
-            return _personService.UpdatePerson(id, firstName, lastName, birthday);
+            return _personService.UpdatePerson(person.ID, person.FirstName, person.LastName, person.Birthday);
         }
     }
 }

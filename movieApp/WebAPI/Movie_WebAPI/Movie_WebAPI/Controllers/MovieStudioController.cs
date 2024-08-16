@@ -20,9 +20,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addAssociation")]
         [HttpPost]
-        public bool AddMovieStudioAssociation(int movieId, int studioId)
+        public string AddMovieStudioAssociation([FromBody]MovieStudio movieStudio)
         {
-            return _movieStudioService.AddMovieStudioAssociation(movieId, studioId);
+            return _movieStudioService.AddMovieStudioAssociation(movieStudio.MovieID, movieStudio.StudioID);
         }
 
         [Route("api/getAssociations")]
@@ -55,9 +55,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateAssociation/ID={id}")]
         [HttpPut]
-        public bool UpdateAssociation(int id, int movieId, int studioId)
+        public string UpdateAssociation([FromBody]MovieStudio movieStudio)
         {
-            return _movieStudioService.UpdateMovieStudioAssociation(id, movieId, studioId);
+            return _movieStudioService.UpdateMovieStudioAssociation(movieStudio.ID, movieStudio.MovieID, movieStudio.StudioID);
         }
     }
 }

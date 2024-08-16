@@ -15,7 +15,7 @@ namespace MovieApplication.Services
             _context = context;
         }
 
-        public bool AddReview(int movieId, double rating, string comment, DateTime reviewDate, string reviewerName)
+        public string AddReview(int movieId, double rating, string comment, DateTime reviewDate, string reviewerName)
         {
             var movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
 
@@ -34,11 +34,11 @@ namespace MovieApplication.Services
                     _context.Reviews.Add(newReview);
                     _context.SaveChanges();
                 }
-                return true;
+                return "Review added succesfully!";
             }
             catch (Exception ex)
             {
-                return false;
+                return ex.Message;
             }
         }
 
@@ -65,7 +65,7 @@ namespace MovieApplication.Services
             return false;
         }
 
-        public bool UpdateReview(int reviewId, double rating, string comment, DateTime reviewDate, string reviewerName)
+        public string UpdateReview(int reviewId, double rating, string comment, DateTime reviewDate, string reviewerName)
         {
             var review = _context.Reviews.FirstOrDefault(r => r.ID == reviewId);
 
@@ -77,14 +77,18 @@ namespace MovieApplication.Services
                 review.ReviewerName = reviewerName;
 
                 _context.SaveChanges();
-                return true;
+                return "Review updated succesfully!";
             }
-            return false;
+            return "Review not found! Please try again!";
         }
 
         public List<Review> FilterReviewByRating(double rating)
         {
-            List<Review> reviews = _context.Reviews.Where(r => r.Rating == rating).ToList();
+            List<Review> reviews = _context.Reviews
+                .Where(r => r.Rating == rating)
+                .Include(m => m.Movies)
+                .AsNoTracking()
+                .ToList();
 
             return reviews;
         }

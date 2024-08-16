@@ -20,9 +20,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addReview")]
         [HttpPost]
-        public bool AddReview(int movieId, double rating, string comment, DateTime reviewDate, string reviewerName)
+        public string AddReview([FromBody]Review review)
         {
-           return _reviewService.AddReview(movieId, rating, comment, reviewDate, reviewerName); 
+           return _reviewService.AddReview(review.MovieId, review.Rating, review.Comment, review.ReviewDate, review.ReviewerName); 
         }
 
         [Route("api/getReviews")]
@@ -48,9 +48,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateReview/ID={id}")]
         [HttpPut]
-        public bool UpdateReview(int id, double rating, string comment, DateTime reviewDate, string reviewerName)
+        public string UpdateReview([FromBody]Review review)
         {
-            return _reviewService.UpdateReview(id, rating, comment, reviewDate, reviewerName);
+            return _reviewService.UpdateReview(review.ID, review.Rating, review.Comment, review.ReviewDate, review.ReviewerName);
         }
 
         [Route("api/filterByRating/rating={rating}")]

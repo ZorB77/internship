@@ -20,9 +20,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addStudio")]
         [HttpPost]
-        public bool AddStudio(string name, DateTime year, string location)
+        public string AddStudio([FromBody]Studio studio)
         {
-            return _studioService.AddStudio(name, year, location);
+            return _studioService.AddStudio(studio.Name, studio.Year, studio.Locatiton);
         }
 
         [Route("api/getStudios")]
@@ -48,9 +48,9 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateStudio/ID={id}")]
         [HttpPut]
-        public bool UpdateStudio(int id, string name, DateTime year, string location)
+        public string UpdateStudio([FromBody]Studio studio)
         {
-            return _studioService.UpdateStudio(id, name, year, location);
+            return _studioService.UpdateStudio(studio.ID, studio.Name, studio.Year, studio.Locatiton);
         }
     }
 }
