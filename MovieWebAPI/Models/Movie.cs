@@ -2,18 +2,21 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlTypes;
+using System.ComponentModel;
 
 
 public class Movie
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int MovieId { get; set; }
+    [Required(ErrorMessage = "A movie name is required")]
     public string Name { get; set; }
+    [Required(ErrorMessage = "A year for the movie is required")]
     public int Year { get; set; }
-    public string Description { get; set; }
+    public string? Description { get; set; }
+    [DisplayName("Genre")]
     public string Genre { get; set; }
-
+    [Required(ErrorMessage = "The movie duration is required")]
     public int Duration { get; set; }
 
     public Movie() { }

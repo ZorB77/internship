@@ -9,7 +9,7 @@ public class Studio
     public int StudioId { get; set; }
     public string Name { get; set; }
     public int Year { get; set; }
-    public string Location { get; set; }
+    public string? Location { get; set; }
     public Studio() { }
     public Studio(int StudioId, string Name, int Year, string Location)
     {

@@ -19,7 +19,6 @@ namespace MovieWebAPI.Controllers
             _roleService = roleService;
         }
 
-        // GET: api/Role
         [HttpGet]
         public IActionResult GetRoles()
         {
@@ -53,7 +52,6 @@ namespace MovieWebAPI.Controllers
             }
         }
 
-        // PUT: api/Role/5
         [HttpPut("{id}")]
         public IActionResult PutRole(int id, [FromBody] RoleDto roleDto)
         {
@@ -78,7 +76,6 @@ namespace MovieWebAPI.Controllers
             }
         }
 
-        // DELETE: api/Role/5
         [HttpDelete("{id}")]
         public IActionResult DeleteRole(int id)
         {
@@ -93,7 +90,6 @@ namespace MovieWebAPI.Controllers
             }
         }
 
-        // GET: api/Role/person/5
         [HttpGet("person/{personId}")]
         public IActionResult GetRolesOfPerson(int personId)
         {

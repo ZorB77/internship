@@ -70,7 +70,6 @@ namespace Movies.Web.Controllers
             }
         }
 
-        // DELETE: api/person/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
@@ -85,7 +84,6 @@ namespace Movies.Web.Controllers
             }
         }
 
-        // GET: api/person/filterByDate
         [HttpGet("filterByDate")]
         public ActionResult<IEnumerable<Person>> FilterByDate([FromQuery] DateTime dateStart, [FromQuery] DateTime dateStop)
         {

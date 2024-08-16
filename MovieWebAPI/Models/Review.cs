@@ -8,7 +8,7 @@ public class Review
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int ReviewId {  get; set; }
     public float Rating { get; set; }
-    public string Comment { get; set; }
+    public string? Comment { get; set; }
     public Movie Movie { get; set; }
 
     public DateTime DateTime { get; set; }
