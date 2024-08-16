@@ -25,7 +25,7 @@ namespace Movies.Api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -37,13 +37,13 @@ namespace Movies.Api.Controllers
                 var review = await _reviewService.GetByIdReviewAsync(id);
                 if (review == null)
                 {
-                    return NotFound(new { Message = "Review not found." });
+                    return NotFound($"Review with ID {id} not found");
                 }
                 return Ok(review);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -52,7 +52,7 @@ namespace Movies.Api.Controllers
         {
             if (reviewDto == null)
             {
-                return BadRequest("Review data is null.");
+                return BadRequest("Review data is null");
             }
 
             try
@@ -62,7 +62,7 @@ namespace Movies.Api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -71,7 +71,7 @@ namespace Movies.Api.Controllers
         {
             if (reviewDto == null || id != reviewDto.ReviewId)
             {
-                return BadRequest("Invalid review data.");
+                return BadRequest("Invalid review data");
             }
 
             try
@@ -79,7 +79,7 @@ namespace Movies.Api.Controllers
                 var existingReview = await _reviewService.GetByIdReviewAsync(id);
                 if (existingReview == null)
                 {
-                    return NotFound(new { Message = "Review not found." });
+                    return NotFound($"Review with ID {id} not found.");
                 }
 
                 await _reviewService.UpdateReviewAsync(id, reviewDto.Rating, reviewDto.Comment, reviewDto.MovieId);
@@ -87,7 +87,7 @@ namespace Movies.Api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -99,7 +99,7 @@ namespace Movies.Api.Controllers
                 var existingReview = await _reviewService.GetByIdReviewAsync(id);
                 if (existingReview == null)
                 {
-                    return NotFound(new { Message = "Review not found." });
+                    return NotFound($"Review with ID {id} not found.");
                 }
 
                 await _reviewService.DeleteReviewAsync(id);
@@ -107,7 +107,7 @@ namespace Movies.Api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -119,13 +119,13 @@ namespace Movies.Api.Controllers
                 var averageRating = await _reviewService.GetTheAverageRatingOfAMovieAsync(movieId);
                 if (averageRating == -1)
                 {
-                    return NotFound(new { Message = "Movie not found." });
+                    return NotFound($"Movie with ID {movieId} not found.");
                 }
                 return Ok(averageRating);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -139,7 +139,7 @@ namespace Movies.Api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
     }

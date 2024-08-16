@@ -18,16 +18,24 @@ namespace Movies.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Studio>>> GetStudios()
+        public async Task<ActionResult<IEnumerable<Studio>>> GetStudios( int page = 1, int pageSize = 10)
         {
             try
             {
                 var studios = await _studioService.GetStudiosAsync();
-                return Ok(studios);
+
+                var totalStudios = studios.Count;
+                var totalPages = Math.Ceiling((decimal) totalStudios / pageSize);
+                var studiosPerPage = studios.Skip((page - 1) * pageSize)
+                                            .Take(pageSize)
+                                            .ToList();
+
+
+                return Ok(studiosPerPage);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "An error occurred while retrieving the studios.", Details = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -39,13 +47,13 @@ namespace Movies.Api.Controllers
                 var studio = await _studioService.GetByIdAsync(id);
                 if (studio == null)
                 {
-                    return NotFound(new { Message = "Studio not found." });
+                    return NotFound($"There is no studio with ID {id}.");
                 }
                 return Ok(studio);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "An error occurred while retrieving the studio.", Details = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -62,13 +70,9 @@ namespace Movies.Api.Controllers
                 await _studioService.AddStudioAsync(studio.StudioId, studio.Name, studio.Year, studio.Location);
                 return CreatedAtAction(nameof(GetStudioById), new { id = studio.StudioId }, studio);
             }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { Message = ex.Message });
-            }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "An error occurred while adding the studio.", Details = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
     }

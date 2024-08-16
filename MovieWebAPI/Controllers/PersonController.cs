@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Movies.Services;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 namespace Movies.Web.Controllers
 {
@@ -31,7 +27,7 @@ namespace Movies.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while getting all people.");
+                _logger.LogError(ex, "Error occurred while getting all people");
                 return BadRequest(ex.Message);
             }
         }
@@ -51,7 +47,7 @@ namespace Movies.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error occurred while getting person with id {id}.");
+                _logger.LogError(ex, $"Error occurred while getting person with id {id}");
                 return BadRequest(ex.Message);
             }
         }
@@ -61,7 +57,7 @@ namespace Movies.Web.Controllers
         {
             if (person == null)
             {
-                return BadRequest("Person data is null.");
+                return BadRequest("Person data is null");
             }
 
             try
@@ -71,7 +67,7 @@ namespace Movies.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while creating a person.");
+                _logger.LogError(ex, "Error occurred while creating a person");
                 return BadRequest(ex.Message);
             }
         }
@@ -81,18 +77,18 @@ namespace Movies.Web.Controllers
         {
             if (id != person.PersonId)
             {
-                return BadRequest("Person ID mismatch.");
+                return BadRequest("There is no person with this id");
             }
 
             try
             {
                 await _personService.UpdatePersonAsync(person.PersonId, person.FirstName, person.LastName, person.Birthdate, person.Email);
-                _logger.LogInformation("Person updated");
+                _logger.LogInformation("Person updated succesfully");
                 return NoContent();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while updating person.");
+                _logger.LogError(ex, "Error occurred while updating person");
                 return BadRequest(ex.Message);
             }
         }
@@ -103,12 +99,12 @@ namespace Movies.Web.Controllers
             try
             {
                 await _personService.DeletePersonAsync(id);
-                _logger.LogInformation($"Person deleted {id}");
+                _logger.LogInformation($"Person deleted {id} succesfully");
                 return NoContent();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while deleting person.");
+                _logger.LogError(ex, "Error occurred while deleting a person");
                 return NotFound(ex.Message);
             }
         }
@@ -119,12 +115,12 @@ namespace Movies.Web.Controllers
             try
             {
                 var people = await _personService.FilterPersonByDateAsync(dateStart, dateStop);
-                _logger.LogInformation($"FilterByDate: {people.Count} results found.");
+                _logger.LogInformation($"FilterByDate: {people.Count} results found");
                 return Ok(people);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while filtering people by date.");
+                _logger.LogError(ex, "Error occurred while filtering people by date");
                 return BadRequest(ex.Message);
             }
         }

@@ -25,7 +25,7 @@ namespace MovieWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -44,7 +44,7 @@ namespace MovieWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -60,7 +60,7 @@ namespace MovieWebAPI.Controllers
             {
                 if (id != roleDto.RoleId)
                 {
-                    return BadRequest("Role ID mismatch.");
+                    return BadRequest($"There is no Role with ID {id}.");
                 }
 
                 await _roleService.UpdateRoleAsync(roleDto.RoleId, roleDto.Movie, roleDto.Person, roleDto.Name, roleDto.Description);
@@ -68,7 +68,7 @@ namespace MovieWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -82,7 +82,7 @@ namespace MovieWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -96,7 +96,7 @@ namespace MovieWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
     }
