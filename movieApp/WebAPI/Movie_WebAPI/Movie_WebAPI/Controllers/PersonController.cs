@@ -23,42 +23,82 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addPerson")]
         [HttpPost]
-        public string AddPerson([FromBody]Person person)
+        public string AddPerson([FromBody] Person person)
         {
-            _logService.LogRequest("Add new person.");
-            return _personService.AddPerson(person.FirstName, person.LastName, person.Birthday);
+            try
+            {
+                _logService.LogRequest("Add new person.");
+                return _personService.AddPerson(person.FirstName, person.LastName, person.Birthday);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
 
         [Route("api/getPersons")]
         [HttpGet]
         public List<Person> GetPersons()
         {
-            _logService.LogRequest("Get all persons.");
-            return _personService.GetAllPersons();
+            try
+            {
+                _logService.LogRequest("Get all persons.");
+                return _personService.GetAllPersons();
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/getPersonById/ID={id}")]
         [HttpGet]
         public Person GetPersonById(int id)
         {
-            _logService.LogRequest($"Get person with id {id}.");
-            return _personService.GetPersonById(id);
+            try
+            {
+                _logService.LogRequest($"Get person with id {id}.");
+                return _personService.GetPersonById(id);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/deletePerson/ID={id}")]
         [HttpDelete]
         public bool DeletePerson(int id)
         {
-            _logService.LogRequest("Delete a person.");
-            return _personService.DeletePerson(id);
+            try
+            {
+                _logService.LogRequest("Delete a person.");
+                return _personService.DeletePerson(id);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/updatePerson/ID={id}")]
         [HttpPut]
-        public string UpdatePerson([FromBody]Person person)
+        public string UpdatePerson([FromBody] Person person)
         {
-            _logService.LogRequest("Update a person.");
-            return _personService.UpdatePerson(person.ID, person.FirstName, person.LastName, person.Birthday);
+            try
+            {
+                _logService.LogRequest("Update a person.");
+                return _personService.UpdatePerson(person.ID, person.FirstName, person.LastName, person.Birthday);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
     }
 }

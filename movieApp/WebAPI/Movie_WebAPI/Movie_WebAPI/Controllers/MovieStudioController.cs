@@ -23,50 +23,96 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addAssociation")]
         [HttpPost]
-        public string AddMovieStudioAssociation([FromBody]MovieStudio movieStudio)
+        public string AddMovieStudioAssociation([FromBody] MovieStudio movieStudio)
         {
-            _logService.LogRequest("Add new movie-studio association.");
-            return _movieStudioService.AddMovieStudioAssociation(movieStudio.MovieID, movieStudio.StudioID);
+            try
+            {
+                _logService.LogRequest("Add new movie-studio association.");
+                return _movieStudioService.AddMovieStudioAssociation(movieStudio.MovieID, movieStudio.StudioID);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
 
         [Route("api/getAssociations")]
         [HttpGet]
         public List<MovieStudio> GetMovieStudiosAssociations()
         {
-            _logService.LogRequest("Get all movie-studio associations.");
-            return _movieStudioService.GetAllMovieStudiosAssociations();
+            try
+            {
+                _logService.LogRequest("Get all movie-studio associations.");
+                return _movieStudioService.GetAllMovieStudiosAssociations();
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/getStudiosForMovie/movieID={movieId}")]
         [HttpGet]
         public List<Studio> GetStudiosForMovie(int movieId)
         {
-            _logService.LogRequest($"Get studios for movie {movieId}.");
-            return _movieStudioService.GetStudiosForMovie(movieId);
-        } 
-        
+            try
+            {
+                _logService.LogRequest($"Get studios for movie {movieId}.");
+                return _movieStudioService.GetStudiosForMovie(movieId);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
+        }
+
         [Route("api/getMoviesForStudio/studioID={studioId}")]
         [HttpGet]
         public List<Movie> GetMoviesForStudio(int studioId)
         {
-            _logService.LogRequest($"Get movies for studio {studioId}.");
-            return _movieStudioService.GetMoviesForStudio(studioId);
+            try
+            {
+                _logService.LogRequest($"Get movies for studio {studioId}.");
+                return _movieStudioService.GetMoviesForStudio(studioId);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/deleteAssociation/ID={id}")]
         [HttpDelete]
         public bool DeleteAssociation(int id)
         {
-            _logService.LogRequest("Delete a movie-studio association.");
-            return _movieStudioService.DeleteMovieStudioAssociation(id);
+            try
+            {
+                _logService.LogRequest("Delete a movie-studio association.");
+                return _movieStudioService.DeleteMovieStudioAssociation(id);
+            }
+            catch (Exception ex) {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/updateAssociation/ID={id}")]
         [HttpPut]
-        public string UpdateAssociation([FromBody]MovieStudio movieStudio)
+        public string UpdateAssociation([FromBody] MovieStudio movieStudio)
         {
-            _logService.LogRequest("Update a movie-studio association.");
-            return _movieStudioService.UpdateMovieStudioAssociation(movieStudio.ID, movieStudio.MovieID, movieStudio.StudioID);
+            try
+            {
+                _logService.LogRequest("Update a movie-studio association.");
+                return _movieStudioService.UpdateMovieStudioAssociation(movieStudio.ID, movieStudio.MovieID, movieStudio.StudioID);
+            }
+            catch (Exception ex) {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
     }
 }

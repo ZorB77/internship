@@ -24,40 +24,80 @@ namespace Movie_WebAPI.Controllers
         [HttpPost]
         public string AddRole(int movieId, int personId, string name)
         {
-            _logService.LogRequest("Add new role.");
-            return _roleService.AddRole(movieId, personId, name);
+            try
+            {
+                _logService.LogRequest("Add new role.");
+                return _roleService.AddRole(movieId, personId, name);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
 
         [Route("api/getRoles")]
         [HttpGet]
         public List<Role> GetRoles()
         {
-            _logService.LogRequest("Get all roles.");
-            return _roleService.GetAllRoles();
+            try
+            {
+                _logService.LogRequest("Get all roles.");
+                return _roleService.GetAllRoles();
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/getRoleById/ID={id}")]
         [HttpGet]
         public Role GetRoleById(int id)
         {
-            _logService.LogRequest($"Get role with id {id}.");
-            return _roleService.GetRoleById(id);
+            try
+            {
+                _logService.LogRequest($"Get role with id {id}.");
+                return _roleService.GetRoleById(id);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/deleteRole/ID={id}")]
         [HttpDelete]
         public bool DeleteRole(int id)
         {
-            _logService.LogRequest("Delete a role.");
-            return _roleService.DeleteRole(id);
+            try
+            {
+                _logService.LogRequest("Delete a role.");
+                return _roleService.DeleteRole(id);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/updateRole/ID={id}")]
         [HttpPut]
         public string UpdateRole(int id, int movieId, int personId, string name)
         {
-            _logService.LogRequest("Update a role.");
-            return _roleService.UpdateRole(id, movieId, personId, name);
+            try
+            {
+                _logService.LogRequest("Update a role.");
+                return _roleService.UpdateRole(id, movieId, personId, name);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
     }
 }

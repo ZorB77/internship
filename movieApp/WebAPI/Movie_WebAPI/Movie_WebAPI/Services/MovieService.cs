@@ -1,4 +1,5 @@
-﻿using MovieApp.Models;
+﻿using Movie_WebAPI.Services;
+using MovieApp.Models;
 using System.Text;
 
 namespace MovieApp.Services

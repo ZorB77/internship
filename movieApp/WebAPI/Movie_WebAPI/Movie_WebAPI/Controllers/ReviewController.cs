@@ -23,66 +23,130 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addReview")]
         [HttpPost]
-        public string AddReview([FromBody]Review review)
+        public string AddReview([FromBody] Review review)
         {
-            _logService.LogRequest("Add new review.");
-            return _reviewService.AddReview(review.MovieId, review.Rating, review.Comment, review.ReviewDate, review.ReviewerName); 
+            try
+            {
+                _logService.LogRequest("Add new review.");
+                return _reviewService.AddReview(review.MovieId, review.Rating, review.Comment, review.ReviewDate, review.ReviewerName);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
 
         [Route("api/getReviews")]
         [HttpGet]
         public List<Review> GetReviews()
         {
-            _logService.LogRequest("Get all reviews.");
-            return _reviewService.GetAllReviews();
+            try
+            {
+                _logService.LogRequest("Get all reviews.");
+                return _reviewService.GetAllReviews();
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/getReviewById/ID={id}")]
         [HttpGet]
         public Review GetReviewById(int id)
         {
-            _logService.LogRequest($"Get review with id {id}.");
-            return _reviewService.GetReviewById(id);
+            try
+            {
+                _logService.LogRequest($"Get review with id {id}.");
+                return _reviewService.GetReviewById(id);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/deleteReview/ID={id}")]
         [HttpDelete]
         public bool DeleteReview(int id)
         {
-            _logService.LogRequest("Delete a review.");
-            return _reviewService.DeleteReview(id);
+            try
+            {
+                _logService.LogRequest("Delete a review.");
+                return _reviewService.DeleteReview(id);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/updateReview/ID={id}")]
         [HttpPut]
-        public string UpdateReview([FromBody]Review review)
+        public string UpdateReview([FromBody] Review review)
         {
-            _logService.LogRequest("Update a review.");
-            return _reviewService.UpdateReview(review.ID, review.Rating, review.Comment, review.ReviewDate, review.ReviewerName);
+            try
+            {
+                _logService.LogRequest("Update a review.");
+                return _reviewService.UpdateReview(review.ID, review.Rating, review.Comment, review.ReviewDate, review.ReviewerName);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
 
         [Route("api/filterByRating/rating={rating}")]
         [HttpGet]
         public List<Review> GetReviewsByRating(double rating)
         {
-            _logService.LogRequest($"Filter reviews by rating {rating}.");
-            return _reviewService.FilterReviewByRating(rating);
+            try
+            {
+                _logService.LogRequest($"Filter reviews by rating {rating}.");
+                return _reviewService.FilterReviewByRating(rating);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/averageRating/movieID={movieId}")]
         [HttpGet]
         public int GetAverageRating(int movieId)
         {
-            _logService.LogRequest($"Get average rating for movie {movieId}.");
-            return _reviewService.AverageRatingForGivenMovie(movieId);
+            try
+            {
+                _logService.LogRequest($"Get average rating for movie {movieId}.");
+                return _reviewService.AverageRatingForGivenMovie(movieId);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/top10Movies")]
         [HttpGet]
         public List<Movie> GetTop10Movies()
         {
-            _logService.LogRequest("Get top 10 movies.");
-            return _reviewService.Top10Movies();
+            try
+            {
+                _logService.LogRequest("Get top 10 movies.");
+                return _reviewService.Top10Movies();
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
     }
 }

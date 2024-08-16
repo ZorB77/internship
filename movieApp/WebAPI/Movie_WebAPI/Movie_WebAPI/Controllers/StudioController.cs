@@ -25,40 +25,80 @@ namespace Movie_WebAPI.Controllers
         [HttpPost]
         public string AddStudio([FromBody] Studio studio)
         {
-            _logService.LogRequest("Add new studio.");
-            return _studioService.AddStudio(studio.Name, studio.Year, studio.Locatiton);
+            try
+            {
+                _logService.LogRequest("Add new studio.");
+                return _studioService.AddStudio(studio.Name, studio.Year, studio.Locatiton);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
 
         [Route("api/getStudios")]
         [HttpGet]
         public List<Studio> GetStudios()
         {
-            _logService.LogRequest("Get all studios.");
-            return _studioService.GetAllStudios();
+            try
+            {
+                _logService.LogRequest("Get all studios.");
+                return _studioService.GetAllStudios();
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/getStudioById/ID={id}")]
         [HttpGet]
         public Studio GetStudioById(int id)
         {
-            _logService.LogRequest($"Get studio with id {id}.");
-            return _studioService.GetStudioById(id);
+            try
+            {
+                _logService.LogRequest($"Get studio with id {id}.");
+                return _studioService.GetStudioById(id);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/deleteStudio/ID={id}")]
         [HttpDelete]
         public bool DeleteStudio(int id)
         {
-            _logService.LogRequest("Delete a studio.");
-            return _studioService.DeleteStudio(id);
+            try
+            {
+                _logService.LogRequest("Delete a studio.");
+                return _studioService.DeleteStudio(id);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                throw ex;
+            }
         }
 
         [Route("api/updateStudio/ID={id}")]
         [HttpPut]
         public string UpdateStudio([FromBody] Studio studio)
         {
-            _logService.LogRequest("Update a studio.");
-            return _studioService.UpdateStudio(studio.ID, studio.Name, studio.Year, studio.Locatiton);
+            try
+            {
+                _logService.LogRequest("Update a studio.");
+                return _studioService.UpdateStudio(studio.ID, studio.Name, studio.Year, studio.Locatiton);
+            }
+            catch (Exception ex)
+            {
+                _logService.LogResponse(ex.Message);
+                return ex.Message;
+            }
         }
     }
 }
