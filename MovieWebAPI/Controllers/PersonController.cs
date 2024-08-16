@@ -11,13 +11,18 @@ namespace Movies.Web.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IPersonService _personService;
+        private readonly ILogger _logger;
 
-        public PersonController(IPersonService personService) => _personService = personService;
+        public PersonController(IPersonService personService, ILogger<Person> logger){
+            _personService = personService;
+            _logger = logger;
+        }
 
         [HttpGet]
         public ActionResult<IEnumerable<Person>> GetAll()
         {
             var people = _personService.GetAll();
+            _logger.LogInformation($"GetAll entities");
             return Ok(people);
         }
 
@@ -27,6 +32,7 @@ namespace Movies.Web.Controllers
             var person = _personService.GetById(id);
             if (person == null)
             {
+                _logger.LogInformation($"Entity with id {id} not found");
                 return NotFound();
             }
             return Ok(person);
@@ -62,10 +68,12 @@ namespace Movies.Web.Controllers
             try
             {
                 _personService.UpdatePerson(person.PersonId, person.FirstName, person.LastName, person.Birthdate, person.Email);
+                _logger.LogInformation("Person updated");
                 return NoContent();
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -76,10 +84,12 @@ namespace Movies.Web.Controllers
             try
             {
                 _personService.DeletePerson(id);
+                _logger.LogInformation($"Person deleted {id}");
                 return NoContent();
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return NotFound(ex.Message);
             }
         }
@@ -88,6 +98,7 @@ namespace Movies.Web.Controllers
         public ActionResult<IEnumerable<Person>> FilterByDate([FromQuery] DateTime dateStart, [FromQuery] DateTime dateStop)
         {
             var people = _personService.FilterPersonByDate(dateStart, dateStop);
+            _logger.LogInformation($"FilterByDate: {people}");
             return Ok(people);
         }
     }
