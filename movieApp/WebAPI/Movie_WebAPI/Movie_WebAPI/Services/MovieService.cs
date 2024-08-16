@@ -1,4 +1,5 @@
-﻿using Movie_WebAPI.Services;
+﻿using Movie_WebAPI;
+using Movie_WebAPI.Services;
 using MovieApp.Models;
 using System.Text;
 
@@ -45,7 +46,6 @@ namespace MovieApp.Services
             {
                 throw new Exception("There are no movies!");
             }
-            
             return movies;
         }
 

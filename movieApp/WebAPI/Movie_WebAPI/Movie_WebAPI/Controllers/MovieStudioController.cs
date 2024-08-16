@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Movie_WebAPI.Helpers;
 using Movie_WebAPI.Services;
 using MovieApp.Models;
+using MovieApp.Services;
 using MovieApplication.Models;
 using MovieApplication.Services;
 
@@ -39,12 +41,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getAssociations")]
         [HttpGet]
-        public List<MovieStudio> GetMovieStudiosAssociations()
+        public List<MovieStudio> GetMovieStudiosAssociations([FromQuery]PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest("Get all movie-studio associations.");
-                return _movieStudioService.GetAllMovieStudiosAssociations();
+                return PagedList<MovieStudio>.ToPagedList(_movieStudioService.GetAllMovieStudiosAssociations().AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {
@@ -55,12 +57,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getStudiosForMovie/movieID={movieId}")]
         [HttpGet]
-        public List<Studio> GetStudiosForMovie(int movieId)
+        public List<Studio> GetStudiosForMovie(int movieId, [FromQuery]PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest($"Get studios for movie {movieId}.");
-                return _movieStudioService.GetStudiosForMovie(movieId);
+                return PagedList<Studio>.ToPagedList(_movieStudioService.GetStudiosForMovie(movieId).AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {
@@ -71,12 +73,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getMoviesForStudio/studioID={studioId}")]
         [HttpGet]
-        public List<Movie> GetMoviesForStudio(int studioId)
+        public List<Movie> GetMoviesForStudio(int studioId, [FromQuery] PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest($"Get movies for studio {studioId}.");
-                return _movieStudioService.GetMoviesForStudio(studioId);
+                return PagedList<Movie>.ToPagedList(_movieStudioService.GetMoviesForStudio(studioId).AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {

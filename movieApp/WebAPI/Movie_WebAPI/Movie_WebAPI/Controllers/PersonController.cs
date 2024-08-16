@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Movie_WebAPI.Helpers;
 using Movie_WebAPI.Services;
 using MovieApp.Models;
 using MovieApp.Services;
+using MovieApplication.Models;
+using MovieApplication.Services;
 
 namespace Movie_WebAPI.Controllers
 {
@@ -39,12 +42,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getPersons")]
         [HttpGet]
-        public List<Person> GetPersons()
+        public List<Person> GetPersons([FromQuery]PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest("Get all persons.");
-                return _personService.GetAllPersons();
+                return PagedList<Person>.ToPagedList(_personService.GetAllPersons().AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {

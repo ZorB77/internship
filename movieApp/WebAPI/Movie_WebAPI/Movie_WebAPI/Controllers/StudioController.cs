@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Movie_WebAPI.Helpers;
 using Movie_WebAPI.Services;
 using MovieApp.Models;
+using MovieApp.Services;
 using MovieApplication.Models;
 using MovieApplication.Services;
 
@@ -39,12 +41,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getStudios")]
         [HttpGet]
-        public List<Studio> GetStudios()
+        public List<Studio> GetStudios([FromQuery] PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest("Get all studios.");
-                return _studioService.GetAllStudios();
+                return PagedList<Studio>.ToPagedList(_studioService.GetAllStudios().AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {

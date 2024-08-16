@@ -153,3 +153,63 @@ Get studio with id 67.
 
 ------
 
+8/16/2024 2:53:44 PM
+Update a role.
+
+------
+
+8/16/2024 2:57:53 PM
+Get all movies.
+
+------
+
+8/16/2024 2:58:01 PM
+Get all movies.
+
+------
+
+8/16/2024 3:08:49 PM
+Get all movies.
+
+------
+
+8/16/2024 3:09:12 PM
+Get all movies.
+
+------
+
+8/16/2024 3:09:22 PM
+Get all movies.
+
+------
+
+8/16/2024 3:19:59 PM
+Get all movies.
+
+------
+
+8/16/2024 3:20:14 PM
+Get all movies.
+
+------
+
+8/16/2024 3:20:24 PM
+Get all movies.
+
+------
+
+8/16/2024 3:20:42 PM
+Get all movies.
+
+------
+
+8/16/2024 3:41:28 PM
+Filter movies by genre SF.
+
+------
+
+8/16/2024 3:41:39 PM
+Filter movies by genre Comedy.
+
+------
+

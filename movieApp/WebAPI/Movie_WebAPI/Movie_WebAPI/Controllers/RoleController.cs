@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Movie_WebAPI.Helpers;
 using Movie_WebAPI.Services;
 using MovieApp.Models;
+using MovieApp.Services;
 using MovieApplication.Services;
 
 namespace Movie_WebAPI.Controllers
@@ -38,12 +40,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getRoles")]
         [HttpGet]
-        public List<Role> GetRoles()
+        public List<Role> GetRoles([FromQuery]PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest("Get all roles.");
-                return _roleService.GetAllRoles();
+                return PagedList<Role>.ToPagedList(_roleService.GetAllRoles().AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {

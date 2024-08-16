@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Movie_WebAPI.Helpers;
 using Movie_WebAPI.Services;
 using MovieApp.Models;
 using MovieApp.Services;
@@ -39,12 +40,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getMovies")]
         [HttpGet]
-        public List<Movie> GetMovies()
+        public PagedList<Movie> GetMovies([FromQuery] PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest("Get all movies.");
-                return _movieService.GetAllMovies();
+                return PagedList<Movie>.ToPagedList(_movieService.GetAllMovies().AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {
@@ -103,12 +104,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/filterByGenre/genre={genre}")]
         [HttpGet]
-        public List<Movie> GetMoviesByGenre(string genre)
+        public List<Movie> GetMoviesByGenre(string genre, [FromQuery]PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest($"Filter movies by genre {genre}.");
-                return _movieService.FilterMoviesByGenre(genre);
+                return PagedList<Movie>.ToPagedList(_movieService.FilterMoviesByGenre(genre).AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {
@@ -119,12 +120,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/filterByYear/year={year}")]
         [HttpGet]
-        public List<Movie> GetMoviesByYear(int year)
+        public List<Movie> GetMoviesByYear(int year, [FromQuery]PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest($"Filter movies by year {year}");
-                return _movieService.FilterMoviesByYear(year);
+                return PagedList<Movie>.ToPagedList(_movieService.FilterMoviesByYear(year).AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {
@@ -135,12 +136,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/filterByDateInterval/year1={year1}&year2={year2}")]
         [HttpGet]
-        public List<Movie> GetMoviesByDateInterval(int year1, int year2)
+        public List<Movie> GetMoviesByDateInterval(int year1, int year2, [FromQuery]PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest($"Filter movies by date interval. Between {year1} and {year2}.");
-                return _movieService.FilterMoviesByDateInterval(year1, year2);
+                return PagedList<Movie>.ToPagedList(_movieService.FilterMoviesByDateInterval(year1, year2).AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Movie_WebAPI.Helpers;
 using Movie_WebAPI.Services;
 using MovieApp.Models;
 using MovieApp.Services;
@@ -39,12 +40,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getReviews")]
         [HttpGet]
-        public List<Review> GetReviews()
+        public List<Review> GetReviews([FromQuery] PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest("Get all reviews.");
-                return _reviewService.GetAllReviews();
+                return PagedList<Review>.ToPagedList(_reviewService.GetAllReviews().AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {
@@ -103,12 +104,12 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/filterByRating/rating={rating}")]
         [HttpGet]
-        public List<Review> GetReviewsByRating(double rating)
+        public List<Review> GetReviewsByRating(double rating, [FromQuery]PaginationFilter filter)
         {
             try
             {
                 _logService.LogRequest($"Filter reviews by rating {rating}.");
-                return _reviewService.FilterReviewByRating(rating);
+                return PagedList<Review>.ToPagedList(_reviewService.FilterReviewByRating(rating).AsQueryable(), filter.PageNumber, filter.PageSize);
             }
             catch (Exception ex)
             {
