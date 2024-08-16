@@ -3,8 +3,6 @@ using Movie_WebAPI.Helpers;
 using Movie_WebAPI.Services;
 using MovieApp.Models;
 using MovieApp.Services;
-using MovieApplication.Models;
-using MovieApplication.Services;
 
 namespace Movie_WebAPI.Controllers
 {
@@ -26,8 +24,13 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addPerson")]
         [HttpPost]
-        public string AddPerson([FromBody] Person person)
+        public ActionResult<string> AddPerson([FromBody] Person person)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
                 _logService.LogRequest("Add new person.");
@@ -42,7 +45,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getPersons")]
         [HttpGet]
-        public List<Person> GetPersons([FromQuery]PaginationFilter filter)
+        public ActionResult<PagedList<Person>> GetPersons([FromQuery]PaginationFilter filter)
         {
             try
             {
@@ -58,7 +61,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getPersonById/ID={id}")]
         [HttpGet]
-        public Person GetPersonById(int id)
+        public ActionResult<Person> GetPersonById(int id)
         {
             try
             {
@@ -74,7 +77,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/deletePerson/ID={id}")]
         [HttpDelete]
-        public string DeletePerson(int id)
+        public ActionResult<string> DeletePerson(int id)
         {
             try
             {
@@ -90,7 +93,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updatePerson/ID={id}")]
         [HttpPut]
-        public string UpdatePerson([FromBody] Person person)
+        public ActionResult<string> UpdatePerson([FromBody] Person person)
         {
             try
             {

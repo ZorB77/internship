@@ -24,8 +24,13 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addReview")]
         [HttpPost]
-        public string AddReview([FromBody] Review review)
+        public ActionResult<string> AddReview([FromBody] Review review)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
                 _logService.LogRequest("Add new review.");
@@ -40,7 +45,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getReviews")]
         [HttpGet]
-        public List<Review> GetReviews([FromQuery] PaginationFilter filter)
+        public ActionResult<PagedList<Review>> GetReviews([FromQuery] PaginationFilter filter)
         {
             try
             {
@@ -56,7 +61,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getReviewById/ID={id}")]
         [HttpGet]
-        public Review GetReviewById(int id)
+        public ActionResult<Review> GetReviewById(int id)
         {
             try
             {
@@ -72,7 +77,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/deleteReview/ID={id}")]
         [HttpDelete]
-        public string DeleteReview(int id)
+        public ActionResult<string> DeleteReview(int id)
         {
             try
             {
@@ -88,7 +93,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateReview/ID={id}")]
         [HttpPut]
-        public string UpdateReview([FromBody] Review review)
+        public ActionResult<string> UpdateReview([FromBody] Review review)
         {
             try
             {
@@ -104,7 +109,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/filterByRating/rating={rating}")]
         [HttpGet]
-        public List<Review> GetReviewsByRating(double rating, [FromQuery]PaginationFilter filter)
+        public ActionResult<PagedList<Review>> GetReviewsByRating(double rating, [FromQuery]PaginationFilter filter)
         {
             try
             {
@@ -120,7 +125,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/averageRating/movieID={movieId}")]
         [HttpGet]
-        public int GetAverageRating(int movieId)
+        public ActionResult<int> GetAverageRating(int movieId)
         {
             try
             {
@@ -136,7 +141,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/top10Movies")]
         [HttpGet]
-        public List<Movie> GetTop10Movies()
+        public ActionResult<List<Movie>> GetTop10Movies()
         {
             try
             {

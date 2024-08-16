@@ -25,8 +25,13 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addAssociation")]
         [HttpPost]
-        public string AddMovieStudioAssociation([FromBody] MovieStudio movieStudio)
+        public ActionResult<string> AddMovieStudioAssociation([FromBody] MovieStudio movieStudio)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
                 _logService.LogRequest("Add new movie-studio association.");
@@ -41,7 +46,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getAssociations")]
         [HttpGet]
-        public List<MovieStudio> GetMovieStudiosAssociations([FromQuery]PaginationFilter filter)
+        public ActionResult<List<MovieStudio>> GetMovieStudiosAssociations([FromQuery]PaginationFilter filter)
         {
             try
             {
@@ -57,7 +62,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getStudiosForMovie/movieID={movieId}")]
         [HttpGet]
-        public List<Studio> GetStudiosForMovie(int movieId, [FromQuery]PaginationFilter filter)
+        public ActionResult<List<Studio>> GetStudiosForMovie(int movieId, [FromQuery]PaginationFilter filter)
         {
             try
             {
@@ -73,7 +78,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getMoviesForStudio/studioID={studioId}")]
         [HttpGet]
-        public List<Movie> GetMoviesForStudio(int studioId, [FromQuery] PaginationFilter filter)
+        public ActionResult<List<Movie>> GetMoviesForStudio(int studioId, [FromQuery] PaginationFilter filter)
         {
             try
             {
@@ -89,7 +94,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/deleteAssociation/ID={id}")]
         [HttpDelete]
-        public string DeleteAssociation(int id)
+        public ActionResult<string> DeleteAssociation(int id)
         {
             try
             {
@@ -104,7 +109,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateAssociation/ID={id}")]
         [HttpPut]
-        public string UpdateAssociation([FromBody] MovieStudio movieStudio)
+        public ActionResult<string> UpdateAssociation([FromBody] MovieStudio movieStudio)
         {
             try
             {

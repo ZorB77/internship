@@ -24,8 +24,13 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addMovie")]
         [HttpPost]
-        public string AddMovie([FromBody] Movie movie)
+        public ActionResult<string> AddMovie([FromBody] Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
                 _logService.LogRequest("Add new movie.");
@@ -40,7 +45,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getMovies")]
         [HttpGet]
-        public PagedList<Movie> GetMovies([FromQuery] PaginationFilter filter)
+        public ActionResult<PagedList<Movie>> GetMovies([FromQuery] PaginationFilter filter)
         {
             try
             {
@@ -56,7 +61,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getMovieById/ID={id}")]
         [HttpGet]
-        public Movie GetMovieById(int id)
+        public ActionResult<Movie> GetMovieById(int id)
         {
             try
             {
@@ -72,7 +77,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/deleteMovie/ID={id}")]
         [HttpDelete]
-        public string DeleteMovie(int id)
+        public ActionResult<string> DeleteMovie(int id)
         {
             try
             {
@@ -88,7 +93,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateMovie/ID={id}")]
         [HttpPut]
-        public string UpdateMovie([FromBody] Movie movie)
+        public ActionResult<string> UpdateMovie([FromBody] Movie movie)
         {
             try
             {
@@ -104,7 +109,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/filterByGenre/genre={genre}")]
         [HttpGet]
-        public List<Movie> GetMoviesByGenre(string genre, [FromQuery]PaginationFilter filter)
+        public ActionResult<PagedList<Movie>> GetMoviesByGenre(string genre, [FromQuery]PaginationFilter filter)
         {
             try
             {
@@ -120,7 +125,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/filterByYear/year={year}")]
         [HttpGet]
-        public List<Movie> GetMoviesByYear(int year, [FromQuery]PaginationFilter filter)
+        public ActionResult<PagedList<Movie>> GetMoviesByYear(int year, [FromQuery]PaginationFilter filter)
         {
             try
             {
@@ -136,7 +141,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/filterByDateInterval/year1={year1}&year2={year2}")]
         [HttpGet]
-        public List<Movie> GetMoviesByDateInterval(int year1, int year2, [FromQuery]PaginationFilter filter)
+        public ActionResult<PagedList<Movie>> GetMoviesByDateInterval(int year1, int year2, [FromQuery]PaginationFilter filter)
         {
             try
             {

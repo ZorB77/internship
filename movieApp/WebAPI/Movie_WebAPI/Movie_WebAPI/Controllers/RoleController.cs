@@ -24,8 +24,13 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addRole")]
         [HttpPost]
-        public string AddRole(int movieId, int personId, string name)
+        public ActionResult<string> AddRole(int movieId, int personId, string name)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
                 _logService.LogRequest("Add new role.");
@@ -40,7 +45,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getRoles")]
         [HttpGet]
-        public List<Role> GetRoles([FromQuery]PaginationFilter filter)
+        public ActionResult<PagedList<Role>> GetRoles([FromQuery]PaginationFilter filter)
         {
             try
             {
@@ -56,7 +61,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getRoleById/ID={id}")]
         [HttpGet]
-        public Role GetRoleById(int id)
+        public ActionResult<Role> GetRoleById(int id)
         {
             try
             {
@@ -72,7 +77,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/deleteRole/ID={id}")]
         [HttpDelete]
-        public string DeleteRole(int id)
+        public ActionResult<string> DeleteRole(int id)
         {
             try
             {
@@ -88,7 +93,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateRole/ID={id}")]
         [HttpPut]
-        public string UpdateRole(int id, int movieId, int personId, string name)
+        public ActionResult<string> UpdateRole(int id, int movieId, int personId, string name)
         {
             try
             {

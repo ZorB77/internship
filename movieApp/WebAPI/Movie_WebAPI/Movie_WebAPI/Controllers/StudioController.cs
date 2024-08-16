@@ -25,8 +25,13 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/addStudio")]
         [HttpPost]
-        public string AddStudio([FromBody] Studio studio)
+        public ActionResult<string> AddStudio([FromBody] Studio studio)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
                 _logService.LogRequest("Add new studio.");
@@ -41,7 +46,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getStudios")]
         [HttpGet]
-        public List<Studio> GetStudios([FromQuery] PaginationFilter filter)
+        public ActionResult<PagedList<Studio>> GetStudios([FromQuery] PaginationFilter filter)
         {
             try
             {
@@ -57,7 +62,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/getStudioById/ID={id}")]
         [HttpGet]
-        public Studio GetStudioById(int id)
+        public ActionResult<Studio> GetStudioById(int id)
         {
             try
             {
@@ -73,7 +78,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/deleteStudio/ID={id}")]
         [HttpDelete]
-        public string DeleteStudio(int id)
+        public ActionResult<string> DeleteStudio(int id)
         {
             try
             {
@@ -89,7 +94,7 @@ namespace Movie_WebAPI.Controllers
 
         [Route("api/updateStudio/ID={id}")]
         [HttpPut]
-        public string UpdateStudio([FromBody] Studio studio)
+        public ActionResult<string> UpdateStudio([FromBody] Studio studio)
         {
             try
             {
