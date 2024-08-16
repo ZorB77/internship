@@ -1,0 +1,35 @@
+8/16/2024 2:02:34 PM
+Movie with id 500 does not exits!
+
+------
+
+8/16/2024 2:03:31 PM
+Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+
+------
+
+8/16/2024 2:11:24 PM
+Romantic movies does not exits!
+
+------
+
+8/16/2024 2:12:48 PM
+Object reference not set to an instance of an object.
+
+------
+
+8/16/2024 2:14:56 PM
+Movies from year 2003 does not exits!
+
+------
+
+8/16/2024 2:43:49 PM
+Failed to delete association!
+
+------
+
+8/16/2024 2:45:08 PM
+Studio with id 67 does not exits!
+
+------
+

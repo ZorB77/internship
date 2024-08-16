@@ -28,3 +28,128 @@ Get all reviews.
 
 ------
 
+8/16/2024 1:46:27 PM
+Filter movies by year 20
+
+------
+
+8/16/2024 1:46:45 PM
+Get studios for movie 435.
+
+------
+
+8/16/2024 1:47:07 PM
+Filter reviews by rating 2.
+
+------
+
+8/16/2024 1:50:53 PM
+Get movie with id 36.
+
+------
+
+8/16/2024 1:52:00 PM
+Get all movies.
+
+------
+
+8/16/2024 1:54:31 PM
+Get all movies.
+
+------
+
+8/16/2024 2:02:34 PM
+Get movie with id 500.
+
+------
+
+8/16/2024 2:03:31 PM
+Delete a movie.
+
+------
+
+8/16/2024 2:04:12 PM
+Delete a movie.
+
+------
+
+8/16/2024 2:04:30 PM
+Delete a movie.
+
+------
+
+8/16/2024 2:06:47 PM
+Filter movies by genre Romatic.
+
+------
+
+8/16/2024 2:07:14 PM
+Filter movies by genre Romatic.
+
+------
+
+8/16/2024 2:07:19 PM
+Filter movies by genre Sf.
+
+------
+
+8/16/2024 2:07:27 PM
+Filter movies by genre Drama.
+
+------
+
+8/16/2024 2:07:43 PM
+Filter movies by genre Adventure.
+
+------
+
+8/16/2024 2:07:48 PM
+Filter movies by genre Action.
+
+------
+
+8/16/2024 2:08:00 PM
+Filter movies by genre Biography.
+
+------
+
+8/16/2024 2:08:55 PM
+Filter movies by genre Biography.
+
+------
+
+8/16/2024 2:11:23 PM
+Filter movies by genre Romantic.
+
+------
+
+8/16/2024 2:12:35 PM
+Delete a movie.
+
+------
+
+8/16/2024 2:12:44 PM
+Update a movie.
+
+------
+
+8/16/2024 2:14:56 PM
+Filter movies by year 2003
+
+------
+
+8/16/2024 2:43:47 PM
+Delete a movie-studio association.
+
+------
+
+8/16/2024 2:43:57 PM
+Delete a person.
+
+------
+
+8/16/2024 2:45:08 PM
+Get studio with id 67.
+
+------
+
