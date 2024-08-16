@@ -13,7 +13,7 @@ namespace MovieApplication.Services
             _context = context;
         }
 
-        public bool AddRole(int movieId, int personId, string name)
+        public string AddRole(int movieId, int personId, string name)
         {
             var movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
             var person = _context.Persons.FirstOrDefault(p => p.ID == personId);
@@ -32,11 +32,11 @@ namespace MovieApplication.Services
                     _context.Roles.Add(newRole);
                     _context.SaveChanges();
                 }
-                return true;
+                return "Role added succesfully!";
             }
             catch (Exception ex)
             {
-                return false;
+                return ex.Message;
             }
         }
 
@@ -64,7 +64,7 @@ namespace MovieApplication.Services
 
             }
 
-            public bool UpdateRole(int roleId, int movieId, int personId, string name)
+            public string UpdateRole(int roleId, int movieId, int personId, string name)
             {
                 var role = _context.Roles.FirstOrDefault(r => r.ID == roleId);
                 var movie = _context.Movies.FirstOrDefault(m => m.ID == movieId);
@@ -77,9 +77,9 @@ namespace MovieApplication.Services
                     role.Name = name;
 
                     _context.SaveChanges();
-                    return true;
+                    return "Role updated succesfully!";
                 }
-                return false;
+                return "Role not found! Please try again!";
             }
 
             public void RoleOptions()
