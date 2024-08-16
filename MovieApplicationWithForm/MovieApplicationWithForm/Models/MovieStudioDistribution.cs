@@ -10,7 +10,7 @@ using System.Threading.Tasks;
     public class MovieStudioDistribution
     {
 
-        [Key] public int distributionID { get; set; }
+        [Key] public int id { get; set; }
         public Movie movie { get; set; }
         public Studio studio { get; set; }
         public DateTime distributionDate { get; set; }

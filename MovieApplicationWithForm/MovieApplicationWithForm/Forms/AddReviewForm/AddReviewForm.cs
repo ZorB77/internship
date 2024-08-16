@@ -1,59 +1,49 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
-using System.Data;
+﻿using MovieApplicationWithForm.Models;
+using MovieApplicationWithForm.Services;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace MovieApplicationWithForm
 {
     public partial class AddReviewForm : Form
     {
-        private MyDBContext dbContext;
+        private readonly MovieService movieService;
+        private readonly ReviewService reviewService;
         public event Action reviewAdded;
 
-        public AddReviewForm()
+        public AddReviewForm(MovieService movieService, ReviewService reviewService)
         {
             InitializeComponent();
+            this.movieService = movieService;
+            this.reviewService = reviewService;
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            this.dbContext = new MyDBContext();
+            var movies = movieService.GetAllMovies();
+            var movieNames = movies.Select(m => m.name).ToList();
 
-            this.dbContext.Database.EnsureCreated();
-            this.dbContext.movies.Load();
-            this.dbContext.persons.Load();
-            this.dbContext.roles.Load();
-            this.dbContext.reviews.Load();
-
-            var movieNames = this.dbContext.movies.Select(m => m.name).ToList();
             comboBoxAddReviewMovie.DataSource = movieNames;
-
-
             comboBoxAddReviewMovie.SelectedIndex = -1;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-
-            this.dbContext.Dispose();
-            this.dbContext = null;
         }
 
         private void buttonAddReview_Click(object sender, EventArgs e)
         {
-            string selectedMovie = comboBoxAddReviewMovie.SelectedItem?.ToString();
+            string selectedMovieName = comboBoxAddReviewMovie.SelectedItem.ToString();
             int selectedRating = (int)numericUpDownRating.Value;
             string selectedComment = textBoxAddReviewComment.Text;
 
-            if (string.IsNullOrWhiteSpace(selectedMovie) || string.IsNullOrWhiteSpace(selectedComment) || selectedRating < 1 || selectedRating > 10)
+            if (string.IsNullOrWhiteSpace(selectedMovieName) || string.IsNullOrWhiteSpace(selectedComment))
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
 
-            Movie movie = dbContext.movies.FirstOrDefault(m => m.name == selectedMovie);
+            var movies = movieService.GetAllMovies();
+            var movie = movies.FirstOrDefault(m => m.name == selectedMovieName);
 
             if (movie == null)
             {
@@ -61,17 +51,22 @@ namespace MovieApplicationWithForm
                 return;
             }
 
-            Review newReview = new Review { movie = movie, rating = selectedRating, comment = selectedComment };
-            dbContext.reviews.Add(newReview);
-            dbContext.SaveChanges();
+            try
+            {
+                //var newReview = new Review { movie = movie, rating = selectedRating, comment = selectedComment };
+                var newReview = new ReviewMapper { MovieID = movie.id, Rating = selectedRating, Comment = selectedComment };
+                reviewService.AddReview(newReview);
+                MessageBox.Show("Review added successfully!");
+                reviewAdded.Invoke();
 
-            MessageBox.Show("Review added successfully!");
-            reviewAdded.Invoke();
-
-            textBoxAddReviewComment.Clear();
-            comboBoxAddReviewMovie.SelectedIndex = -1;
-            numericUpDownRating.Value = 0;
+                textBoxAddReviewComment.Clear();
+                comboBoxAddReviewMovie.SelectedIndex = -1;
+                numericUpDownRating.Value = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
-
     }
 }

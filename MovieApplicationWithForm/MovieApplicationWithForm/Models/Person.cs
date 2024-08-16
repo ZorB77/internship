@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
     public class Person
     {
-        public int personID { get; set; }
+        public int id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public DateTime birthdate { get; set; }

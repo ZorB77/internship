@@ -1,7 +1,7 @@
-using MovieApplicationWebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using MovieApplicationWebAPI.Services;
+using MovieApplicationWebAPI.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 

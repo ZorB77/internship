@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MovieApplicationWebAPI.Models;
 
-namespace MovieApplicationWebAPI.Models
+namespace MovieApplicationWebAPI.DataAccess
 {
-    public class MyDBContext: DbContext
+    public class MyDBContext : DbContext
     {
         public DbSet<Review> reviews { get; set; }
         public DbSet<Movie> movies { get; set; }

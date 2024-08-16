@@ -67,7 +67,6 @@
             label3.Size = new Size(73, 20);
             label3.TabIndex = 2;
             label3.Text = "Birthdate:";
-            label3.Click += label3_Click;
             // 
             // label4
             // 
@@ -77,7 +76,6 @@
             label4.Size = new Size(37, 20);
             label4.TabIndex = 3;
             label4.Text = "City:";
-            label4.Click += label4_Click;
             // 
             // textBoxLastName
             // 
@@ -99,7 +97,6 @@
             textBoxFirstName.Name = "textBoxFirstName";
             textBoxFirstName.Size = new Size(170, 27);
             textBoxFirstName.TabIndex = 6;
-            textBoxFirstName.TextChanged += textBox3_TextChanged;
             // 
             // dateTimePickerBirthdate
             // 

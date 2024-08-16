@@ -30,20 +30,20 @@
         {
             components = new System.ComponentModel.Container();
             dataGridViewStudio = new DataGridView();
-            studioIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            studioBindingSource = new BindingSource(components);
+            dataGridViewDistribution = new DataGridView();
+            movieStudioDistributionBindingSource = new BindingSource(components);
+            label1 = new Label();
+            label2 = new Label();
+            id = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             establishmentYearDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             locationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            studioBindingSource = new BindingSource(components);
-            dataGridViewDistribution = new DataGridView();
-            distributionIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             movieDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             studioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             distributionDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             detailsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            movieStudioDistributionBindingSource = new BindingSource(components);
-            label1 = new Label();
-            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStudio).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studioBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDistribution).BeginInit();
@@ -55,7 +55,7 @@
             dataGridViewStudio.AutoGenerateColumns = false;
             dataGridViewStudio.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridViewStudio.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewStudio.Columns.AddRange(new DataGridViewColumn[] { studioIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, establishmentYearDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
+            dataGridViewStudio.Columns.AddRange(new DataGridViewColumn[] { id, nameDataGridViewTextBoxColumn, establishmentYearDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
             dataGridViewStudio.DataSource = studioBindingSource;
             dataGridViewStudio.Location = new Point(69, 50);
             dataGridViewStudio.Name = "dataGridViewStudio";
@@ -64,13 +64,52 @@
             dataGridViewStudio.TabIndex = 0;
             dataGridViewStudio.CellContentClick += dataGridViewStudio_CellContentClick;
             // 
-            // studioIDDataGridViewTextBoxColumn
+            // studioBindingSource
             // 
-            studioIDDataGridViewTextBoxColumn.DataPropertyName = "studioID";
-            studioIDDataGridViewTextBoxColumn.HeaderText = "studioID";
-            studioIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            studioIDDataGridViewTextBoxColumn.Name = "studioIDDataGridViewTextBoxColumn";
-            studioIDDataGridViewTextBoxColumn.Width = 125;
+            studioBindingSource.DataSource = typeof(Studio);
+            // 
+            // dataGridViewDistribution
+            // 
+            dataGridViewDistribution.AutoGenerateColumns = false;
+            dataGridViewDistribution.BackgroundColor = SystemColors.GradientInactiveCaption;
+            dataGridViewDistribution.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDistribution.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, movieDataGridViewTextBoxColumn, studioDataGridViewTextBoxColumn, distributionDateDataGridViewTextBoxColumn, detailsDataGridViewTextBoxColumn });
+            dataGridViewDistribution.DataSource = movieStudioDistributionBindingSource;
+            dataGridViewDistribution.Location = new Point(69, 341);
+            dataGridViewDistribution.Name = "dataGridViewDistribution";
+            dataGridViewDistribution.RowHeadersWidth = 51;
+            dataGridViewDistribution.Size = new Size(678, 246);
+            dataGridViewDistribution.TabIndex = 1;
+            // 
+            // movieStudioDistributionBindingSource
+            // 
+            movieStudioDistributionBindingSource.DataSource = typeof(MovieStudioDistribution);
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(69, 27);
+            label1.Name = "label1";
+            label1.Size = new Size(58, 20);
+            label1.TabIndex = 2;
+            label1.Text = "Studios";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(69, 318);
+            label2.Name = "label2";
+            label2.Size = new Size(93, 20);
+            label2.TabIndex = 3;
+            label2.Text = "Distributions";
+            // 
+            // id
+            // 
+            id.DataPropertyName = "id";
+            id.HeaderText = "id";
+            id.MinimumWidth = 6;
+            id.Name = "id";
+            id.Width = 125;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -96,30 +135,13 @@
             locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
             locationDataGridViewTextBoxColumn.Width = 125;
             // 
-            // studioBindingSource
+            // dataGridViewTextBoxColumn1
             // 
-            studioBindingSource.DataSource = typeof(Studio);
-            // 
-            // dataGridViewDistribution
-            // 
-            dataGridViewDistribution.AutoGenerateColumns = false;
-            dataGridViewDistribution.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridViewDistribution.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDistribution.Columns.AddRange(new DataGridViewColumn[] { distributionIDDataGridViewTextBoxColumn, movieDataGridViewTextBoxColumn, studioDataGridViewTextBoxColumn, distributionDateDataGridViewTextBoxColumn, detailsDataGridViewTextBoxColumn });
-            dataGridViewDistribution.DataSource = movieStudioDistributionBindingSource;
-            dataGridViewDistribution.Location = new Point(69, 341);
-            dataGridViewDistribution.Name = "dataGridViewDistribution";
-            dataGridViewDistribution.RowHeadersWidth = 51;
-            dataGridViewDistribution.Size = new Size(678, 246);
-            dataGridViewDistribution.TabIndex = 1;
-            // 
-            // distributionIDDataGridViewTextBoxColumn
-            // 
-            distributionIDDataGridViewTextBoxColumn.DataPropertyName = "distributionID";
-            distributionIDDataGridViewTextBoxColumn.HeaderText = "distributionID";
-            distributionIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            distributionIDDataGridViewTextBoxColumn.Name = "distributionIDDataGridViewTextBoxColumn";
-            distributionIDDataGridViewTextBoxColumn.Width = 125;
+            dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            dataGridViewTextBoxColumn1.HeaderText = "id";
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Width = 125;
             // 
             // movieDataGridViewTextBoxColumn
             // 
@@ -153,28 +175,6 @@
             detailsDataGridViewTextBoxColumn.Name = "detailsDataGridViewTextBoxColumn";
             detailsDataGridViewTextBoxColumn.Width = 125;
             // 
-            // movieStudioDistributionBindingSource
-            // 
-            movieStudioDistributionBindingSource.DataSource = typeof(MovieStudioDistribution);
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(69, 27);
-            label1.Name = "label1";
-            label1.Size = new Size(58, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Studios";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(69, 318);
-            label2.Name = "label2";
-            label2.Size = new Size(93, 20);
-            label2.TabIndex = 3;
-            label2.Text = "Distributions";
-            // 
             // StudioAndDistributionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -199,18 +199,20 @@
 
         private DataGridView dataGridViewStudio;
         private DataGridViewTextBoxColumn studioIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn establishmentYearDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
         private BindingSource studioBindingSource;
         private DataGridView dataGridViewDistribution;
         private DataGridViewTextBoxColumn distributionIDDataGridViewTextBoxColumn;
+        private BindingSource movieStudioDistributionBindingSource;
+        private Label label1;
+        private Label label2;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn establishmentYearDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn movieDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn studioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn distributionDateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn detailsDataGridViewTextBoxColumn;
-        private BindingSource movieStudioDistributionBindingSource;
-        private Label label1;
-        private Label label2;
     }
 }

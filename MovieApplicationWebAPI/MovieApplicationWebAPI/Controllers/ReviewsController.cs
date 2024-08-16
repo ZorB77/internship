@@ -49,10 +49,10 @@ namespace MovieApplicationWebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Movie>> PostReview(Review review)
+        public async Task<ActionResult<Movie>> PostReview(ReviewMapper review)
         {
             _reviewService.AddReviewAsync(review);
-            return CreatedAtAction(nameof(GetReview), new { id = review.ID }, review);
+            return CreatedAtAction(nameof(GetReview), new { id = review.Id }, review);
         }
 
         [HttpDelete("{id}")]

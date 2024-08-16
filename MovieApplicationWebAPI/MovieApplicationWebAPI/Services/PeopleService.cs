@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MovieApplicationWebAPI.DataAccess;
 using MovieApplicationWebAPI.Models;
 
 public class PersonService

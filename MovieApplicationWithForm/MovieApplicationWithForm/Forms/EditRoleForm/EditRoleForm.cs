@@ -1,38 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using MovieApplicationWithForm.Services;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MovieApplicationWithForm.Forms.EditRoleForm
 {
-
     public partial class EditRoleForm : Form
     {
-
-        private Role role;
-        private MyDBContext dbContext;
+        private readonly RoleService roleService;
+        private readonly MovieService movieService;
+        private readonly PersonService personService;
+        private readonly Role role;
         public event Action roleUpdated;
-        public EditRoleForm(Role role)
+
+        public EditRoleForm(Role role, RoleService roleService, MovieService movieService, PersonService personService)
         {
             InitializeComponent();
             this.role = role;
-            this.dbContext = new MyDBContext();
-            loadRoleDetails();
-
+            this.roleService = roleService;
+            this.movieService = movieService;
+            this.personService = personService;
+            LoadRoleDetails();
         }
 
-        private void loadRoleDetails()
+        private void LoadRoleDetails()
         {
-            var movieNames = this.dbContext.movies.Select(m => m.name).ToList();
+            var movieNames = movieService.GetAllMovies().Select(m => m.name).ToList();
             comboBoxMovies.DataSource = movieNames;
             comboBoxMovies.SelectedIndex = comboBoxMovies.FindStringExact(role.movie.name);
 
-            var personsNames = this.dbContext.persons.Select(p => p.firstName).ToList();
+            var personsNames = personService.GetAllPersons().Select(p => p.firstName).ToList();
             comboBoxPersons.DataSource = personsNames;
             comboBoxPersons.SelectedIndex = comboBoxPersons.FindStringExact(role.person.firstName);
 
@@ -47,16 +44,25 @@ namespace MovieApplicationWithForm.Forms.EditRoleForm
             role.description = textBoxDescription.Text;
             role.salary = int.Parse(textBoxSalary.Text);
 
-            Movie movie = dbContext.movies.FirstOrDefault(m => m.name == comboBoxMovies.SelectedItem.ToString());
-            Person person = dbContext.persons.FirstOrDefault(p => p.firstName == comboBoxPersons.SelectedItem.ToString());
-            role.movie = movie;
-            role.person = person;
+            var movieName = comboBoxMovies.SelectedItem.ToString();
+            var personName = comboBoxPersons.SelectedItem.ToString();
 
-            dbContext.roles.Update(role);
-            dbContext.SaveChanges();
-            MessageBox.Show("Role updated successfully!");
-            roleUpdated.Invoke();
-            this.Close();
+            try
+            {
+                var movie = movieService.GetMovieByName(movieName);
+                var person = personService.GetPersonByFirstName(personName);
+                role.movie = movie;
+                role.person = person;
+
+                roleService.UpdateRole(role);
+                MessageBox.Show("Role updated successfully!");
+                roleUpdated.Invoke();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private void buttonDeleteRole_Click(object sender, EventArgs e)
@@ -64,11 +70,17 @@ namespace MovieApplicationWithForm.Forms.EditRoleForm
             var result = MessageBox.Show("Are you sure you want to delete this role?", "Delete Role", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                dbContext.roles.Remove(role);
-                dbContext.SaveChanges();
-                MessageBox.Show("Role deleted successfully!");
-                roleUpdated.Invoke();
-                this.Close();
+                try
+                {
+                    roleService.DeleteRole(role.id);
+                    MessageBox.Show("Role deleted successfully!");
+                    roleUpdated.Invoke();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
             }
         }
     }

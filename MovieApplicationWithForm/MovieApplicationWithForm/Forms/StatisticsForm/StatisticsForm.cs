@@ -1,62 +1,52 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MovieApplicationWithForm.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MovieApplicationWithForm
 {
     public partial class StatisticsForm : Form
     {
-        private MyDBContext dbContext;
-        public StatisticsForm()
+        private readonly MovieService movieService;
+        private readonly ReviewService reviewService;
+
+        public StatisticsForm(MovieService movieService, ReviewService reviewService)
         {
             InitializeComponent();
+            this.movieService = movieService;
+            this.reviewService = reviewService;
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            this.dbContext = new MyDBContext();
-
-            this.dbContext.Database.EnsureCreated();
-            this.dbContext.movies.Load();
-            this.dbContext.persons.Load();
-            this.dbContext.roles.Load();
-            this.dbContext.reviews.Load();
-
-            var movieNames = this.dbContext.movies.Select(m => m.name).ToList();
-            comboBoxStatisticsMovie.DataSource = movieNames;
-
-
-            comboBoxStatisticsMovie.SelectedIndex = -1;
-
+            LoadMoviesIntoComboBox();
             topBestMovies();
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        private void LoadMoviesIntoComboBox()
         {
-            base.OnClosing(e);
-
-            this.dbContext.Dispose();
-            this.dbContext = null;
+            var movies = movieService.GetAllMovies();
+            var movieNames = movies.Select(m => m.name).ToList();
+            comboBoxStatisticsMovie.DataSource = movieNames;
+            comboBoxStatisticsMovie.SelectedIndex = -1;
         }
 
         private void comboBoxStatisticsMovie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var ratings = this.dbContext.reviews.Where(r => r.movie.name == comboBoxStatisticsMovie.Text).Select(r => r.rating).ToList();
-
-            if (ratings.Any())
+            var selectedMovieName = comboBoxStatisticsMovie.Text;
+            if (string.IsNullOrWhiteSpace(selectedMovieName))
             {
-                var averageRating = ratings.Average();
+                labelAverageRating.Text = "No movie selected.";
+                return;
+            }
 
-                labelAverageRating.Text = averageRating.ToString();
+            var reviews = movieService.GetAllReviewsForMovie(selectedMovieName);
+            if (reviews.Any())
+            {
+                var averageRating = reviews.Average(r => r.rating);
+                labelAverageRating.Text = averageRating.ToString("F2");
             }
             else
             {
@@ -71,11 +61,11 @@ namespace MovieApplicationWithForm
             listViewTopMovies.Columns.Add("Movie Name", 200);
             listViewTopMovies.Columns.Add("Average Rating", 120);
 
-            var topMovies = this.dbContext.reviews.GroupBy(r => r.movie).Select(g => new
-                {
-                    movie = g.Key,
-                    averageRating = g.Average(r => r.rating)
-                }).OrderByDescending(m => m.averageRating).Take(10).ToList();
+            var topMovies = reviewService.GetAllReviews().GroupBy(r => r.movie).Select(g => new
+            {
+                movie = g.Key,
+                averageRating = g.Average(r => r.rating)
+            }).OrderByDescending(m => m.averageRating).Take(10).ToList();
 
             listViewTopMovies.Items.Clear();
 

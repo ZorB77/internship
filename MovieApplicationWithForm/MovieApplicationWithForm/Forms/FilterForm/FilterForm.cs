@@ -1,20 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MovieApplicationWithForm.Services;
 
 namespace MovieApplicationWithForm
 {
     public partial class FilterForm : Form
     {
-        private MyDBContext dbContext;
-        public FilterForm()
+        private readonly MovieService movieService;
+        private readonly PersonService personService;
+        private readonly RoleService roleService;
+        private readonly ReviewService reviewService;
+
+        public FilterForm(MovieService movieService, PersonService personService, RoleService roleService, ReviewService reviewService)
         {
             InitializeComponent();
             comboBoxTable.Items.Add("Movies");
@@ -22,27 +23,11 @@ namespace MovieApplicationWithForm
             comboBoxTable.Items.Add("Roles");
             comboBoxTable.Items.Add("Reviews");
             comboBoxTable.SelectedIndex = -1;
-        }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-
-            this.dbContext = new MyDBContext();
-
-            this.dbContext.Database.EnsureCreated();
-            this.dbContext.movies.Load();
-            this.dbContext.persons.Load();
-            this.dbContext.roles.Load();
-            this.dbContext.reviews.Load();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-
-            this.dbContext.Dispose();
-            this.dbContext = null;
+            this.movieService = movieService;
+            this.personService = personService;
+            this.roleService = roleService;
+            this.reviewService = reviewService;
         }
 
         private void comboBoxTable_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,26 +43,24 @@ namespace MovieApplicationWithForm
                 comboBoxColumn.Items.Add("Release Year");
                 comboBoxColumn.SelectedIndex = -1;
             }
-
-            if (selectedTable == "Persons")
+            else if (selectedTable == "Persons")
             {
                 comboBoxColumn.Items.Add("Name");
+                comboBoxColumn.Items.Add("City");
                 comboBoxColumn.SelectedIndex = -1;
             }
-
-            if (selectedTable == "Roles")
+            else if (selectedTable == "Roles")
             {
-                comboBoxColumn.Items.Add("Role Name");
-                comboBoxColumn.Items.Add("Actor");
+                comboBoxColumn.Items.Add("Name");
+                comboBoxColumn.Items.Add("Description");
                 comboBoxColumn.SelectedIndex = -1;
             }
-
-            if (selectedTable == "Reviews")
+            else if (selectedTable == "Reviews")
             {
-                comboBoxColumn.Items.Add("Rating");
+                comboBoxColumn.Items.Add("Movie name");
+                comboBoxColumn.Items.Add("Comment");
                 comboBoxColumn.SelectedIndex = -1;
             }
-
         }
 
         private void buttonApplyFilter_Click(object sender, EventArgs e)
@@ -95,56 +78,40 @@ namespace MovieApplicationWithForm
 
             if (table == "Movies")
             {
-                var movieQuery = dbContext.movies.AsQueryable();
-                if (column == "Name")
-                {
-                    movieQuery = movieQuery.Where(m => m.name.Contains(criteria));
-                }
-                else if (column == "Genre")
-                {
-                    movieQuery = movieQuery.Where(m => m.genre.Contains(criteria));
-                }
-                else if (column == "Release Year")
-                {
-                    movieQuery = movieQuery.Where(m => m.releaseDate.Year == int.Parse(criteria));
-                }
-                dataGridViewResults.DataSource = movieQuery.ToList();
+                var movies = movieService.GetMovies(column, criteria);
+                dataGridViewResults.DataSource = movies;
             }
-
-            if (table == "Persons")
+            else if (table == "Persons")
             {
-                var personQuery = dbContext.persons.AsQueryable();
-                if (column == "Name")
-                {
-                    personQuery = personQuery.Where(p => p.firstName.Contains(criteria) || p.lastName.Contains(criteria));
-                }
-                dataGridViewResults.DataSource = personQuery.ToList();
+                var persons = personService.GetPersons(column, criteria);
+                dataGridViewResults.DataSource = persons;
             }
-
-            if (table == "Roles") 
+            else if (table == "Roles")
             {
-                var roleQuery = dbContext.roles.AsQueryable();
-                if (column == "Role Name")
+                var roles = roleService.GetRoles(column, criteria);
+                var rolesWithMovieAndPersonName = roles.Select(r => new RoleViewModel
                 {
-                    roleQuery = roleQuery.Where(r => r.name.Contains(criteria));
-                }
-                else if (column == "Actor")
-                {
-                    roleQuery = roleQuery.Where(r => r.person.firstName.Contains(criteria) || r.person.lastName.Contains(criteria));
-                }
-                dataGridViewResults.DataSource = roleQuery.ToList();
+                    roleID = r.id,
+                    movieName = movieService.GetMovie(r.movie.id).name,
+                    personName = personService.GetPerson(r.person.id).firstName + ' ' + personService.GetPerson(r.person.id).lastName,
+                    name = r.name,
+                    salary = r.salary,
+                    description = r.description
+                }).ToList();
+                dataGridViewResults.DataSource = rolesWithMovieAndPersonName;
             }
-
-            if (table == "Reviews")
+            else if (table == "Reviews")
             {
-                var reviewQuery = dbContext.reviews.AsQueryable();
-                if (column == "Rating")
+                var reviews = reviewService.GetReviews(column, criteria);
+                var reviewsWithMovieName = reviews.Select(r => new ReviewViewModel
                 {
-                   reviewQuery = reviewQuery.Where(r => r.rating == int.Parse(criteria));
-                }
-                dataGridViewResults.DataSource = reviewQuery.ToList();
-            }        
+                    reviewID = r.id,
+                    rating = r.rating,
+                    comment = r.comment,
+                    movieName = movieService.GetMovie(r.movie.id).name
+                }).ToList();
+                dataGridViewResults.DataSource = reviewsWithMovieName;
             }
         }
     }
-
+}

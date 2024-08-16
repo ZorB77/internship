@@ -1,23 +1,25 @@
-﻿using System;
+﻿using MovieApplicationWithForm.Services;
+using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace MovieApplicationWithForm.Forms.EditMovieForm
 {
     public partial class EditMovieForm : Form
     {
-        private Movie movie;
-        private MyDBContext dbContext;
+        private readonly MovieService movieService;
+        private readonly Movie movie;
         public event Action movieUpdated;
 
-        public EditMovieForm(Movie movie)
+        public EditMovieForm(Movie movie, MovieService movieService)
         {
             InitializeComponent();
             this.movie = movie;
-            this.dbContext = new MyDBContext();
-            loadMovieDetails();
+            this.movieService = movieService;
+            LoadMovieDetails();
         }
 
-        private void loadMovieDetails()
+        private void LoadMovieDetails()
         {
             textBoxName.Text = movie.name;
             textBoxDescription.Text = movie.description;
@@ -32,12 +34,17 @@ namespace MovieApplicationWithForm.Forms.EditMovieForm
             movie.genre = textBoxGenre.Text;
             movie.releaseDate = dateTimePicker1.Value;
 
-            dbContext.movies.Update(movie);
-            dbContext.SaveChanges();
-            MessageBox.Show("Movie updated successfully!");
-            movieUpdated.Invoke();
-            this.Close();
-
+            try
+            {
+                movieService.UpdateMovie(movie);
+                MessageBox.Show("Movie updated successfully!");
+                movieUpdated.Invoke();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private void buttonDeleteMovie_Click(object sender, EventArgs e)
@@ -45,11 +52,18 @@ namespace MovieApplicationWithForm.Forms.EditMovieForm
             var result = MessageBox.Show("Are you sure you want to delete this movie?", "Delete Movie", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                dbContext.movies.Remove(movie);
-                dbContext.SaveChanges();
-                MessageBox.Show("Movie deleted successfully!");
-                movieUpdated.Invoke();
-                this.Close();
+                try
+                {
+                    Debug.WriteLine($"Movie id:{movie.id}");
+                    movieService.DeleteMovie(movie.id);
+                    MessageBox.Show("Movie deleted successfully!");
+                    movieUpdated.Invoke();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
             }
         }
     }

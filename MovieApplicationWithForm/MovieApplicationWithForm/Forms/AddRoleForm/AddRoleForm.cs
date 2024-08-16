@@ -1,63 +1,60 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
-using System.Data;
+﻿using MovieApplicationWithForm.Services;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace MovieApplicationWithForm
 {
     public partial class AddRoleForm : Form
     {
-        private MyDBContext dbContext;
+        private readonly MovieService movieService;
+        private readonly PersonService personService;
+        private readonly RoleService roleService;
         public event Action roleAdded;
 
-        public AddRoleForm()
+        public AddRoleForm(MovieService movieService, PersonService personService, RoleService roleService)
         {
             InitializeComponent();
+            this.movieService = movieService;
+            this.personService = personService;
+            this.roleService = roleService;
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            this.dbContext = new MyDBContext();
-
-            this.dbContext.Database.EnsureCreated();
-            this.dbContext.movies.Load();
-            this.dbContext.persons.Load();
-            this.dbContext.roles.Load();
-            this.dbContext.reviews.Load();
-
-            var movieNames = this.dbContext.movies.Select(m => m.name).ToList();
+            var movies = movieService.GetAllMovies();
+            var movieNames = movies.Select(m => m.name).ToList();
             comboBoxAddRoleMovie.DataSource = movieNames;
 
-            var personsNames = this.dbContext.persons.Select(p => p.firstName).ToList();
-            comboBoxAddRolePerson.DataSource = personsNames;
+            var persons = personService.GetAllPersons();
+            var personNames = persons.Select(p => p.firstName).ToList();
+            comboBoxAddRolePerson.DataSource = personNames;
 
             comboBoxAddRoleMovie.SelectedIndex = -1;
             comboBoxAddRolePerson.SelectedIndex = -1;
         }
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-
-            this.dbContext.Dispose();
-            this.dbContext = null;
-        }
-
         private void buttonAddRole_Click(object sender, EventArgs e)
         {
-            string selectedMovie = comboBoxAddRoleMovie.SelectedItem.ToString();
-            string selectedPerson = comboBoxAddRolePerson.SelectedItem.ToString();
-            string selectedName = textBoxAddRoleName.Text;
+            string selectedMovieName = comboBoxAddRoleMovie.SelectedItem.ToString();
+            string selectedPersonName = comboBoxAddRolePerson.SelectedItem.ToString();
+            string roleName = textBoxAddRoleName.Text;
+            string selectedDescription = textBoxAddRoleDescription.Text;
+            int selectedSalary = (int)numericUpDownSalary.Value;
 
-            if (string.IsNullOrWhiteSpace(selectedMovie) || string.IsNullOrWhiteSpace(selectedPerson) || string.IsNullOrWhiteSpace(selectedName))
+            if (string.IsNullOrWhiteSpace(selectedMovieName) || string.IsNullOrWhiteSpace(selectedPersonName))
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
 
-            Movie movie = dbContext.movies.FirstOrDefault(m => m.name == selectedMovie);
-            Person person = dbContext.persons.FirstOrDefault(p => p.firstName == selectedPerson);
+            var movies = movieService.GetAllMovies();
+            var movie = movies.FirstOrDefault(m => m.name == selectedMovieName);
+
+            var persons = personService.GetAllPersons();
+            var person = persons.FirstOrDefault(p => p.firstName == selectedPersonName);
 
             if (movie == null || person == null)
             {
@@ -65,16 +62,27 @@ namespace MovieApplicationWithForm
                 return;
             }
 
-            Role newRole = new Role{name = selectedName, movie = movie, person = person};
-            dbContext.roles.Add(newRole);
-            dbContext.SaveChanges();
 
-            MessageBox.Show("Role added successfully!");
-            roleAdded.Invoke();
+            try
+            {
+                var newRole = new Role { name = roleName, movie = movie, person = person, salary = selectedSalary, description = selectedDescription };
+                roleService.AddRole(newRole);
+                MessageBox.Show("Role added successfully!");
+                roleAdded.Invoke();
 
-            textBoxAddRoleName.Clear();
-            comboBoxAddRoleMovie.SelectedIndex = -1;
-            comboBoxAddRolePerson.SelectedIndex = -1;
+                textBoxAddRoleName.Clear();
+                comboBoxAddRoleMovie.SelectedIndex = -1;
+                comboBoxAddRolePerson.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

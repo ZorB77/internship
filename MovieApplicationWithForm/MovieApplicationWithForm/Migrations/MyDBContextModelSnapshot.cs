@@ -23,11 +23,11 @@ namespace MovieApplicationWithForm.Migrations
 
             modelBuilder.Entity("Movie", b =>
                 {
-                    b.Property<int>("movieID")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("movieID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -44,18 +44,18 @@ namespace MovieApplicationWithForm.Migrations
                     b.Property<DateTime>("releaseDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("movieID");
+                    b.HasKey("id");
 
                     b.ToTable("movies");
                 });
 
             modelBuilder.Entity("MovieStudioDistribution", b =>
                 {
-                    b.Property<int>("distributionID")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("distributionID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("details")
                         .IsRequired()
@@ -64,28 +64,28 @@ namespace MovieApplicationWithForm.Migrations
                     b.Property<DateTime>("distributionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("movieID")
+                    b.Property<int>("movieid")
                         .HasColumnType("int");
 
-                    b.Property<int>("studioID")
+                    b.Property<int>("studioid")
                         .HasColumnType("int");
 
-                    b.HasKey("distributionID");
+                    b.HasKey("id");
 
-                    b.HasIndex("movieID");
+                    b.HasIndex("movieid");
 
-                    b.HasIndex("studioID");
+                    b.HasIndex("studioid");
 
                     b.ToTable("distributions");
                 });
 
             modelBuilder.Entity("Person", b =>
                 {
-                    b.Property<int>("personID")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("personID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<DateTime>("birthdate")
                         .HasColumnType("datetime2");
@@ -106,77 +106,77 @@ namespace MovieApplicationWithForm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("personID");
+                    b.HasKey("id");
 
                     b.ToTable("persons");
                 });
 
             modelBuilder.Entity("Review", b =>
                 {
-                    b.Property<int>("reviewID")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("reviewID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("comment")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("movieID")
+                    b.Property<int>("movieid")
                         .HasColumnType("int");
 
                     b.Property<int>("rating")
                         .HasColumnType("int");
 
-                    b.HasKey("reviewID");
+                    b.HasKey("id");
 
-                    b.HasIndex("movieID");
+                    b.HasIndex("movieid");
 
                     b.ToTable("reviews");
                 });
 
             modelBuilder.Entity("Role", b =>
                 {
-                    b.Property<int>("roleID")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("roleID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("movieID")
+                    b.Property<int>("movieid")
                         .HasColumnType("int");
 
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("personID")
+                    b.Property<int>("personid")
                         .HasColumnType("int");
 
                     b.Property<int>("salary")
                         .HasColumnType("int");
 
-                    b.HasKey("roleID");
+                    b.HasKey("id");
 
-                    b.HasIndex("movieID");
+                    b.HasIndex("movieid");
 
-                    b.HasIndex("personID");
+                    b.HasIndex("personid");
 
                     b.ToTable("roles");
                 });
 
             modelBuilder.Entity("Studio", b =>
                 {
-                    b.Property<int>("studioID")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("studioID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<int>("establishmentYear")
                         .HasColumnType("int");
@@ -189,7 +189,7 @@ namespace MovieApplicationWithForm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("studioID");
+                    b.HasKey("id");
 
                     b.ToTable("studios");
                 });
@@ -198,13 +198,13 @@ namespace MovieApplicationWithForm.Migrations
                 {
                     b.HasOne("Movie", "movie")
                         .WithMany()
-                        .HasForeignKey("movieID")
+                        .HasForeignKey("movieid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Studio", "studio")
                         .WithMany()
-                        .HasForeignKey("studioID")
+                        .HasForeignKey("studioid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -217,7 +217,7 @@ namespace MovieApplicationWithForm.Migrations
                 {
                     b.HasOne("Movie", "movie")
                         .WithMany()
-                        .HasForeignKey("movieID")
+                        .HasForeignKey("movieid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -228,13 +228,13 @@ namespace MovieApplicationWithForm.Migrations
                 {
                     b.HasOne("Movie", "movie")
                         .WithMany()
-                        .HasForeignKey("movieID")
+                        .HasForeignKey("movieid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Person", "person")
                         .WithMany()
-                        .HasForeignKey("personID")
+                        .HasForeignKey("personid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -39,27 +39,22 @@
             label3 = new Label();
             label4 = new Label();
             dataGridViewRoles = new DataGridView();
-            roleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             movieDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             personDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             salary = new DataGridViewTextBoxColumn();
             description = new DataGridViewTextBoxColumn();
             dataGridViewMovies = new DataGridView();
-            movieIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            releaseDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            genreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dataGridViewPersons = new DataGridView();
-            personIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             birthdateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             city = new DataGridViewTextBoxColumn();
             phone = new DataGridViewTextBoxColumn();
             dataGridViewReviews = new DataGridView();
-            reviewIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             ratingDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             commentDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             movieDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -70,6 +65,11 @@
             linkLabelMovies = new LinkLabel();
             linkLabel3 = new LinkLabel();
             linkLabel2 = new LinkLabel();
+            id = new DataGridViewTextBoxColumn();
+            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            releaseDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            genreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)movieBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)personBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roleBindingSource).BeginInit();
@@ -149,7 +149,7 @@
             dataGridViewRoles.AutoGenerateColumns = false;
             dataGridViewRoles.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridViewRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRoles.Columns.AddRange(new DataGridViewColumn[] { roleIDDataGridViewTextBoxColumn, movieDataGridViewTextBoxColumn, personDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1, salary, description });
+            dataGridViewRoles.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn3, movieDataGridViewTextBoxColumn, personDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1, salary, description });
             dataGridViewRoles.DataSource = roleBindingSource;
             dataGridViewRoles.Location = new Point(12, 321);
             dataGridViewRoles.Name = "dataGridViewRoles";
@@ -158,13 +158,13 @@
             dataGridViewRoles.TabIndex = 3;
             dataGridViewRoles.CellContentClick += dataGridViewRoles_CellContentClick;
             // 
-            // roleIDDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn3
             // 
-            roleIDDataGridViewTextBoxColumn.DataPropertyName = "roleID";
-            roleIDDataGridViewTextBoxColumn.HeaderText = "roleID";
-            roleIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
-            roleIDDataGridViewTextBoxColumn.Width = 125;
+            dataGridViewTextBoxColumn3.DataPropertyName = "id";
+            dataGridViewTextBoxColumn3.HeaderText = "id";
+            dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Width = 125;
             // 
             // movieDataGridViewTextBoxColumn
             // 
@@ -211,7 +211,7 @@
             dataGridViewMovies.AutoGenerateColumns = false;
             dataGridViewMovies.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridViewMovies.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMovies.Columns.AddRange(new DataGridViewColumn[] { movieIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, releaseDateDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, genreDataGridViewTextBoxColumn });
+            dataGridViewMovies.Columns.AddRange(new DataGridViewColumn[] { id, nameDataGridViewTextBoxColumn, releaseDateDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, genreDataGridViewTextBoxColumn });
             dataGridViewMovies.DataSource = movieBindingSource;
             dataGridViewMovies.Location = new Point(12, 30);
             dataGridViewMovies.Name = "dataGridViewMovies";
@@ -220,53 +220,12 @@
             dataGridViewMovies.TabIndex = 5;
             dataGridViewMovies.CellContentClick += dataGridViewMovies_CellContentClick_1;
             // 
-            // movieIDDataGridViewTextBoxColumn
-            // 
-            movieIDDataGridViewTextBoxColumn.DataPropertyName = "movieID";
-            movieIDDataGridViewTextBoxColumn.HeaderText = "movieID";
-            movieIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            movieIDDataGridViewTextBoxColumn.Name = "movieIDDataGridViewTextBoxColumn";
-            movieIDDataGridViewTextBoxColumn.ReadOnly = true;
-            movieIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            nameDataGridViewTextBoxColumn.HeaderText = "name";
-            nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            nameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // releaseDateDataGridViewTextBoxColumn
-            // 
-            releaseDateDataGridViewTextBoxColumn.DataPropertyName = "releaseDate";
-            releaseDateDataGridViewTextBoxColumn.HeaderText = "releaseDate";
-            releaseDateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            releaseDateDataGridViewTextBoxColumn.Name = "releaseDateDataGridViewTextBoxColumn";
-            releaseDateDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            descriptionDataGridViewTextBoxColumn.HeaderText = "description";
-            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            descriptionDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // genreDataGridViewTextBoxColumn
-            // 
-            genreDataGridViewTextBoxColumn.DataPropertyName = "genre";
-            genreDataGridViewTextBoxColumn.HeaderText = "genre";
-            genreDataGridViewTextBoxColumn.MinimumWidth = 6;
-            genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
-            genreDataGridViewTextBoxColumn.Width = 125;
-            // 
             // dataGridViewPersons
             // 
             dataGridViewPersons.AutoGenerateColumns = false;
             dataGridViewPersons.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridViewPersons.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPersons.Columns.AddRange(new DataGridViewColumn[] { personIDDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, birthdateDataGridViewTextBoxColumn, city, phone });
+            dataGridViewPersons.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, birthdateDataGridViewTextBoxColumn, city, phone });
             dataGridViewPersons.DataSource = personBindingSource;
             dataGridViewPersons.Location = new Point(663, 30);
             dataGridViewPersons.Name = "dataGridViewPersons";
@@ -275,14 +234,13 @@
             dataGridViewPersons.TabIndex = 7;
             dataGridViewPersons.CellContentClick += dataGridViewPersons_CellContentClick;
             // 
-            // personIDDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            personIDDataGridViewTextBoxColumn.DataPropertyName = "personID";
-            personIDDataGridViewTextBoxColumn.HeaderText = "personID";
-            personIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            personIDDataGridViewTextBoxColumn.Name = "personIDDataGridViewTextBoxColumn";
-            personIDDataGridViewTextBoxColumn.ReadOnly = true;
-            personIDDataGridViewTextBoxColumn.Width = 125;
+            dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            dataGridViewTextBoxColumn1.HeaderText = "id";
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Width = 125;
             // 
             // firstNameDataGridViewTextBoxColumn
             // 
@@ -330,7 +288,7 @@
             dataGridViewReviews.AutoGenerateColumns = false;
             dataGridViewReviews.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridViewReviews.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewReviews.Columns.AddRange(new DataGridViewColumn[] { reviewIDDataGridViewTextBoxColumn, ratingDataGridViewTextBoxColumn, commentDataGridViewTextBoxColumn, movieDataGridViewTextBoxColumn1 });
+            dataGridViewReviews.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, ratingDataGridViewTextBoxColumn, commentDataGridViewTextBoxColumn, movieDataGridViewTextBoxColumn1 });
             dataGridViewReviews.DataSource = reviewBindingSource;
             dataGridViewReviews.Location = new Point(663, 321);
             dataGridViewReviews.Name = "dataGridViewReviews";
@@ -338,13 +296,13 @@
             dataGridViewReviews.Size = new Size(553, 223);
             dataGridViewReviews.TabIndex = 8;
             // 
-            // reviewIDDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            reviewIDDataGridViewTextBoxColumn.DataPropertyName = "reviewID";
-            reviewIDDataGridViewTextBoxColumn.HeaderText = "reviewID";
-            reviewIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            reviewIDDataGridViewTextBoxColumn.Name = "reviewIDDataGridViewTextBoxColumn";
-            reviewIDDataGridViewTextBoxColumn.Width = 125;
+            dataGridViewTextBoxColumn2.DataPropertyName = "id";
+            dataGridViewTextBoxColumn2.HeaderText = "id";
+            dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.Width = 125;
             // 
             // ratingDataGridViewTextBoxColumn
             // 
@@ -453,6 +411,46 @@
             linkLabel2.Text = "Studios and distributions ->";
             linkLabel2.LinkClicked += linkLabel2_LinkClicked;
             // 
+            // id
+            // 
+            id.DataPropertyName = "id";
+            id.HeaderText = "id";
+            id.MinimumWidth = 6;
+            id.Name = "id";
+            id.Width = 125;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            nameDataGridViewTextBoxColumn.HeaderText = "name";
+            nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // releaseDateDataGridViewTextBoxColumn
+            // 
+            releaseDateDataGridViewTextBoxColumn.DataPropertyName = "releaseDate";
+            releaseDateDataGridViewTextBoxColumn.HeaderText = "releaseDate";
+            releaseDateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            releaseDateDataGridViewTextBoxColumn.Name = "releaseDateDataGridViewTextBoxColumn";
+            releaseDateDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "description";
+            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // genreDataGridViewTextBoxColumn
+            // 
+            genreDataGridViewTextBoxColumn.DataPropertyName = "genre";
+            genreDataGridViewTextBoxColumn.HeaderText = "genre";
+            genreDataGridViewTextBoxColumn.MinimumWidth = 6;
+            genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
+            genreDataGridViewTextBoxColumn.Width = 125;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -477,7 +475,6 @@
             Controls.Add(buttonSave);
             Name = "MainForm";
             Text = "Movie Application";
-            Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)movieBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)personBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)roleBindingSource).EndInit();
@@ -503,17 +500,10 @@
         private DataGridView dataGridViewRoles;
         private DataGridView dataGridViewMovies;
         private DataGridViewTextBoxColumn movieIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn releaseDateDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
         private DataGridView dataGridViewPersons;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridView dataGridViewReviews;
         private DataGridViewTextBoxColumn reviewIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn ratingDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn commentDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn movieDataGridViewTextBoxColumn1;
         private Button buttonFilter;
         private LinkLabel linkLabelRoles;
         private LinkLabel linkLabelReviews;
@@ -521,17 +511,28 @@
         private LinkLabel linkLabelMovies;
         private LinkLabel linkLabel3;
         private DataGridViewTextBoxColumn personIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
+        private LinkLabel linkLabel2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn birthdateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn city;
         private DataGridViewTextBoxColumn phone;
-        private DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn movieDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn personDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn salary;
         private DataGridViewTextBoxColumn description;
-        private LinkLabel linkLabel2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn ratingDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn commentDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn movieDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn releaseDateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
     public class Studio
     {
-        public int studioID { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
         public int establishmentYear { get; set; }
         public string location { get; set; }

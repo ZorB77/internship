@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MovieApplicationWebAPI.DataAccess;
 using MovieApplicationWebAPI.Models;
 
 namespace MovieApplicationWebAPI.Services
@@ -22,8 +23,16 @@ namespace MovieApplicationWebAPI.Services
             return await _dbContext.reviews.Include(r => r.Movie).FirstOrDefaultAsync(r => r.ID == id);
         }
 
-        public async Task AddReviewAsync(Review review)
+        /*public async Task AddReviewAsync(Review review)
         {
+            _dbContext.reviews.Add(review);
+            await _dbContext.SaveChangesAsync();
+        }*/
+
+        public async Task AddReviewAsync(ReviewMapper reviewMapper)
+        {
+            var movie = _dbContext.movies.FirstOrDefault(m => m.ID == reviewMapper.MovieID);
+            var review = new Review { Movie = movie, Comment = reviewMapper.Comment, Rating = reviewMapper.Rating };
             _dbContext.reviews.Add(review);
             await _dbContext.SaveChangesAsync();
         }

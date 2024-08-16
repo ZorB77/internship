@@ -68,7 +68,6 @@
             label1.Size = new Size(140, 20);
             label1.TabIndex = 4;
             label1.Text = "Name of the movie:";
-            label1.Click += label1_Click;
             // 
             // label2
             // 

@@ -35,6 +35,11 @@
             textBoxAddRoleName = new TextBox();
             label3 = new Label();
             buttonAddRole = new Button();
+            numericUpDownSalary = new NumericUpDown();
+            textBoxAddRoleDescription = new TextBox();
+            label4 = new Label();
+            label5 = new Label();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownSalary).BeginInit();
             SuspendLayout();
             // 
             // comboBoxAddRoleMovie
@@ -97,12 +102,49 @@
             buttonAddRole.UseVisualStyleBackColor = true;
             buttonAddRole.Click += buttonAddRole_Click;
             // 
+            // numericUpDownSalary
+            // 
+            numericUpDownSalary.Location = new Point(483, 68);
+            numericUpDownSalary.Name = "numericUpDownSalary";
+            numericUpDownSalary.Size = new Size(151, 27);
+            numericUpDownSalary.TabIndex = 7;
+            // 
+            // textBoxAddRoleDescription
+            // 
+            textBoxAddRoleDescription.Location = new Point(483, 172);
+            textBoxAddRoleDescription.Name = "textBoxAddRoleDescription";
+            textBoxAddRoleDescription.Size = new Size(151, 27);
+            textBoxAddRoleDescription.TabIndex = 8;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(483, 45);
+            label4.Name = "label4";
+            label4.Size = new Size(52, 20);
+            label4.TabIndex = 9;
+            label4.Text = "Salary:";
+            label4.Click += label4_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(483, 149);
+            label5.Name = "label5";
+            label5.Size = new Size(161, 20);
+            label5.TabIndex = 10;
+            label5.Text = "Description of the role:";
+            // 
             // AddRoleForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LavenderBlush;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(textBoxAddRoleDescription);
+            Controls.Add(numericUpDownSalary);
             Controls.Add(buttonAddRole);
             Controls.Add(label3);
             Controls.Add(textBoxAddRoleName);
@@ -112,6 +154,7 @@
             Controls.Add(comboBoxAddRoleMovie);
             Name = "AddRoleForm";
             Text = "Add Role";
+            ((System.ComponentModel.ISupportInitialize)numericUpDownSalary).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -125,5 +168,9 @@
         private TextBox textBoxAddRoleName;
         private Label label3;
         private Button buttonAddRole;
+        private NumericUpDown numericUpDownSalary;
+        private TextBox textBoxAddRoleDescription;
+        private Label label4;
+        private Label label5;
     }
 }
