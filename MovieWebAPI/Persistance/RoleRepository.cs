@@ -11,21 +11,21 @@ namespace Movies.Persistance
         {
         }
 
-        public override IEnumerable<Role> GetAll()
+        public async Task<IEnumerable<Role>> GetAllAsync()
         {
-            return _context.Roles
+            return await _context.Roles
                            .AsNoTracking()
                            .Include(e => e.Movie)
-                           .Include(e => e.Person);
+                           .Include(e => e.Person).ToListAsync();
         }
 
-        public override Role GetById(int id)
+        public async Task<Role> GetByIdAsync(int id)
         {
-            return _context.Roles
+            return await _context.Roles
                            .AsNoTracking()
                            .Include(e => e.Movie)
                            .Include(e => e.Person)
-                           .FirstOrDefault(r => r.RoleId == id);
+                           .FirstOrDefaultAsync(r => r.RoleId == id);
         }
 
     }

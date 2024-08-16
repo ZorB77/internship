@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MovieWebAPI.Persistance;
+using MovieWebAPI.Services.Interfaces;
+
 
 namespace Movies.Services
 {
@@ -15,7 +13,7 @@ namespace Movies.Services
             _repository = repository;
         }
 
-        public void AddStudio(int id, string name, int year, string location)
+        public async Task AddStudioAsync(int id, string name, int year, string location)
         {
             try
             {
@@ -29,21 +27,35 @@ namespace Movies.Services
                     throw new ArgumentException($"'{nameof(location)}' cannot be null or empty.", nameof(location));
                 }
 
-                _repository.Add(new Studio(id, name, year, location));
+                await _repository.AddAsync(new Studio(id, name, year, location));
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
         }
 
-        public List<Studio> GetStudios()
+        public async Task<Studio> GetByIdAsync(int id)
         {
-            return _repository.GetAll().ToList();
+            try
+            {
+                var studio = await _repository.GetByIdAsync(id);
+                if (studio == null)
+                {
+                    throw new Exception("Error: there is no review with this id");
+                }
+                return studio;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+
         }
 
-        public Studio GetById(int id)
+        public async Task<List<Studio>> GetStudiosAsync()
         {
-
-            return _repository.GetById(id);
-
+            var studios = await _repository.GetAllAsync();
+            return studios.ToList();
         }
+
     }
 }

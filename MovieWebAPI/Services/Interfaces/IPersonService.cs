@@ -5,11 +5,11 @@ namespace Movies.Services
 {
     public interface IPersonService
     {
-        void AddPerson(int personID, string firstname, string lastname, DateTime birthday, string email);
-        void DeletePerson(int personId);
-        List<Person> FilterPersonByDate(DateTime dateStart, DateTime dateStop);
-        List<Person> GetAll();
-        Person GetById(int personId);
-        void UpdatePerson(int personID, string firstname, string lastname, DateTime birthday, string email);
+        Task AddPersonAsync(int personID, string firstname, string lastname, DateTime birthdate, string email);
+        Task DeletePersonAsync(int personId);
+        Task<List<Person>> FilterPersonByDateAsync(DateTime dateStart, DateTime dateStop);
+        Task<List<Person>> GetAllAsync();
+        Task<Person> GetByIdAsync(int personId);
+        Task UpdatePersonAsync(int personID, string firstname, string lastname, DateTime birthdate, string email);
     }
 }

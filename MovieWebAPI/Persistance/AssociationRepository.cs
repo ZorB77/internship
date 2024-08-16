@@ -11,20 +11,20 @@ namespace Movies.Persistance
         {
         }
 
-        public override IEnumerable<MovieStudioAssociation> GetAll()
+        public async Task<IEnumerable<MovieStudioAssociation>> GetAllAsync()
         {
-            return _context.Set<MovieStudioAssociation>()
+            return await _context.MovieStudioAssociations
                            .Include(e => e.Movie)
                            .Include(e => e.Studio)
-                           .ToList();
+                           .ToListAsync();
         }
 
-        public override MovieStudioAssociation GetById(int id)
+        public async Task<MovieStudioAssociation> GetByIdAsync(int id)
         {
-            return _context.Set<MovieStudioAssociation>()
+            return await _context.MovieStudioAssociations
                            .Include(e => e.Movie)
                            .Include(e => e.Studio)
-                           .FirstOrDefault(r => r.Id == id);
+                           .FirstOrDefaultAsync(r => r.Id == id);
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 
-public interface IRepository<T> where T : class
+namespace MovieWebAPI.Persistance
 {
-    void Add(T entity);
-    IEnumerable<T> GetAll();
-    T GetById(int id);
-    void Update(T entity);
-    void Remove(T entity);
+    public interface IRepository<T> where T : class
+    {
+        Task AddAsync(T entity);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<T> GetByIdAsync(int id);
+        Task UpdateAsync(T entity);
+        Task RemoveAsync(T entity);
+    }
 }

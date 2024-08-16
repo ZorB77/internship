@@ -7,7 +7,9 @@ public class Studio
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int StudioId { get; set; }
+    [Required(ErrorMessage = "The name of the studio is required")]
     public string Name { get; set; }
+    [Range(0, 2100, ErrorMessage ="The year is not valid")]
     public int Year { get; set; }
     public string? Location { get; set; }
     public Studio() { }

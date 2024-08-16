@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Movies.Services;
-using System.Collections.Generic;
+using MovieWebAPI.Models.DTOs;
 
 namespace Movies.Api.Controllers
 {
@@ -16,73 +16,132 @@ namespace Movies.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Review>> GetAllReviews()
+        public async Task<ActionResult<IEnumerable<Review>>> GetAllReviews()
         {
-            var reviews = _reviewService.GetAll();
-            return Ok(reviews);
+            try
+            {
+                var reviews = await _reviewService.GetAllAsync();
+                return Ok(reviews);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Review> GetReviewById(int id)
+        public async Task<ActionResult<Review>> GetReviewById(int id)
         {
-            var review = _reviewService.GetByIdReview(id);
-            if (review == null)
+            try
             {
-                return NotFound(new { Message = "Review not found." });
+                var review = await _reviewService.GetByIdReviewAsync(id);
+                if (review == null)
+                {
+                    return NotFound(new { Message = "Review not found." });
+                }
+                return Ok(review);
             }
-            return Ok(review);
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
         }
 
         [HttpPost]
-        public IActionResult AddReview(int reviewId, float rating, string comment, int movieId)
+        public async Task<IActionResult> AddReview([FromBody] ReviewDto reviewDto)
         {
-            _reviewService.AddReview(reviewId, rating, comment, movieId);
-            return CreatedAtAction(nameof(GetReviewById), new { id = reviewId }, new { reviewId, rating, comment, movieId });
+            if (reviewDto == null)
+            {
+                return BadRequest("Review data is null.");
+            }
+
+            try
+            {
+                await _reviewService.AddReviewAsync(reviewDto.ReviewId, reviewDto.Rating, reviewDto.Comment, reviewDto.MovieId);
+                return CreatedAtAction(nameof(GetReviewById), new { id = reviewDto.ReviewId }, reviewDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateReview(int id, float rating, string comment, int movieId)
+        public async Task<IActionResult> UpdateReview(int id, [FromBody] ReviewDto reviewDto)
         {
-            var existingReview = _reviewService.GetByIdReview(id);
-            if (existingReview == null)
+            if (reviewDto == null || id != reviewDto.ReviewId)
             {
-                return NotFound(new { Message = "Review not found." });
+                return BadRequest("Invalid review data.");
             }
 
-            _reviewService.UpdateReview(id, rating, comment, movieId);
-            return NoContent();
+            try
+            {
+                var existingReview = await _reviewService.GetByIdReviewAsync(id);
+                if (existingReview == null)
+                {
+                    return NotFound(new { Message = "Review not found." });
+                }
+
+                await _reviewService.UpdateReviewAsync(id, reviewDto.Rating, reviewDto.Comment, reviewDto.MovieId);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteReview(int id)
+        public async Task<IActionResult> DeleteReview(int id)
         {
-            var existingReview = _reviewService.GetByIdReview(id);
-            if (existingReview == null)
+            try
             {
-                return NotFound(new { Message = "Review not found." });
-            }
+                var existingReview = await _reviewService.GetByIdReviewAsync(id);
+                if (existingReview == null)
+                {
+                    return NotFound(new { Message = "Review not found." });
+                }
 
-            _reviewService.DeleteReview(id);
-            return NoContent();
+                await _reviewService.DeleteReviewAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
         }
 
         [HttpGet("AverageRating/{movieId}")]
-        public ActionResult<float> GetAverageRating(int movieId)
+        public async Task<ActionResult<float>> GetAverageRating(int movieId)
         {
-            var averageRating = _reviewService.GetTheAverageRatingOfAMovie(movieId);
-            if (averageRating == -1)
+            try
             {
-                return NotFound(new { Message = "Movie not found." });
+                var averageRating = await _reviewService.GetTheAverageRatingOfAMovieAsync(movieId);
+                if (averageRating == -1)
+                {
+                    return NotFound(new { Message = "Movie not found." });
+                }
+                return Ok(averageRating);
             }
-
-            return Ok(averageRating);
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
         }
 
         [HttpGet("Top10Movies")]
-        public ActionResult<IEnumerable<Movie>> GetTop10Movies()
+        public async Task<ActionResult<IEnumerable<Movie>>> GetTop10Movies()
         {
-            var topMovies = _reviewService.Top10MoviesWithHigherRating();
-            return Ok(topMovies);
+            try
+            {
+                var topMovies = await _reviewService.Top10MoviesWithHigherRatingAsync();
+                return Ok(topMovies);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
         }
     }
+
 }

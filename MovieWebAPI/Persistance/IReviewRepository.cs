@@ -1,9 +1,11 @@
 ﻿
+using MovieWebAPI.Persistance;
+
 namespace Movies.Persistance
 {
     internal interface IReviewRepository : IRepository<Review>
     {
-        IEnumerable<Review> GetAll();
-        Review GetById(int id);
+        Task<IEnumerable<Review>> GetAllAsync();
+        Task<Review> GetByIdAsync(int id);
     }
 }

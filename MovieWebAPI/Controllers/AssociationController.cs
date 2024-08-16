@@ -18,7 +18,7 @@ namespace Movies.Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<MovieStudioAssociation>> GetAllAssociations()
         {
-            var associations = _associationService.GetAllAssociations();
+            var associations = _associationService.GetAllAssociationsAsync();
             return Ok(associations);
         }
 
@@ -27,7 +27,7 @@ namespace Movies.Api.Controllers
         {
             try
             {
-                _associationService.AddAssociation(id, movieId, studioId);
+                _associationService.AddAssociationAsync(id, movieId, studioId);
                 return CreatedAtAction(nameof(GetAllAssociations), new { id }, new { id, movieId, studioId });
             }
             catch (Exception ex)

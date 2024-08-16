@@ -15,11 +15,11 @@ namespace Movies.WebAPI.Controllers
         public MovieController(IMovieService movieService) => _movieService = movieService;
 
         [HttpGet]
-        public ActionResult<IEnumerable<Movie>> GetAllMovies()
+        public async Task<ActionResult<IEnumerable<Movie>>> GetAllMovies()
         {
             try
             {
-                var movies = _movieService.GetAll();
+                var movies = await _movieService.GetAllAsync();
                 return Ok(movies);
             }
             catch (Exception ex)
@@ -29,11 +29,11 @@ namespace Movies.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Movie> GetMovieById(int id)
+        public async Task<ActionResult<Movie>> GetMovieById(int id)
         {
             try
             {
-                var movie = _movieService.GetById(id);
+                var movie = await _movieService.GetByIdAsync(id);
                 if (movie == null)
                 {
                     return NotFound($"Movie with ID {id} not found.");
@@ -56,13 +56,13 @@ namespace Movies.WebAPI.Controllers
                     return BadRequest("Movie data is required.");
                 }
 
-                await Task.Run(() => _movieService.AddMovie(
+                await _movieService.AddMovieAsync(
                     movie.MovieId,
                     movie.Name,
                     movie.Year,
                     movie.Description,
                     movie.Genre,
-                    movie.Duration));
+                    movie.Duration);
 
                 return CreatedAtAction(nameof(GetMovieById), new { id = movie.MovieId }, movie);
             }
@@ -73,7 +73,7 @@ namespace Movies.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateMovie(int id, [FromBody] Movie movie)
+        public async Task<ActionResult> UpdateMovie(int id, [FromBody] Movie movie)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace Movies.WebAPI.Controllers
                     return BadRequest("Invalid movie data.");
                 }
 
-                _movieService.UpdateMovie(
+                await _movieService.UpdateMovieAsync(
                     movie.MovieId,
                     movie.Name,
                     movie.Year,
@@ -99,11 +99,11 @@ namespace Movies.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteMovie(int id)
+        public async Task<ActionResult> DeleteMovie(int id)
         {
             try
             {
-                _movieService.DeleteMovie(id);
+                await _movieService.DeleteMovieAsync(id);
                 return NoContent();
             }
             catch (Exception ex)
@@ -113,11 +113,11 @@ namespace Movies.WebAPI.Controllers
         }
 
         [HttpGet("SortByTitle")]
-        public ActionResult<IEnumerable<Movie>> SortByTitle()
+        public async Task<ActionResult<IEnumerable<Movie>>> SortByTitle()
         {
             try
             {
-                var movies = _movieService.SortbyTitle();
+                var movies = await _movieService.SortByTitleAsync();
                 return Ok(movies);
             }
             catch (Exception ex)
@@ -127,11 +127,11 @@ namespace Movies.WebAPI.Controllers
         }
 
         [HttpGet("SortByYear")]
-        public ActionResult<IEnumerable<Movie>> SortByYear()
+        public async Task<ActionResult<IEnumerable<Movie>>> SortByYear()
         {
             try
             {
-                var movies = _movieService.SortbyYear();
+                var movies = await _movieService.SortByYearAsync();
                 return Ok(movies);
             }
             catch (Exception ex)
@@ -141,11 +141,11 @@ namespace Movies.WebAPI.Controllers
         }
 
         [HttpGet("FilterByDate")]
-        public ActionResult<IEnumerable<Movie>> FilterByDate([FromQuery] DateTime dateStart, [FromQuery] DateTime dateStop)
+        public async Task<ActionResult<IEnumerable<Movie>>> FilterByDate([FromQuery] DateTime dateStart, [FromQuery] DateTime dateStop)
         {
             try
             {
-                var movies = _movieService.FilterMoviesByDate(dateStart, dateStop);
+                var movies = await _movieService.FilterMoviesByDateAsync(dateStart, dateStop);
                 return Ok(movies);
             }
             catch (Exception ex)
@@ -155,11 +155,11 @@ namespace Movies.WebAPI.Controllers
         }
 
         [HttpGet("FilterByGenre")]
-        public ActionResult<IEnumerable<Movie>> FilterByGenre([FromQuery] string genre)
+        public async Task<ActionResult<IEnumerable<Movie>>> FilterByGenre([FromQuery] string genre)
         {
             try
             {
-                var movies = _movieService.FilterMoviesByGenre(genre);
+                var movies = await _movieService.FilterMoviesByGenreAsync(genre);
                 return Ok(movies);
             }
             catch (Exception ex)
@@ -169,11 +169,11 @@ namespace Movies.WebAPI.Controllers
         }
 
         [HttpGet("FilterByYear")]
-        public ActionResult<IEnumerable<Movie>> FilterByYear([FromQuery] int year)
+        public async Task<ActionResult<IEnumerable<Movie>>> FilterByYear([FromQuery] int year)
         {
             try
             {
-                var movies = _movieService.FilterMoviesByYear(year);
+                var movies = await _movieService.FilterMoviesByYearAsync(year);
                 return Ok(movies);
             }
             catch (Exception ex)

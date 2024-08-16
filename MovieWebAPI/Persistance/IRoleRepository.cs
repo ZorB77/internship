@@ -1,9 +1,11 @@
 ﻿
+using MovieWebAPI.Persistance;
+
 namespace Movies.Persistance
 {
     internal interface IRoleRepository : IRepository<Role>
     {
-        IEnumerable<Role> GetAll();
-        Role GetById(int id);
+        Task<IEnumerable<Role>> GetAllAsync();
+        Task<Role> GetByIdAsync(int id);
     }
 }

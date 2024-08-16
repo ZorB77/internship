@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
+﻿using MovieWebAPI.Persistance;
 
 namespace Movies.Services
 {
@@ -14,56 +11,52 @@ namespace Movies.Services
             _repository = repository;
         }
 
-        public void AddMovie(int movieId, string name, int year, string description, string genre, int duration)
+        public async Task AddMovieAsync(int movieId, string name, int year, string description, string genre, int duration)
         {
-
             try
             {
-                if (_repository.GetById(movieId) != null)
+                var existingMovie = await _repository.GetByIdAsync(movieId);
+                if (existingMovie != null)
                 {
                     throw new Exception("Error: there is already a movie with this id");
                 }
                 else if (string.IsNullOrEmpty(name))
                 {
                     throw new Exception("Error: the name of the movie must not be null");
-
                 }
-                else if (year < 0 && year > 10000)
+                else if (year < 0 || year > 10000)
                 {
                     throw new Exception("Error: the year of the movie is not valid");
                 }
                 else if (duration < 0)
                 {
                     throw new Exception("Error: the duration of the movie is not valid");
-
                 }
 
-                _repository.Add(new Movie(movieId, name, year, description, genre, duration));
-
+                await _repository.AddAsync(new Movie(movieId, name, year, description, genre, duration));
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
         }
 
-        public List<Movie> GetAll()
+        public async Task<List<Movie>> GetAllAsync()
         {
-            var movies = _repository.GetAll();
-
+            var movies = await _repository.GetAllAsync();
             return movies.ToList();
         }
 
-        public Movie GetById(int movieId)
+        public async Task<Movie> GetByIdAsync(int movieId)
         {
             try
             {
-                if (_repository.GetById(movieId) == null)
+                var movie = await _repository.GetByIdAsync(movieId);
+                if (movie == null)
                 {
-                    throw new Exception("Error: there is no movie this id");
+                    throw new Exception("Error: there is no movie with this id");
                 }
-                return _repository.GetById(movieId);
+                return movie;
             }
             catch (Exception ex)
             {
@@ -72,79 +65,76 @@ namespace Movies.Services
             }
         }
 
-        public void UpdateMovie(int movieId, string name, int year, string description, string genre, int duration)
+        public async Task UpdateMovieAsync(int movieId, string name, int year, string description, string genre, int duration)
         {
             try
             {
-                if (_repository.GetById(movieId) == null)
+                var movie = await _repository.GetByIdAsync(movieId);
+                if (movie == null)
                 {
                     throw new Exception("Error: there is no movie with this id");
                 }
 
-                _repository.Update(new Movie(movieId, name, year, description, genre, duration));
-
+                await _repository.UpdateAsync(new Movie(movieId, name, year, description, genre, duration));
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
         }
 
-        public void DeleteMovie(int movieId)
+        public async Task DeleteMovieAsync(int movieId)
         {
             try
             {
-                if (_repository.GetById(movieId) == null)
+                var movie = await _repository.GetByIdAsync(movieId);
+                if (movie == null)
                 {
                     throw new Exception("Error: there is no movie with this id");
                 }
 
-                _repository.Remove(GetById(movieId));
+                await _repository.RemoveAsync(movie);
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
         }
 
-        public List<Movie> SortbyTitle()
+        public async Task<List<Movie>> SortByTitleAsync()
         {
-            return _repository.GetAll().OrderBy(movie => movie.Name).ToList();
+            var movies = await _repository.GetAllAsync();
+            return movies.OrderBy(movie => movie.Name).ToList();
         }
 
-        public List<Movie> SortbyYear()
+        public async Task<List<Movie>> SortByYearAsync()
         {
-            return _repository.GetAll().OrderBy(movie => movie.Year).ToList();
+            var movies = await _repository.GetAllAsync();
+            return movies.OrderBy(movie => movie.Year).ToList();
         }
 
-        public List<Movie> FilterMoviesByDate(DateTime dateStart, DateTime dateStop)
+        public async Task<List<Movie>> FilterMoviesByDateAsync(DateTime dateStart, DateTime dateStop)
         {
-            return _repository.GetAll().Where(movie => movie.Year >= dateStart.Year && movie.Year <= dateStop.Year).ToList();
+            var movies = await _repository.GetAllAsync();
+            return movies.Where(movie => movie.Year >= dateStart.Year && movie.Year <= dateStop.Year).ToList();
         }
 
-        public List<Movie> FilterMoviesByGenre(string genre)
+        public async Task<List<Movie>> FilterMoviesByGenreAsync(string genre)
         {
-            return _repository.GetAll().Where(movie => movie.Genre.ToLower() == genre.ToLower()).ToList();
+            var movies = await _repository.GetAllAsync();
+            return movies.Where(movie => movie.Genre.ToLower() == genre.ToLower()).ToList();
         }
 
-        public bool CheckIfExists(int id)
+        public async Task<bool> CheckIfExistsAsync(int id)
         {
-
-            if (_repository.GetById(id) == null)
-            {
-                return false;
-            }
-            return true;
-
-
+            var movie = await _repository.GetByIdAsync(id);
+            return movie != null;
         }
 
-        public List<Movie> FilterMoviesByYear(int year)
+        public async Task<List<Movie>> FilterMoviesByYearAsync(int year)
         {
-            return _repository.GetAll().Where(movie => movie.Year == year).ToList();
+            var movies = await _repository.GetAllAsync();
+            return movies.Where(movie => movie.Year == year).ToList();
         }
-
     }
 }

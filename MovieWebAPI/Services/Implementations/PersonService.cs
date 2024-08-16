@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using MovieWebAPI.Persistance;
 
 namespace Movies.Services
 {
@@ -13,50 +11,48 @@ namespace Movies.Services
             _repository = repository;
         }
 
-        public void AddPerson(int personID, string firstname, string lastname, DateTime birthdate, string email)
+        public async Task AddPersonAsync(int personID, string firstname, string lastname, DateTime birthdate, string email)
         {
             try
             {
-                if (_repository.GetById(personID) != null)
+                var existingPerson = await _repository.GetByIdAsync(personID);
+                if (existingPerson != null)
                 {
                     throw new Exception("Error: there is already a person with this id");
                 }
                 else if (string.IsNullOrEmpty(firstname))
                 {
                     throw new Exception("Error: the firstname of the person must not be null");
-
                 }
                 else if (string.IsNullOrEmpty(lastname))
                 {
                     throw new Exception("Error: the lastname of the person must not be null");
-
                 }
 
-                _repository.Add(new Person(personID, firstname, lastname, birthdate, email));
-
+                await _repository.AddAsync(new Person(personID, firstname, lastname, birthdate, email));
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
         }
 
-        public List<Person> GetAll()
+        public async Task<List<Person>> GetAllAsync()
         {
-
-            return _repository.GetAll().ToList();
+            var people = await _repository.GetAllAsync();
+            return people.ToList();
         }
 
-        public Person GetById(int personId)
+        public async Task<Person> GetByIdAsync(int personId)
         {
             try
             {
-                if (_repository.GetById(personId) == null)
+                var person = await _repository.GetByIdAsync(personId);
+                if (person == null)
                 {
                     throw new Exception("Error: there is no person with this id");
                 }
-                return _repository.GetById(personId);
+                return person;
             }
             catch (Exception ex)
             {
@@ -65,45 +61,46 @@ namespace Movies.Services
             }
         }
 
-        public void UpdatePerson(int personID, string firstname, string lastname, DateTime birthdate, string email)
+        public async Task UpdatePersonAsync(int personID, string firstname, string lastname, DateTime birthdate, string email)
         {
             try
             {
-                if (_repository.GetById(personID) == null)
+                var person = await _repository.GetByIdAsync(personID);
+                if (person == null)
                 {
                     throw new Exception("Error: there is no person with this id");
                 }
 
-                _repository.Update(new Person(personID, firstname, lastname, birthdate, email));
-
+                await _repository.UpdateAsync(new Person(personID, firstname, lastname, birthdate, email));
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
         }
 
-        public void DeletePerson(int personId)
+        public async Task DeletePersonAsync(int personId)
         {
             try
             {
-                if (_repository.GetById(personId) == null)
+                var person = await _repository.GetByIdAsync(personId);
+                if (person == null)
                 {
                     throw new Exception("Error: there is no person with this id");
                 }
 
-                _repository.Remove(GetById(personId));
+                await _repository.RemoveAsync(person);
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
         }
-        public List<Person> FilterPersonByDate(DateTime dateStart, DateTime dateStop)
+
+        public async Task<List<Person>> FilterPersonByDateAsync(DateTime dateStart, DateTime dateStop)
         {
-            return _repository.GetAll().Where(person => person.Birthdate >= dateStart && person.Birthdate <= dateStop).ToList();
+            var people = await _repository.GetAllAsync();
+            return people.Where(person => person.Birthdate >= dateStart && person.Birthdate <= dateStop).ToList();
         }
     }
 }

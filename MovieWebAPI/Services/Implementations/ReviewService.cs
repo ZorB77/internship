@@ -1,7 +1,5 @@
 ﻿using Movies.Persistance;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using MovieWebAPI.Persistance;
 
 namespace Movies.Services
 {
@@ -9,44 +7,56 @@ namespace Movies.Services
     {
         private readonly IReviewRepository _reviewRepository;
         private readonly IRepository<Movie> _movieRepository;
+
         public ReviewService(IReviewRepository reviewRepository, IRepository<Movie> movieRepository)
         {
             _reviewRepository = reviewRepository;
             _movieRepository = movieRepository;
         }
 
-        public void AddReview(int reviewId, float rating, string comment, int movieId)
+        public async Task AddReviewAsync(int reviewId, float rating, string comment, int movieId)
         {
             try
             {
-                if (_reviewRepository.GetById(reviewId) != null)
+                var existingReview = await _reviewRepository.GetByIdAsync(reviewId);
+                if (existingReview != null)
                 {
                     throw new Exception("Error: there is already a review with this id");
                 }
-                else if (_movieRepository.GetById(movieId) == null)
+
+                var movie = await _movieRepository.GetByIdAsync(movieId);
+                if (movie == null)
                 {
                     throw new Exception("Error: there is no movie with this id");
                 }
-                _reviewRepository.Add(new Review(reviewId, rating, comment, _movieRepository.GetById(movieId)));
+
+                var review = new Review(reviewId, rating, comment, movie);
+                await _reviewRepository.AddAsync(review);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-        public void UpdateReview(int reviewId, float rating, string comment, int movieId)
+
+        public async Task UpdateReviewAsync(int reviewId, float rating, string comment, int movieId)
         {
             try
             {
-                if (_reviewRepository.GetById(reviewId) == null)
+                var existingReview = await _reviewRepository.GetByIdAsync(reviewId);
+                if (existingReview == null)
                 {
                     throw new Exception("Error: there is no review with this id");
                 }
-                else if (_movieRepository.GetById(movieId) == null)
+
+                var movie = await _movieRepository.GetByIdAsync(movieId);
+                if (movie == null)
                 {
                     throw new Exception("Error: there is no movie with this id");
                 }
-                _reviewRepository.Update(new Review(reviewId, rating, comment, _movieRepository.GetById(movieId)));
+
+                var review = new Review(reviewId, rating, comment, movie);
+                await _reviewRepository.UpdateAsync(review);
             }
             catch (Exception ex)
             {
@@ -54,51 +64,54 @@ namespace Movies.Services
             }
         }
 
-        public void DeleteReview(int reviewId)
+        public async Task DeleteReviewAsync(int reviewId)
         {
             try
             {
-                if (_reviewRepository.GetById(reviewId) == null)
+                var review = await _reviewRepository.GetByIdAsync(reviewId);
+                if (review == null)
                 {
                     throw new Exception("Error: there is no review with this id");
                 }
-                _reviewRepository.Remove(_reviewRepository.GetById(reviewId));
+
+                await _reviewRepository.RemoveAsync(review);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
         }
 
-        public Review GetByIdReview(int reviewId)
+        public async Task<Review> GetByIdReviewAsync(int reviewId)
         {
             try
             {
-                if (_reviewRepository.GetById(reviewId) == null)
+                var review = await _reviewRepository.GetByIdAsync(reviewId);
+                if (review == null)
                 {
                     throw new Exception("Error: there is no review with this id");
                 }
-                return _reviewRepository.GetById(reviewId);
+                return review;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
             }
-
         }
 
-        public List<Review> GetAll()
+        public async Task<List<Review>> GetAllAsync()
         {
-            return _reviewRepository.GetAll().ToList();
+            var reviews = await _reviewRepository.GetAllAsync();
+            return reviews.ToList();
         }
 
-        public float GetTheAverageRatingOfAMovie(int movieId)
+        public async Task<float> GetTheAverageRatingOfAMovieAsync(int movieId)
         {
-            if (_movieRepository.GetById(movieId) != null)
+            var movie = await _movieRepository.GetByIdAsync(movieId);
+            if (movie != null)
             {
-                var reviews = _reviewRepository.GetAll().Where(r => r.Movie.MovieId == movieId);
+                var reviews = (await _reviewRepository.GetAllAsync()).Where(r => r.Movie.MovieId == movieId);
                 if (!reviews.Any())
                 {
                     return 0;
@@ -113,18 +126,15 @@ namespace Movies.Services
                 return -1;
             }
         }
-        public List<Movie> Top10MoviesWithHigherRating()
+
+        public async Task<List<Movie>> Top10MoviesWithHigherRatingAsync()
         {
+            var movies = await _movieRepository.GetAllAsync();
+            var topMovies = movies.OrderByDescending(m => GetTheAverageRatingOfAMovieAsync(m.MovieId).Result)
+                                  .Take(10)
+                                  .ToList();
 
-            var moviesWithRatings = _movieRepository.GetAll()
-            .OrderByDescending(m => GetTheAverageRatingOfAMovie(m.MovieId))
-            .Take(10)
-            .ToList();
-
-            return moviesWithRatings;
+            return topMovies;
         }
-
-
     }
-
 }

@@ -6,16 +6,16 @@ namespace Movies.Services
 {
     public interface IMovieService
     {
-        void AddMovie(int movieId, string name, int year, string description, string genre, int duration);
-        bool CheckIfExists(int id);
-        void DeleteMovie(int movieId);
-        List<Movie> FilterMoviesByDate(DateTime dateStart, DateTime dateStop);
-        List<Movie> FilterMoviesByGenre(string genre);
-        List<Movie> FilterMoviesByYear(int year);
-        List<Movie> GetAll();
-        Movie GetById(int movieId);
-        List<Movie> SortbyTitle();
-        List<Movie> SortbyYear();
-        void UpdateMovie(int movieId, string name, int year, string description, string genre, int duration);
+        Task AddMovieAsync(int movieId, string name, int year, string description, string genre, int duration);
+        Task<bool> CheckIfExistsAsync(int id);
+        Task DeleteMovieAsync(int movieId);
+        Task<List<Movie>> FilterMoviesByDateAsync(DateTime dateStart, DateTime dateStop);
+        Task<List<Movie>> FilterMoviesByGenreAsync(string genre);
+        Task<List<Movie>> FilterMoviesByYearAsync(int year);
+        Task<List<Movie>> GetAllAsync();
+        Task<Movie> GetByIdAsync(int movieId);
+        Task<List<Movie>> SortByTitleAsync();
+        Task<List<Movie>> SortByYearAsync();
+        Task UpdateMovieAsync(int movieId, string name, int year, string description, string genre, int duration);
     }
 }

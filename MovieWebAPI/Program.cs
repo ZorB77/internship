@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Movies.Persistance;
 using Movies.Services;
+using MovieWebAPI.Persistance;
 using MovieWebAPI.Services.Interfaces;
 using Serilog;
 

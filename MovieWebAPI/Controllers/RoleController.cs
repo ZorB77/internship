@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Movies.Services;
 using MovieWebAPI.Models.DTOs;
 using MovieWebAPI.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace MovieWebAPI.Controllers
 {
@@ -20,21 +16,21 @@ namespace MovieWebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetRoles()
+        public async Task<IActionResult> GetRoles()
         {
             try
             {
-                var roles = _roleService.GetAll();
+                var roles = await _roleService.GetAllAsync();
                 return Ok(roles);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { Message = ex.Message });
             }
         }
 
-       [HttpPost]
-        public IActionResult PostRole([FromBody] RoleDto roleDto)
+        [HttpPost]
+        public async Task<IActionResult> PostRole([FromBody] RoleDto roleDto)
         {
             if (!ModelState.IsValid)
             {
@@ -43,17 +39,17 @@ namespace MovieWebAPI.Controllers
 
             try
             {
-                _roleService.AddRole(roleDto.RoleId, roleDto.Movie, roleDto.Person, roleDto.Name, roleDto.Description);
-                return CreatedAtAction(nameof(GetRolesOfPerson), new { id = roleDto.Person }, roleDto);
+                await _roleService.AddRoleAsync(roleDto.RoleId, roleDto.Movie, roleDto.Person, roleDto.Name, roleDto.Description);
+                return CreatedAtAction(nameof(GetRolesOfPerson), new { personId = roleDto.Person }, roleDto);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { Message = ex.Message });
             }
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutRole(int id, [FromBody] RoleDto roleDto)
+        public async Task<IActionResult> PutRole(int id, [FromBody] RoleDto roleDto)
         {
             if (!ModelState.IsValid)
             {
@@ -64,46 +60,44 @@ namespace MovieWebAPI.Controllers
             {
                 if (id != roleDto.RoleId)
                 {
-                    return BadRequest();
+                    return BadRequest("Role ID mismatch.");
                 }
 
-                _roleService.UpdateRole(roleDto.RoleId, roleDto.Movie, roleDto.Person, roleDto.Name, roleDto.Description);
+                await _roleService.UpdateRoleAsync(roleDto.RoleId, roleDto.Movie, roleDto.Person, roleDto.Name, roleDto.Description);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { Message = ex.Message });
             }
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteRole(int id)
+        public async Task<IActionResult> DeleteRole(int id)
         {
             try
             {
-                _roleService.DeleteRole(id);
+                await _roleService.DeleteRoleAsync(id);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { Message = ex.Message });
             }
         }
 
         [HttpGet("person/{personId}")]
-        public IActionResult GetRolesOfPerson(int personId)
+        public async Task<IActionResult> GetRolesOfPerson(int personId)
         {
             try
             {
-                var roles = _roleService.GetRolesOfAPerson(personId);
+                var roles = await _roleService.GetRolesOfAPersonAsync(personId);
                 return Ok(roles);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { Message = ex.Message });
             }
         }
     }
-
-
 }

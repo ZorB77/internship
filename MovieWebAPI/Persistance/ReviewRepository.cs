@@ -13,18 +13,18 @@ namespace Movies.Persistance
         {
         }
 
-        public override IEnumerable<Review> GetAll()
+        public async Task<IEnumerable<Review>> GetAllAsync()
         {
-            return _context.Set<Review>()
+            return await _context.Reviews
                            .Include(e => e.Movie)
-                           .ToList();
+                           .ToListAsync();
         }
 
-        public override Review GetById(int id)
+        public async Task<Review> GetByIdAsync(int id)
         {
-            return _context.Set<Review>()
+            return await _context.Reviews
                            .Include(e => e.Movie)
-                           .FirstOrDefault(r => r.ReviewId == id);
+                           .FirstOrDefaultAsync(r => r.ReviewId == id);
         }
     }
 }

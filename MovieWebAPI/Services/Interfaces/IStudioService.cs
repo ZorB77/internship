@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace Movies.Services
+namespace MovieWebAPI.Services.Interfaces
 {
     public interface IStudioService
     {
-        void AddStudio(int id, string name, int year, string location);
-        Studio GetById(int id);
-        List<Studio> GetStudios();
+        Task AddStudioAsync(int id, string name, int year, string location);
+        Task<Studio> GetByIdAsync(int id);
+        Task<List<Studio>> GetStudiosAsync();
     }
 }

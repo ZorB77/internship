@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Movies.Services;
+using MovieWebAPI.Services.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Movies.Api.Controllers
 {
@@ -16,30 +18,49 @@ namespace Movies.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Studio>> GetStudios()
-        {
-            var studios = _studioService.GetStudios();
-            return Ok(studios);
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<Studio> GetStudioById(int id)
-        {
-            var studio = _studioService.GetById(id);
-            if (studio == null)
-            {
-                return NotFound(new { Message = "Studio not found." });
-            }
-            return Ok(studio);
-        }
-
-        [HttpPost]
-        public IActionResult AddStudio(int id, string name, int year, string location)
+        public async Task<ActionResult<IEnumerable<Studio>>> GetStudios()
         {
             try
             {
-                _studioService.AddStudio(id, name, year, location);
-                return CreatedAtAction(nameof(GetStudioById), new { id = id }, new { id, name, year, location });
+                var studios = await _studioService.GetStudiosAsync();
+                return Ok(studios);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred while retrieving the studios.", Details = ex.Message });
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Studio>> GetStudioById(int id)
+        {
+            try
+            {
+                var studio = await _studioService.GetByIdAsync(id);
+                if (studio == null)
+                {
+                    return NotFound(new { Message = "Studio not found." });
+                }
+                return Ok(studio);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred while retrieving the studio.", Details = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddStudio([FromBody] Studio studio)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                await _studioService.AddStudioAsync(studio.StudioId, studio.Name, studio.Year, studio.Location);
+                return CreatedAtAction(nameof(GetStudioById), new { id = studio.StudioId }, studio);
             }
             catch (ArgumentException ex)
             {
