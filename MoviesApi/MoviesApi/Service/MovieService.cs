@@ -59,7 +59,7 @@ namespace ETMovies.Service
                 movieToUpdate.Year = year;
                 movieToUpdate.Genre = genre;
                 movieToUpdate.Duration = duration;
-                movieToUpdate.Budged = budget;
+                movieToUpdate.Budget = budget;
                 Context.SaveChanges();
 
             }

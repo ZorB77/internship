@@ -1,0 +1,455 @@
+Information: 8/16/2024 11:08:25 AM GetMovies was called at 08/16/2024 11:08:25
+Information: 8/16/2024 11:09:11 AM GetMovies was called
+Information: 8/16/2024 11:09:22 AM GetMovies was called
+Information: 8/16/2024 11:10:16 AM Now listening on: https://localhost:7131
+Information: 8/16/2024 11:10:16 AM Now listening on: http://localhost:5231
+Information: 8/16/2024 11:10:16 AM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 11:10:16 AM Hosting environment: Development
+Information: 8/16/2024 11:10:16 AM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 11:10:23 AM  ------ 
+Information: 8/16/2024 11:10:23 AM GetMovies WAS CALLED
+Information: 8/16/2024 11:10:23 AM  ------ 
+Warning: 8/16/2024 11:10:23 AM No store type was specified for the decimal property 'Budged' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 11:10:24 AM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 11:10:24 AM Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budged], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 11:15:50 AM Now listening on: https://localhost:7131
+Information: 8/16/2024 11:15:50 AM Now listening on: http://localhost:5231
+Information: 8/16/2024 11:15:50 AM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 11:15:50 AM Hosting environment: Development
+Information: 8/16/2024 11:15:50 AM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 11:15:59 AM  ------ 
+Information: 8/16/2024 11:15:59 AM GetMovie{id} WAS CALLED
+Warning: 8/16/2024 11:15:59 AM No store type was specified for the decimal property 'Budged' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 11:16:00 AM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 11:16:00 AM Executed DbCommand (36ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[ID], [t].[Budged], [t].[Description], [t].[Duration], [t].[Genre], [t].[Title], [t].[Year], [t0].[ID], [t0].[Location], [t0].[Title], [t0].[Year], [t0].[MoviesID], [t0].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM (
+    SELECT TOP(1) [m].[ID], [m].[Budged], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year]
+    FROM [Movies] AS [m]
+    WHERE [m].[ID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t0] ON [t].[ID] = [t0].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [t].[ID] = [r].[MovieID]
+ORDER BY [t].[ID], [t0].[MoviesID], [t0].[StudiosID], [t0].[ID]
+Information: 8/16/2024 11:16:00 AM Returning movie {Title}
+Information: 8/16/2024 11:16:00 AM  ------ 
+Information: 8/16/2024 11:17:50 AM Now listening on: https://localhost:7131
+Information: 8/16/2024 11:17:50 AM Now listening on: http://localhost:5231
+Information: 8/16/2024 11:17:50 AM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 11:17:50 AM Hosting environment: Development
+Information: 8/16/2024 11:17:50 AM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 11:17:56 AM  ------ 
+Information: 8/16/2024 11:17:56 AM GetMovie{id} WAS CALLED
+Information: 8/16/2024 11:17:56 AM  ------ 
+Warning: 8/16/2024 11:17:57 AM No store type was specified for the decimal property 'Budged' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 11:17:57 AM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 11:17:58 AM Executed DbCommand (52ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[ID], [t].[Budged], [t].[Description], [t].[Duration], [t].[Genre], [t].[Title], [t].[Year], [t0].[ID], [t0].[Location], [t0].[Title], [t0].[Year], [t0].[MoviesID], [t0].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM (
+    SELECT TOP(1) [m].[ID], [m].[Budged], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year]
+    FROM [Movies] AS [m]
+    WHERE [m].[ID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t0] ON [t].[ID] = [t0].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [t].[ID] = [r].[MovieID]
+ORDER BY [t].[ID], [t0].[MoviesID], [t0].[StudiosID], [t0].[ID]
+Information: 8/16/2024 11:17:58 AM  ------ 
+Information: 8/16/2024 11:17:58 AM Returning movie The Grand Budapest Hotel
+Information: 8/16/2024 11:17:58 AM  ------ 
+Information: 8/16/2024 11:34:55 AM Now listening on: https://localhost:7131
+Information: 8/16/2024 11:34:55 AM Now listening on: http://localhost:5231
+Information: 8/16/2024 11:34:55 AM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 11:34:55 AM Hosting environment: Development
+Information: 8/16/2024 11:34:55 AM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 11:35:02 AM  ------ 
+Information: 8/16/2024 11:35:02 AM GetMoviesByDateRange WAS CALLED
+Information: 8/16/2024 11:35:02 AM  ------ 
+Warning: 8/16/2024 11:35:02 AM No store type was specified for the decimal property 'Budged' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 11:35:03 AM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 11:35:03 AM Executed DbCommand (46ms) [Parameters=[@__startYear_0='?' (DbType = Int32), @__endYear_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budged], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+WHERE [m].[Year] >= @__startYear_0 AND [m].[Year] <= @__endYear_1
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 11:35:03 AM  ------ 
+Information: 8/16/2024 11:35:03 AM Succesfully, returning 16
+Information: 8/16/2024 11:35:03 AM  ------ 
+Information: 8/16/2024 11:36:29 AM Now listening on: https://localhost:7131
+Information: 8/16/2024 11:36:29 AM Now listening on: http://localhost:5231
+Information: 8/16/2024 11:36:29 AM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 11:36:29 AM Hosting environment: Development
+Information: 8/16/2024 11:36:29 AM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 11:36:34 AM  ------ 
+Information: 8/16/2024 11:36:34 AM GetMovies WAS CALLED
+Information: 8/16/2024 11:36:34 AM  ------ 
+Warning: 8/16/2024 11:36:34 AM No store type was specified for the decimal property 'Budged' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 11:36:35 AM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 11:36:36 AM Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budged], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 11:36:36 AM  ------ 
+Information: 8/16/2024 11:36:36 AM Returning 10 movies
+Information: 8/16/2024 11:36:36 AM  ------ 
+Information: 8/16/2024 1:50:10 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:50:10 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:50:10 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:50:10 PM Hosting environment: Development
+Information: 8/16/2024 1:50:10 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:50:56 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:50:56 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:50:56 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:50:56 PM Hosting environment: Development
+Information: 8/16/2024 1:50:56 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:51:40 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:51:40 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:51:40 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:51:40 PM Hosting environment: Development
+Information: 8/16/2024 1:51:40 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:52:02 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:52:02 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:52:02 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:52:02 PM Hosting environment: Development
+Information: 8/16/2024 1:52:02 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:53:03 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:53:03 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:53:03 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:53:03 PM Hosting environment: Development
+Information: 8/16/2024 1:53:03 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:54:28 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:54:28 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:54:28 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:54:28 PM Hosting environment: Development
+Information: 8/16/2024 1:54:28 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:54:53 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:54:53 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:54:53 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:54:53 PM Hosting environment: Development
+Information: 8/16/2024 1:54:53 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:55:11 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:55:11 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:55:11 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:55:11 PM Hosting environment: Development
+Information: 8/16/2024 1:55:11 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:55:33 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:55:33 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:55:33 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:55:33 PM Hosting environment: Development
+Information: 8/16/2024 1:55:33 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:55:59 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:56:00 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:56:00 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:56:00 PM Hosting environment: Development
+Information: 8/16/2024 1:56:00 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 1:56:21 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 1:56:21 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 1:56:21 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 1:56:21 PM Hosting environment: Development
+Information: 8/16/2024 1:56:21 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Warning: 8/16/2024 2:49:21 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 2:49:21 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 2:49:32 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Information: 8/16/2024 2:49:32 PM Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+Information: 8/16/2024 2:49:32 PM Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+Information: 8/16/2024 2:49:32 PM Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+Information: 8/16/2024 2:49:32 PM Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+Information: 8/16/2024 2:49:32 PM Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+Information: 8/16/2024 2:49:32 PM Applying migration '20240816114924_ChangedSpellingMistakeInMovie'.
+Information: 8/16/2024 2:49:33 PM Executed DbCommand (361ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+EXEC sp_rename N'[Movies].[Budged]', N'Budget', N'COLUMN';
+Information: 8/16/2024 2:49:33 PM Executed DbCommand (47ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Studios]') AND [c].[name] = N'Title');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Studios] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Studios] ALTER COLUMN [Title] nvarchar(100) NOT NULL;
+Information: 8/16/2024 2:49:33 PM Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Studios]') AND [c].[name] = N'Location');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Studios] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [Studios] ALTER COLUMN [Location] nvarchar(100) NOT NULL;
+Information: 8/16/2024 2:49:33 PM Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Roles]') AND [c].[name] = N'Name');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [Roles] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [Roles] ALTER COLUMN [Name] nvarchar(100) NOT NULL;
+Information: 8/16/2024 2:49:33 PM Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var3 sysname;
+SELECT @var3 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Reviews]') AND [c].[name] = N'Comment');
+IF @var3 IS NOT NULL EXEC(N'ALTER TABLE [Reviews] DROP CONSTRAINT [' + @var3 + '];');
+ALTER TABLE [Reviews] ALTER COLUMN [Comment] nvarchar(500) NOT NULL;
+Information: 8/16/2024 2:49:33 PM Executed DbCommand (39ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var4 sysname;
+SELECT @var4 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Persons]') AND [c].[name] = N'Nationality');
+IF @var4 IS NOT NULL EXEC(N'ALTER TABLE [Persons] DROP CONSTRAINT [' + @var4 + '];');
+ALTER TABLE [Persons] ALTER COLUMN [Nationality] nvarchar(100) NOT NULL;
+Information: 8/16/2024 2:49:33 PM Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var5 sysname;
+SELECT @var5 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Persons]') AND [c].[name] = N'LastName');
+IF @var5 IS NOT NULL EXEC(N'ALTER TABLE [Persons] DROP CONSTRAINT [' + @var5 + '];');
+ALTER TABLE [Persons] ALTER COLUMN [LastName] nvarchar(100) NOT NULL;
+Information: 8/16/2024 2:49:33 PM Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var6 sysname;
+SELECT @var6 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Persons]') AND [c].[name] = N'FirstName');
+IF @var6 IS NOT NULL EXEC(N'ALTER TABLE [Persons] DROP CONSTRAINT [' + @var6 + '];');
+ALTER TABLE [Persons] ALTER COLUMN [FirstName] nvarchar(100) NOT NULL;
+Information: 8/16/2024 2:49:33 PM Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var7 sysname;
+SELECT @var7 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Movies]') AND [c].[name] = N'Title');
+IF @var7 IS NOT NULL EXEC(N'ALTER TABLE [Movies] DROP CONSTRAINT [' + @var7 + '];');
+ALTER TABLE [Movies] ALTER COLUMN [Title] nvarchar(100) NOT NULL;
+Information: 8/16/2024 2:49:34 PM Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var8 sysname;
+SELECT @var8 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Movies]') AND [c].[name] = N'Genre');
+IF @var8 IS NOT NULL EXEC(N'ALTER TABLE [Movies] DROP CONSTRAINT [' + @var8 + '];');
+ALTER TABLE [Movies] ALTER COLUMN [Genre] nvarchar(100) NOT NULL;
+Information: 8/16/2024 2:49:34 PM Executed DbCommand (34ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var9 sysname;
+SELECT @var9 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Movies]') AND [c].[name] = N'Description');
+IF @var9 IS NOT NULL EXEC(N'ALTER TABLE [Movies] DROP CONSTRAINT [' + @var9 + '];');
+ALTER TABLE [Movies] ALTER COLUMN [Description] nvarchar(300) NOT NULL;
+Information: 8/16/2024 2:49:34 PM Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240816114924_ChangedSpellingMistakeInMovie', N'8.0.8');
+Information: 8/16/2024 2:50:01 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 2:50:01 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 2:50:01 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 2:50:01 PM Hosting environment: Development
+Information: 8/16/2024 2:50:01 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 2:50:05 PM  ------ 
+Information: 8/16/2024 2:50:05 PM GetMovies WAS CALLED
+Information: 8/16/2024 2:50:05 PM  ------ 
+Warning: 8/16/2024 2:50:05 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 2:50:05 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 2:50:06 PM Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 4:22:24 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 4:22:24 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 4:22:24 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 4:22:24 PM Hosting environment: Development
+Information: 8/16/2024 4:22:24 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 4:22:29 PM  ------ 
+Information: 8/16/2024 4:22:29 PM GetMovies WAS CALLED
+Information: 8/16/2024 4:22:29 PM  ------ 
+Warning: 8/16/2024 4:22:29 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 4:22:29 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 4:22:30 PM Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 4:24:05 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 4:24:05 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 4:24:05 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 4:24:05 PM Hosting environment: Development
+Information: 8/16/2024 4:24:05 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 4:24:09 PM  ------ 
+Information: 8/16/2024 4:24:09 PM GetMovies WAS CALLED
+Information: 8/16/2024 4:24:09 PM  ------ 
+Warning: 8/16/2024 4:24:09 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 4:24:09 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 4:24:10 PM Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 6:23:01 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 6:23:01 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 6:23:01 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 6:23:01 PM Hosting environment: Development
+Information: 8/16/2024 6:23:01 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 6:23:14 PM  ------ 
+Information: 8/16/2024 6:23:14 PM GetMoviesByDateRange WAS CALLED
+Information: 8/16/2024 6:23:14 PM  ------ 
+Warning: 8/16/2024 6:23:15 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 6:23:15 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 6:23:15 PM Executed DbCommand (39ms) [Parameters=[@__startYear_0='?' (DbType = Int32), @__endYear_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+WHERE [m].[Year] >= @__startYear_0 AND [m].[Year] <= @__endYear_1
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 6:23:15 PM  ------ 
+Information: 8/16/2024 6:23:15 PM Succesfully, returning 16 movies
+Information: 8/16/2024 6:23:15 PM  ------ 
+Information: 8/16/2024 6:23:32 PM  ------ 
+Information: 8/16/2024 6:23:32 PM GetMoviesByDateRange WAS CALLED
+Information: 8/16/2024 6:23:32 PM  ------ 
+Information: 8/16/2024 6:23:32 PM Executed DbCommand (1ms) [Parameters=[@__startYear_0='?' (DbType = Int32), @__endYear_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+WHERE [m].[Year] >= @__startYear_0 AND [m].[Year] <= @__endYear_1
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 6:23:32 PM  ------ 
+Information: 8/16/2024 6:23:32 PM Succesfully, returning 16 movies
+Information: 8/16/2024 6:23:32 PM  ------ 
+Information: 8/16/2024 6:26:07 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 6:26:07 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 6:26:07 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 6:26:07 PM Hosting environment: Development
+Information: 8/16/2024 6:26:07 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 6:26:13 PM  ------ 
+Information: 8/16/2024 6:26:13 PM TopTenMoviesByRating WAS CALLED
+Information: 8/16/2024 6:26:13 PM  ------ 
+Warning: 8/16/2024 6:26:14 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 6:26:14 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 6:26:14 PM Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 6:35:06 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 6:35:06 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 6:35:06 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 6:35:06 PM Hosting environment: Development
+Information: 8/16/2024 6:35:06 PM Content root path: C:\Users\AndreiBaloniu\source\repos\MoviesApi\MoviesApi
+Information: 8/16/2024 6:35:20 PM  ------ 
+Information: 8/16/2024 6:35:20 PM GetStudios WAS CALLED
+Information: 8/16/2024 6:35:20 PM  ------ 
+Warning: 8/16/2024 6:35:21 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Information: 8/16/2024 6:35:22 PM Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [t].[ID], [t].[Budget], [t].[Description], [t].[Duration], [t].[Genre], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID]
+FROM [Studios] AS [s]
+LEFT JOIN (
+    SELECT [m0].[ID], [m0].[Budget], [m0].[Description], [m0].[Duration], [m0].[Genre], [m0].[Title], [m0].[Year], [m].[MoviesID], [m].[StudiosID]
+    FROM [MovieStudio] AS [m]
+    INNER JOIN [Movies] AS [m0] ON [m].[MoviesID] = [m0].[ID]
+) AS [t] ON [s].[ID] = [t].[StudiosID]
+ORDER BY [s].[ID], [t].[MoviesID], [t].[StudiosID]
+Information: 8/16/2024 6:35:22 PM  ------ 
+Information: 8/16/2024 6:35:22 PM Returning studios
+Information: 8/16/2024 6:35:22 PM  ------ 
+Information: 8/16/2024 6:36:37 PM  ------ 
+Information: 8/16/2024 6:36:37 PM Post WAS CALLED
+Information: 8/16/2024 6:36:37 PM  ------ 
+Information: 8/16/2024 6:36:37 PM Executed DbCommand (21ms) [Parameters=[@__studioID_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [s].[ID], [s].[Location], [s].[Title], [s].[Year]
+FROM [Studios] AS [s]
+WHERE [s].[ID] = @__studioID_0
+Information: 8/16/2024 6:36:37 PM Executed DbCommand (4ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p1='?' (Size = 300), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (Size = 100), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Budget], [Description], [Duration], [Genre], [Title], [Year])
+OUTPUT INSERTED.[ID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+Information: 8/16/2024 6:36:37 PM Executed DbCommand (1ms) [Parameters=[@p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [MovieStudio] ([MoviesID], [StudiosID])
+VALUES (@p6, @p7);
+Information: 8/16/2024 6:36:37 PM  ------ 
+Information: 8/16/2024 6:36:37 PM Movie added succesfully
+Information: 8/16/2024 6:36:37 PM  ------ 
+Information: 8/16/2024 6:36:49 PM  ------ 
+Information: 8/16/2024 6:36:49 PM GetMovies WAS CALLED
+Information: 8/16/2024 6:36:49 PM  ------ 
+Warning: 8/16/2024 6:36:49 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 6:36:49 PM Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
