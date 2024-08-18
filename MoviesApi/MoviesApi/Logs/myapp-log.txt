@@ -453,3 +453,272 @@ LEFT JOIN (
 ) AS [t] ON [m].[ID] = [t].[MoviesID]
 LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
 ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/16/2024 8:28:01 PM Now listening on: https://localhost:7131
+Information: 8/16/2024 8:28:01 PM Now listening on: http://localhost:5231
+Information: 8/16/2024 8:28:01 PM Application started. Press Ctrl+C to shut down.
+Information: 8/16/2024 8:28:01 PM Hosting environment: Development
+Information: 8/16/2024 8:28:01 PM Content root path: C:\Users\AndreiBaloniu\Documents\internship\MoviesApi\MoviesApi
+Information: 8/16/2024 8:28:05 PM  ------ 
+Information: 8/16/2024 8:28:05 PM GetMovies WAS CALLED
+Information: 8/16/2024 8:28:05 PM  ------ 
+Warning: 8/16/2024 8:28:06 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/16/2024 8:28:06 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/16/2024 8:28:07 PM Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/18/2024 7:38:09 PM Now listening on: https://localhost:7131
+Information: 8/18/2024 7:38:09 PM Now listening on: http://localhost:5231
+Information: 8/18/2024 7:38:09 PM Application started. Press Ctrl+C to shut down.
+Information: 8/18/2024 7:38:09 PM Hosting environment: Development
+Information: 8/18/2024 7:38:09 PM Content root path: C:\Users\AndreiBaloniu\Documents\internship\MoviesApi\MoviesApi
+Information: 8/18/2024 7:45:43 PM  ------ 
+Information: 8/18/2024 7:45:43 PM GetMovies WAS CALLED
+Information: 8/18/2024 7:45:43 PM  ------ 
+Warning: 8/18/2024 7:45:45 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Warning: 8/18/2024 7:45:46 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/18/2024 7:45:46 PM Executed DbCommand (45ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/18/2024 7:46:52 PM  ------ 
+Information: 8/18/2024 7:46:52 PM SortMoviesByNameAndGenre WAS CALLED
+Information: 8/18/2024 7:46:52 PM  ------ 
+Warning: 8/18/2024 7:46:52 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/18/2024 7:46:52 PM Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[Title], [m].[Genre], [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/18/2024 7:46:52 PM  ------ 
+Information: 8/18/2024 7:46:52 PM Succesfully, returning 17 movies
+Information: 8/18/2024 7:46:52 PM  ------ 
+Information: 8/18/2024 7:54:41 PM  ------ 
+Information: 8/18/2024 7:54:41 PM GetMovies WAS CALLED
+Information: 8/18/2024 7:54:41 PM  ------ 
+Information: 8/18/2024 7:54:41 PM Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/18/2024 7:57:02 PM  ------ 
+Information: 8/18/2024 7:57:02 PM GetMovies WAS CALLED
+Information: 8/18/2024 7:57:02 PM  ------ 
+Information: 8/18/2024 7:57:03 PM Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/18/2024 8:08:00 PM  ------ 
+Information: 8/18/2024 8:08:00 PM GetMovies WAS CALLED
+Information: 8/18/2024 8:08:00 PM  ------ 
+Information: 8/18/2024 8:08:00 PM Executed DbCommand (49ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/18/2024 8:09:54 PM  ------ 
+Information: 8/18/2024 8:09:54 PM Delete{id} WAS CALLED
+Information: 8/18/2024 8:09:54 PM  ------ 
+Information: 8/18/2024 8:09:55 PM Executed DbCommand (104ms) [Parameters=[@__index_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[ID] = @__index_0
+Information: 8/18/2024 8:09:55 PM Executed DbCommand (25ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Movies]
+OUTPUT 1
+WHERE [ID] = @p0;
+Information: 8/18/2024 8:09:55 PM  ------ 
+Information: 8/18/2024 8:09:55 PM Movie deleted succesfully
+Information: 8/18/2024 8:09:55 PM  ------ 
+Information: 8/18/2024 8:10:04 PM  ------ 
+Information: 8/18/2024 8:10:04 PM GetMovies WAS CALLED
+Information: 8/18/2024 8:10:04 PM  ------ 
+Information: 8/18/2024 8:10:04 PM Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year], [t].[ID], [t].[Location], [t].[Title], [t].[Year], [t].[MoviesID], [t].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM [Movies] AS [m]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t] ON [m].[ID] = [t].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [m].[ID] = [r].[MovieID]
+ORDER BY [m].[ID], [t].[MoviesID], [t].[StudiosID], [t].[ID]
+Information: 8/18/2024 8:13:50 PM Now listening on: https://localhost:7131
+Information: 8/18/2024 8:13:50 PM Now listening on: http://localhost:5231
+Information: 8/18/2024 8:13:50 PM Application started. Press Ctrl+C to shut down.
+Information: 8/18/2024 8:13:50 PM Hosting environment: Development
+Information: 8/18/2024 8:13:50 PM Content root path: C:\Users\AndreiBaloniu\Documents\internship\MoviesApi\MoviesApi
+Information: 8/18/2024 8:16:45 PM Now listening on: https://localhost:7131
+Information: 8/18/2024 8:16:45 PM Now listening on: http://localhost:5231
+Information: 8/18/2024 8:16:45 PM Application started. Press Ctrl+C to shut down.
+Information: 8/18/2024 8:16:45 PM Hosting environment: Development
+Information: 8/18/2024 8:16:45 PM Content root path: C:\Users\AndreiBaloniu\Documents\internship\MoviesApi\MoviesApi
+Information: 8/18/2024 8:17:01 PM Now listening on: https://localhost:7131
+Information: 8/18/2024 8:17:01 PM Now listening on: http://localhost:5231
+Information: 8/18/2024 8:17:01 PM Application started. Press Ctrl+C to shut down.
+Information: 8/18/2024 8:17:01 PM Hosting environment: Development
+Information: 8/18/2024 8:17:01 PM Content root path: C:\Users\AndreiBaloniu\Documents\internship\MoviesApi\MoviesApi
+Information: 8/18/2024 8:17:15 PM Now listening on: https://localhost:7131
+Information: 8/18/2024 8:17:15 PM Now listening on: http://localhost:5231
+Information: 8/18/2024 8:17:15 PM Application started. Press Ctrl+C to shut down.
+Information: 8/18/2024 8:17:15 PM Hosting environment: Development
+Information: 8/18/2024 8:17:15 PM Content root path: C:\Users\AndreiBaloniu\Documents\internship\MoviesApi\MoviesApi
+Information: 8/18/2024 8:26:45 PM  ------ 
+Information: 8/18/2024 8:26:45 PM Post WAS CALLED
+Information: 8/18/2024 8:26:45 PM  ------ 
+Warning: 8/18/2024 8:26:46 PM No store type was specified for the decimal property 'Budget' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Information: 8/18/2024 8:26:47 PM Executed DbCommand (80ms) [Parameters=[@__studioID_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [s].[ID], [s].[Location], [s].[Title], [s].[Year]
+FROM [Studios] AS [s]
+WHERE [s].[ID] = @__studioID_0
+Information: 8/18/2024 8:26:48 PM Executed DbCommand (4ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p1='?' (Size = 300), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (Size = 100), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Budget], [Description], [Duration], [Genre], [Title], [Year])
+OUTPUT INSERTED.[ID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+Information: 8/18/2024 8:26:48 PM Executed DbCommand (1ms) [Parameters=[@p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [MovieStudio] ([MoviesID], [StudiosID])
+VALUES (@p6, @p7);
+Information: 8/18/2024 8:26:48 PM  ------ 
+Information: 8/18/2024 8:26:48 PM Movie added succesfully
+Information: 8/18/2024 8:26:48 PM  ------ 
+Information: 8/18/2024 8:27:23 PM  ------ 
+Information: 8/18/2024 8:27:23 PM GetMovie{id} WAS CALLED
+Information: 8/18/2024 8:27:23 PM  ------ 
+Warning: 8/18/2024 8:27:23 PM Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+Information: 8/18/2024 8:27:23 PM Executed DbCommand (10ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[ID], [t].[Budget], [t].[Description], [t].[Duration], [t].[Genre], [t].[Title], [t].[Year], [t0].[ID], [t0].[Location], [t0].[Title], [t0].[Year], [t0].[MoviesID], [t0].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM (
+    SELECT TOP(1) [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year]
+    FROM [Movies] AS [m]
+    WHERE [m].[ID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t0] ON [t].[ID] = [t0].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [t].[ID] = [r].[MovieID]
+ORDER BY [t].[ID], [t0].[MoviesID], [t0].[StudiosID], [t0].[ID]
+Information: 8/18/2024 8:27:23 PM  ------ 
+Information: 8/18/2024 8:27:23 PM Returning movie -> Cars
+Information: 8/18/2024 8:27:23 PM  ------ 
+Information: 8/18/2024 8:30:39 PM  ------ 
+Information: 8/18/2024 8:30:39 PM Post WAS CALLED
+Information: 8/18/2024 8:30:39 PM  ------ 
+Information: 8/18/2024 8:30:39 PM Executed DbCommand (1ms) [Parameters=[@__studioID_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [s].[ID], [s].[Location], [s].[Title], [s].[Year]
+FROM [Studios] AS [s]
+WHERE [s].[ID] = @__studioID_0
+Information: 8/18/2024 8:30:39 PM Executed DbCommand (1ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p1='?' (Size = 300), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (Size = 100), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Budget], [Description], [Duration], [Genre], [Title], [Year])
+OUTPUT INSERTED.[ID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+Information: 8/18/2024 8:30:39 PM Executed DbCommand (1ms) [Parameters=[@p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [MovieStudio] ([MoviesID], [StudiosID])
+VALUES (@p6, @p7);
+Information: 8/18/2024 8:30:39 PM  ------ 
+Information: 8/18/2024 8:30:39 PM Movie added succesfully
+Information: 8/18/2024 8:30:39 PM  ------ 
+Information: 8/18/2024 8:30:55 PM  ------ 
+Information: 8/18/2024 8:30:55 PM GetMovie{id} WAS CALLED
+Information: 8/18/2024 8:30:55 PM  ------ 
+Information: 8/18/2024 8:30:55 PM Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[ID], [t].[Budget], [t].[Description], [t].[Duration], [t].[Genre], [t].[Title], [t].[Year], [t0].[ID], [t0].[Location], [t0].[Title], [t0].[Year], [t0].[MoviesID], [t0].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM (
+    SELECT TOP(1) [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year]
+    FROM [Movies] AS [m]
+    WHERE [m].[ID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t0] ON [t].[ID] = [t0].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [t].[ID] = [r].[MovieID]
+ORDER BY [t].[ID], [t0].[MoviesID], [t0].[StudiosID], [t0].[ID]
+Information: 8/18/2024 8:30:55 PM  ------ 
+Information: 8/18/2024 8:30:55 PM Returning movie -> Inception
+Information: 8/18/2024 8:30:55 PM  ------ 
+Information: 8/18/2024 8:31:27 PM  ------ 
+Information: 8/18/2024 8:31:27 PM GetMovie{id} WAS CALLED
+Information: 8/18/2024 8:31:27 PM  ------ 
+Information: 8/18/2024 8:31:27 PM Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[ID], [t].[Budget], [t].[Description], [t].[Duration], [t].[Genre], [t].[Title], [t].[Year], [t0].[ID], [t0].[Location], [t0].[Title], [t0].[Year], [t0].[MoviesID], [t0].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM (
+    SELECT TOP(1) [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year]
+    FROM [Movies] AS [m]
+    WHERE [m].[ID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t0] ON [t].[ID] = [t0].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [t].[ID] = [r].[MovieID]
+ORDER BY [t].[ID], [t0].[MoviesID], [t0].[StudiosID], [t0].[ID]
+Information: 8/18/2024 8:31:27 PM  ------ 
+Information: 8/18/2024 8:31:27 PM Returning movie -> Cars
+Information: 8/18/2024 8:31:27 PM  ------ 
+Information: 8/18/2024 8:31:30 PM  ------ 
+Information: 8/18/2024 8:31:30 PM GetMovie{id} WAS CALLED
+Information: 8/18/2024 8:31:30 PM  ------ 
+Information: 8/18/2024 8:31:30 PM Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[ID], [t].[Budget], [t].[Description], [t].[Duration], [t].[Genre], [t].[Title], [t].[Year], [t0].[ID], [t0].[Location], [t0].[Title], [t0].[Year], [t0].[MoviesID], [t0].[StudiosID], [r].[ID], [r].[Comment], [r].[MovieID], [r].[Rating]
+FROM (
+    SELECT TOP(1) [m].[ID], [m].[Budget], [m].[Description], [m].[Duration], [m].[Genre], [m].[Title], [m].[Year]
+    FROM [Movies] AS [m]
+    WHERE [m].[ID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [s].[ID], [s].[Location], [s].[Title], [s].[Year], [m0].[MoviesID], [m0].[StudiosID]
+    FROM [MovieStudio] AS [m0]
+    INNER JOIN [Studios] AS [s] ON [m0].[StudiosID] = [s].[ID]
+) AS [t0] ON [t].[ID] = [t0].[MoviesID]
+LEFT JOIN [Reviews] AS [r] ON [t].[ID] = [r].[MovieID]
+ORDER BY [t].[ID], [t0].[MoviesID], [t0].[StudiosID], [t0].[ID]
+Information: 8/18/2024 8:31:30 PM  ------ 
+Information: 8/18/2024 8:31:30 PM Returning movie -> Inception
+Information: 8/18/2024 8:31:30 PM  ------ 

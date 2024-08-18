@@ -67,9 +67,10 @@ namespace MoviesApi.Controllers
             logger.LogInformation(" ------ ");
             logger.LogInformation("Post WAS CALLED");
             logger.LogInformation(" ------ ");
-/*            var roleDto = new RoleReadDto(name, personID, movieID);
-            var role = mapper.Map<Role>(roleDto);*/
-            service.AddRole(name, movieID, personID);
+            var roleDto = new RoleReadDto(name, personID, movieID);
+            var role = mapper.Map<Role>(roleDto);
+            service.addRole2(role);
+            //service.AddRole(name, movieID, personID);
             logger.LogInformation(" ------ ");
             logger.LogInformation("Role added succesfully");
             logger.LogInformation(" ------ ");

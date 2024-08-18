@@ -83,6 +83,10 @@ namespace ETMovies.Service
 
         }
 
+        public void addRole2(Role role)
+        { 
+            Context.Roles.Add(role);
+        }
 
     }
 }

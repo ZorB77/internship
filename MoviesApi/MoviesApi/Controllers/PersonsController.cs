@@ -1,6 +1,8 @@
-﻿using ETMovies.Models;
+﻿using AutoMapper;
+using ETMovies.Models;
 using ETMovies.Service;
 using Microsoft.AspNetCore.Mvc;
+using MoviesApi.ModelsDTO;
 
 namespace MoviesApi.Controllers
 {
@@ -10,33 +12,36 @@ namespace MoviesApi.Controllers
     {
         private PersonService service;
         private ILogger<PersonsController> logger;
-        public PersonsController(PersonService personService, ILogger<PersonsController> logger)
+        private IMapper mapper;
+        public PersonsController(PersonService personService, ILogger<PersonsController> logger, IMapper mapper)
         {
             service = personService;
             this.logger = logger;
+            this.mapper = mapper;
         }
 
         [HttpGet]
-        public IEnumerable<Person> GetPersons(int page = 1, int pageSize = 10)
+        public IEnumerable<PersonReadDto> GetPersons(int page = 1, int pageSize = 10)
         {
             logger.LogInformation(" ------ ");
             logger.LogInformation("GetPersons WAS CALLED");
             logger.LogInformation(" ------ ");
-            var persons = service.GetPersons().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var persons = service.GetPersons();
             if (persons == null)
             {
                 logger.LogInformation("No persons found");
                 return null;
             }
+            var personsDto = mapper.Map<List<PersonReadDto>>(persons);
             logger.LogInformation(" ------ ");
             logger.LogInformation("Returning persons");
             logger.LogInformation(" ------ ");
-            return persons;
+            return personsDto.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
         }
 
         [HttpGet("{id}")]
-        public Person GetPerson(int id)
+        public PersonReadDto GetPerson(int id)
         {
             logger.LogInformation(" ------ ");
             logger.LogInformation("GetPerson{id} WAS CALLED");
@@ -47,10 +52,11 @@ namespace MoviesApi.Controllers
                 logger.LogInformation("No person found");
                 return null;
             }
+            var personDto = mapper.Map<PersonReadDto>(person);
             logger.LogInformation(" ------ ");
             logger.LogInformation("Returning person");
             logger.LogInformation(" ------ ");
-            return person;
+            return personDto;
 
         }
 
@@ -60,7 +66,8 @@ namespace MoviesApi.Controllers
             logger.LogInformation(" ------ ");
             logger.LogInformation("Post WAS CALLED");
             logger.LogInformation(" ------ ");
-            var person = new Person(firstName, lastName, birthday, nat, award);
+            var personDto = new PersonCUDto(firstName, lastName, birthday, nat, award);
+            var person = mapper.Map<Person>(personDto);
             service.AddPerson(person);
             logger.LogInformation(" ------ ");
             logger.LogInformation("Person added succesfully");
@@ -91,7 +98,7 @@ namespace MoviesApi.Controllers
             logger.LogInformation(" ------ ");
         }
         [HttpGet]
-        public List<Person> FilteredPersonsByAge(int minAge, int maxAge, int page = 1, int pageSize = 10) 
+        public List<PersonReadDto> FilteredPersonsByAge(int minAge, int maxAge, int page = 1, int pageSize = 10) 
         {
             logger.LogInformation(" ------ ");
             logger.LogInformation("FilteredPersonsByAge");
@@ -102,10 +109,11 @@ namespace MoviesApi.Controllers
                 logger.LogInformation("No persons found");
 
             }
+            var personsDto = mapper.Map<List<PersonReadDto>>(persons);
             logger.LogInformation(" ------ ");
-            logger.LogInformation($"Succsesfully, returning {persons.Count()} persons");
+            logger.LogInformation($"Succsesfully, returning {personsDto.Count()} persons");
             logger.LogInformation(" ------ ");
-            return persons.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            return personsDto.Skip((page - 1) * pageSize).Take(pageSize).ToList();
         }
     }
 }

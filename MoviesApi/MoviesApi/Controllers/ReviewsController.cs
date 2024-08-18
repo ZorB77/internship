@@ -1,7 +1,9 @@
-﻿using ETMovies.Models;
+﻿using AutoMapper;
+using ETMovies.Models;
 using ETMovies.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MoviesApi.ModelsDTO;
 
 namespace MoviesApi.Controllers
 {
@@ -12,14 +14,16 @@ namespace MoviesApi.Controllers
     {
         private ReviewService service;
         private ILogger<ReviewsController> logger;
-        public ReviewsController(ReviewService reviewService, ILogger<ReviewsController> logger) 
+        private IMapper mapper;
+        public ReviewsController(ReviewService reviewService, ILogger<ReviewsController> logger, IMapper mapper) 
         {
             service = reviewService;
             this.logger = logger;
+            this.mapper = mapper;
         }
 
         [HttpGet]
-        public  IEnumerable<Review> GetReviews(int page = 1, int pageSize= 10)
+        public  IEnumerable<ReviewReadDto> GetReviews(int page = 1, int pageSize= 10)
         {
             logger.LogInformation(" ------ ");
             logger.LogInformation("GetReviews WAS CALLED");
@@ -30,15 +34,16 @@ namespace MoviesApi.Controllers
                 logger.LogInformation("No reviews found");
                 return null;
             }
+            var reviewsDto = mapper.Map<List<ReviewReadDto>>(reviews);
             logger.LogInformation(" ------ ");
             logger.LogInformation("Returning reviews");
             logger.LogInformation(" ------ ");
-            return reviews;
+            return reviewsDto.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
         }
 
         [HttpGet("{id}")]
-        public Review GetReview(int id)
+        public ReviewReadDto GetReview(int id)
         {
             logger.LogInformation(" ------ ");
             logger.LogInformation("GetReview{id} WAS CALLED");
@@ -49,10 +54,11 @@ namespace MoviesApi.Controllers
                 logger.LogInformation("No review Found");
                 return null;
             }
+            var reviewDto = mapper.Map<ReviewReadDto>(review);
             logger.LogInformation(" ------ ");
             logger.LogInformation("Returning review");
             logger.LogInformation(" ------ ");
-            return review;
+            return reviewDto;
             
         }
 
@@ -62,7 +68,8 @@ namespace MoviesApi.Controllers
             logger.LogInformation(" ------ ");
             logger.LogInformation("Post WAS CALLED");
             logger.LogInformation(" ------ ");
-            var rev = new Review(rating, comment);
+            var reviewDto = new ReviewCUDto(rating, comment);
+            var rev = mapper.Map<Review>(reviewDto);
             service.AddReview(rev, movieID);
             logger.LogInformation(" ------ ");
             logger.LogInformation("Review added succesfully");

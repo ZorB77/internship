@@ -4,6 +4,16 @@ namespace MoviesApi.ModelsDTO
 {
     public class PersonCUDto
     {
+
+        public PersonCUDto(string firstName, string lastName, DateTime birthday, string nat, int award)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Birthday = birthday;
+            Nationality = nat;
+            Awards = award;
+        }
+
         [Required]
         [StringLength(50)]
         public string FirstName { get; set; }
