@@ -1,0 +1,807 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using MovieApp.Models;
+using MovieApp.Services;
+using MovieApplication.Models;
+using MovieApplication.Services;
+using MovieApplication.Services.Interfaces;
+using System.Net;
+
+namespace MovieApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var serviceProvider = new ServiceCollection()
+                    .AddSingleton<MovieContext>()
+                    .AddScoped<IMovieService, MovieService>()
+                    .AddScoped<IPersonService, PersonService>()
+                    .AddScoped<IReviewService, ReviewService>()
+                    .AddScoped<IRoleService, RoleService>()
+                    .AddScoped<IStudioService, StudioService>()
+                    .AddScoped<IMovieStudioService, MovieStudioService>()
+                    .AddScoped<IAPIService, APIService>()
+                    .BuildServiceProvider();
+
+            var movieService = serviceProvider.GetService<IMovieService>();
+            var personService = serviceProvider.GetService<IPersonService>();
+            var reviewService = serviceProvider.GetService<IReviewService>();
+            var roleService = serviceProvider.GetService<IRoleService>();
+            var studioService = serviceProvider.GetService<IStudioService>();
+            var movieStudioService = serviceProvider.GetService<IMovieStudioService>();
+            var apiService = serviceProvider.GetService<IAPIService>();
+
+            while (true)
+            {
+                Console.WriteLine("\n1 - Movie options");
+                Console.WriteLine("2 - Person options");
+                Console.WriteLine("3 - Review options");
+                Console.WriteLine("4 - Role options");
+                Console.WriteLine("5 - Studio options");
+                Console.WriteLine("6 - Movie-Studio Association options");
+                Console.WriteLine("7 - Exit");
+
+                Console.WriteLine("Select option: ");
+                var input = Console.ReadLine();
+
+                switch (input)
+                {
+                    //case 1
+                    case "1":
+                        movieService.MovieOptions();
+                        Console.WriteLine("Select option: ");
+                        string input1 = Console.ReadLine();
+                        switch (input1)
+                        {
+                            //SUBCASE 1 - AddMovie
+                            case "1":
+                                Console.WriteLine("\nEnter movie title: ");
+                                string title = Console.ReadLine();
+
+                                Console.WriteLine("Enter movie release date: ");
+                                DateTime releaseDate = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter movie description: ");
+                                string description = Console.ReadLine();
+
+                                Console.WriteLine("Enter movie genre: ");
+                                string genre = Console.ReadLine();
+
+                                Console.WriteLine("Enter movie budget: ");
+                                decimal budget = decimal.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter movie duration: ");
+                                int duration = int.Parse(Console.ReadLine());
+
+                                var result = apiService.AddMovie(title, releaseDate, description, genre, budget, duration);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Movie {title} added succesfully!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 2 - GetMoviesList
+                            case "2":
+                                var allMovies = apiService.GetAllMovies();
+
+                                Console.WriteLine("\nAll the movies from db: ");
+                                foreach (var movies in allMovies)
+                                {
+                                    Console.WriteLine($"{movies.Title}");
+                                }
+                                break;
+
+                            //SUBCASE 3 - GetMovieById
+                            case "3":
+                                Console.WriteLine("\nEnter the movie id: ");
+                                int movieId = int.Parse(Console.ReadLine());
+
+                                var movie = apiService.GetMovieById(movieId);
+
+                                if (movie != null)
+                                {
+                                    Console.WriteLine($"Movie with id {movieId}: {movie.Title}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Movie not found!");
+                                }
+                                break;
+
+                            //SUBCASE 4 - DeleteMovie
+                            case "4":
+                                Console.WriteLine("\nEnter movie id to delete: ");
+                                movieId = int.Parse(Console.ReadLine());
+
+                                result = apiService.DeleteMovie(movieId);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Movie {movieId} was succesfully deleted!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 5 - UpdateMovie
+                            case "5":
+                                Console.WriteLine("\nEnter movie id to update: ");
+                                movieId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new title: ");
+                                title = Console.ReadLine();
+
+                                Console.WriteLine("Enter the new year: ");
+                                releaseDate = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new description: ");
+                                description = Console.ReadLine();
+
+                                Console.WriteLine("Enter the new genre: ");
+                                genre = Console.ReadLine();
+
+                                Console.WriteLine("Enter the new budget: ");
+                                budget = decimal.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new duration: ");
+                                duration = int.Parse(Console.ReadLine());
+
+                                result = apiService.UpdateMovie(movieId, title, releaseDate, description, genre, budget, duration);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Movie {title} was succesfully updated!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 6 - FilterMoviesByGenre
+                            case "6":
+                                Console.WriteLine("\nEnter the genre: ");
+                                genre = Console.ReadLine();
+
+                                var moviesG = apiService.GetMoviesByGenre(genre);
+                                Console.WriteLine($"\n{genre} movies: ");
+
+                                foreach(var movieG in moviesG)
+                                {
+                                    Console.WriteLine($"{movieG.Title}");
+                                }
+                                break;
+
+                            //SUBCASE 7 - FilterMoviesByYear
+                            case "7":
+                                Console.WriteLine("\nEnter the year: ");
+                                int year = int.Parse(Console.ReadLine());
+
+                                var moviesY = apiService.GetMoviesByYear(year);
+                                Console.WriteLine($"\nMovies from year {year}: ");
+
+                                foreach(var movieY in moviesY)
+                                {
+                                    Console.WriteLine($"{movieY.Title}");
+                                }
+                                break;
+
+                            //SUBCASE 8 - FilterMoviesByDateInterval
+                            case "8":
+                                Console.WriteLine("\nEnter the 1st year: ");
+                                int year1 = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the 2nd year: ");
+                                int year2 = int.Parse(Console.ReadLine());
+
+                                var movieInterval = apiService.GetMoviesByDateInterval(year1, year2);
+                                Console.WriteLine($"\nMovies between {year1} and {year2}: ");
+
+                                foreach(var movieI in movieInterval)
+                                {
+                                    Console.WriteLine($"{movieI.Title}");
+                                }
+                                break;
+
+                            //SUBCASE 9
+                            case "9":
+                                break;
+                        }
+                        break;
+
+                    //CASE 2
+                    case "2":
+                        personService.PersonOptions();
+                        Console.WriteLine("Select option: ");
+                        string input2 = Console.ReadLine();
+                        switch (input2)
+                        {
+                            //SUBCASE 1 - AddPerson
+                            case "1":
+                                Console.WriteLine("\nEnter the first name: ");
+                                string firstName = Console.ReadLine();
+
+                                Console.WriteLine("Enter the last name: ");
+                                string lastName = Console.ReadLine();
+
+                                Console.WriteLine("Enter the birthdate: ");
+                                DateTime birthdate = DateTime.Parse(Console.ReadLine());
+
+                                string result = apiService.AddPerson(firstName, lastName, birthdate);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"{firstName} {lastName} added succesfully.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{firstName} {lastName} wasn't added. Please try again!");
+                                }
+                                break;
+
+                            //SUBCASE 2 - GetPersonsList
+                            case "2":
+                                var allPersons = apiService.GetAllPersons();
+
+                                Console.WriteLine("\nAll the persons from db: ");
+                                foreach (var persons in allPersons)
+                                {
+                                    Console.WriteLine($"{persons.FirstName} {persons.LastName}");
+                                }
+                                break;
+
+                            //SUBCASE 3 - GetPersonById
+                            case "3":
+                                Console.WriteLine("\nEnter the person id: ");
+                                int personId = int.Parse(Console.ReadLine());
+
+                                var person = apiService.GetPersonById(personId);
+
+                                if (person != null)
+                                {
+                                    Console.WriteLine($"Person with id {personId}: {person.FirstName} {person.LastName}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Person not found!");
+                                }
+                                break;
+
+                            //SUBCASE 4 - DeletePerson
+                            case "4":
+                                Console.WriteLine("\nEnter person id to delete: ");
+                                personId = int.Parse(Console.ReadLine());
+
+                                result = apiService.DeletePerson(personId);
+                                if (result!= null)
+                                {
+                                    Console.WriteLine($"Person {personId} was succesfully deleted!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 5 - UpdatePerson 
+                            case "5":
+                                Console.WriteLine("\nEnter person id to update: ");
+                                personId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new first name: ");
+                                firstName = Console.ReadLine();
+
+                                Console.WriteLine("Enter the new last name: ");
+                                lastName = Console.ReadLine();
+
+                                Console.WriteLine("Enter the new birthday: ");
+                                birthdate = DateTime.Parse(Console.ReadLine());
+
+                                result = apiService.UpdatePerson(personId, firstName, lastName, birthdate);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Person {personId} was succesfully updated!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 6
+                            case "6":
+                                break;
+                        }
+                        break;
+
+                    //CASE 3
+                    case "3":
+                        reviewService.ReviewOptions();
+                        Console.WriteLine("Select option: ");
+                        string input3 = Console.ReadLine();
+                        switch (input3)
+                        {
+                            //SUBCASE 1 - AddReview
+                            case "1":
+                                Console.WriteLine("\nEnter movie id for review: ");
+                                int movieId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the rating: ");
+                                double rating = double.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter comment: ");
+                                string comment = Console.ReadLine();
+
+                                Console.WriteLine("Enter review date: ");
+                                DateTime reviewDate = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter reviewer name: ");
+                                string reviewerName = Console.ReadLine();
+
+                                string result = apiService.AddReview(movieId, rating, comment, reviewDate, reviewerName);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Review for {movieId} added succesfully");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 2 - GetReviewsList
+                            case "2":
+                                var allReviews = apiService.GetAllReviews();
+                                Console.WriteLine("\nAll the reviews from db: ");
+
+                                foreach (var reviews in allReviews)
+                                {
+                                    Console.WriteLine($"Review for movie id {reviews.MovieId}: {reviews.Comment}");
+
+                                }
+                                break;
+
+                            //SUBCASE 3 - GerReviewById
+                            case "3":
+                                Console.WriteLine("\nEnter the review id: ");
+                                int reviewId = int.Parse(Console.ReadLine());
+
+                                var review = apiService.GetReviewById(reviewId);
+
+                                if (review != null)
+                                {
+                                    Console.WriteLine($"Review with id {reviewId}: {review.Rating}, {review.Comment}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Review not found!\n");
+                                }
+                                break;
+
+                            //SUBCASE 4 - DeleteReview
+                            case "4":
+                                Console.WriteLine("\nEnter review id to delete: ");
+                                reviewId = int.Parse(Console.ReadLine());
+
+                                result = apiService.DeleteReview(reviewId);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Movie {reviewId} was succesfully deleted!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 5 - UpdateReview
+                            case "5":
+                                Console.WriteLine("\nEnter review id to update: ");
+                                reviewId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new rating: ");
+                                rating = double.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new comment: ");
+                                comment = Console.ReadLine();
+
+                                Console.WriteLine("Enter the new review date: ");
+                                reviewDate = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new reviewer name: ");
+                                reviewerName = Console.ReadLine();
+
+                                result = apiService.UpdateReview(reviewId, rating, comment, reviewDate, reviewerName);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Review {reviewId} was succesfully updated!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 6 - AverageRatingForGivenMovie
+                            case "6":
+                                Console.WriteLine("\nEnter the movie id: ");
+                                movieId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine($"Average rating for movie {movieId} is: " + apiService.GetAverageRatingForGivenMovie(movieId));
+                                break;
+
+                            //SUBCASE 7 - Top10Movies
+                            case "7":
+                                var topMovies = apiService.Top10Movies();
+
+                                foreach (var movie in topMovies)
+                                {
+                                    Console.WriteLine($"\nTitle: {movie.Title}, Release date: {movie.ReleaseDate.ToShortDateString()}, Genre: {movie.Genre}");
+                                }
+                                break;
+
+                            //SUBCASE 8 - FilterReviewbyRating
+                            case "8":
+                                Console.WriteLine("\nEnter the rating: ");
+                                rating = double.Parse(Console.ReadLine());
+
+                                var reviewsR = apiService.GetReviewsByRating(rating);
+                                Console.WriteLine($"\nMovies with rating {rating}: ");
+
+                                foreach (var reviewRating in reviewsR)
+                                {
+                                    Console.WriteLine($"{reviewRating.Movies.Title}");
+                                }
+                                break;
+
+                            //SUBCASE 9
+                            case "9":
+                                break;
+                        }
+                        break;
+
+                    //CASE 4
+                    case "4":
+                        roleService.RoleOptions();
+                        Console.WriteLine("Select option: ");
+                        string input4 = Console.ReadLine();
+                        switch (input4)
+                        {
+                            //SUBCASE 1 - AddRole
+                            case "1":
+                                Console.WriteLine("\nEnter the movie id: ");
+                                int movieId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the person id: ");
+                                int personId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the name: ");
+                                string name = Console.ReadLine();
+
+                                string result = apiService.AddRole(movieId, personId, name);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"{name} added succesfully.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{name} wasn't added. Please try again!");
+                                }
+                                break;
+
+                            //SUBCASE 2 - GetRolesList
+                            case "2":
+                                var allRoles = apiService.GetAllRoles();
+                                Console.WriteLine("\nAll the roles from db: ");
+
+                                foreach (var roles in allRoles)
+                                {
+                                    Console.WriteLine($"{roles.Name}");
+                                }
+                                break;
+
+                            //SUBCASE 3 - GetRoleById
+                            case "3":
+                                Console.WriteLine("\nEnter the role id: ");
+                                int roleId = int.Parse(Console.ReadLine());
+
+                                var role = apiService.GetRoleById(roleId);
+
+                                if (roleId != null)
+                                {
+                                    Console.WriteLine($"Role with id {roleId}: {role.Name}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Role not found!\n");
+                                }
+                                break;
+
+                            //SUBCASE 4 - DeleteRole
+                            case "4":
+                                Console.WriteLine("\nEnter role id to delete: ");
+                                roleId = int.Parse(Console.ReadLine());
+
+                                result = apiService.DeleteRole(roleId);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Role {roleId} was succesfully deleted!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 5 - UpdateRole 
+                            case "5":
+                                Console.WriteLine("\nEnter role id to update: ");
+                                roleId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new movie id: ");
+                                movieId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new person id: ");
+                                personId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new name: ");
+                                name = Console.ReadLine();
+
+                                result = apiService.UpdateRole(roleId, movieId, personId, name);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Role {roleId} was succesfully updated!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 6
+                            case "6":
+                                break;
+                        }
+                        break;
+
+                    //CASE 5
+                    case "5":
+                        studioService.StudioOptions();
+                        Console.WriteLine("Select option: ");
+                        string input5 = Console.ReadLine();
+                        switch (input5)
+                        {
+                            //SUBCASE 1 - AddStudio
+                            case "1":
+                                Console.WriteLine("\nEnter the studio name: ");
+                                string name = Console.ReadLine();
+
+                                Console.WriteLine("Enter the opening year: ");
+                                DateTime year = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the location: ");
+                                string location = Console.ReadLine();
+
+                                string result = apiService.AddStudio(name, year, location);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Studio {name} added succesfully.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Studio {name} wasn't added. Please try again!");
+                                }
+                                break;
+
+                            //SUBCASE 2 - GetAllStudios
+                            case "2":
+                                var allStudios = apiService.GetAllStudios();
+
+                                Console.WriteLine("\nAll the studios from db: ");
+                                foreach (var studios in allStudios)
+                                {
+                                    Console.WriteLine($"{studios.Name}");
+                                }
+                                break;
+
+                            //SUBCASE 3 - GetStudioById
+                            case "3":
+                                Console.WriteLine("\nEnter the studio id: ");
+                                int studioId = int.Parse(Console.ReadLine());
+
+                                var studio = apiService.GetStudioById(studioId);
+
+                                if (studio != null)
+                                {
+                                    Console.WriteLine($"Role with id {studioId}: {studio.Name}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Role not found!\n");
+                                }
+                                break;
+
+                            //SUBCASE 4 - DeleteStudio
+                            case "4":
+                                Console.WriteLine("\nEnter role id to delete: ");
+                                studioId = int.Parse(Console.ReadLine());
+
+                                result = apiService.DeleteStudio(studioId);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Studio {studioId} was succesfully deleted!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 5 - UpdateStudio
+                            case "5":
+                                Console.WriteLine("\nEnter studio id to update: ");
+                                studioId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new studio name: ");
+                                name = Console.ReadLine();
+
+                                Console.WriteLine("Enter the new year: ");
+                                year = DateTime.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new location: ");
+                                location = Console.ReadLine();
+
+                                result = apiService.UpdateStudio(studioId, name, year, location);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Studio {studioId} was succesfully updated!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 6
+                            case "6":
+                                break;
+                        }
+                        break;
+
+                    //CASE 6
+                    case "6":
+                        movieStudioService.MovieStudiosOptions();
+                        Console.WriteLine("Select option: ");
+                        string input6 = Console.ReadLine();
+                        switch (input6)
+                        {
+                            //SUBCASE 1 - AddMovieStudioAss
+                            case "1":
+                                Console.WriteLine("\nEnter the movie id: ");
+                                int movieId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the studio id: ");
+                                int studioId = int.Parse(Console.ReadLine());
+
+                                string result = apiService.AddMovieStudioAssociation(movieId, studioId);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Movie {movieId} association with studio {studioId} added succesfully.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again!");
+                                }
+                                break;
+
+                            //SUBCASE 2 - GetAllMovieStudiosAss
+                            case "2":
+                                var allMovieStudiosAss = apiService.GetAllMovieStudiosAssociations();
+                               
+                                Console.WriteLine("\nAll the movie-studio associations from db: ");
+                                foreach (var movieStudioAss in allMovieStudiosAss)
+                                {
+                                    Console.WriteLine($"{movieStudioAss.Movie.Title} - {movieStudioAss.Studio.Name}");
+                                }
+                                break;
+
+                            //SUBCASE 3 - GetStudiosForMovie
+                            case "3":
+                                Console.WriteLine("Enter movie id: ");
+                                movieId = int.Parse(Console.ReadLine());
+
+                                var studios = apiService.GetStudiosForMovie(movieId);
+
+                                if (studios.Any())
+                                {
+                                    Console.WriteLine($"Studios associated with movie {movieId}: ");
+                                    foreach (var studio in studios)
+                                    {
+                                        Console.WriteLine($"- {studio.Name}");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No studios found for that movie.");
+                                }
+                                break;
+
+                            //SUBCASE 4 - GetMoviesForStudio
+                            case "4":
+                                Console.WriteLine("Enter studio id: ");
+                                studioId = int.Parse(Console.ReadLine());
+
+                                var movies = apiService.GetMoviesForStudio(studioId);
+
+                                if (movies.Any())
+                                {
+                                    Console.WriteLine($"Movies associated with studio {studioId}: ");
+                                    foreach (var movie in movies)
+                                    {
+                                        Console.WriteLine($"- {movie.Title}");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No studios found for that movie.");
+                                }
+                                break;
+
+                            //SUBCASE 5 - DeleteMovieStudioAssociation
+                            case "5":
+                                Console.WriteLine("\nEnter association id to delete: ");
+                                int id = int.Parse(Console.ReadLine());
+
+                                result = apiService.DeleteMovieStudioAssociation(id);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Association {id} was succesfully deleted!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 6 - UpdateMovieStudioAss
+                            case "6":
+                                Console.WriteLine("\nEnter association id to update: ");
+                                int movieStudioId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new movie id: ");
+                                movieId = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Enter the new studio id: ");
+                                studioId = int.Parse(Console.ReadLine());
+
+                                result = apiService.UpdateMovieStudioAssociation(movieStudioId, movieId, studioId);
+                                if (result != null)
+                                {
+                                    Console.WriteLine($"Association between movie {movieId} and studio {studioId} was succesfully updated!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong. Please try again later!");
+                                }
+                                break;
+
+                            //SUBCASE 7
+                            case "7":
+                                break;
+                        }
+                        break;
+
+                    //CASE 7
+                    case "7":
+                        return;
+
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+}
