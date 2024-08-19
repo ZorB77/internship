@@ -1,0 +1,1561 @@
+2024-08-16 12:12:03.233 +03:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-16 12:12:03.405 +03:00 [INF] Now listening on: https://localhost:7257
+2024-08-16 12:12:03.405 +03:00 [INF] Now listening on: http://localhost:5222
+2024-08-16 12:12:03.406 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-16 12:12:03.406 +03:00 [INF] Hosting environment: Development
+2024-08-16 12:12:03.406 +03:00 [INF] Content root path: C:\Users\user\Documents\internship\WebApplication1\WebApplication1
+2024-08-16 12:12:04.700 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/index.html - null null
+2024-08-16 12:12:05.020 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/index.html - 200 null text/html;charset=utf-8 323.0543ms
+2024-08-16 12:12:05.025 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-16 12:12:05.027 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_vs/browserLink - null null
+2024-08-16 12:12:05.041 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 15.836ms
+2024-08-16 12:12:05.084 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_vs/browserLink - 200 null text/javascript; charset=UTF-8 57.5393ms
+2024-08-16 12:12:05.121 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - null null
+2024-08-16 12:12:05.231 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 109.7249ms
+2024-08-16 12:12:48.584 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 67
+2024-08-16 12:12:48.596 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 12:12:48.619 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-16 12:12:50.250 +03:00 [INF] Executed DbCommand (68ms) [Parameters=[@__login_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedOn], [u].[Email], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__login_Email_0
+2024-08-16 12:12:50.638 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[WebApplication1.Models.User, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 12:12:50.660 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 2034.9391ms
+2024-08-16 12:12:50.660 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 12:12:50.673 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 200 null application/json; charset=utf-8 2088.8066ms
+2024-08-16 12:13:23.579 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie - null null
+2024-08-16 12:13:23.666 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 12:13:23.676 +03:00 [INF] Route matched with {action = "GetAllMovies", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetAllMovies() on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 12:13:23.785 +03:00 [INF] GetAllMovies method was called! 
+2024-08-16 12:13:23.857 +03:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+2024-08-16 12:13:23.943 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 12:13:23.946 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1) in 270.0429ms
+2024-08-16 12:13:23.947 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 12:13:23.949 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie - 200 null application/json; charset=utf-8 369.2046ms
+2024-08-16 12:13:32.528 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Person - null null
+2024-08-16 12:13:32.532 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.GetAllPersons (WebApplication1)'
+2024-08-16 12:13:32.539 +03:00 [INF] Route matched with {action = "GetAllPersons", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.PersonDTO]]] GetAllPersons() on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 12:13:32.545 +03:00 [INF] Get all persons method was called! 
+2024-08-16 12:13:32.636 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Persons] AS [p]
+2024-08-16 12:13:32.656 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.PersonDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 12:13:32.659 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.GetAllPersons (WebApplication1) in 120.1881ms
+2024-08-16 12:13:32.659 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.GetAllPersons (WebApplication1)'
+2024-08-16 12:13:32.660 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Person - 200 null application/json; charset=utf-8 132.2751ms
+2024-08-16 12:13:36.779 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Review - null null
+2024-08-16 12:13:36.781 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.GetAllReviews (WebApplication1)'
+2024-08-16 12:13:36.792 +03:00 [INF] Route matched with {action = "GetAllReviews", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.ReviewDTO]]] GetAllReviews() on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 12:13:36.799 +03:00 [INF] Get all reviews method was called! 
+2024-08-16 12:13:36.949 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[Comment], [r].[MovieId], [r].[Rating], [r].[ReviewCreated], [r].[ReviewerFirstName], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Reviews] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+2024-08-16 12:13:36.998 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.ReviewDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 12:13:37.000 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.GetAllReviews (WebApplication1) in 208.5811ms
+2024-08-16 12:13:37.000 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.GetAllReviews (WebApplication1)'
+2024-08-16 12:13:37.001 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Review - 200 null application/json; charset=utf-8 222.9948ms
+2024-08-16 12:13:44.205 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Role - null null
+2024-08-16 12:13:44.206 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.GetAllRoles (WebApplication1)'
+2024-08-16 12:13:44.211 +03:00 [INF] Route matched with {action = "GetAllRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.RoleDTO]]] GetAllRoles() on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 12:13:44.215 +03:00 [INF] GetAllRoles method was called! 
+2024-08-16 12:13:44.248 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[MovieAppereances], [r].[MovieId], [r].[Name], [r].[PersonId], [r].[RoleDescription], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year], [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Roles] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+INNER JOIN [Persons] AS [p] ON [r].[PersonId] = [p].[Id]
+2024-08-16 12:13:44.276 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.RoleDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 12:13:44.278 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.GetAllRoles (WebApplication1) in 66.6321ms
+2024-08-16 12:13:44.278 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.GetAllRoles (WebApplication1)'
+2024-08-16 12:13:44.279 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Role - 200 null application/json; charset=utf-8 74.0931ms
+2024-08-16 12:13:48.966 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Studio - null null
+2024-08-16 12:13:48.967 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.StudioController.GetAllStudios (WebApplication1)'
+2024-08-16 12:13:48.971 +03:00 [INF] Route matched with {action = "GetAllStudios", controller = "Studio"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.StudioDTO]]] GetAllStudios() on controller WebApplication1.Controllers.StudioController (WebApplication1).
+2024-08-16 12:13:48.974 +03:00 [INF] GetAllStudio method was called! 
+2024-08-16 12:13:48.991 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [Studios] AS [s]
+2024-08-16 12:13:49.013 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.StudioDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 12:13:49.016 +03:00 [INF] Executed action WebApplication1.Controllers.StudioController.GetAllStudios (WebApplication1) in 44.4709ms
+2024-08-16 12:13:49.016 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.StudioController.GetAllStudios (WebApplication1)'
+2024-08-16 12:13:49.016 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Studio - 200 null application/json; charset=utf-8 50.4849ms
+2024-08-16 13:09:14.447 +03:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-16 13:09:14.603 +03:00 [INF] Now listening on: https://localhost:7257
+2024-08-16 13:09:14.604 +03:00 [INF] Now listening on: http://localhost:5222
+2024-08-16 13:09:14.604 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-16 13:09:14.605 +03:00 [INF] Hosting environment: Development
+2024-08-16 13:09:14.605 +03:00 [INF] Content root path: C:\Users\user\Documents\internship\WebApplication1\WebApplication1
+2024-08-16 13:09:15.694 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/index.html - null null
+2024-08-16 13:09:15.943 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/index.html - 200 null text/html;charset=utf-8 256.935ms
+2024-08-16 13:09:15.950 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_vs/browserLink - null null
+2024-08-16 13:09:15.950 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-16 13:09:15.956 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 6.6158ms
+2024-08-16 13:09:15.999 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.5541ms
+2024-08-16 13:09:16.040 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - null null
+2024-08-16 13:09:16.134 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 93.7216ms
+2024-08-16 13:09:58.476 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-16 13:09:58.503 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-16 13:09:58.505 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-16 13:09:58.506 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-16 13:09:58.529 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-16 13:09:58.537 +03:00 [INF] Applying migration '20240816100946_PaginationModel'.
+2024-08-16 13:09:58.695 +03:00 [INF] Executed DbCommand (130ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Studios]') AND [c].[name] = N'StudioName');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Studios] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Studios] ALTER COLUMN [StudioName] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.726 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Studios]') AND [c].[name] = N'StudioLocation');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Studios] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [Studios] ALTER COLUMN [StudioLocation] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.757 +03:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Roles]') AND [c].[name] = N'RoleDescription');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [Roles] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [Roles] ALTER COLUMN [RoleDescription] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.783 +03:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var3 sysname;
+SELECT @var3 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Roles]') AND [c].[name] = N'Name');
+IF @var3 IS NOT NULL EXEC(N'ALTER TABLE [Roles] DROP CONSTRAINT [' + @var3 + '];');
+ALTER TABLE [Roles] ALTER COLUMN [Name] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.814 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var4 sysname;
+SELECT @var4 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Reviews]') AND [c].[name] = N'ReviewerFirstName');
+IF @var4 IS NOT NULL EXEC(N'ALTER TABLE [Reviews] DROP CONSTRAINT [' + @var4 + '];');
+ALTER TABLE [Reviews] ALTER COLUMN [ReviewerFirstName] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.838 +03:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var5 sysname;
+SELECT @var5 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Reviews]') AND [c].[name] = N'Comment');
+IF @var5 IS NOT NULL EXEC(N'ALTER TABLE [Reviews] DROP CONSTRAINT [' + @var5 + '];');
+ALTER TABLE [Reviews] ALTER COLUMN [Comment] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.866 +03:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var6 sysname;
+SELECT @var6 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Persons]') AND [c].[name] = N'LastName');
+IF @var6 IS NOT NULL EXEC(N'ALTER TABLE [Persons] DROP CONSTRAINT [' + @var6 + '];');
+ALTER TABLE [Persons] ALTER COLUMN [LastName] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.891 +03:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var7 sysname;
+SELECT @var7 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Persons]') AND [c].[name] = N'FirstName');
+IF @var7 IS NOT NULL EXEC(N'ALTER TABLE [Persons] DROP CONSTRAINT [' + @var7 + '];');
+ALTER TABLE [Persons] ALTER COLUMN [FirstName] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.919 +03:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var8 sysname;
+SELECT @var8 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Movies]') AND [c].[name] = N'Name');
+IF @var8 IS NOT NULL EXEC(N'ALTER TABLE [Movies] DROP CONSTRAINT [' + @var8 + '];');
+ALTER TABLE [Movies] ALTER COLUMN [Name] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.945 +03:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var9 sysname;
+SELECT @var9 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Movies]') AND [c].[name] = N'Genre');
+IF @var9 IS NOT NULL EXEC(N'ALTER TABLE [Movies] DROP CONSTRAINT [' + @var9 + '];');
+ALTER TABLE [Movies] ALTER COLUMN [Genre] nvarchar(100) NOT NULL;
+2024-08-16 13:09:58.949 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240816100946_PaginationModel', N'8.0.8');
+2024-08-16 13:27:57.155 +03:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-16 13:27:57.398 +03:00 [INF] Now listening on: https://localhost:7257
+2024-08-16 13:27:57.398 +03:00 [INF] Now listening on: http://localhost:5222
+2024-08-16 13:27:57.399 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-16 13:27:57.400 +03:00 [INF] Hosting environment: Development
+2024-08-16 13:27:57.400 +03:00 [INF] Content root path: C:\Users\user\Documents\internship\WebApplication1\WebApplication1
+2024-08-16 13:27:58.880 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/index.html - null null
+2024-08-16 13:27:59.126 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-16 13:27:59.126 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_vs/browserLink - null null
+2024-08-16 13:27:59.130 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/index.html - 200 null text/html;charset=utf-8 254.3941ms
+2024-08-16 13:27:59.134 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 8.3694ms
+2024-08-16 13:27:59.172 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.3032ms
+2024-08-16 13:27:59.225 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - null null
+2024-08-16 13:27:59.350 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 124.9018ms
+2024-08-16 13:29:34.768 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 67
+2024-08-16 13:29:34.790 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 13:29:34.821 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-16 13:29:36.667 +03:00 [INF] Executed DbCommand (80ms) [Parameters=[@__login_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedOn], [u].[Email], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__login_Email_0
+2024-08-16 13:29:37.086 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[WebApplication1.Models.User, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 13:29:37.109 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 2282.3273ms
+2024-08-16 13:29:37.109 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 13:29:37.123 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 200 null application/json; charset=utf-8 2355.9256ms
+2024-08-16 13:29:52.582 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 3161
+2024-08-16 13:29:52.670 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:29:52.675 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:29:52.781 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-08-16 13:29:52.802 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 126.8328ms
+2024-08-16 13:29:52.802 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:29:52.802 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 400 null application/problem+json; charset=utf-8 220.4728ms
+2024-08-16 13:30:21.734 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 201
+2024-08-16 13:30:21.748 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:21.749 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:30:21.768 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:30:22.056 +03:00 [INF] Executed DbCommand (52ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:30:22.114 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:30:22.114 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 365.0561ms
+2024-08-16 13:30:22.115 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:22.115 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 381.1506ms
+2024-08-16 13:30:31.696 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 223
+2024-08-16 13:30:31.699 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:31.700 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:30:31.703 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:30:31.794 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:30:31.795 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:30:31.795 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 95.7102ms
+2024-08-16 13:30:31.796 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:31.796 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 100.5261ms
+2024-08-16 13:30:40.274 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 219
+2024-08-16 13:30:40.275 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:40.275 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:30:40.276 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:30:40.295 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:30:40.296 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:30:40.296 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 21.1702ms
+2024-08-16 13:30:40.296 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:40.297 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 22.7843ms
+2024-08-16 13:30:46.602 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 228
+2024-08-16 13:30:46.602 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:46.602 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:30:46.603 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:30:46.621 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:30:46.622 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:30:46.622 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 19.3734ms
+2024-08-16 13:30:46.622 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:46.622 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 20.7543ms
+2024-08-16 13:30:52.296 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 192
+2024-08-16 13:30:52.297 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:52.297 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:30:52.298 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:30:52.315 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:30:52.315 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:30:52.316 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 18.268ms
+2024-08-16 13:30:52.316 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:52.316 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 19.9329ms
+2024-08-16 13:30:57.242 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 224
+2024-08-16 13:30:57.243 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:57.243 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:30:57.243 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:30:57.259 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:30:57.260 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:30:57.260 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 16.8244ms
+2024-08-16 13:30:57.260 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:30:57.260 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 17.9661ms
+2024-08-16 13:31:02.838 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 187
+2024-08-16 13:31:02.840 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:02.840 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:02.840 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:31:02.865 +03:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:31:02.866 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:31:02.866 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 25.9945ms
+2024-08-16 13:31:02.866 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:02.866 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 28.2061ms
+2024-08-16 13:31:10.515 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 195
+2024-08-16 13:31:10.516 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:10.516 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:10.517 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:31:10.547 +03:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:31:10.548 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:31:10.548 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 31.5389ms
+2024-08-16 13:31:10.548 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:10.548 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 32.9731ms
+2024-08-16 13:31:16.087 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 176
+2024-08-16 13:31:16.088 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:16.088 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:16.089 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:31:16.096 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:31:16.098 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:31:16.098 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 9.6441ms
+2024-08-16 13:31:16.098 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:16.098 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 10.8004ms
+2024-08-16 13:31:21.493 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 224
+2024-08-16 13:31:21.494 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:21.494 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:21.494 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:31:21.511 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:31:21.511 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:31:21.511 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 17.3411ms
+2024-08-16 13:31:21.511 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:21.512 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 19.2621ms
+2024-08-16 13:31:26.364 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 210
+2024-08-16 13:31:26.364 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:26.364 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:26.365 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:31:26.382 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:31:26.382 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:31:26.382 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 17.8722ms
+2024-08-16 13:31:26.382 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:26.383 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 18.8701ms
+2024-08-16 13:31:32.090 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 231
+2024-08-16 13:31:32.091 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:32.091 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:32.091 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:31:32.097 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:31:32.098 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:31:32.098 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 7.3244ms
+2024-08-16 13:31:32.098 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:32.098 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 8.4237ms
+2024-08-16 13:31:38.380 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 197
+2024-08-16 13:31:38.381 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:38.381 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:38.382 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:31:38.386 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:31:38.387 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:31:38.387 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 6.2078ms
+2024-08-16 13:31:38.387 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:38.388 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 7.5636ms
+2024-08-16 13:31:43.411 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 197
+2024-08-16 13:31:43.412 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:43.412 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:43.413 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:31:43.425 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:31:43.426 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:31:43.426 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 13.3635ms
+2024-08-16 13:31:43.426 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:43.426 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 15.0509ms
+2024-08-16 13:31:48.236 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Movie - application/json 214
+2024-08-16 13:31:48.240 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:48.240 +03:00 [INF] Route matched with {action = "AddMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovie(WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:48.241 +03:00 [INF] Add Movie method was called! 
+2024-08-16 13:31:48.252 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Movies] ([Description], [Genre], [Name], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-08-16 13:31:48.252 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 13:31:48.253 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.AddMovie (WebApplication1) in 12.8416ms
+2024-08-16 13:31:48.253 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.AddMovie (WebApplication1)'
+2024-08-16 13:31:48.253 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Movie - 200 0 null 17.3153ms
+2024-08-16 13:31:55.528 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie?PageNumber=2&PageSize=2 - null null
+2024-08-16 13:31:55.529 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 13:31:55.545 +03:00 [INF] Route matched with {action = "GetAllMovies", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetAllMovies(WebApplication1.Models.Parameters) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:31:55.589 +03:00 [INF] GetAllMovies method was called! 
+2024-08-16 13:31:55.683 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Movies] AS [m]
+2024-08-16 13:31:55.708 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-08-16 13:31:55.709 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-08-16 13:31:55.726 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+2024-08-16 13:31:55.874 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1) in 328.9349ms
+2024-08-16 13:31:55.875 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 13:31:55.878 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+PagedList`1 -> PagedList`1
+WebApplication1.Helper.PagedList`1[[WebApplication1.Models.Movie, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> WebApplication1.Helper.PagedList`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> System.ArgumentException: WebApplication1.Helper.PagedList`1[WebApplication1.DTOs.MovieDTO] needs to have a constructor with 0 args or only optional args. Validate your configuration for details. (Parameter 'type')
+   at lambda_method162(Closure, Object, PagedList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method162(Closure, Object, PagedList`1, ResolutionContext)
+   at WebApplication1.Repositories.MovieRepository.GetAllMovies(Parameters parameters) in C:\Users\user\Documents\internship\WebApplication1\WebApplication1\Repositories\MovieRepository.cs:line 48
+   at WebApplication1.Controllers.MovieController.GetAllMovies(Parameters parameters) in C:\Users\user\Documents\internship\WebApplication1\WebApplication1\Controllers\MovieController.cs:line 26
+   at lambda_method152(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-08-16 13:31:55.925 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie?PageNumber=2&PageSize=2 - 500 null text/plain; charset=utf-8 396.8097ms
+2024-08-16 13:34:36.458 +03:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-16 13:34:36.608 +03:00 [INF] Now listening on: https://localhost:7257
+2024-08-16 13:34:36.608 +03:00 [INF] Now listening on: http://localhost:5222
+2024-08-16 13:34:36.609 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-16 13:34:36.609 +03:00 [INF] Hosting environment: Development
+2024-08-16 13:34:36.609 +03:00 [INF] Content root path: C:\Users\user\Documents\internship\WebApplication1\WebApplication1
+2024-08-16 13:34:37.128 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/index.html - null null
+2024-08-16 13:34:37.351 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/index.html - 200 null text/html;charset=utf-8 228.6904ms
+2024-08-16 13:34:37.357 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-16 13:34:37.358 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_vs/browserLink - null null
+2024-08-16 13:34:37.364 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 7.4709ms
+2024-08-16 13:34:37.406 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_vs/browserLink - 200 null text/javascript; charset=UTF-8 48.6991ms
+2024-08-16 13:34:37.455 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - null null
+2024-08-16 13:34:37.547 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 91.6324ms
+2024-08-16 13:35:05.720 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 67
+2024-08-16 13:35:05.737 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 13:35:05.769 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-16 13:35:07.543 +03:00 [INF] Executed DbCommand (56ms) [Parameters=[@__login_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedOn], [u].[Email], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__login_Email_0
+2024-08-16 13:35:07.919 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[WebApplication1.Models.User, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 13:35:07.935 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 2161.4344ms
+2024-08-16 13:35:07.935 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 13:35:07.947 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 200 null application/json; charset=utf-8 2227.4969ms
+2024-08-16 13:35:23.771 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie?PageNumber=2&PageSize=2 - null null
+2024-08-16 13:35:23.834 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 13:35:23.841 +03:00 [INF] Route matched with {action = "GetAllMovies", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetAllMovies(WebApplication1.Models.Parameters) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:35:23.942 +03:00 [INF] GetAllMovies method was called! 
+2024-08-16 13:35:24.071 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Movies] AS [m]
+2024-08-16 13:35:24.103 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-08-16 13:35:24.104 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-08-16 13:35:24.128 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+2024-08-16 13:35:24.286 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.Helper.PagedList`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 13:35:24.289 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1) in 447.7314ms
+2024-08-16 13:35:24.289 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 13:35:24.290 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie?PageNumber=2&PageSize=2 - 200 null application/json; charset=utf-8 519.2274ms
+2024-08-16 13:35:33.439 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie?PageNumber=2&PageSize=5 - null null
+2024-08-16 13:35:33.442 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 13:35:33.443 +03:00 [INF] Route matched with {action = "GetAllMovies", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetAllMovies(WebApplication1.Models.Parameters) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:35:33.445 +03:00 [INF] GetAllMovies method was called! 
+2024-08-16 13:35:33.540 +03:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Movies] AS [m]
+2024-08-16 13:35:33.546 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+2024-08-16 13:35:33.549 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.Helper.PagedList`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 13:35:33.549 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1) in 106.0781ms
+2024-08-16 13:35:33.549 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 13:35:33.549 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie?PageNumber=2&PageSize=5 - 200 null application/json; charset=utf-8 110.5368ms
+2024-08-16 13:36:05.570 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie?PageNumber=2&PageSize=3 - null null
+2024-08-16 13:36:05.580 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 13:36:05.580 +03:00 [INF] Route matched with {action = "GetAllMovies", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetAllMovies(WebApplication1.Models.Parameters) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 13:36:05.584 +03:00 [INF] GetAllMovies method was called! 
+2024-08-16 13:36:05.589 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Movies] AS [m]
+2024-08-16 13:36:05.591 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+2024-08-16 13:36:05.592 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.Helper.PagedList`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 13:36:05.593 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1) in 12.4389ms
+2024-08-16 13:36:05.593 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetAllMovies (WebApplication1)'
+2024-08-16 13:36:05.594 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie?PageNumber=2&PageSize=3 - 200 null application/json; charset=utf-8 24.8838ms
+2024-08-16 14:08:12.423 +03:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-16 14:08:12.791 +03:00 [INF] Now listening on: https://localhost:7257
+2024-08-16 14:08:12.791 +03:00 [INF] Now listening on: http://localhost:5222
+2024-08-16 14:08:12.793 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-16 14:08:12.793 +03:00 [INF] Hosting environment: Development
+2024-08-16 14:08:12.793 +03:00 [INF] Content root path: C:\Users\user\Documents\internship\WebApplication1\WebApplication1
+2024-08-16 14:08:14.616 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/index.html - null null
+2024-08-16 14:08:14.942 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/index.html - 200 null text/html;charset=utf-8 328.7977ms
+2024-08-16 14:08:14.946 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-16 14:08:14.948 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_vs/browserLink - null null
+2024-08-16 14:08:14.956 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 9.6131ms
+2024-08-16 14:08:15.011 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_vs/browserLink - 200 null text/javascript; charset=UTF-8 63.522ms
+2024-08-16 14:08:15.053 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - null null
+2024-08-16 14:08:15.226 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 173.4089ms
+2024-08-16 14:09:26.645 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 64
+2024-08-16 14:09:26.669 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 14:09:26.715 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-16 14:09:27.122 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-08-16 14:09:27.150 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 430.443ms
+2024-08-16 14:09:27.150 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 14:09:27.154 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 400 null application/problem+json; charset=utf-8 509.8324ms
+2024-08-16 14:09:42.021 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 64
+2024-08-16 14:09:42.025 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 14:09:42.025 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-16 14:09:42.044 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-08-16 14:09:42.044 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 18.7503ms
+2024-08-16 14:09:42.045 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 14:09:42.045 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 400 null application/problem+json; charset=utf-8 23.7118ms
+2024-08-16 14:10:00.829 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 65
+2024-08-16 14:10:00.829 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 14:10:00.830 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-16 14:10:00.835 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-08-16 14:10:00.836 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 5.9896ms
+2024-08-16 14:10:00.836 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 14:10:00.836 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 400 null application/problem+json; charset=utf-8 7.7517ms
+2024-08-16 14:10:07.882 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 67
+2024-08-16 14:10:07.883 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 14:10:07.883 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-16 14:10:10.263 +03:00 [INF] Executed DbCommand (88ms) [Parameters=[@__login_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedOn], [u].[Email], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__login_Email_0
+2024-08-16 14:10:10.803 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[WebApplication1.Models.User, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 14:10:10.820 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 2936.9781ms
+2024-08-16 14:10:10.820 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 14:10:10.835 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 200 null application/json; charset=utf-8 2953.6615ms
+2024-08-16 14:11:14.894 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 93
+2024-08-16 14:11:15.000 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:15.007 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:11:15.156 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:11:15.451 +03:00 [INF] Executed DbCommand (51ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:11:15.529 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:11:15.531 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 523.1589ms
+2024-08-16 14:11:15.532 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:15.533 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 639.0707ms
+2024-08-16 14:11:21.682 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 104
+2024-08-16 14:11:21.686 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:21.687 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:11:21.688 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:11:21.808 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:11:21.810 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:11:21.810 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 123.261ms
+2024-08-16 14:11:21.810 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:21.811 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 129.3691ms
+2024-08-16 14:11:26.850 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 97
+2024-08-16 14:11:26.853 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:26.853 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:11:26.855 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:11:26.862 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:11:26.863 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:11:26.863 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 9.8128ms
+2024-08-16 14:11:26.863 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:26.864 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 14.0741ms
+2024-08-16 14:11:32.498 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 98
+2024-08-16 14:11:32.499 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:32.499 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:11:32.500 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:11:32.512 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:11:32.513 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:11:32.513 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 14.3791ms
+2024-08-16 14:11:32.514 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:32.514 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 17.031ms
+2024-08-16 14:11:37.898 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 99
+2024-08-16 14:11:37.899 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:37.899 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:11:37.900 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:11:37.913 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:11:37.914 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:11:37.915 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 15.1538ms
+2024-08-16 14:11:37.915 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:37.915 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 17.3676ms
+2024-08-16 14:11:42.617 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 104
+2024-08-16 14:11:42.618 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:42.618 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:11:42.619 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:11:42.646 +03:00 [INF] Executed DbCommand (25ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:11:42.647 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:11:42.647 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 28.9249ms
+2024-08-16 14:11:42.647 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:42.647 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 30.9758ms
+2024-08-16 14:11:47.573 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 106
+2024-08-16 14:11:47.574 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:47.574 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:11:47.575 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:11:47.593 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:11:47.594 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:11:47.594 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 19.7883ms
+2024-08-16 14:11:47.594 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:47.595 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 21.6948ms
+2024-08-16 14:11:53.158 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 88
+2024-08-16 14:11:53.159 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:53.159 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:11:53.160 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:11:53.177 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:11:53.178 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:11:53.178 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 18.5006ms
+2024-08-16 14:11:53.178 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:53.178 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 20.5989ms
+2024-08-16 14:11:59.161 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 102
+2024-08-16 14:11:59.162 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:59.162 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:11:59.163 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:11:59.180 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:11:59.180 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:11:59.180 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 17.8816ms
+2024-08-16 14:11:59.180 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:11:59.180 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 19.6037ms
+2024-08-16 14:12:04.732 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Person - application/json 99
+2024-08-16 14:12:04.732 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:12:04.732 +03:00 [INF] Route matched with {action = "AddPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPerson(WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:12:04.733 +03:00 [INF] AddPerson method was called! 
+2024-08-16 14:12:04.749 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Persons] ([Email], [FirstName], [LastName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 14:12:04.750 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 14:12:04.750 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.AddPerson (WebApplication1) in 17.3941ms
+2024-08-16 14:12:04.750 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.AddPerson (WebApplication1)'
+2024-08-16 14:12:04.750 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Person - 200 0 null 18.9129ms
+2024-08-16 14:12:10.868 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Person?PageNumber=2&PageSize=1 - null null
+2024-08-16 14:12:10.869 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.GetAllPersons (WebApplication1)'
+2024-08-16 14:12:10.888 +03:00 [INF] Route matched with {action = "GetAllPersons", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.PersonDTO]]] GetAllPersons(WebApplication1.Models.Parameters) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:12:10.930 +03:00 [INF] Get all persons method was called! 
+2024-08-16 14:12:11.017 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Persons] AS [p]
+2024-08-16 14:12:11.042 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-08-16 14:12:11.043 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-08-16 14:12:11.061 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Persons] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+2024-08-16 14:12:11.261 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.Helper.PagedList`1[[WebApplication1.DTOs.PersonDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 14:12:11.264 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.GetAllPersons (WebApplication1) in 375.9824ms
+2024-08-16 14:12:11.264 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.GetAllPersons (WebApplication1)'
+2024-08-16 14:12:11.264 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Person?PageNumber=2&PageSize=1 - 200 null application/json; charset=utf-8 396.178ms
+2024-08-16 14:12:18.184 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Person?PageNumber=2&PageSize=4 - null null
+2024-08-16 14:12:18.185 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.GetAllPersons (WebApplication1)'
+2024-08-16 14:12:18.185 +03:00 [INF] Route matched with {action = "GetAllPersons", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.PersonDTO]]] GetAllPersons(WebApplication1.Models.Parameters) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 14:12:18.186 +03:00 [INF] Get all persons method was called! 
+2024-08-16 14:12:18.190 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Persons] AS [p]
+2024-08-16 14:12:18.194 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Persons] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+2024-08-16 14:12:18.196 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.Helper.PagedList`1[[WebApplication1.DTOs.PersonDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 14:12:18.196 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.GetAllPersons (WebApplication1) in 10.9399ms
+2024-08-16 14:12:18.196 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.GetAllPersons (WebApplication1)'
+2024-08-16 14:12:18.197 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Person?PageNumber=2&PageSize=4 - 200 null application/json; charset=utf-8 12.7365ms
+2024-08-16 15:35:19.907 +03:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-16 15:35:20.091 +03:00 [INF] Now listening on: https://localhost:7257
+2024-08-16 15:35:20.091 +03:00 [INF] Now listening on: http://localhost:5222
+2024-08-16 15:35:20.092 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-16 15:35:20.092 +03:00 [INF] Hosting environment: Development
+2024-08-16 15:35:20.092 +03:00 [INF] Content root path: C:\Users\user\Documents\internship\WebApplication1\WebApplication1
+2024-08-16 15:35:21.917 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/index.html - null null
+2024-08-16 15:35:22.156 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/index.html - 200 null text/html;charset=utf-8 245.4686ms
+2024-08-16 15:35:22.164 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-16 15:35:22.164 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_vs/browserLink - null null
+2024-08-16 15:35:22.169 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 6.006ms
+2024-08-16 15:35:22.209 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.3807ms
+2024-08-16 15:35:22.263 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - null null
+2024-08-16 15:35:22.426 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 163.7359ms
+2024-08-16 15:36:31.404 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 67
+2024-08-16 15:36:31.427 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 15:36:31.457 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-16 15:36:33.551 +03:00 [INF] Executed DbCommand (58ms) [Parameters=[@__login_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedOn], [u].[Email], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__login_Email_0
+2024-08-16 15:36:34.065 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[WebApplication1.Models.User, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:36:34.090 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 2628.5307ms
+2024-08-16 15:36:34.090 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 15:36:34.106 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 200 null application/json; charset=utf-8 2701.678ms
+2024-08-16 15:37:11.157 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/baba - null null
+2024-08-16 15:37:11.261 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetMovieByName (WebApplication1)'
+2024-08-16 15:37:11.268 +03:00 [INF] Route matched with {action = "GetMovieByName", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WebApplication1.Models.Movie]] GetMovieByName(System.String) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 15:37:11.399 +03:00 [INF] GetMovieByName method was called! 
+2024-08-16 15:37:11.506 +03:00 [INF] Executed DbCommand (41ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__name_0
+2024-08-16 15:37:11.574 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.DTOs.MovieDTO'.
+2024-08-16 15:37:11.577 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetMovieByName (WebApplication1) in 308.8204ms
+2024-08-16 15:37:11.579 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetMovieByName (WebApplication1)'
+2024-08-16 15:37:11.581 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/baba - 200 null application/json; charset=utf-8 424.767ms
+2024-08-16 15:37:33.832 +03:00 [INF] Request starting HTTP/2 PUT https://localhost:7257/api/Movie/baba - application/json 81
+2024-08-16 15:37:33.841 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.UpdateMovie (WebApplication1)'
+2024-08-16 15:37:33.848 +03:00 [INF] Route matched with {action = "UpdateMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UpdateMovie(System.String, WebApplication1.DTOs.MovieDTO) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 15:37:33.873 +03:00 [INF] GetMovieByName method was called! 
+2024-08-16 15:37:33.982 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__name_0
+2024-08-16 15:37:33.991 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__name_0
+2024-08-16 15:37:34.143 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Movies] SET [Description] = @p0, [Genre] = @p1, [Name] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2024-08-16 15:37:34.167 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:37:34.167 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.UpdateMovie (WebApplication1) in 319.1658ms
+2024-08-16 15:37:34.167 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.UpdateMovie (WebApplication1)'
+2024-08-16 15:37:34.167 +03:00 [INF] Request finished HTTP/2 PUT https://localhost:7257/api/Movie/baba - 200 0 null 341.7262ms
+2024-08-16 15:38:18.952 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7257/api/Movie/nanan - null null
+2024-08-16 15:38:18.962 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.DeleteMovie (WebApplication1)'
+2024-08-16 15:38:18.970 +03:00 [INF] Route matched with {action = "DeleteMovie", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DeleteMovie(System.String) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 15:38:18.976 +03:00 [INF] GetMovieByName method was called! 
+2024-08-16 15:38:18.982 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__name_0
+2024-08-16 15:38:18.986 +03:00 [INF] Delete method was called! 
+2024-08-16 15:38:18.989 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__name_0
+2024-08-16 15:38:19.059 +03:00 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Movies]
+OUTPUT 1
+WHERE [Id] = @p0;
+2024-08-16 15:38:19.067 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:38:19.067 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.DeleteMovie (WebApplication1) in 97.4823ms
+2024-08-16 15:38:19.068 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.DeleteMovie (WebApplication1)'
+2024-08-16 15:38:19.068 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7257/api/Movie/nanan - 200 0 null 118.4254ms
+2024-08-16 15:38:50.525 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/genre/Science Fiction - null null
+2024-08-16 15:38:50.526 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetMoviesByGenre (WebApplication1)'
+2024-08-16 15:38:50.534 +03:00 [INF] Route matched with {action = "GetMoviesByGenre", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetMoviesByGenre(System.String) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 15:38:50.563 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__genre_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Genre] = @__genre_0
+2024-08-16 15:38:50.589 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:38:50.591 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetMoviesByGenre (WebApplication1) in 56.7898ms
+2024-08-16 15:38:50.591 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetMoviesByGenre (WebApplication1)'
+2024-08-16 15:38:50.592 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/genre/Science Fiction - 200 null application/json; charset=utf-8 72.1393ms
+2024-08-16 15:39:08.106 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/genre/Fantasy/year/2024 - null null
+2024-08-16 15:39:08.107 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetMoviesByGenreAndYear (WebApplication1)'
+2024-08-16 15:39:08.113 +03:00 [INF] Route matched with {action = "GetMoviesByGenreAndYear", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetMoviesByGenreAndYear(System.String, Int32) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 15:39:08.159 +03:00 [INF] Executed DbCommand (25ms) [Parameters=[@__genre_0='?' (Size = 100), @__year_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Genre] = @__genre_0 AND [m].[Year] = @__year_1
+2024-08-16 15:39:08.160 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:39:08.161 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetMoviesByGenreAndYear (WebApplication1) in 48.0123ms
+2024-08-16 15:39:08.162 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetMoviesByGenreAndYear (WebApplication1)'
+2024-08-16 15:39:08.162 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/genre/Fantasy/year/2024 - 200 null application/json; charset=utf-8 56.6361ms
+2024-08-16 15:39:14.885 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/year/2024 - null null
+2024-08-16 15:39:14.886 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetMoviesByYear (WebApplication1)'
+2024-08-16 15:39:14.893 +03:00 [INF] Route matched with {action = "GetMoviesByYear", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetMoviesByYear(Int32) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 15:39:14.918 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[@__year_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Year] = @__year_0
+2024-08-16 15:39:14.920 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:39:14.921 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetMoviesByYear (WebApplication1) in 27.7256ms
+2024-08-16 15:39:14.921 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetMoviesByYear (WebApplication1)'
+2024-08-16 15:39:14.921 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/year/2024 - 200 null application/json; charset=utf-8 36.7631ms
+2024-08-16 15:39:25.397 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/topTen - null null
+2024-08-16 15:39:25.398 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetTopTenMovies (WebApplication1)'
+2024-08-16 15:39:25.405 +03:00 [INF] Route matched with {action = "GetTopTenMovies", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetTopTenMovies() on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 15:39:25.428 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+ORDER BY [m].[Year] DESC
+2024-08-16 15:39:25.429 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:39:25.430 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetTopTenMovies (WebApplication1) in 24.4639ms
+2024-08-16 15:39:25.430 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetTopTenMovies (WebApplication1)'
+2024-08-16 15:39:25.430 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/topTen - 200 null application/json; charset=utf-8 34.0733ms
+2024-08-16 15:39:46.486 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/range/2021/2024 - null null
+2024-08-16 15:39:46.490 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetMoviesByYearRange (WebApplication1)'
+2024-08-16 15:39:46.505 +03:00 [INF] Route matched with {action = "GetMoviesByYearRange", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.Movie]]] GetMoviesByYearRange(Int32, Int32) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 15:39:46.521 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__startYear_0='?' (DbType = Int32), @__endYear_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Year] >= @__startYear_0 AND [m].[Year] <= @__endYear_1
+2024-08-16 15:39:46.523 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.MovieDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:39:46.524 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetMoviesByYearRange (WebApplication1) in 18.82ms
+2024-08-16 15:39:46.524 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetMoviesByYearRange (WebApplication1)'
+2024-08-16 15:39:46.524 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/range/2021/2024 - 200 null application/json; charset=utf-8 38.7545ms
+2024-08-16 15:39:54.645 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/MovieStudio - null null
+2024-08-16 15:39:54.646 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieStudioController.GetMovieStudios (WebApplication1)'
+2024-08-16 15:39:54.652 +03:00 [INF] Route matched with {action = "GetMovieStudios", controller = "MovieStudio"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.MovieStudio]]] GetMovieStudios() on controller WebApplication1.Controllers.MovieStudioController (WebApplication1).
+2024-08-16 15:39:54.842 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MovieId], [m].[StudioId], [m0].[Id], [m0].[Description], [m0].[Genre], [m0].[Name], [m0].[Year], [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [MovieStudios] AS [m]
+INNER JOIN [Movies] AS [m0] ON [m].[MovieId] = [m0].[Id]
+INNER JOIN [Studios] AS [s] ON [m].[StudioId] = [s].[Id]
+2024-08-16 15:39:54.842 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.Models.MovieStudio, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:39:54.849 +03:00 [INF] Executed action WebApplication1.Controllers.MovieStudioController.GetMovieStudios (WebApplication1) in 197.5108ms
+2024-08-16 15:39:54.849 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieStudioController.GetMovieStudios (WebApplication1)'
+2024-08-16 15:39:54.850 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/MovieStudio - 200 null application/json; charset=utf-8 204.7849ms
+2024-08-16 15:40:42.761 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/MovieStudio?movieName=lala&studioName=baba - null 0
+2024-08-16 15:40:42.766 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieStudioController.AddMovieStudio (WebApplication1)'
+2024-08-16 15:40:42.777 +03:00 [INF] Route matched with {action = "AddMovieStudio", controller = "MovieStudio"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddMovieStudio(System.String, System.String) on controller WebApplication1.Controllers.MovieStudioController (WebApplication1).
+2024-08-16 15:40:42.791 +03:00 [INF] AddMovieStudio method was called! 
+2024-08-16 15:40:42.800 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 15:40:42.815 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__studioName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [Studios] AS [s]
+WHERE [s].[StudioName] = @__studioName_0
+2024-08-16 15:40:42.888 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [MovieStudios] ([MovieId], [StudioId])
+VALUES (@p0, @p1);
+2024-08-16 15:40:42.889 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:40:42.889 +03:00 [INF] Executed action WebApplication1.Controllers.MovieStudioController.AddMovieStudio (WebApplication1) in 112.245ms
+2024-08-16 15:40:42.889 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieStudioController.AddMovieStudio (WebApplication1)'
+2024-08-16 15:40:42.890 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/MovieStudio?movieName=lala&studioName=baba - 200 0 null 128.3899ms
+2024-08-16 15:40:50.863 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/MovieStudio/movie/lala - null null
+2024-08-16 15:40:50.864 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieStudioController.GetStudiosByMovieName (WebApplication1)'
+2024-08-16 15:40:50.871 +03:00 [INF] Route matched with {action = "GetStudiosByMovieName", controller = "MovieStudio"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.MovieStudio]]] GetStudiosByMovieName(System.String) on controller WebApplication1.Controllers.MovieStudioController (WebApplication1).
+2024-08-16 15:40:50.901 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 15:40:50.915 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__movie_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MovieId], [m].[StudioId], [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [MovieStudios] AS [m]
+INNER JOIN [Studios] AS [s] ON [m].[StudioId] = [s].[Id]
+WHERE [m].[MovieId] = @__movie_Id_0
+2024-08-16 15:40:50.925 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.Models.MovieStudio, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:40:50.930 +03:00 [INF] Executed action WebApplication1.Controllers.MovieStudioController.GetStudiosByMovieName (WebApplication1) in 58.3293ms
+2024-08-16 15:40:50.930 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieStudioController.GetStudiosByMovieName (WebApplication1)'
+2024-08-16 15:40:50.930 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/MovieStudio/movie/lala - 200 null application/json; charset=utf-8 67.6219ms
+2024-08-16 15:41:01.685 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/MovieStudio/studio/baba - null null
+2024-08-16 15:41:01.688 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieStudioController.GetMoviesByStudioName (WebApplication1)'
+2024-08-16 15:41:01.695 +03:00 [INF] Route matched with {action = "GetMoviesByStudioName", controller = "MovieStudio"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.Models.MovieStudio]]] GetMoviesByStudioName(System.String) on controller WebApplication1.Controllers.MovieStudioController (WebApplication1).
+2024-08-16 15:41:01.709 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__studioName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [Studios] AS [s]
+WHERE [s].[StudioName] = @__studioName_0
+2024-08-16 15:41:01.725 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__studio_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MovieId], [m].[StudioId], [m0].[Id], [m0].[Description], [m0].[Genre], [m0].[Name], [m0].[Year]
+FROM [MovieStudios] AS [m]
+INNER JOIN [Movies] AS [m0] ON [m].[MovieId] = [m0].[Id]
+WHERE [m].[StudioId] = @__studio_Id_0
+2024-08-16 15:41:01.726 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.Models.MovieStudio, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:41:01.727 +03:00 [INF] Executed action WebApplication1.Controllers.MovieStudioController.GetMoviesByStudioName (WebApplication1) in 31.3262ms
+2024-08-16 15:41:01.727 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieStudioController.GetMoviesByStudioName (WebApplication1)'
+2024-08-16 15:41:01.727 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/MovieStudio/studio/baba - 200 null application/json; charset=utf-8 42.1773ms
+2024-08-16 15:41:39.185 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Person/search?firstName=ale&lastName=buze - null null
+2024-08-16 15:41:39.216 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.GetPerson (WebApplication1)'
+2024-08-16 15:41:39.221 +03:00 [INF] Route matched with {action = "GetPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WebApplication1.DTOs.PersonDTO]] GetPerson(System.String, System.String) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 15:41:39.258 +03:00 [INF] Executed DbCommand (23ms) [Parameters=[@__firstname_0='?' (Size = 100), @__lastname_1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Persons] AS [p]
+WHERE [p].[FirstName] = @__firstname_0 AND [p].[LastName] = @__lastname_1
+2024-08-16 15:41:39.266 +03:00 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2024-08-16 15:41:39.267 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.GetPerson (WebApplication1) in 45.1749ms
+2024-08-16 15:41:39.267 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.GetPerson (WebApplication1)'
+2024-08-16 15:41:39.267 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Person/search?firstName=ale&lastName=buze - 404 null text/plain; charset=utf-8 82.6217ms
+2024-08-16 15:42:24.762 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Person/search?firstName=lala&lastName=lala - null null
+2024-08-16 15:42:24.791 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.GetPerson (WebApplication1)'
+2024-08-16 15:42:24.792 +03:00 [INF] Route matched with {action = "GetPerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WebApplication1.DTOs.PersonDTO]] GetPerson(System.String, System.String) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 15:42:24.798 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__firstname_0='?' (Size = 100), @__lastname_1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Persons] AS [p]
+WHERE [p].[FirstName] = @__firstname_0 AND [p].[LastName] = @__lastname_1
+2024-08-16 15:42:24.818 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.DTOs.PersonDTO'.
+2024-08-16 15:42:24.820 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.GetPerson (WebApplication1) in 28.3878ms
+2024-08-16 15:42:24.820 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.GetPerson (WebApplication1)'
+2024-08-16 15:42:24.821 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Person/search?firstName=lala&lastName=lala - 200 null application/json; charset=utf-8 59.0078ms
+2024-08-16 15:42:40.734 +03:00 [INF] Request starting HTTP/2 PUT https://localhost:7257/api/Person/update?firstName=lala&lastName=lala - application/json 79
+2024-08-16 15:42:40.734 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.UpdatePerson (WebApplication1)'
+2024-08-16 15:42:40.741 +03:00 [INF] Route matched with {action = "UpdatePerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdatePerson(System.String, System.String, WebApplication1.DTOs.PersonDTO) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 15:42:40.763 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__firstName_0='?' (Size = 100), @__lastName_1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Persons] AS [p]
+WHERE [p].[FirstName] = @__firstName_0 AND [p].[LastName] = @__lastName_1
+2024-08-16 15:42:40.777 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Persons] SET [Email] = @p0, [FirstName] = @p1, [LastName] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2024-08-16 15:42:40.779 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:42:40.779 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.UpdatePerson (WebApplication1) in 37.6928ms
+2024-08-16 15:42:40.779 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.UpdatePerson (WebApplication1)'
+2024-08-16 15:42:40.780 +03:00 [INF] Request finished HTTP/2 PUT https://localhost:7257/api/Person/update?firstName=lala&lastName=lala - 200 0 null 46.465ms
+2024-08-16 15:43:01.858 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7257/api/Person/delete?firstName=dada&lastName=adad - null null
+2024-08-16 15:43:01.859 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.PersonController.DeletePerson (WebApplication1)'
+2024-08-16 15:43:01.865 +03:00 [INF] Route matched with {action = "DeletePerson", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePerson(System.String, System.String) on controller WebApplication1.Controllers.PersonController (WebApplication1).
+2024-08-16 15:43:01.869 +03:00 [INF] DeletePerson method was called! 
+2024-08-16 15:43:01.875 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__firstname_0='?' (Size = 100), @__lastname_1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Persons] AS [p]
+WHERE [p].[FirstName] = @__firstname_0 AND [p].[LastName] = @__lastname_1
+2024-08-16 15:43:01.889 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Persons]
+OUTPUT 1
+WHERE [Id] = @p0;
+2024-08-16 15:43:01.890 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:43:01.890 +03:00 [INF] Executed action WebApplication1.Controllers.PersonController.DeletePerson (WebApplication1) in 25.3416ms
+2024-08-16 15:43:01.890 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.PersonController.DeletePerson (WebApplication1)'
+2024-08-16 15:43:01.890 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7257/api/Person/delete?firstName=dada&lastName=adad - 200 0 null 32.5882ms
+2024-08-16 15:44:24.427 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Review?movieName=The%20Future%20of%20Us - application/json 120
+2024-08-16 15:44:24.429 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.AddReview (WebApplication1)'
+2024-08-16 15:44:24.438 +03:00 [INF] Route matched with {action = "AddReview", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddReview(WebApplication1.DTOs.ReviewDTO, System.String) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:44:24.469 +03:00 [INF] DeleteReview method was called! 
+2024-08-16 15:44:24.474 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 15:44:24.531 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Reviews] ([Comment], [MovieId], [Rating], [ReviewCreated], [ReviewerFirstName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-08-16 15:44:24.554 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:44:24.554 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.AddReview (WebApplication1) in 116.6879ms
+2024-08-16 15:44:24.555 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.AddReview (WebApplication1)'
+2024-08-16 15:44:24.555 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Review?movieName=The%20Future%20of%20Us - 200 0 null 128.2682ms
+2024-08-16 15:44:46.493 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Review/6 - null null
+2024-08-16 15:44:46.500 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.GetReviewById (WebApplication1)'
+2024-08-16 15:44:46.514 +03:00 [INF] Route matched with {action = "GetReviewById", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WebApplication1.DTOs.ReviewDTO]] GetReviewById(Int32) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:44:46.540 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Comment], [r].[MovieId], [r].[Rating], [r].[ReviewCreated], [r].[ReviewerFirstName], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Reviews] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+WHERE [r].[Id] = @__id_0
+2024-08-16 15:44:46.546 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.DTOs.ReviewDTO'.
+2024-08-16 15:44:46.548 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.GetReviewById (WebApplication1) in 33.8667ms
+2024-08-16 15:44:46.548 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.GetReviewById (WebApplication1)'
+2024-08-16 15:44:46.549 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Review/6 - 200 null application/json; charset=utf-8 56.6287ms
+2024-08-16 15:45:21.056 +03:00 [INF] Request starting HTTP/2 PUT https://localhost:7257/api/Review/6?movieName=The%20Future%20of%20Us - application/json 119
+2024-08-16 15:45:21.062 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.UpdateReview (WebApplication1)'
+2024-08-16 15:45:21.068 +03:00 [INF] Route matched with {action = "UpdateReview", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateReview(Int32, WebApplication1.DTOs.ReviewDTO, System.String) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:45:21.073 +03:00 [INF] Update Review method was called! 
+2024-08-16 15:45:21.079 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 15:45:21.102 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Comment], [r].[MovieId], [r].[Rating], [r].[ReviewCreated], [r].[ReviewerFirstName]
+FROM [Reviews] AS [r]
+WHERE [r].[Id] = @__id_0
+2024-08-16 15:45:21.111 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Reviews] SET [Rating] = @p0, [ReviewCreated] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2024-08-16 15:45:21.112 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:45:21.112 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.UpdateReview (WebApplication1) in 44.2896ms
+2024-08-16 15:45:21.112 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.UpdateReview (WebApplication1)'
+2024-08-16 15:45:21.113 +03:00 [INF] Request finished HTTP/2 PUT https://localhost:7257/api/Review/6?movieName=The%20Future%20of%20Us - 200 0 null 57.0916ms
+2024-08-16 15:45:38.815 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7257/api/Review/1 - null null
+2024-08-16 15:45:38.820 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.DeleteReview (WebApplication1)'
+2024-08-16 15:45:38.826 +03:00 [INF] Route matched with {action = "DeleteReview", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DeleteReview(Int32) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:45:38.838 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Comment], [r].[MovieId], [r].[Rating], [r].[ReviewCreated], [r].[ReviewerFirstName], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Reviews] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+WHERE [r].[Id] = @__id_0
+2024-08-16 15:45:38.841 +03:00 [INF] DeleteReview method was called! 
+2024-08-16 15:45:38.854 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Reviews]
+OUTPUT 1
+WHERE [Id] = @p0;
+2024-08-16 15:45:38.857 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:45:38.858 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.DeleteReview (WebApplication1) in 31.0481ms
+2024-08-16 15:45:38.858 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.DeleteReview (WebApplication1)'
+2024-08-16 15:45:38.858 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7257/api/Review/1 - 200 0 null 43.8496ms
+2024-08-16 15:45:48.633 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7257/api/Review/6 - null null
+2024-08-16 15:45:48.633 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.DeleteReview (WebApplication1)'
+2024-08-16 15:45:48.633 +03:00 [INF] Route matched with {action = "DeleteReview", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DeleteReview(Int32) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:45:48.642 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Comment], [r].[MovieId], [r].[Rating], [r].[ReviewCreated], [r].[ReviewerFirstName], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Reviews] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+WHERE [r].[Id] = @__id_0
+2024-08-16 15:45:48.643 +03:00 [INF] DeleteReview method was called! 
+2024-08-16 15:45:48.667 +03:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Reviews]
+OUTPUT 1
+WHERE [Id] = @p0;
+2024-08-16 15:45:48.667 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:45:48.668 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.DeleteReview (WebApplication1) in 34.47ms
+2024-08-16 15:45:48.668 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.DeleteReview (WebApplication1)'
+2024-08-16 15:45:48.668 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7257/api/Review/6 - 200 0 null 36.1341ms
+2024-08-16 15:46:05.721 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Review?movieName=The%20Future%20of%20Us - application/json 120
+2024-08-16 15:46:05.722 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.AddReview (WebApplication1)'
+2024-08-16 15:46:05.722 +03:00 [INF] Route matched with {action = "AddReview", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddReview(WebApplication1.DTOs.ReviewDTO, System.String) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:46:05.722 +03:00 [INF] DeleteReview method was called! 
+2024-08-16 15:46:05.727 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 15:46:05.748 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Reviews] ([Comment], [MovieId], [Rating], [ReviewCreated], [ReviewerFirstName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-08-16 15:46:05.750 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:46:05.751 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.AddReview (WebApplication1) in 28.9609ms
+2024-08-16 15:46:05.751 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.AddReview (WebApplication1)'
+2024-08-16 15:46:05.752 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Review?movieName=The%20Future%20of%20Us - 200 0 null 31.1853ms
+2024-08-16 15:46:17.144 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Review/movie/The Future of Us - null null
+2024-08-16 15:46:17.144 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.GetReviewByMovie (WebApplication1)'
+2024-08-16 15:46:17.151 +03:00 [INF] Route matched with {action = "GetReviewByMovie", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.ReviewDTO]]] GetReviewByMovie(System.String) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:46:17.178 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[Comment], [r].[MovieId], [r].[Rating], [r].[ReviewCreated], [r].[ReviewerFirstName], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Reviews] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 15:46:17.186 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.ReviewDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:46:17.187 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.GetReviewByMovie (WebApplication1) in 35.417ms
+2024-08-16 15:46:17.187 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.GetReviewByMovie (WebApplication1)'
+2024-08-16 15:46:17.187 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Review/movie/The Future of Us - 200 null application/json; charset=utf-8 44.2795ms
+2024-08-16 15:46:24.387 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Review/rating/10 - null null
+2024-08-16 15:46:24.387 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.GetAllReviewsByRating (WebApplication1)'
+2024-08-16 15:46:24.393 +03:00 [INF] Route matched with {action = "GetAllReviewsByRating", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.ReviewDTO]]] GetAllReviewsByRating(Int32) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:46:24.415 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__rating_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[Comment], [r].[MovieId], [r].[Rating], [r].[ReviewCreated], [r].[ReviewerFirstName], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Reviews] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+WHERE [r].[Rating] = @__rating_0
+2024-08-16 15:46:24.416 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.ReviewDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:46:24.417 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.GetAllReviewsByRating (WebApplication1) in 24.1101ms
+2024-08-16 15:46:24.417 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.GetAllReviewsByRating (WebApplication1)'
+2024-08-16 15:46:24.417 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Review/rating/10 - 200 null application/json; charset=utf-8 30.9759ms
+2024-08-16 15:46:30.679 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Review/rating/9 - null null
+2024-08-16 15:46:30.680 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.GetAllReviewsByRating (WebApplication1)'
+2024-08-16 15:46:30.680 +03:00 [INF] Route matched with {action = "GetAllReviewsByRating", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.ReviewDTO]]] GetAllReviewsByRating(Int32) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:46:30.683 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__rating_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[Comment], [r].[MovieId], [r].[Rating], [r].[ReviewCreated], [r].[ReviewerFirstName], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Reviews] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+WHERE [r].[Rating] = @__rating_0
+2024-08-16 15:46:30.685 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.ReviewDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:46:30.686 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.GetAllReviewsByRating (WebApplication1) in 5.5335ms
+2024-08-16 15:46:30.686 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.GetAllReviewsByRating (WebApplication1)'
+2024-08-16 15:46:30.686 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Review/rating/9 - 200 null application/json; charset=utf-8 6.6817ms
+2024-08-16 15:46:39.610 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Review/keywords/beatiful - null null
+2024-08-16 15:46:39.610 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.GetAllReviewsByKeywords (WebApplication1)'
+2024-08-16 15:46:39.616 +03:00 [INF] Route matched with {action = "GetAllReviewsByKeywords", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.ReviewDTO]]] GetAllReviewsByKeywords(System.String) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:46:39.666 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__keywords_0_contains='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[Comment], [r].[MovieId], [r].[Rating], [r].[ReviewCreated], [r].[ReviewerFirstName], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Reviews] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+WHERE [r].[Comment] LIKE @__keywords_0_contains ESCAPE N'\'
+2024-08-16 15:46:39.667 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.ReviewDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:46:39.667 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.GetAllReviewsByKeywords (WebApplication1) in 50.6648ms
+2024-08-16 15:46:39.667 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.GetAllReviewsByKeywords (WebApplication1)'
+2024-08-16 15:46:39.668 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Review/keywords/beatiful - 200 null application/json; charset=utf-8 58.0618ms
+2024-08-16 15:46:54.944 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Review/average-rating/The Future of Us - null null
+2024-08-16 15:46:54.945 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.AverageRating (WebApplication1)'
+2024-08-16 15:46:54.952 +03:00 [INF] Route matched with {action = "AverageRating", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Double]] AverageRating(System.String) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 15:46:55.030 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT AVG(CAST([r].[Rating] AS float))
+FROM [Reviews] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 15:46:55.037 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Double'.
+2024-08-16 15:46:55.048 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.AverageRating (WebApplication1) in 96.0555ms
+2024-08-16 15:46:55.048 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.AverageRating (WebApplication1)'
+2024-08-16 15:46:55.049 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Review/average-rating/The Future of Us - 200 null application/json; charset=utf-8 105.1246ms
+2024-08-16 15:47:32.302 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Role?movieName=The%20Future%20of%20Us&firstName=baba&lastName=baba - application/json 74
+2024-08-16 15:47:32.303 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.AddRole (WebApplication1)'
+2024-08-16 15:47:32.313 +03:00 [INF] Route matched with {action = "AddRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddRole(WebApplication1.DTOs.RoleDTO, System.String, System.String, System.String) on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 15:47:32.323 +03:00 [INF] AddRole method was called! 
+2024-08-16 15:47:32.328 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 15:47:32.333 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__firstName_0='?' (Size = 100), @__lastName_1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Persons] AS [p]
+WHERE [p].[FirstName] = @__firstName_0 AND [p].[LastName] = @__lastName_1
+2024-08-16 15:47:32.375 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 100), @p3='?' (DbType = Int32), @p4='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Roles] ([MovieAppereances], [MovieId], [Name], [PersonId], [RoleDescription])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-08-16 15:47:32.378 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:47:32.378 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.AddRole (WebApplication1) in 65.0671ms
+2024-08-16 15:47:32.379 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.AddRole (WebApplication1)'
+2024-08-16 15:47:32.379 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Role?movieName=The%20Future%20of%20Us&firstName=baba&lastName=baba - 200 0 null 76.8398ms
+2024-08-16 15:47:52.856 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Role - null null
+2024-08-16 15:47:52.857 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.GetAllRoles (WebApplication1)'
+2024-08-16 15:47:52.864 +03:00 [INF] Route matched with {action = "GetAllRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.RoleDTO]]] GetAllRoles() on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 15:47:52.869 +03:00 [INF] GetAllRoles method was called! 
+2024-08-16 15:47:52.896 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[MovieAppereances], [r].[MovieId], [r].[Name], [r].[PersonId], [r].[RoleDescription], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year], [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Roles] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+INNER JOIN [Persons] AS [p] ON [r].[PersonId] = [p].[Id]
+2024-08-16 15:47:52.908 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.RoleDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:47:52.911 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.GetAllRoles (WebApplication1) in 46.5926ms
+2024-08-16 15:47:52.911 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.GetAllRoles (WebApplication1)'
+2024-08-16 15:47:52.911 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Role - 200 null application/json; charset=utf-8 55.2556ms
+2024-08-16 15:48:02.755 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Role/2 - null null
+2024-08-16 15:48:02.756 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.GetRoleByID (WebApplication1)'
+2024-08-16 15:48:02.762 +03:00 [INF] Route matched with {action = "GetRoleByID", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WebApplication1.DTOs.RoleDTO]] GetRoleByID(Int32) on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 15:48:02.791 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[MovieAppereances], [r].[MovieId], [r].[Name], [r].[PersonId], [r].[RoleDescription], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year], [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Roles] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+INNER JOIN [Persons] AS [p] ON [r].[PersonId] = [p].[Id]
+WHERE [r].[Id] = @__id_0
+2024-08-16 15:48:02.796 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.DTOs.RoleDTO'.
+2024-08-16 15:48:02.796 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.GetRoleByID (WebApplication1) in 33.4805ms
+2024-08-16 15:48:02.796 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.GetRoleByID (WebApplication1)'
+2024-08-16 15:48:02.796 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Role/2 - 200 null application/json; charset=utf-8 41.5943ms
+2024-08-16 15:48:19.594 +03:00 [INF] Request starting HTTP/2 PUT https://localhost:7257/api/Role/2 - application/json 74
+2024-08-16 15:48:19.595 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.UpdateRole (WebApplication1)'
+2024-08-16 15:48:19.602 +03:00 [INF] Route matched with {action = "UpdateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateRole(Int32, WebApplication1.DTOs.RoleDTO) on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 15:48:19.606 +03:00 [INF] UpdateRole method was called! 
+2024-08-16 15:48:19.627 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[MovieAppereances], [r].[MovieId], [r].[Name], [r].[PersonId], [r].[RoleDescription]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__id_0
+2024-08-16 15:48:19.634 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 100), @p1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Roles] SET [Name] = @p0, [RoleDescription] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2024-08-16 15:48:19.635 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:48:19.635 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.UpdateRole (WebApplication1) in 33.0729ms
+2024-08-16 15:48:19.635 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.UpdateRole (WebApplication1)'
+2024-08-16 15:48:19.635 +03:00 [INF] Request finished HTTP/2 PUT https://localhost:7257/api/Role/2 - 200 0 null 41.8369ms
+2024-08-16 15:48:36.749 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Role/name/dada - null null
+2024-08-16 15:48:36.751 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.GetRoleByName (WebApplication1)'
+2024-08-16 15:48:36.757 +03:00 [INF] Route matched with {action = "GetRoleByName", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WebApplication1.DTOs.RoleDTO]] GetRoleByName(System.String) on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 15:48:36.803 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[MovieAppereances], [r].[MovieId], [r].[Name], [r].[PersonId], [r].[RoleDescription], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year], [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Roles] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+INNER JOIN [Persons] AS [p] ON [r].[PersonId] = [p].[Id]
+WHERE [r].[Name] = @__name_0
+2024-08-16 15:48:36.804 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.DTOs.RoleDTO'.
+2024-08-16 15:48:36.805 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.GetRoleByName (WebApplication1) in 47.4914ms
+2024-08-16 15:48:36.805 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.GetRoleByName (WebApplication1)'
+2024-08-16 15:48:36.805 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Role/name/dada - 200 null application/json; charset=utf-8 55.8752ms
+2024-08-16 15:48:45.923 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Role/movie/The Future of Us - null null
+2024-08-16 15:48:45.924 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.GetRolesByMovieName (WebApplication1)'
+2024-08-16 15:48:45.929 +03:00 [INF] Route matched with {action = "GetRolesByMovieName", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WebApplication1.DTOs.RoleDTO]]] GetRolesByMovieName(System.String) on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 15:48:45.953 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[MovieAppereances], [r].[MovieId], [r].[Name], [r].[PersonId], [r].[RoleDescription], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year], [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Roles] AS [r]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+INNER JOIN [Persons] AS [p] ON [r].[PersonId] = [p].[Id]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 15:48:45.954 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebApplication1.DTOs.RoleDTO, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 15:48:45.954 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.GetRolesByMovieName (WebApplication1) in 25.1848ms
+2024-08-16 15:48:45.955 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.GetRolesByMovieName (WebApplication1)'
+2024-08-16 15:48:45.955 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Role/movie/The Future of Us - 200 null application/json; charset=utf-8 32.0592ms
+2024-08-16 15:49:05.268 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Role/person?firstName=baba&lastName=baba - null null
+2024-08-16 15:49:05.270 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.GetRoleByPersonName (WebApplication1)'
+2024-08-16 15:49:05.280 +03:00 [INF] Route matched with {action = "GetRoleByPersonName", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WebApplication1.DTOs.RoleDTO]] GetRoleByPersonName(System.String, System.String) on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 15:49:05.325 +03:00 [INF] Executed DbCommand (24ms) [Parameters=[@__firstName_0='?' (Size = 100), @__lastName_1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[MovieAppereances], [r].[MovieId], [r].[Name], [r].[PersonId], [r].[RoleDescription], [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year], [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Roles] AS [r]
+INNER JOIN [Persons] AS [p] ON [r].[PersonId] = [p].[Id]
+INNER JOIN [Movies] AS [m] ON [r].[MovieId] = [m].[Id]
+WHERE [p].[FirstName] = @__firstName_0 AND [p].[LastName] = @__lastName_1
+2024-08-16 15:49:05.326 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.DTOs.RoleDTO'.
+2024-08-16 15:49:05.326 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.GetRoleByPersonName (WebApplication1) in 45.9088ms
+2024-08-16 15:49:05.326 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.GetRoleByPersonName (WebApplication1)'
+2024-08-16 15:49:05.326 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Role/person?firstName=baba&lastName=baba - 200 null application/json; charset=utf-8 58.285ms
+2024-08-16 15:49:12.775 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7257/api/Role/2 - null null
+2024-08-16 15:49:12.776 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.DeleteRole (WebApplication1)'
+2024-08-16 15:49:12.781 +03:00 [INF] Route matched with {action = "DeleteRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteRole(Int32) on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 15:49:12.785 +03:00 [INF] DeleteRole method was called! 
+2024-08-16 15:49:12.799 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[MovieAppereances], [r].[MovieId], [r].[Name], [r].[PersonId], [r].[RoleDescription]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__id_0
+2024-08-16 15:49:12.831 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Roles]
+OUTPUT 1
+WHERE [Id] = @p0;
+2024-08-16 15:49:12.832 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:49:12.832 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.DeleteRole (WebApplication1) in 50.3089ms
+2024-08-16 15:49:12.832 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.DeleteRole (WebApplication1)'
+2024-08-16 15:49:12.832 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7257/api/Role/2 - 200 0 null 57.6792ms
+2024-08-16 15:49:54.897 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Studio - application/json 74
+2024-08-16 15:49:54.899 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.StudioController.AddStudio (WebApplication1)'
+2024-08-16 15:49:54.907 +03:00 [INF] Route matched with {action = "AddStudio", controller = "Studio"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddStudio(WebApplication1.DTOs.StudioDTO) on controller WebApplication1.Controllers.StudioController (WebApplication1).
+2024-08-16 15:49:54.916 +03:00 [INF] AddStudio method was called! 
+2024-08-16 15:49:54.940 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 100), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Studios] ([StudioLocation], [StudioName], [StudioYear])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2024-08-16 15:49:54.942 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:49:54.943 +03:00 [INF] Executed action WebApplication1.Controllers.StudioController.AddStudio (WebApplication1) in 35.2548ms
+2024-08-16 15:49:54.943 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.StudioController.AddStudio (WebApplication1)'
+2024-08-16 15:49:54.943 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Studio - 200 0 null 45.8525ms
+2024-08-16 15:50:05.504 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Studio/nunu - null null
+2024-08-16 15:50:05.504 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.StudioController.GetStudioByName (WebApplication1)'
+2024-08-16 15:50:05.511 +03:00 [INF] Route matched with {action = "GetStudioByName", controller = "Studio"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetStudioByName(System.String) on controller WebApplication1.Controllers.StudioController (WebApplication1).
+2024-08-16 15:50:05.541 +03:00 [INF] Executed DbCommand (21ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [Studios] AS [s]
+WHERE [s].[StudioName] = @__name_0
+2024-08-16 15:50:05.544 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.DTOs.StudioDTO'.
+2024-08-16 15:50:05.547 +03:00 [INF] Executed action WebApplication1.Controllers.StudioController.GetStudioByName (WebApplication1) in 35.4756ms
+2024-08-16 15:50:05.547 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.StudioController.GetStudioByName (WebApplication1)'
+2024-08-16 15:50:05.547 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Studio/nunu - 200 null application/json; charset=utf-8 43.4469ms
+2024-08-16 15:50:34.578 +03:00 [INF] Request starting HTTP/2 PUT https://localhost:7257/api/Studio/nunu - application/json 78
+2024-08-16 15:50:34.580 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.StudioController.UpdateStudio (WebApplication1)'
+2024-08-16 15:50:34.587 +03:00 [INF] Route matched with {action = "UpdateStudio", controller = "Studio"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UpdateStudio(System.String, WebApplication1.DTOs.StudioDTO) on controller WebApplication1.Controllers.StudioController (WebApplication1).
+2024-08-16 15:50:34.595 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [Studios] AS [s]
+WHERE [s].[StudioName] = @__name_0
+2024-08-16 15:50:34.605 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [Studios] AS [s]
+WHERE [s].[StudioName] = @__name_0
+2024-08-16 15:50:34.660 +03:00 [INF] Executed DbCommand (22ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 100), @p1='?' (Size = 100), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Studios] SET [StudioLocation] = @p0, [StudioName] = @p1, [StudioYear] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2024-08-16 15:50:34.660 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:50:34.660 +03:00 [INF] Executed action WebApplication1.Controllers.StudioController.UpdateStudio (WebApplication1) in 72.9759ms
+2024-08-16 15:50:34.660 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.StudioController.UpdateStudio (WebApplication1)'
+2024-08-16 15:50:34.660 +03:00 [INF] Request finished HTTP/2 PUT https://localhost:7257/api/Studio/nunu - 200 0 null 81.916ms
+2024-08-16 15:50:58.464 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7257/api/Studio/baba - null null
+2024-08-16 15:50:58.465 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.StudioController.DeleteStudio (WebApplication1)'
+2024-08-16 15:50:58.474 +03:00 [INF] Route matched with {action = "DeleteStudio", controller = "Studio"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DeleteStudio(System.String) on controller WebApplication1.Controllers.StudioController (WebApplication1).
+2024-08-16 15:50:58.481 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [Studios] AS [s]
+WHERE [s].[StudioName] = @__name_0
+2024-08-16 15:50:58.491 +03:00 [INF] DeleteStudio method was called! 
+2024-08-16 15:50:58.494 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[StudioLocation], [s].[StudioName], [s].[StudioYear]
+FROM [Studios] AS [s]
+WHERE [s].[StudioName] = @__name_0
+2024-08-16 15:50:58.517 +03:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Studios]
+OUTPUT 1
+WHERE [Id] = @p0;
+2024-08-16 15:50:58.517 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 15:50:58.517 +03:00 [INF] Executed action WebApplication1.Controllers.StudioController.DeleteStudio (WebApplication1) in 43.2582ms
+2024-08-16 15:50:58.518 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.StudioController.DeleteStudio (WebApplication1)'
+2024-08-16 15:50:58.518 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7257/api/Studio/baba - 200 0 null 53.9755ms
+2024-08-16 16:00:37.757 +03:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-16 16:00:37.936 +03:00 [INF] Now listening on: https://localhost:7257
+2024-08-16 16:00:37.936 +03:00 [INF] Now listening on: http://localhost:5222
+2024-08-16 16:00:37.937 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-16 16:00:37.938 +03:00 [INF] Hosting environment: Development
+2024-08-16 16:00:37.938 +03:00 [INF] Content root path: C:\Users\user\Documents\internship\WebApplication1\WebApplication1
+2024-08-16 16:00:41.109 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/index.html - null null
+2024-08-16 16:00:41.377 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/index.html - 200 null text/html;charset=utf-8 272.2075ms
+2024-08-16 16:00:41.384 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-16 16:00:41.385 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_vs/browserLink - null null
+2024-08-16 16:00:41.393 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 8.7879ms
+2024-08-16 16:00:41.427 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.5522ms
+2024-08-16 16:00:41.555 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - null null
+2024-08-16 16:00:41.821 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 266.6307ms
+2024-08-16 16:00:57.766 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/lala - null null
+2024-08-16 16:00:57.792 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-08-16 16:00:57.801 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-08-16 16:00:57.801 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/lala - 401 0 null 34.8416ms
+2024-08-16 16:01:28.813 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Review?movieName=lala - application/json 119
+2024-08-16 16:01:28.823 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-08-16 16:01:28.824 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-08-16 16:01:28.824 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Review?movieName=lala - 401 0 null 11.3484ms
+2024-08-16 16:01:30.155 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Review?movieName=lala - application/json 119
+2024-08-16 16:01:30.157 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-08-16 16:01:30.157 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-08-16 16:01:30.157 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Review?movieName=lala - 401 0 null 2.9798ms
+2024-08-16 16:02:02.720 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Role?movieName=lala&firstName=baba&lastName=baba - application/json 78
+2024-08-16 16:02:02.724 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-08-16 16:02:02.726 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-08-16 16:02:02.726 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Role?movieName=lala&firstName=baba&lastName=baba - 401 0 null 6.4306ms
+2024-08-16 16:02:08.393 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Role?movieName=lala&firstName=baba&lastName=baba - application/json 78
+2024-08-16 16:02:08.400 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-08-16 16:02:08.400 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-08-16 16:02:08.400 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Role?movieName=lala&firstName=baba&lastName=baba - 401 0 null 7.0108ms
+2024-08-16 16:02:13.158 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/lala - null null
+2024-08-16 16:02:13.160 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-08-16 16:02:13.160 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-08-16 16:02:13.160 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/lala - 401 0 null 2.451ms
+2024-08-16 16:03:04.918 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 67
+2024-08-16 16:03:04.927 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 16:03:04.967 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-16 16:03:07.405 +03:00 [INF] Executed DbCommand (55ms) [Parameters=[@__login_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedOn], [u].[Email], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__login_Email_0
+2024-08-16 16:03:07.915 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[WebApplication1.Models.User, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-16 16:03:07.943 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 2965.0605ms
+2024-08-16 16:03:07.943 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-16 16:03:07.957 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 200 null application/json; charset=utf-8 3040.0326ms
+2024-08-16 16:03:24.375 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/lala - null null
+2024-08-16 16:03:24.454 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetMovieByName (WebApplication1)'
+2024-08-16 16:03:24.463 +03:00 [INF] Route matched with {action = "GetMovieByName", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WebApplication1.Models.Movie]] GetMovieByName(System.String) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-16 16:03:24.583 +03:00 [INF] GetMovieByName method was called! 
+2024-08-16 16:03:24.683 +03:00 [INF] Executed DbCommand (55ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__name_0
+2024-08-16 16:03:24.752 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.DTOs.MovieDTO'.
+2024-08-16 16:03:24.757 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetMovieByName (WebApplication1) in 293.3441ms
+2024-08-16 16:03:24.758 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetMovieByName (WebApplication1)'
+2024-08-16 16:03:24.760 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/lala - 200 null application/json; charset=utf-8 385.6578ms
+2024-08-16 16:03:45.461 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Review?movieName=lala - application/json 119
+2024-08-16 16:03:45.468 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.ReviewController.AddReview (WebApplication1)'
+2024-08-16 16:03:45.475 +03:00 [INF] Route matched with {action = "AddReview", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddReview(WebApplication1.DTOs.ReviewDTO, System.String) on controller WebApplication1.Controllers.ReviewController (WebApplication1).
+2024-08-16 16:03:45.503 +03:00 [INF] DeleteReview method was called! 
+2024-08-16 16:03:45.578 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 16:03:45.797 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Reviews] ([Comment], [MovieId], [Rating], [ReviewCreated], [ReviewerFirstName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-08-16 16:03:45.830 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 16:03:45.830 +03:00 [INF] Executed action WebApplication1.Controllers.ReviewController.AddReview (WebApplication1) in 355.0363ms
+2024-08-16 16:03:45.831 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.ReviewController.AddReview (WebApplication1)'
+2024-08-16 16:03:45.831 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Review?movieName=lala - 200 0 null 370.2182ms
+2024-08-16 16:03:50.022 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Role?movieName=lala&firstName=baba&lastName=baba - application/json 78
+2024-08-16 16:03:50.024 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.RoleController.AddRole (WebApplication1)'
+2024-08-16 16:03:50.030 +03:00 [INF] Route matched with {action = "AddRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddRole(WebApplication1.DTOs.RoleDTO, System.String, System.String, System.String) on controller WebApplication1.Controllers.RoleController (WebApplication1).
+2024-08-16 16:03:50.043 +03:00 [INF] AddRole method was called! 
+2024-08-16 16:03:50.051 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__movieName_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__movieName_0
+2024-08-16 16:03:50.087 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@__firstName_0='?' (Size = 100), @__lastName_1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Email], [p].[FirstName], [p].[LastName]
+FROM [Persons] AS [p]
+WHERE [p].[FirstName] = @__firstName_0 AND [p].[LastName] = @__lastName_1
+2024-08-16 16:03:50.158 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 100), @p3='?' (DbType = Int32), @p4='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Roles] ([MovieAppereances], [MovieId], [Name], [PersonId], [RoleDescription])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-08-16 16:03:50.163 +03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-08-16 16:03:50.163 +03:00 [INF] Executed action WebApplication1.Controllers.RoleController.AddRole (WebApplication1) in 133.0042ms
+2024-08-16 16:03:50.163 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.RoleController.AddRole (WebApplication1)'
+2024-08-16 16:03:50.164 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Role?movieName=lala&firstName=baba&lastName=baba - 200 0 null 141.7992ms
+2024-08-19 09:46:47.260 +03:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-19 09:46:47.574 +03:00 [INF] Now listening on: https://localhost:7257
+2024-08-19 09:46:47.574 +03:00 [INF] Now listening on: http://localhost:5222
+2024-08-19 09:46:47.575 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-19 09:46:47.575 +03:00 [INF] Hosting environment: Development
+2024-08-19 09:46:47.575 +03:00 [INF] Content root path: C:\Users\user\Documents\internship\WebApplication1\WebApplication1
+2024-08-19 09:46:48.573 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/index.html - null null
+2024-08-19 09:46:48.924 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/index.html - 200 null text/html;charset=utf-8 362.2873ms
+2024-08-19 09:46:48.933 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-19 09:46:48.933 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/_vs/browserLink - null null
+2024-08-19 09:46:48.943 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 9.5659ms
+2024-08-19 09:46:49.007 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/_vs/browserLink - 200 null text/javascript; charset=UTF-8 73.5184ms
+2024-08-19 09:46:49.129 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - null null
+2024-08-19 09:46:49.255 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 126.3282ms
+2024-08-19 09:47:21.658 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7257/api/Users/Login - application/json 67
+2024-08-19 09:47:21.672 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-19 09:47:21.689 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-19 09:47:22.869 +03:00 [INF] Executed DbCommand (41ms) [Parameters=[@__login_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedOn], [u].[Email], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__login_Email_0
+2024-08-19 09:47:23.115 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[WebApplication1.Models.User, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-19 09:47:23.122 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 1431.6348ms
+2024-08-19 09:47:23.122 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-19 09:47:23.128 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7257/api/Users/Login - 200 null application/json; charset=utf-8 1470.924ms
+2024-08-19 09:47:54.923 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7257/api/Users/Login - application/json 70
+2024-08-19 09:47:54.925 +03:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2024-08-19 09:47:54.925 +03:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2024-08-19 09:47:54.928 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7257/api/Users/Login - 405 0 null 5.0971ms
+2024-08-19 09:48:02.689 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7257/api/Users/Login - application/json 70
+2024-08-19 09:48:02.689 +03:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2024-08-19 09:48:02.689 +03:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2024-08-19 09:48:02.690 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7257/api/Users/Login - 405 0 null 0.7202ms
+2024-08-19 09:48:13.798 +03:00 [INF] Request starting HTTP/1.1 POST https://localhost:7257/api/Users/Login - application/json 70
+2024-08-19 09:48:13.799 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-19 09:48:13.799 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WebApplication1.Models.Login) on controller WebApplication1.Controllers.UsersController (WebApplication1).
+2024-08-19 09:48:13.834 +03:00 [INF] Executed DbCommand (23ms) [Parameters=[@__login_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedOn], [u].[Email], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__login_Email_0
+2024-08-19 09:48:14.044 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[WebApplication1.Models.User, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-19 09:48:14.045 +03:00 [INF] Executed action WebApplication1.Controllers.UsersController.Login (WebApplication1) in 246.0139ms
+2024-08-19 09:48:14.045 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.UsersController.Login (WebApplication1)'
+2024-08-19 09:48:14.046 +03:00 [INF] Request finished HTTP/1.1 POST https://localhost:7257/api/Users/Login - 200 null application/json; charset=utf-8 247.0921ms
+2024-08-19 09:48:50.740 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7257/api/Movie/The Future of Us - null null
+2024-08-19 09:48:50.747 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-08-19 09:48:50.751 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-08-19 09:48:50.751 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7257/api/Movie/The Future of Us - 401 0 null 14.6762ms
+2024-08-19 09:49:10.614 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7257/api/Movie/The Future of Us - null null
+2024-08-19 09:49:10.647 +03:00 [INF] Executing endpoint 'WebApplication1.Controllers.MovieController.GetMovieByName (WebApplication1)'
+2024-08-19 09:49:10.652 +03:00 [INF] Route matched with {action = "GetMovieByName", controller = "Movie"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WebApplication1.Models.Movie]] GetMovieByName(System.String) on controller WebApplication1.Controllers.MovieController (WebApplication1).
+2024-08-19 09:49:10.706 +03:00 [INF] GetMovieByName method was called! 
+2024-08-19 09:49:10.779 +03:00 [INF] Executed DbCommand (26ms) [Parameters=[@__name_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[Description], [m].[Genre], [m].[Name], [m].[Year]
+FROM [Movies] AS [m]
+WHERE [m].[Name] = @__name_0
+2024-08-19 09:49:10.805 +03:00 [INF] Executing OkObjectResult, writing value of type 'WebApplication1.DTOs.MovieDTO'.
+2024-08-19 09:49:10.806 +03:00 [INF] Executed action WebApplication1.Controllers.MovieController.GetMovieByName (WebApplication1) in 154.0815ms
+2024-08-19 09:49:10.806 +03:00 [INF] Executed endpoint 'WebApplication1.Controllers.MovieController.GetMovieByName (WebApplication1)'
+2024-08-19 09:49:10.806 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7257/api/Movie/The Future of Us - 200 null application/json; charset=utf-8 192.7882ms
