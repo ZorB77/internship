@@ -18,33 +18,21 @@ namespace Movies.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Review>>> GetAllReviews()
         {
-            try
-            {
-                var reviews = await _reviewService.GetAllAsync();
-                return Ok(reviews);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+            var reviews = await _reviewService.GetAllAsync();
+            return Ok(reviews);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Review>> GetReviewById(int id)
         {
-            try
+
+            var review = await _reviewService.GetByIdReviewAsync(id);
+            if (review == null)
             {
-                var review = await _reviewService.GetByIdReviewAsync(id);
-                if (review == null)
-                {
-                    return NotFound($"Review with ID {id} not found");
-                }
-                return Ok(review);
+                return NotFound($"Review with ID {id} not found");
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(review);
         }
 
         [HttpPost]
@@ -55,15 +43,9 @@ namespace Movies.Api.Controllers
                 return BadRequest("Review data is null");
             }
 
-            try
-            {
-                await _reviewService.AddReviewAsync(reviewDto.ReviewId, reviewDto.Rating, reviewDto.Comment, reviewDto.MovieId);
-                return CreatedAtAction(nameof(GetReviewById), new { id = reviewDto.ReviewId }, reviewDto);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+            await _reviewService.AddReviewAsync(reviewDto.ReviewId, reviewDto.Rating, reviewDto.Comment, reviewDto.MovieId);
+            return CreatedAtAction(nameof(GetReviewById), new { id = reviewDto.ReviewId }, reviewDto);
         }
 
         [HttpPut("{id}")]
@@ -74,73 +56,47 @@ namespace Movies.Api.Controllers
                 return BadRequest("Invalid review data");
             }
 
-            try
-            {
-                var existingReview = await _reviewService.GetByIdReviewAsync(id);
-                if (existingReview == null)
-                {
-                    return NotFound($"Review with ID {id} not found.");
-                }
 
-                await _reviewService.UpdateReviewAsync(id, reviewDto.Rating, reviewDto.Comment, reviewDto.MovieId);
-                return NoContent();
-            }
-            catch (Exception ex)
+            var existingReview = await _reviewService.GetByIdReviewAsync(id);
+            if (existingReview == null)
             {
-                return BadRequest(ex.Message);
+                return NotFound($"Review with ID {id} not found.");
             }
+
+            await _reviewService.UpdateReviewAsync(id, reviewDto.Rating, reviewDto.Comment, reviewDto.MovieId);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReview(int id)
         {
-            try
-            {
-                var existingReview = await _reviewService.GetByIdReviewAsync(id);
-                if (existingReview == null)
-                {
-                    return NotFound($"Review with ID {id} not found.");
-                }
 
-                await _reviewService.DeleteReviewAsync(id);
-                return NoContent();
-            }
-            catch (Exception ex)
+            var existingReview = await _reviewService.GetByIdReviewAsync(id);
+            if (existingReview == null)
             {
-                return BadRequest(ex.Message);
+                return NotFound($"Review with ID {id} not found.");
             }
+
+            await _reviewService.DeleteReviewAsync(id);
+            return NoContent();
         }
 
         [HttpGet("AverageRating/{movieId}")]
         public async Task<ActionResult<float>> GetAverageRating(int movieId)
         {
-            try
+            var averageRating = await _reviewService.GetTheAverageRatingOfAMovieAsync(movieId);
+            if (averageRating == -1)
             {
-                var averageRating = await _reviewService.GetTheAverageRatingOfAMovieAsync(movieId);
-                if (averageRating == -1)
-                {
-                    return NotFound($"Movie with ID {movieId} not found.");
-                }
-                return Ok(averageRating);
+                return NotFound($"Movie with ID {movieId} not found.");
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(averageRating);
         }
 
         [HttpGet("Top10Movies")]
         public async Task<ActionResult<IEnumerable<Movie>>> GetTop10Movies()
         {
-            try
-            {
-                var topMovies = await _reviewService.Top10MoviesWithHigherRatingAsync();
-                return Ok(topMovies);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var topMovies = await _reviewService.Top10MoviesWithHigherRatingAsync();
+            return Ok(topMovies);
         }
     }
 

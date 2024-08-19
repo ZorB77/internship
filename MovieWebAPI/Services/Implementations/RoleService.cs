@@ -1,4 +1,5 @@
 ﻿using Movies.Persistance;
+using MovieWebAPI.Exceptions;
 using MovieWebAPI.Persistance;
 using MovieWebAPI.Services.Interfaces;
 
@@ -19,82 +20,82 @@ namespace Movies.Services
 
         public async Task AddRoleAsync(int roleId, int movieId, int personId, string name, string description)
         {
-            try
+
+            var movie = await _movieRepository.GetByIdAsync(movieId);
+
+            if (movie == null)
             {
-                var movie = await _movieRepository.GetByIdAsync(movieId);
-                if (movie == null)
-                {
-                    throw new Exception("Error: there is no movie with this id");
-                }
-
-                var person = await _personRepository.GetByIdAsync(personId);
-                if (person == null)
-                {
-                    throw new Exception("Error: there is no person with this id");
-                }
-
-                if (name == null)
-                {
-                    throw new Exception("Error: the role name must not be null");
-                }
-
-                var role = new Role(roleId, movie, person, name, description);
-                await _repository.AddAsync(role);
+                throw new NullEntity(movieId, "Movie");
             }
-            catch (Exception ex)
+
+            var person = await _personRepository.GetByIdAsync(personId);
+
+            if (person == null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NullEntity(personId, "Person");
             }
+
+            var role = await _repository.GetByIdAsync(roleId);
+
+            if (role != null)
+            {
+                throw new NotNullEntity("There is already a role with this id");
+
+            }
+
+            role = new Role(roleId, movie, person, name, description);
+            await _repository.AddAsync(role);
         }
 
         public async Task<List<Role>> GetAllAsync()
         {
             var roles = await _repository.GetAllAsync();
+
+            if (roles == null)
+            {
+                throw new NullList("There is no roles in our database");
+            }
             return roles.ToList();
         }
 
         public async Task UpdateRoleAsync(int roleId, int movieId, int personId, string name, string description)
         {
-            try
-            {
-                var role = await _repository.GetByIdAsync(roleId);
-                if (role == null)
-                {
-                    throw new Exception("Error: there is no role with this id");
-                }
 
-                var movie = await _movieRepository.GetByIdAsync(movieId);
-                var person = await _personRepository.GetByIdAsync(personId);
+            var role = await _repository.GetByIdAsync(roleId);
 
-                var updatedRole = new Role(roleId, movie, person, name, description);
-                await _repository.UpdateAsync(updatedRole);
-            }
-            catch (Exception ex)
+            if (role == null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NullEntity(roleId, "Role");
             }
+
+            var movie = await _movieRepository.GetByIdAsync(movieId);
+            var person = await _personRepository.GetByIdAsync(personId);
+
+            var updatedRole = new Role(roleId, movie, person, name, description);
+            await _repository.UpdateAsync(updatedRole);
         }
 
         public async Task DeleteRoleAsync(int roleId)
         {
-            try
-            {
-                var role = await _repository.GetByIdAsync(roleId);
-                if (role == null)
-                {
-                    throw new Exception("Error: there is no role with this id");
-                }
 
-                await _repository.RemoveAsync(role);
-            }
-            catch (Exception ex)
+            var role = await _repository.GetByIdAsync(roleId);
+
+            if (role == null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NullEntity(roleId, "Role");
             }
+
+            await _repository.RemoveAsync(role);
         }
 
         public async Task<List<Role>> GetRolesOfAPersonAsync(int personId)
         {
+            var person = await _personRepository.GetByIdAsync(personId);
+
+            if (person == null)
+            {
+                throw new NullEntity(personId, "Person");
+            }
             var roles = await _repository.GetAllAsync();
             return roles.Where(r => r.Person.PersonId == personId).ToList();
         }

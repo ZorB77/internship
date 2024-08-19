@@ -1,4 +1,6 @@
-﻿using Movies.Persistance;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Movies.Persistance;
+using MovieWebAPI.Exceptions;
 using MovieWebAPI.Persistance;
 
 namespace Movies.Services
@@ -20,32 +22,37 @@ namespace Movies.Services
 
         public async Task AddAssociationAsync(int id, int movieId, int studioId)
         {
-            try
-            {
-                var movie = await _movieRepository.GetByIdAsync(movieId);
-                if (movie == null)
-                {
-                    throw new Exception("Error: there is no movie with this id");
-                }
 
-                var studio = await _studioRepository.GetByIdAsync(studioId);
-                if (studio == null)
-                {
-                    throw new Exception("Error: there is no studio with this id");
-                }
-
-                var association = new MovieStudioAssociation(id, movie, studio);
-                await _repository.AddAsync(association);
-            }
-            catch (Exception ex)
+            var movie = await _movieRepository.GetByIdAsync(movieId);
+            if (movie == null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NullEntity(movieId, "movieId");
             }
+
+            var studio = await _studioRepository.GetByIdAsync(studioId);
+            if (studio == null)
+            {
+                throw new NullEntity(studioId, "Studio");
+            }
+
+            var association = await _repository.GetByIdAsync(id);
+            if (association != null)
+            {
+                throw new NotNullEntity("There is already a movie - studio associaition with this id");
+            }
+
+            association = new MovieStudioAssociation(id, movie, studio);
+            await _repository.AddAsync(association);
         }
 
         public async Task<List<MovieStudioAssociation>> GetAllAssociationsAsync()
         {
             var associations = await _repository.GetAllAsync();
+
+            if (associations == null)
+            {
+                throw new NullList("No Associations movie - studio in our Database");
+            }
             return associations.ToList();
         }
     }

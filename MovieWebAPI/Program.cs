@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Movies.Persistance;
 using Movies.Services;
+using MovieWebAPI.Middleware;
 using MovieWebAPI.Persistance;
 using MovieWebAPI.Services.Interfaces;
 using Serilog;
@@ -47,6 +48,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<CustomExceptionHandler>();
 
 app.UseAuthorization();
 

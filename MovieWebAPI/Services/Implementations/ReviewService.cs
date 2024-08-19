@@ -1,4 +1,5 @@
 ﻿using Movies.Persistance;
+using MovieWebAPI.Exceptions;
 using MovieWebAPI.Persistance;
 
 namespace Movies.Services
@@ -16,93 +17,72 @@ namespace Movies.Services
 
         public async Task AddReviewAsync(int reviewId, float rating, string comment, int movieId)
         {
-            try
-            {
-                var existingReview = await _reviewRepository.GetByIdAsync(reviewId);
-                if (existingReview != null)
-                {
-                    throw new Exception("Error: there is already a review with this id");
-                }
 
-                var movie = await _movieRepository.GetByIdAsync(movieId);
-                if (movie == null)
-                {
-                    throw new Exception("Error: there is no movie with this id");
-                }
-
-                var review = new Review(reviewId, rating, comment, movie);
-                await _reviewRepository.AddAsync(review);
-            }
-            catch (Exception ex)
+            var existingReview = await _reviewRepository.GetByIdAsync(reviewId);
+            if (existingReview != null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NotNullEntity("There is already a review with this id");
             }
+
+            var movie = await _movieRepository.GetByIdAsync(movieId);
+            if (movie == null)
+            {
+                throw new NullEntity(movieId, "Movie");
+            }
+
+            var review = new Review(reviewId, rating, comment, movie);
+            await _reviewRepository.AddAsync(review);
         }
 
         public async Task UpdateReviewAsync(int reviewId, float rating, string comment, int movieId)
         {
-            try
+            var existingReview = await _reviewRepository.GetByIdAsync(reviewId);
+            if (existingReview == null)
             {
-                var existingReview = await _reviewRepository.GetByIdAsync(reviewId);
-                if (existingReview == null)
-                {
-                    throw new Exception("Error: there is no review with this id");
-                }
-
-                var movie = await _movieRepository.GetByIdAsync(movieId);
-                if (movie == null)
-                {
-                    throw new Exception("Error: there is no movie with this id");
-                }
-
-                var review = new Review(reviewId, rating, comment, movie);
-                await _reviewRepository.UpdateAsync(review);
+                throw new NotNullEntity("There is already a review with this id");
             }
-            catch (Exception ex)
+
+            var movie = await _movieRepository.GetByIdAsync(movieId);
+            if (movie == null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NullEntity(movieId, "Movie");
             }
+
+            var review = new Review(reviewId, rating, comment, movie);
+            await _reviewRepository.UpdateAsync(review);
         }
 
         public async Task DeleteReviewAsync(int reviewId)
         {
-            try
-            {
-                var review = await _reviewRepository.GetByIdAsync(reviewId);
-                if (review == null)
-                {
-                    throw new Exception("Error: there is no review with this id");
-                }
 
-                await _reviewRepository.RemoveAsync(review);
-            }
-            catch (Exception ex)
+            var review = await _reviewRepository.GetByIdAsync(reviewId);
+            if (review == null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NullEntity(reviewId, "Review");
             }
+
+            await _reviewRepository.RemoveAsync(review);
         }
 
         public async Task<Review> GetByIdReviewAsync(int reviewId)
         {
-            try
+
+            var review = await _reviewRepository.GetByIdAsync(reviewId);
+            if (review == null)
             {
-                var review = await _reviewRepository.GetByIdAsync(reviewId);
-                if (review == null)
-                {
-                    throw new Exception("Error: there is no review with this id");
-                }
-                return review;
+                throw new NullEntity(reviewId, "Review");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
+            return review;
         }
 
         public async Task<List<Review>> GetAllAsync()
         {
             var reviews = await _reviewRepository.GetAllAsync();
+
+            if (reviews == null)
+            {
+                throw new NullList("There is no review in our database");
+            }
             return reviews.ToList();
         }
 
@@ -123,7 +103,7 @@ namespace Movies.Services
             }
             else
             {
-                return -1;
+                throw new NullEntity(movieId, "Movie");
             }
         }
 
@@ -133,7 +113,6 @@ namespace Movies.Services
             var topMovies = movies.OrderByDescending(m => GetTheAverageRatingOfAMovieAsync(m.MovieId).Result)
                                   .Take(10)
                                   .ToList();
-
             return topMovies;
         }
     }

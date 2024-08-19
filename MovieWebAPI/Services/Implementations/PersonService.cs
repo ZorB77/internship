@@ -1,4 +1,5 @@
-﻿using MovieWebAPI.Persistance;
+﻿using MovieWebAPI.Exceptions;
+using MovieWebAPI.Persistance;
 
 namespace Movies.Services
 {
@@ -13,94 +14,76 @@ namespace Movies.Services
 
         public async Task AddPersonAsync(int personID, string firstname, string lastname, DateTime birthdate, string email)
         {
-            try
-            {
-                var existingPerson = await _repository.GetByIdAsync(personID);
-                if (existingPerson != null)
-                {
-                    throw new Exception("Error: there is already a person with this id");
-                }
-                else if (string.IsNullOrEmpty(firstname))
-                {
-                    throw new Exception("Error: the firstname of the person must not be null");
-                }
-                else if (string.IsNullOrEmpty(lastname))
-                {
-                    throw new Exception("Error: the lastname of the person must not be null");
-                }
+            var existingPerson = await _repository.GetByIdAsync(personID);
 
-                await _repository.AddAsync(new Person(personID, firstname, lastname, birthdate, email));
-            }
-            catch (Exception ex)
+            if (existingPerson != null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NotNullEntity("There is already a person with this id");
             }
+            
+            await _repository.AddAsync(new Person(personID, firstname, lastname, birthdate, email));
+
         }
 
         public async Task<List<Person>> GetAllAsync()
         {
             var people = await _repository.GetAllAsync();
+
+            if (people == null) 
+            {
+                throw new NullList("No people in our database");
+            }
+
             return people.ToList();
         }
 
         public async Task<Person> GetByIdAsync(int personId)
         {
-            try
+
+            var person = await _repository.GetByIdAsync(personId);
+            if (person == null)
             {
-                var person = await _repository.GetByIdAsync(personId);
-                if (person == null)
-                {
-                    throw new Exception("Error: there is no person with this id");
-                }
-                return person;
+                throw new NullEntity(personId, "Person");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
+            return person;
         }
 
         public async Task UpdatePersonAsync(int personID, string firstname, string lastname, DateTime birthdate, string email)
         {
-            try
-            {
-                var person = await _repository.GetByIdAsync(personID);
-                if (person == null)
-                {
-                    throw new Exception("Error: there is no person with this id");
-                }
 
-                await _repository.UpdateAsync(new Person(personID, firstname, lastname, birthdate, email));
-            }
-            catch (Exception ex)
+            var person = await _repository.GetByIdAsync(personID);
+            if (person == null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NullEntity(personID, "Person");
             }
+
+            await _repository.UpdateAsync(new Person(personID, firstname, lastname, birthdate, email));
         }
 
         public async Task DeletePersonAsync(int personId)
         {
-            try
-            {
-                var person = await _repository.GetByIdAsync(personId);
-                if (person == null)
-                {
-                    throw new Exception("Error: there is no person with this id");
-                }
 
-                await _repository.RemoveAsync(person);
-            }
-            catch (Exception ex)
+            var person = await _repository.GetByIdAsync(personId);
+            if (person == null)
             {
-                Console.WriteLine(ex.Message);
+                throw new NullEntity(personId, "Person");
             }
+
+            await _repository.RemoveAsync(person);
         }
 
         public async Task<List<Person>> FilterPersonByDateAsync(DateTime dateStart, DateTime dateStop)
         {
             var people = await _repository.GetAllAsync();
-            return people.Where(person => person.Birthdate >= dateStart && person.Birthdate <= dateStop).ToList();
+
+            var filteredPeople = people.Where(person => person.Birthdate >= dateStart && person.Birthdate <= dateStop).ToList();
+
+            if (filteredPeople == null)
+            {
+                throw new NullList($"There is no people born between {dateStart} - {dateStop} in our database");
+            }
+
+            return filteredPeople;
         }
     }
 }

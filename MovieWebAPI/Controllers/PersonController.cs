@@ -19,37 +19,23 @@ namespace Movies.Web.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Person>>> GetAll()
         {
-            try
-            {
-                var people = await _personService.GetAllAsync();
-                _logger.LogInformation("GetAll entities");
-                return Ok(people);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while getting all people");
-                return BadRequest(ex.Message);
-            }
+
+            var people = await _personService.GetAllAsync();
+            _logger.LogInformation("GetAll entities");
+            return Ok(people);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Person>> GetById(int id)
         {
-            try
+
+            var person = await _personService.GetByIdAsync(id);
+            if (person == null)
             {
-                var person = await _personService.GetByIdAsync(id);
-                if (person == null)
-                {
-                    _logger.LogInformation($"Entity with id {id} not found");
-                    return NotFound();
-                }
-                return Ok(person);
+                _logger.LogInformation($"Entity with id {id} not found");
+                return NotFound();
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error occurred while getting person with id {id}");
-                return BadRequest(ex.Message);
-            }
+            return Ok(person);
         }
 
         [HttpPost]
@@ -60,16 +46,8 @@ namespace Movies.Web.Controllers
                 return BadRequest("Person data is null");
             }
 
-            try
-            {
-                await _personService.AddPersonAsync(person.PersonId, person.FirstName, person.LastName, person.Birthdate, person.Email);
-                return CreatedAtAction(nameof(GetById), new { id = person.PersonId }, person);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while creating a person");
-                return BadRequest(ex.Message);
-            }
+            await _personService.AddPersonAsync(person.PersonId, person.FirstName, person.LastName, person.Birthdate, person.Email);
+            return CreatedAtAction(nameof(GetById), new { id = person.PersonId }, person);
         }
 
         [HttpPut("{id}")]
@@ -80,49 +58,28 @@ namespace Movies.Web.Controllers
                 return BadRequest("There is no person with this id");
             }
 
-            try
-            {
-                await _personService.UpdatePersonAsync(person.PersonId, person.FirstName, person.LastName, person.Birthdate, person.Email);
-                _logger.LogInformation("Person updated succesfully");
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while updating person");
-                return BadRequest(ex.Message);
-            }
+
+            await _personService.UpdatePersonAsync(person.PersonId, person.FirstName, person.LastName, person.Birthdate, person.Email);
+            _logger.LogInformation("Person updated succesfully");
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            try
-            {
-                await _personService.DeletePersonAsync(id);
-                _logger.LogInformation($"Person deleted {id} succesfully");
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while deleting a person");
-                return NotFound(ex.Message);
-            }
+
+            await _personService.DeletePersonAsync(id);
+            _logger.LogInformation($"Person deleted {id} succesfully");
+            return NoContent();
         }
 
         [HttpGet("filterByDate")]
         public async Task<ActionResult<IEnumerable<Person>>> FilterByDate([FromQuery] DateTime dateStart, [FromQuery] DateTime dateStop)
         {
-            try
-            {
-                var people = await _personService.FilterPersonByDateAsync(dateStart, dateStop);
-                _logger.LogInformation($"FilterByDate: {people.Count} results found");
-                return Ok(people);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while filtering people by date");
-                return BadRequest(ex.Message);
-            }
+
+            var people = await _personService.FilterPersonByDateAsync(dateStart, dateStop);
+            _logger.LogInformation($"FilterByDate: {people.Count} results found");
+            return Ok(people);
         }
     }
 }

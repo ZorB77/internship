@@ -18,15 +18,8 @@ namespace MovieWebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRoles()
         {
-            try
-            {
-                var roles = await _roleService.GetAllAsync();
-                return Ok(roles);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var roles = await _roleService.GetAllAsync();
+            return Ok(roles);
         }
 
         [HttpPost]
@@ -37,15 +30,8 @@ namespace MovieWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
-            {
-                await _roleService.AddRoleAsync(roleDto.RoleId, roleDto.Movie, roleDto.Person, roleDto.Name, roleDto.Description);
-                return CreatedAtAction(nameof(GetRolesOfPerson), new { personId = roleDto.Person }, roleDto);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await _roleService.AddRoleAsync(roleDto.RoleId, roleDto.Movie, roleDto.Person, roleDto.Name, roleDto.Description);
+            return CreatedAtAction(nameof(GetRolesOfPerson), new { personId = roleDto.Person }, roleDto);
         }
 
         [HttpPut("{id}")]
@@ -56,48 +42,29 @@ namespace MovieWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
+            if (id != roleDto.RoleId)
             {
-                if (id != roleDto.RoleId)
-                {
-                    return BadRequest($"There is no Role with ID {id}.");
-                }
+                return BadRequest($"There is no Role with ID {id}.");
+            }
 
-                await _roleService.UpdateRoleAsync(roleDto.RoleId, roleDto.Movie, roleDto.Person, roleDto.Name, roleDto.Description);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await _roleService.UpdateRoleAsync(roleDto.RoleId, roleDto.Movie, roleDto.Person, roleDto.Name, roleDto.Description);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRole(int id)
         {
-            try
-            {
-                await _roleService.DeleteRoleAsync(id);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+            await _roleService.DeleteRoleAsync(id);
+            return NoContent();
         }
 
         [HttpGet("person/{personId}")]
         public async Task<IActionResult> GetRolesOfPerson(int personId)
         {
-            try
-            {
-                var roles = await _roleService.GetRolesOfAPersonAsync(personId);
-                return Ok(roles);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+            var roles = await _roleService.GetRolesOfAPersonAsync(personId);
+            return Ok(roles);
         }
     }
 }

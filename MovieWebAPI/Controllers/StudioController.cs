@@ -18,43 +18,30 @@ namespace Movies.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Studio>>> GetStudios( int page = 1, int pageSize = 10)
+        public async Task<ActionResult<IEnumerable<Studio>>> GetStudios(int page = 1, int pageSize = 10)
         {
-            try
-            {
-                var studios = await _studioService.GetStudiosAsync();
 
-                var totalStudios = studios.Count;
-                var totalPages = Math.Ceiling((decimal) totalStudios / pageSize);
-                var studiosPerPage = studios.Skip((page - 1) * pageSize)
-                                            .Take(pageSize)
-                                            .ToList();
+            var studios = await _studioService.GetStudiosAsync();
 
+            var totalStudios = studios.Count;
+            var totalPages = Math.Ceiling((decimal)totalStudios / pageSize);
+            var studiosPerPage = studios.Skip((page - 1) * pageSize)
+                                        .Take(pageSize)
+                                        .ToList();
 
-                return Ok(studiosPerPage);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(studiosPerPage);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Studio>> GetStudioById(int id)
         {
-            try
+
+            var studio = await _studioService.GetByIdAsync(id);
+            if (studio == null)
             {
-                var studio = await _studioService.GetByIdAsync(id);
-                if (studio == null)
-                {
-                    return NotFound($"There is no studio with ID {id}.");
-                }
-                return Ok(studio);
+                return NotFound($"There is no studio with ID {id}.");
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(studio);
         }
 
         [HttpPost]
@@ -65,15 +52,8 @@ namespace Movies.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
-            {
-                await _studioService.AddStudioAsync(studio.StudioId, studio.Name, studio.Year, studio.Location);
-                return CreatedAtAction(nameof(GetStudioById), new { id = studio.StudioId }, studio);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await _studioService.AddStudioAsync(studio.StudioId, studio.Name, studio.Year, studio.Location);
+            return CreatedAtAction(nameof(GetStudioById), new { id = studio.StudioId }, studio);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MovieWebAPI.Persistance;
+﻿using MovieWebAPI.Exceptions;
+using MovieWebAPI.Persistance;
 using MovieWebAPI.Services.Interfaces;
 
 
@@ -15,45 +16,34 @@ namespace Movies.Services
 
         public async Task AddStudioAsync(int id, string name, int year, string location)
         {
-            try
+
+            var existingStudio = await _repository.GetByIdAsync(id);
+            if (existingStudio != null)
             {
-                if (string.IsNullOrEmpty(name))
-                {
-                    throw new ArgumentException($"'{nameof(name)}' cannot be null or empty.", nameof(name));
-                }
-
-                if (string.IsNullOrEmpty(location))
-                {
-                    throw new ArgumentException($"'{nameof(location)}' cannot be null or empty.", nameof(location));
-                }
-
-                await _repository.AddAsync(new Studio(id, name, year, location));
+                throw new NotNullEntity("There is already a studio with this id");
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-        }
 
+            await _repository.AddAsync(new Studio(id, name, year, location));
+        }
         public async Task<Studio> GetByIdAsync(int id)
         {
-            try
-            {
-                var studio = await _repository.GetByIdAsync(id);
-                if (studio == null)
-                {
-                    throw new Exception("Error: there is no review with this id");
-                }
-                return studio;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
 
+            var studio = await _repository.GetByIdAsync(id);
+            if (studio == null)
+            {
+                throw new NullEntity(id, "Studio");
+            }
+            return studio;
         }
 
         public async Task<List<Studio>> GetStudiosAsync()
         {
             var studios = await _repository.GetAllAsync();
+
+            if (studios == null)
+            {
+                throw new NullList("There is no studio in our database");
+            }
             return studios.ToList();
         }
 

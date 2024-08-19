@@ -25,15 +25,8 @@ namespace Movies.Api.Controllers
         [HttpPost]
         public IActionResult AddAssociation(int id, int movieId, int studioId)
         {
-            try
-            {
-                _associationService.AddAssociationAsync(id, movieId, studioId);
-                return CreatedAtAction(nameof(GetAllAssociations), new { id }, new { id, movieId, studioId });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { ex.Message });
-            }
+            _associationService.AddAssociationAsync(id, movieId, studioId);
+            return CreatedAtAction(nameof(GetAllAssociations), new { id }, new { id, movieId, studioId });
         }
     }
 }
