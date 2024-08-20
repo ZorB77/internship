@@ -60,6 +60,7 @@ namespace WebApplication1.Controllers
             {
                 return BadRequest(ModelState);
             }
+           
             await _reviewRepository.UpdateReview(id, reviewDTO, movieName);
                 return Ok();
          
@@ -69,6 +70,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult> DeleteReview(int id)
         {
             var review = await _reviewRepository.GetReviewById(id);
+         
             await _reviewRepository.DeleteReview(id);
             return Ok();
         }

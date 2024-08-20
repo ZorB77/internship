@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using WebApplication1.DTOs;
+using WebApplication1.Exceptions;
+using WebApplication1.Middleware;
 using WebApplication1.Models;
 using WebApplication1.Repositories;
 
@@ -37,12 +39,13 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet("{name}")]
+        
         public async Task<ActionResult<Movie>> GetMovieByName(string name)
         {
             var movie = await _movieRepository.GetMovieByName(name);
             if (movie == null)
             {
-                return NotFound();
+                throw new ArgumentException("The movie cannot be null");
             }
             else
             {
@@ -51,8 +54,18 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
+       
         public async Task<ActionResult> AddMovie([FromBody] MovieDTO movieDTO)
+
         {
+            if (movieDTO.Year <= 0 || movieDTO.Year < 1900 || movieDTO.Year > DateTime.Now.Year)
+            {
+                throw new OperationFailedException("Invalid year provided. The year must be between 1900 and 2024.");
+            }
+                if (string.IsNullOrWhiteSpace(movieDTO.Description))
+                {
+                throw new ArgumentNullException(nameof(movieDTO.Description), "You must provide movie info.");
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -70,7 +83,7 @@ namespace WebApplication1.Controllers
             var movie = await _movieRepository.GetMovieByName(name);
             if (movie == null)
             {
-                return NotFound();
+                throw new ArgumentNullException(nameof(movieDTO), "Movie data must be provided.");
             }
 
             if (!ModelState.IsValid)
@@ -88,7 +101,7 @@ namespace WebApplication1.Controllers
             var movie = await _movieRepository.GetMovieByName(name);
             if (movie == null)
             {
-                return NotFound();
+                throw new ArgumentNullException(nameof(name), "Movie name must be introduced");
             }
             await _movieRepository.DeleteMovie(name);
             return Ok();

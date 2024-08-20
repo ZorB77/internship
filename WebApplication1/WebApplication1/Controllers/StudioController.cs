@@ -47,11 +47,15 @@ namespace WebApplication1.Controllers
             {
                 return BadRequest(ModelState);
             }
+            if (!System.Text.RegularExpressions.Regex.IsMatch(studioDTO.StudioName, @"^[a-zA-Z\s]+$"))
+            {
+                throw new FormatException("The format is invalid");
+            }
             await _studioRepository.AddStudio(studioDTO);
             return Ok();
         }
 
-        [HttpPut("{name}")]
+        [HttpPut("{ name}")]
         public async Task<ActionResult> UpdateStudio(string name, [FromBody] StudioDTO studioDTO)
         {
             if (!ModelState.IsValid)

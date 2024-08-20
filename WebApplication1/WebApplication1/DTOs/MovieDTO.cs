@@ -9,7 +9,7 @@ namespace WebApplication1.DTOs
         [Required(ErrorMessage = "Movie is required")]
         [StringLength(100, ErrorMessage = "Movie name cannot be longer than 100 characters")]
         public string Name { get; set; }
-        [Range(1900, 2024, ErrorMessage = "The year of the movie must be between 1900 and 2024")]
+       /* [Range(1900, 2024, ErrorMessage = "The year of the movie must be between 1900 and 2024")]*/
         public int Year { get; set; }
         public string Description { get; set; }
 

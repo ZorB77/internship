@@ -41,7 +41,7 @@ namespace WebApplication1.Controllers
             var person = await _personRepository.GetPerson(firstName, lastName);
             if (person == null)
             {
-                return NotFound("Person not found");
+                throw new NullReferenceException("The person is null");
             }
             return Ok(person);
         }

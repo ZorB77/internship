@@ -6,6 +6,8 @@ using System.Security.Claims;
 using System.Text;
 using WebApplication1.Data;
 using WebApplication1.DTOs;
+using WebApplication1.Exceptions;
+using WebApplication1.Middleware;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -31,8 +33,11 @@ namespace WebApplication1.Controllers
                 return BadRequest(ModelState);
             }
             var objUser = _context.Users.FirstOrDefault(x => x.Email == userDTO.Email);
-            if (objUser == null)
+            if (objUser != null)
             {
+                throw new UserAlreadyExistsException("User with this email already exists");
+            }
+            
                 var hashedPassword = BCrypt.Net.BCrypt.HashPassword(userDTO.Password);
 
                 var newUser = new User
@@ -64,11 +69,8 @@ namespace WebApplication1.Controllers
                     );
                 string tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
                 return Ok(new { Token = tokenValue, User = newUser });
-            }
-            else
-            {
-                return BadRequest("User already exists");
-            }
+            
+          
         }
 
         [HttpPost]
@@ -116,7 +118,15 @@ namespace WebApplication1.Controllers
         [Route("GetUser")]
         public IActionResult GetUser(int id)
         {
-            return Ok(_context.Users.FirstOrDefault(x => x.Id == id));
+            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+            if (user == null)
+            {
+                throw new EntityNotFoundException($"User with id: {id} not found!");
+            }
+            else
+            {
+                return Ok(user);
+            }
         }
 
     }

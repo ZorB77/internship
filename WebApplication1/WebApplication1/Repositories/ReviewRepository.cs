@@ -54,6 +54,10 @@ namespace WebApplication1.Repositories
                 _dataContext.Reviews.Remove(review);
                 await _dataContext.SaveChangesAsync();
             }
+            else
+            {
+                throw new InvalidOperationException("Invalid operation");
+            }
         }
 
         public async Task<PagedList<ReviewDTO>> GetAllRevies(Parameters parameters)

@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
 using WebApplication1.Data;
+using WebApplication1.Middleware;
 using WebApplication1.Profiles;
 using WebApplication1.Repositories;
 
@@ -88,19 +89,13 @@ builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .Enrich.FromLogContext()
-   // .WriteTo.Console()
     .WriteTo.File("C:\\Users\\user\\Documents\\internship\\logging.txt")
     .CreateLogger();
 builder.Host.UseSerilog();
 var app = builder.Build();
-/*var loggerFactory = app.Services.GetService<ILoggerFactory>();
 
-if (loggerFactory != null)
-{
-    loggerFactory.AddFile(builder.Configuration["Logging:LogFilePath"]);
-}*/
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
