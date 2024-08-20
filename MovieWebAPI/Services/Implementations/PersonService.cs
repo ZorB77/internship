@@ -3,7 +3,7 @@ using MovieWebAPI.Persistance;
 
 namespace Movies.Services
 {
-    internal class PersonService : IPersonService
+    public class PersonService : IPersonService
     {
         private readonly IRepository<Person> _repository;
 

@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MovieWebAPI.Persistance;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
 
 public class Repository<T>(MoviesDbContext context) : IRepository<T> where T : class
 {
