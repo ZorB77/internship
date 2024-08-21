@@ -22,15 +22,31 @@ namespace MovieWebAPI.Mocks
                 }
             };
 
-            mock.Setup(m => m.GetAllAsync()).Returns(() => movies);
+            mock.Setup(m => m.GetAllAsync()).ReturnsAsync(() => movies);
+
             mock.Setup(m => m.GetByIdAsync(It.IsAny<int>()))
-                .Returns((int id) => movies.FirstOrDefault(movie => movie.MovieId == id));
+                .ReturnsAsync((int id) => movies.FirstOrDefault(movie => movie.MovieId == id));
+
             mock.Setup(m => m.AddAsync(It.IsAny<Movie>()))
-                .Callback(() => { return; });
+                .Callback<Movie>(m => movies.Add(m))
+                .Returns(Task.CompletedTask);
+
             mock.Setup(m => m.UpdateAsync(It.IsAny<Movie>()))
-               .Callback(() => { return; });
-            mock.Setup(m => m.RemoveAsync(It.IsAny<Movie>()))
-               .Callback(() => { return; });
+                .Callback<Movie>(movie =>
+                {
+                    var existingMovie = movies.FirstOrDefault(m => m.MovieId == movie.MovieId);
+                    if (existingMovie != null)
+                    {
+                        movies.Remove(existingMovie);
+                        movies.Add(movie);
+                    }
+                })
+                .Returns(Task.CompletedTask);
+
+            mock.Setup(movie => movie.RemoveAsync(It.IsAny<Movie>()))
+                .Callback<Movie>(movie => movies.Remove(movie))
+                .Returns(Task.CompletedTask);
+
 
             return mock;
         }

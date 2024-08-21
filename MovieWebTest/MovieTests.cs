@@ -2,7 +2,6 @@
 using Movies.Services;
 using MovieWebAPI.Exceptions;
 using MovieWebAPI.Mocks;
-using MovieWebAPI.Persistance;
 
 namespace MovieWebAPI
 {
@@ -17,7 +16,7 @@ namespace MovieWebAPI
 
             Assert.NotNull(movie);
             Assert.IsType<Movie>(movie);
-            Assert.Equal("test", movie.Name);   
+            Assert.Equal("test", movie.Name);
         }
 
         [Fact]
@@ -73,16 +72,29 @@ namespace MovieWebAPI
             var movieService = new MovieService(repositoryMock.Object);
 
             var movie = await movieService.GetByIdAsync(1);
-            Assert.Equal(movie.Name, "Foo");
+            Assert.Equal("Foo", movie.Name);
 
-            await movieService.UpdateMovieAsync(1, "Updated Test", 2001, "Updated description", "Drama", 130);
+            await movieService.UpdateMovieAsync(1, "Test", 2001, "Updated description", "Drama", 130);
             var movieUpdated = await movieService.GetByIdAsync(1);
 
+
             repositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Movie>()), Times.Once);
-            Assert.Equal(movieUpdated.Name, "Updated Test");
-            // assert when movie doesn't exist
+            Assert.Equal("Test", movieUpdated.Name);
+            // assert if movie doesn't exist
             Assert.ThrowsAsync<NullEntity>(() => movieService.UpdateMovieAsync(1000, "Test", 2000, "Action", "test description", 120));
 
+        }
+
+        [Fact]
+        public async Task DeleteMovieAsyncTest()
+        {
+            var repositoryMock = MockMovieRepsitory.GetMock();
+            var movieService = new MovieService(repositoryMock.Object);
+
+            Assert.Equal(1, movieService.GetAllAsync().Result.Count);
+            await movieService.DeleteMovieAsync(1);
+
+            Assert.Equal(0, movieService.GetAllAsync().Result.Count);
         }
     }
 }

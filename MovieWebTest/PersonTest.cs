@@ -37,6 +37,8 @@ namespace MovieWebAPI
             var repositoryMock = MockPersonRepsitory.GetMock();
             var personService = new PersonService(repositoryMock.Object);
 
+            await personService.AddPersonAsync(100, "Test", "test", DateTime.Now, "email");
+
             var result = await personService.GetByIdAsync(1);
 
             Assert.NotNull(result);

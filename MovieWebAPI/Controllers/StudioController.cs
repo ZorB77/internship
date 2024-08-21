@@ -20,9 +20,7 @@ namespace Movies.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Studio>>> GetStudios(int page = 1, int pageSize = 10)
         {
-
             var studios = await _studioService.GetStudiosAsync();
-
             var totalStudios = studios.Count;
             var totalPages = Math.Ceiling((decimal)totalStudios / pageSize);
             var studiosPerPage = studios.Skip((page - 1) * pageSize)
@@ -35,7 +33,6 @@ namespace Movies.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Studio>> GetStudioById(int id)
         {
-
             var studio = await _studioService.GetByIdAsync(id);
             if (studio == null)
             {

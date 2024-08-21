@@ -25,9 +25,11 @@ namespace MovieWebAPI.Mocks
 
             mock.Setup(p => p.GetByIdAsync(It.IsAny<int>()))
                 .ReturnsAsync((int id) => people.FirstOrDefault(p => p.PersonId == id));
+
             mock.Setup(p => p.AddAsync(It.IsAny<Person>()))
                 .Callback<Person>(p => people.Add(p))
                 .Returns(Task.CompletedTask);
+
             mock.Setup(p => p.UpdateAsync(It.IsAny<Person>()))
                 .Callback<Person>(person =>
                 {
@@ -39,6 +41,7 @@ namespace MovieWebAPI.Mocks
                     }
                 })
                 .Returns(Task.CompletedTask);
+
             mock.Setup(p => p.RemoveAsync(It.IsAny<Person>()))
                 .Callback<Person>(person => people.Remove(person))
                 .Returns(Task.CompletedTask);
