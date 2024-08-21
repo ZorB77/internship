@@ -1,0 +1,104 @@
+$content-width: 1000px;
+$breakpoint: 799px;
+$nav-height: 70px;
+$footer-height: 40px;
+$nav-background: #000;
+$font-color1: #fff;
+$font-color2: #000;
+$font-color3: #ff7071;
+$link-hover-color: #f8b500;
+$company-name-background: #fff;
+
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+body {
+  font-family: "Poppins";
+  margin: 0;
+}
+
+.nav-container {
+  max-width: auto;
+  height: $nav-height;
+  background: $nav-background;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+}
+
+.shoe-img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.brand {
+  font-size: 40px;
+  display: flex;
+  margin: 3px 8px;
+  color: $font-color1;
+
+  a {
+    text-decoration: none;
+    color: $font-color1;
+  }
+
+  .highlight {
+    color: $font-color3;
+  }
+}
+
+nav {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    li {
+      text-align: end;
+      a {
+        display: block;
+        padding: 10px 20px 0 20px;
+        line-height: 50px;
+        color: $font-color1;
+        text-decoration: none;
+        font-size: 18px;
+
+        &:hover {
+          color: $font-color3;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background: $nav-background;
+  color: $font-color1;
+  height: $footer-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+
+  div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      a {
+        padding-left: 10px;
+        color: $font-color1;
+
+        &:hover {
+          color: $font-color3;
+        }
+      }
+    }
+  }
+}
