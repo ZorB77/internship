@@ -2,6 +2,7 @@ $nav-height: 70px;
 $footer-height: 40px;
 $bg-img1: url(../images/bg-image3.jpg);
 $bg-img2: url(../images/bg-image4.jpg);
+$bg-color: #ccc;
 $font-color1: #fff;
 $font-color2: #000;
 $font-color3: #ff7071;
@@ -103,6 +104,37 @@ body {
   }
 }
 
+.available-shoes {
+  margin: 50px;
+  display: flex;
+  justify-content: space-around;
+
+  .shoe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      background: $bg-color;
+      width: 370px;
+      height: 220px;
+      margin-bottom: 20px;
+      padding: 15px;
+    }
+
+    button {
+      border: 1px solid black;
+      color: $font-color2;
+      font-size: 25px;
+      border-radius: 5px;
+    }
+
+    :hover {
+      color: $font-color3;
+    }
+  }
+}
+
 .footer {
   background-image: $bg-img1;
   color: $font-color1;
@@ -110,7 +142,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  // position: fixed;
   bottom: 0;
   width: 100vw;
 
