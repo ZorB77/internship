@@ -1,0 +1,86 @@
+$font-color1: #fff;
+$font-color2: #000;
+$font-color3: #ff7071;
+$bg-img: url(../images/bg-image4.jpg);
+
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+body {
+  font-family: "Poppins";
+  margin: 0;
+  background-image: $bg-img;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none;
+  color: $font-color2;
+  font-weight: 600;
+
+  .home-link {
+    display: flex;
+    margin: 10px;
+  }
+}
+
+.form-container {
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  width: 1000px;
+  height: 100%;
+  display: block;
+  justify-content: center;
+  margin: 30px auto;
+  padding: 20px;
+  overflow-y: auto;
+
+  h1 {
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      margin-bottom: 5px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    select {
+      height: 40px;
+    }
+
+    a {
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
+
+      button {
+        background: #fff;
+        color: $font-color2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 18px;
+        padding-top: 5px;
+      }
+
+      :hover {
+        color: $font-color3;
+      }
+    }
+  }
+}
