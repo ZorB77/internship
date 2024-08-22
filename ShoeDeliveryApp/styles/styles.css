@@ -1,50 +1,34 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Keania+One&display=swap");
 body {
   font-family: "Poppins";
   margin: 0;
 }
 
-.nav-container {
-  max-width: auto;
-  height: 70px;
-  background: #000;
-  display: flex;
-  justify-content: space-between;
-  position: fixed;
+.header-conatiner {
+  background-image: url(../images/bg-image3.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
   width: 100%;
 }
-
-.shoe-img {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  margin-right: 20px;
-}
-
-.brand {
-  font-size: 40px;
+.header-conatiner .nav-container {
+  align-self: flex-end;
+  width: 100%;
   display: flex;
-  margin: 3px 8px;
-  color: #fff;
+  justify-content: flex-end;
 }
-.brand a {
-  text-decoration: none;
-  color: #fff;
-}
-.brand .highlight {
-  color: #ff7071;
-}
-
-nav ul {
+.header-conatiner .nav-container nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
 }
-nav ul li {
+.header-conatiner .nav-container nav ul li {
   text-align: end;
 }
-nav ul li a {
+.header-conatiner .nav-container nav ul li a {
   display: block;
   padding: 10px 20px 0 20px;
   line-height: 50px;
@@ -52,13 +36,55 @@ nav ul li a {
   text-decoration: none;
   font-size: 18px;
 }
-nav ul li a:hover {
+.header-conatiner .nav-container nav ul li a:hover {
   color: #ff7071;
   font-size: 20px;
 }
+.header-conatiner .header {
+  max-width: auto;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12px;
+  width: 100%;
+}
+.header-conatiner .header .brand-container {
+  background-image: url(../images/bg-image4.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 700px;
+  height: 300px;
+  padding: 50px;
+  text-align: center;
+  border-radius: 20px;
+}
+.header-conatiner .header .brand-container .brand {
+  display: flex;
+  justify-content: space-around;
+  font-size: 40px;
+  color: #fff;
+}
+.header-conatiner .header .brand-container .brand a {
+  text-decoration: none;
+  color: #000;
+  font-size: 45px;
+  font-family: "Keania One", sans-serif;
+  align-content: center;
+}
+.header-conatiner .header .brand-container .brand .highlight {
+  color: #ff7071;
+  font-size: 80px;
+}
+.header-conatiner .header .brand-container .brand img {
+  width: 320px;
+  height: 200px;
+  transform: rotate(-15deg);
+}
 
 .footer {
-  background: #000;
+  background-image: url(../images/bg-image3.jpg);
   color: #fff;
   height: 40px;
   display: flex;
@@ -75,9 +101,12 @@ nav ul li a:hover {
   align-items: center;
 }
 .footer div p a {
-  padding-left: 10px;
+  padding-left: 8px;
   color: #fff;
 }
 .footer div p a:hover {
   color: #ff7071;
+}
+.footer div p a span {
+  margin-top: 7px;
 }/*# sourceMappingURL=styles.css.map */
