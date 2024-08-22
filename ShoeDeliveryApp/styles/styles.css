@@ -3,6 +3,7 @@
 body {
   font-family: "Poppins";
   margin: 0;
+  overflow-x: hidden;
 }
 
 .header-conatiner {
@@ -83,9 +84,54 @@ body {
   transform: rotate(-15deg);
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.modal .modal-content {
+  background-image: url(../images/bg-image4.jpg);
+  color: #000;
+  margin: 100px auto;
+  padding: 20px;
+  width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+.modal .modal-content .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal .modal-content .modal-header h1 {
+  margin: 0;
+}
+.modal .modal-content .modal-header a {
+  color: #000;
+}
+.modal .modal-content .modal-header a :hover {
+  color: #ff7071;
+}
+.modal .modal-content a {
+  color: #000;
+}
+.modal .modal-content a:hover {
+  color: #ff7071;
+}
+
+#about-modal:target {
+  display: block;
+}
+
 .available-shoes {
   margin: 50px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 .available-shoes .shoe {
@@ -95,19 +141,41 @@ body {
 }
 .available-shoes .shoe img {
   background: #ccc;
-  width: 370px;
+  width: 400px;
   height: 220px;
-  margin-bottom: 20px;
   padding: 15px;
+  border-radius: 20px;
+}
+.available-shoes .shoe p {
+  font-size: 20px;
+  margin-bottom: 2px;
 }
 .available-shoes .shoe button {
   border: 1px solid black;
   color: #000;
   font-size: 25px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 .available-shoes .shoe :hover {
   color: #ff7071;
+}
+
+.anchor-link {
+  position: fixed;
+  right: 0;
+  bottom: 45px;
+  background-color: #ccc;
+  border-radius: 10px;
+  padding: 8px;
+  width: 25px;
+  height: 25px;
+}
+.anchor-link a {
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
 }
 
 .footer {
