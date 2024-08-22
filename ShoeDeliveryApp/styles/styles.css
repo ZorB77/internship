@@ -129,6 +129,7 @@ body {
 .footer div p a {
   padding-left: 8px;
   color: #fff;
+  text-decoration: none;
 }
 .footer div p a:hover {
   color: #ff7071;
