@@ -14,11 +14,13 @@ while (option != "-1")
     switch (option)
     {
         case "1":
+            // case 1 -> the second stored procedure in the problem -> get the salary of an employee by ID
             Console.WriteLine("Introduceti id-ul angajatului al carui salariu doriti sa-l AFISATI:");
             id = Convert.ToInt32(Console.ReadLine());
             OperatiiSalariale.AfisareSalariu(id);
             break;
         case "2":
+            // case 2 -> the first stored procedure in the problem -> update the salary of an employee and it triggers an insert to a new table
             Console.WriteLine("Introduceti id-ul angajatului al carui salariu doriti sa-l ACTUALIZATI:");
             id = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Introduceti noua valoare a salariului:");
@@ -28,5 +30,7 @@ while (option != "-1")
         case "-1":
             option = "-1";
             break;
+
+            //finish switches
     }
 }
