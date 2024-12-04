@@ -27,3 +27,5 @@ catch (Exception ex)
 {
     Console.WriteLine("Exception: " + ex.Message);
 }
+
+// it would be nice to have menu or to input the IBANs or the amount, besides that, it looks ok
